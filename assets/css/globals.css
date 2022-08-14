@@ -1,0 +1,109 @@
+@import url("https://css.gg/user.css");
+@import url("https://css.gg/smartphone.css");
+@import url("https://css.gg/mail.css");
+@import url("https://css.gg/lock.css");
+@import url("https://css.gg/eye-alt.css");
+@import url("https://css.gg/eye.css");
+@import url("https://css.gg/credit-card.css");
+@import url("https://css.gg/organisation.css");
+@import url("https://css.gg/feed.css");
+
+:root {
+  --largura-max: 1400px;
+  --centralizar-padding: calc((100% - var(--largura-max)) / 2);
+  --fonte-display: "Poppins", sans-serif;
+  --fonte-texto: "Nunito", sans-serif;
+  --cor-primaria: #4e6ef1;
+  --cor-fundo: #accffe;
+  --borda-redonda: 12px;
+  --sombra-input: 0px 10px 20px -10px rgb(32 56 117 / 40%);
+
+  --branco-puro: #ffffff;
+  --preto-puro: #000000;
+
+  --p1: #313450;
+  --p2: #6b6f92;
+  --p3: #464969;
+  --p4: #747697;
+
+  --c1: #838383;
+  --c2: #353535;
+}
+
+.desativado {
+  color: var(--p4);
+}
+
+body {
+  font-family: var(--fonte-display);
+  outline: 1px solid black;
+}
+
+* {
+  cursor: default;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:not(.perfil a) {
+  cursor: pointer;
+}
+
+img[alt="Kairos Logo"] {
+  max-width: 200px;
+}
+
+img[alt="Kairos Logo"]:hover {
+  cursor: pointer;
+}
+
+.container {
+  padding: 60px var(--centralizar-padding);
+}
+
+.titulo {
+  font: 700 2.167rem/1.3 var(--fonte-display);
+  color: var(--p1);
+}
+
+.texto {
+  font: 400 1.125rem/1.4rem var(--fonte-texto);
+  color: var(--p2);
+}
+
+img {
+  max-width: 100%;
+}
+
+.none,
+.caixa-senhas {
+  display: none;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4e6ef1;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}

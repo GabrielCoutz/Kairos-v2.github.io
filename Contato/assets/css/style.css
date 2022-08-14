@@ -1,0 +1,31 @@
+.contato {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  background-color: var(--branco-puro);
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 50px;
+  border-radius: var(--borda-redonda);
+}
+
+.contato-info {
+  display: grid;
+  gap: 30px;
+  align-content: center;
+  justify-items: center;
+}
+
+.contato-intro {
+  display: grid;
+  gap: 15px;
+  justify-items: start;
+  align-items: center;
+  border-right: 1px solid #cdcdcd;
+  padding-right: 10px;
+}
+
+#mensagem {
+  color: #1ca546;
+  text-decoration: underline;
+}

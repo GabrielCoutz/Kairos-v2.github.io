@@ -1,0 +1,76 @@
+.header {
+  margin: 0 auto;
+  transition: all 0.3s ease-out 0s;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background: transparent;
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  box-shadow: none;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px;
+  border-radius: 10px;
+  transition: all 0.3s ease-out 0s;
+  background-color: var(--cor-primaria);
+}
+
+.header-nav > li > a {
+  font-size: 1.125rem;
+}
+
+.fundo-header {
+  background: url("../img/hero/hero-bg.jpg");
+  transition: all 0.3s ease-out 0s;
+  width: 100%;
+  position: fixed;
+}
+
+.sticky {
+  position: fixed;
+  z-index: 10;
+  background: #fff;
+  transition: all 0.3s ease-out 0s;
+  box-shadow: 0px 20px 50px 0px rgb(0 0 0 / 5%);
+}
+.sticky > .header {
+  transition: all 0.3s ease-out 0s;
+}
+
+.header-nav > li {
+  position: relative;
+}
+
+.header-nav > li > a::before {
+  content: "";
+  background-color: var(--cor-primaria);
+  position: absolute;
+  height: 3px;
+  bottom: -4px;
+  transition: all 0.3s ease-out 0s;
+  width: 0%;
+}
+
+.header-nav > li > a.active::before,
+.header-nav > li > a:hover::before {
+  transition: all 0.3s ease-out 0s;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.hamburguer {
+  display: none;
+}

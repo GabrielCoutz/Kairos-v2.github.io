@@ -1,0 +1,35 @@
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  background-image: url("../img/footer/footer-bg.svg");
+  background-size: cover;
+  background-position: top center;
+}
+
+.footer-itens {
+  display: grid;
+  gap: 30px;
+  flex-basis: 300px;
+}
+
+.links-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-itens > span {
+  font-size: 1.25rem;
+}
+
+.links-lista > li {
+  font-size: 1.125rem;
+}
+.links-lista > li > a {
+  transition: all 0.3s;
+}
+.links-lista > li > a:hover {
+  margin-left: 10px;
+}

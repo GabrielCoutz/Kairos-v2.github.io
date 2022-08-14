@@ -1,0 +1,244 @@
+@import url("globals.css");
+@import url("header.css");
+@import url("intro.css");
+@import url("sobre.css");
+@import url("metodos.css");
+@import url("planos.css");
+@import url("captacao.css");
+@import url("footer.css");
+@import url("formulario.css");
+@import url("icones.css");
+@import url("componentes.css");
+
+@import url("../../CadastroUsuario/assets/css/style.css");
+@import url("../../Contato/assets/css/style.css");
+@import url("../../Perfil/assets/css/style.css");
+
+@media (max-width: 1400px) {
+  .container:not(.intro) {
+    padding: 60px 30px;
+  }
+  .intro {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .fundo-barra-lateral{
+    height: auto;
+  }
+  .fundo-dados:nth-child(3) {
+    justify-self: initial;
+  }
+  .perfil {
+    grid-template-columns: 1fr;
+  }
+  .botoes {
+    justify-self: start;
+  }
+  .sobre {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+  .intro-info {
+    margin-right: 0px;
+  }
+  .sobre-img {
+    justify-self: center;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .formulario::before {
+    display: none;
+  }
+  .formulario.login {
+    max-width: 100%;
+  }
+  .intro-info > a {
+    margin-bottom: 30px;
+  }
+  .intro-info > a,
+  .intro-info > p,
+  .header-nav > li > a,
+  .texto,
+  .btn,
+  .links-lista > li,
+  .sobre-lista button {
+    font-size: 1.6rem;
+  }
+  .metodos-item > .texto,
+  .sobre-lista p,
+  .planos-beneficios > li {
+    font-size: 1.3rem;
+  }
+  .sobre-lista p {
+    padding: 0px 70px;
+  }
+  .texto {
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 768px) {
+  .formulario.recuperacao {
+    max-width: none;
+  }
+  .body-contato {
+    background-color: var(--branco-puro);
+  }
+  .contato {
+    grid-template-columns: 1fr;
+    border-radius: 0;
+    box-sizing: border-box;
+  }
+  .contato-img {
+    max-width: 370px;
+    justify-self: center;
+    margin-left: 30px;
+  }
+  .contato-info > .btn {
+    font-size: 1rem;
+  }
+  .contato-intro {
+    border: none;
+  }
+  .fundo-barra-lateral {
+    height: auto;
+  }
+  .fundo-dados {
+    padding: 30px 30px;
+  }
+  .nav-lateral {
+    padding: 35px 60px;
+  }
+  .nav-lateral > li {
+    grid-column: 1;
+  }
+  .menu-btn {
+    align-self: end;
+    display: block;
+  }
+  .nav-lateral.menu-ativo {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+  }
+  .body-perfil {
+    grid-template-columns: 1fr;
+  }
+  .principal {
+    grid-column: 1;
+  }
+  .nav-lateral,
+  .principal > header {
+    display: none;
+  }
+  .header-nav > li > a.active::before,
+  .header-nav > li > a:hover::before {
+    display: none;
+    opacity: 0;
+    width: 0%;
+  }
+  .menu-ativo,
+  .hamburguer {
+    display: block;
+  }
+  .body-perfil .hamburguer > .bar {
+    background-color: var(--branco-puro);
+  }
+  .hamburguer.menu-ativo .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .hamburguer.menu-ativo .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  .hamburguer.menu-ativo .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+  .header-nav {
+    position: fixed;
+    left: -100%;
+    top: 70px;
+    box-shadow: 0px -90px white;
+    background-color: white;
+    width: 100%;
+    text-align: center;
+    transition: 0.3s;
+  }
+
+  .header-nav > li {
+    margin: 16px 0;
+  }
+
+  .header-nav.menu-ativo {
+    left: 0;
+  }
+  .form-holder {
+    max-width: none;
+    height: 100%;
+  }
+  .fundo-form.container {
+    padding: 0;
+    height: 100vh;
+  }
+  .formulario {
+    height: 100%;
+    gap: 50px;
+    border-radius: 0;
+    padding: 0 60px;
+    align-content: center;
+  }
+  #header-cadastroUsuario {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .botoes {
+    justify-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .container.perfil {
+    padding: 60px 0;
+  }
+  .sobre-info {
+    padding: 0px;
+  }
+  footer {
+    gap: 50px;
+  }
+  .intro-info > h1 {
+    font-size: 3rem;
+  }
+  .planos-item {
+    grid-template-columns: 1fr;
+    padding: 40px 30px;
+  }
+  .planos-preco {
+    margin-top: -30px;
+  }
+  .planos-preco,
+  .planos-titulo {
+    text-align: center;
+  }
+  .captacao {
+    gap: 30px;
+  }
+  .btn {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
+
+@media (max-width: 400px) {
+  .contato-img {
+    display: none;
+  }
+}
