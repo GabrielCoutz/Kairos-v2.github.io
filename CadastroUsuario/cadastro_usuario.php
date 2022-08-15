@@ -27,26 +27,29 @@
 
     <div class="fundo-form container">
         <div class="form-holder">
-            <form action="#" method="POST" class="formulario">
+            <form method="POST" class="formulario">
                 <h1 class="titulo" onsubmit="return false">Cadastro</h1>
                 <div class="form-caixa">
                     <label for="nome">Nome completo</label>
                     <i class="gg-user"></i>
-                    <input type="text" name="nome" id="nome" placeholder="Nome Completo" onkeyup="apenasLetras(this)">
+                    <input type="text" name="nome" id="nome" placeholder="Nome Completo" onkeyup="apenasLetras(this)" aria-controls="nomeAlert">
                     <span class="underline"></span>
+                    <div id="nomeAlert"></div>
                 </div>
                 <div class="form-caixa">
                     <label for="email">Email</label>
                     <i class="gg-mail"></i>
-                    <input type="email" name="email" id="email" placeholder="Email">
+                    <input type="email" name="email" id="email" placeholder="Email" aria-controls="emailAlert">
                     <span class="underline"></span>
+                    <div id="emailAlert"></div>
                 </div>
                 <div class="form-caixa">
                     <label for="senha">Senha</label>
                     <i class="gg-lock"></i>
-                    <input type="password" name="senha" id="senha" placeholder="Senha">
+                    <input type="password" name="senha" id="senha" placeholder="Senha" aria-controls="senhaAlert">
                     <i class="gg-eye" aria-controls="senha"></i>
                     <span class="underline"></span>
+                    <div id="senhaAlert"></div>
                 </div>
                 <div class="form-caixa">
                     <label for="confirm_senha">Confirmar senha</label>
@@ -55,7 +58,7 @@
                     <i class="gg-eye" aria-controls="confirm_senha"></i>
                     <span class="underline"></span>
                 </div>
-                <button type="submit" class="btn primario" onclick="validar()">Registrar</button>
+                <button type="button" id="butao" class="btn primario" onclick="validar()">Registrar</button>
                 <a href="../Login/login.html" class="btn terciario">Fazer login</a>
             </form>
         </div>
@@ -64,8 +67,11 @@
     </div>
 </body>
 <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.12.0/js/md5.min.js'></script>
+
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+
+<script src="../assets/js/globals.js"></script>
 <script src="../assets/js/formulario.js"></script>
 <script src="assets/js/script.js"></script>
 

@@ -55,7 +55,7 @@
             <span>Bem vindo ao Kairos</span>
             <h1>Uma plataforma pensada e desenvolvida para Você</h1>
             <p class="texto">Mais que uma ferramenta, um meio para alcançar seu sucesso no mercado.</p>
-            <a href="CadastroUsuario/cadastro_usuario.html" class="btn primario btn-hover">Começar Agora</a>
+            <a href="CadastroUsuario/cadastro_usuario" class="btn primario btn-hover">Começar Agora</a>
         </div>
         <div class="intro-img">
             <img src="assets/img/hero/equipe.png" alt="Equipe de pessoas">

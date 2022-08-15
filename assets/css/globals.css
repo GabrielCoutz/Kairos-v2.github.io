@@ -94,6 +94,16 @@ img {
   display: none;
 }
 
+div[id$="Alert"] {
+  grid-column: 2;
+  display: none;
+  color: red;
+}
+
+.alerta-ativo {
+  display: block !important;
+}
+
 ::-webkit-scrollbar-track {
   background: transparent;
   border-radius: 50px;
