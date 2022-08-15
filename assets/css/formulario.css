@@ -72,7 +72,6 @@ input::placeholder {
   background-color: var(--cor-fundo);
   outline: none !important;
 }
-
 .underline {
   position: absolute;
   content: "";
