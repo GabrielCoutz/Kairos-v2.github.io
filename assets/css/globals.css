@@ -7,6 +7,7 @@
 @import url("https://css.gg/credit-card.css");
 @import url("https://css.gg/organisation.css");
 @import url("https://css.gg/feed.css");
+@import url("https://css.gg/pin.css");
 
 :root {
   --largura-max: 1400px;
@@ -85,6 +86,10 @@ img[alt="Kairos Logo"] {
 }
 
 img[alt="Kairos Logo"]:hover {
+  cursor: pointer;
+}
+
+select{
   cursor: pointer;
 }
 

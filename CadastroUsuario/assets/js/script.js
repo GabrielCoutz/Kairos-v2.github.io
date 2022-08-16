@@ -100,7 +100,7 @@ function validar() {
   limpar_inputs();
 
   if (vazio(nome.value)) {
-    dispararEvento(nome, "keyup", "condicaoNome");
+    dispararEvento(nome, "keyup", "condicaoVazio");
     alertaDeErro(nome, "Insira apenas letras!");
     nome.focus();
   } else if (!validarEmail(email.value)) {

@@ -1,0 +1,172 @@
+@-webkit-keyframes popUpEntrada {
+  0% {
+    opacity: 0;
+    margin-top: -20%;
+  }
+  75% {
+    margin-top: 5%;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes popUpEntrada {
+  0% {
+    opacity: 0;
+    margin-top: -20%;
+  }
+  75% {
+    margin-top: 5%;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes popUpSaida {
+  0% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+    margin-top: -20%;
+  }
+  100% {
+    opacity: 0;
+    margin-top: 40%;
+  }
+}
+@keyframes popUpSaida {
+  0% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+    margin-top: -20%;
+  }
+  100% {
+    opacity: 0;
+    margin-top: 40%;
+  }
+}
+
+.popUpFundo {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgb(0 0 0 / 46%);
+  z-index: 10;
+}
+
+.popUp > button {
+  padding: 10px 50px;
+}
+
+.popUp {
+  box-sizing: border-box;
+  display: none;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  z-index: 10;
+  border: 3px solid transparent;
+}
+
+.popUp > h1 {
+  font: 600 1.4rem/1.3rem var(--fonte-display);
+}
+
+.popUp > span {
+  color: var(--c4);
+  font: 500 1rem/1.5 var(--fonte-texto);
+  padding-bottom: 10px;
+}
+
+.p {
+  max-width: 320px;
+  min-width: 310px;
+  max-height: 270px;
+  transform: translate(-50%, -50%);
+}
+
+.puEnviar {
+  display: none;
+}
+
+.popUpEntrada {
+  animation: popUpEntrada 0.5s;
+  -webkit-animation: popUpEntrada 0.5s;
+}
+.popUpSaida {
+  display: block;
+  animation: popUpSaida 0.5s;
+  -webkit-animation: popUpSaida 0.5s;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+}
+
+.blue,
+.red,
+.green {
+  background-color: var(--branco-puro);
+}
+
+#asdf {
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  padding: 10px;
+  border-radius: var(--borda-redonda);
+  box-shadow: rgb(0 0 0 / 30%) 0px 8px 10px -6px;
+}
+
+.popUp.red {
+  border-color: rgb(255 76 76);
+}
+
+.popUp.green {
+  border-color: #45df4c;
+}
+
+.popUp.blue {
+  border-color: #659cff;
+}
+
+.popUpFundo {
+  backdrop-filter: blur(8px);
+  background: rgb(0 0 0 / 46%);
+}
+
+#img {
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 25%);
+  width: 60%;
+  display: grid;
+  position: initial;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  margin: auto;
+  border-radius: 10px;
+}
+
+/* #asdf.marketing {
+  border-radius: 16px;
+  color: #666666;
+  font-weight: bold;
+}
+
+.marketing > button {
+  width: 60%;
+  margin-bottom: 8px;
+  background-color: #4e6ef1;
+  border: none;
+  border-color: none;
+  color: #ffffff;
+  margin-left: 20%;
+}
+
+.popUp.marketing h1 {
+  border-top: 2px solid black;
+  font-size: 24px;
+} */

@@ -104,19 +104,19 @@ function lerCEP(cep) {
         ) {
           abrirjanela(
             "red",
-            "CEP inválido!<br>Por favor, verifique os números e tente novamente.",
+            "CEP inválido!Por favor, verifique os números e tente novamente.",
             "Dados Inválidos",
             "falha"
           );
 
           if (window.location.href.includes("cadastro")) {
-            cep_empresa.classList.add("vermei");
+            alertaDeErro(cep_empresa, "Preencha o CEP!");
+            dispararEvento(cep_empresa, "keyup", "condicaoCep");
             cep_empresa.focus();
           } else {
             salvarbtn.disabled = true;
             cancelarbtn.disabled = false;
           }
-
           return;
         } else {
           cep_empresa.classList.remove("vermei");
@@ -150,9 +150,9 @@ function dispararEvento(elemento, evento, stringCondicao) {
   switch (
     stringCondicao // seta a função de acordo com a stringCondicao, usada para saber qual validação será usada para tratar o erro
   ) {
-    case "condicaoNome":
+    case "condicaoVazio":
       var condicao = function () {
-        return vazio(nome.value);
+        return vazio(elemento.value);
       };
       break;
     case "condicaoEmail":
@@ -176,12 +176,7 @@ function dispararEvento(elemento, evento, stringCondicao) {
       break;
     case "condicaoCep":
       var condicao = function () {
-        return cep.value.length != 10;
-      };
-      break;
-    case "condicaoNumero":
-      var condicao = function () {
-        return vazio(numero.value);
+        return elemento.value.length != 10;
       };
       break;
   }
@@ -193,7 +188,7 @@ function dispararEvento(elemento, evento, stringCondicao) {
       document
         .getElementById(elemento.getAttribute("aria-controls"))
         .classList.remove("alerta-ativo");
-      if (elemento == senha) {
+      if (elemento.id === "senha") {
         window.remove(evento, funcao);
         confirm_senha.classList.remove("vermei");
       }
@@ -204,7 +199,7 @@ function dispararEvento(elemento, evento, stringCondicao) {
 
   // Já sabendo qual condição deve ser utilizada, é adicionado ao elemento seu evento (keydown ou keyup) e chamada da função, no qual fará uso da condicao setada pelo switch
   document.getElementById("butao").disabled = true;
-  if (elemento.id == senha) {
+  if (elemento.id === "senha") {
     window.addEventListener(evento, funcao);
   }
   elemento.addEventListener(evento, funcao);

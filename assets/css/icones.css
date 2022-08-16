@@ -70,6 +70,22 @@
   background-color: var(--branco-puro);
 }
 
+.gg-organisation {
+  background: linear-gradient(to bottom, var(--c1) 5px, transparent 0) no-repeat
+      center 2px/12px 2px,
+    linear-gradient(to bottom, var(--c1) 5px, transparent 0) no-repeat center
+      6px/12px 2px,
+    linear-gradient(to bottom, var(--c1) 5px, transparent 0) no-repeat center
+      10px/12px 2px,
+    linear-gradient(to bottom, var(--c1) 18px, transparent 0) no-repeat
+      center/2px 18px;
+}
+
+.gg-organisation::before {
+  background: var(--c1);
+  box-shadow: 0 4px 0 var(--c1), -4px 4px 0 var(--c1), -4px 0 0 var(--c1);
+}
+
 /* icones de popup */
 
 @media (min-width: 501px) {
