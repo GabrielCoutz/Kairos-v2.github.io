@@ -28,6 +28,8 @@
 
   --c1: #838383;
   --c2: #353535;
+  --c3: #1f1f1f;
+  --c4: #0c0c0c;
 }
 
 .desativado {
@@ -48,6 +50,21 @@ body {
 button {
   border: none;
   cursor: pointer;
+}
+
+select {
+  transition: all 0.3s;
+  border: none;
+  border-bottom: 1px solid #e6e6e6;
+  outline: none;
+  padding: 4px 8px;
+  font: 400 1.1rem/1 var(--fonte-texto);
+  color: var(--p4);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 li {
@@ -98,10 +115,6 @@ div[id$="Alert"] {
   grid-column: 2;
   display: none;
   color: red;
-}
-
-button:disabled {
-  cursor: not-allowed;
 }
 
 .alerta-ativo {

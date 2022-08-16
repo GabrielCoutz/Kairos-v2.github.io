@@ -56,10 +56,7 @@
   border-radius: 4px;
   background-color: #ededed;
   border: 1px solid transparent;
-  outline: none;
   padding: 8px 16px;
-  transition: all 0.3s;
-  font: 400 1.1rem/1 var(--fonte-texto);
 }
 .perfil select:hover {
   cursor: pointer;

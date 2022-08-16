@@ -68,6 +68,10 @@ input::placeholder {
   color: var(--c1);
 }
 
+.formulario.empresa > #endereco {
+  justify-self: center;
+}
+
 .body-form {
   background-color: var(--cor-fundo);
   outline: none !important;
@@ -83,7 +87,7 @@ input::placeholder {
   transition: all 0.3s ease-out;
 }
 
-.vermei ~ .underline {
+.vermei ~ .underline:not(:last-child) {
   transition: none;
   bottom: 25px;
 }

@@ -27,8 +27,8 @@
 
     <div class="fundo-form container">
         <div class="form-holder">
-            <form method="POST" class="formulario">
-                <h1 class="titulo" onsubmit="return false">Cadastro</h1>
+            <form method="POST" class="formulario" onsubmit="return false">
+                <h1 class="titulo" >Cadastro</h1>
                 <div class="form-caixa">
                     <label for="nome">Nome completo</label>
                     <i class="gg-user"></i>

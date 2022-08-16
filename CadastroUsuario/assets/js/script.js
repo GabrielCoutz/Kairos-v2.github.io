@@ -8,17 +8,17 @@ const captcha = document.getElementById("captcha");
 switch (
   true // verifica se há erros passados na URL
 ) {
-  case window.location.href.includes(md5("erro=true")): //erro no captcha
+  case verificarURL(md5("erro=true")): //erro no captcha
     abrirjanela(
       "red",
-      "Possível Fraude detectada!<br>Por favor, insira as informações novamente.",
+      "Possível Fraude detectada! Por favor, insira as informações novamente.",
       "Erro no CAPTCHA",
       "falha"
     );
     limparURL(md5("erro=true"));
     break;
 
-  case window.location.href.includes(md5("email=false")): //email já cadastrado
+  case verificarURL(md5("email=false")): //email já cadastrado
     email.classList.add("vermei");
     abrirjanela("red", "Email já utilizado!", "Dados Duplicados", "falha");
     localStorage.setItem("erro", 1);
@@ -28,11 +28,11 @@ switch (
     numero.value = localStorage.getItem("numero");
 
     ler(localStorage.getItem("cep"));
-    document.getElementById("cadastro").focus();
+    document.querySelector("form").focus();
     limparURL(md5("email=false"));
     break;
 
-  case window.location.href.includes(md5("sucesso=false")):
+  case verificarURL(md5("sucesso=false")):
     abrirjanela(
       "red",
       "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
@@ -96,61 +96,6 @@ $(document).ready(function () {
   });
 });
 
-const dispararEvento = function (elemento, evento, stringCondicao) {
-  //dispara um evento de confirmação para o input no qual o valor inserido é inválido ou insatisfatório
-
-  var condicao; // função usada para validação
-
-  switch (
-    stringCondicao // seta a função de acordo com a stringCondicao, usada para saber qual validação será usada para tratar o erro
-  ) {
-    case "condicaoNome":
-      var condicao = function () {
-        return vazio(nome.value);
-      };
-      break;
-    case "condicaoEmail":
-      var condicao = function () {
-        return !validarEmail(email.value);
-      };
-      break;
-    case "condicaoSenha":
-      var condicao = function () {
-        if (vazio(senha.value) || vazio(confirm_senha.value)) {
-          return true;
-        } else {
-          return false;
-        }
-      };
-      break;
-  }
-
-  let funcao = function () {
-    // verifica se a validação é satisfeita, assim retira o eventListener, remove os avisos e libera o usuario para registrar-se
-    if (!condicao()) {
-      elemento.classList.remove("vermei");
-      document
-        .getElementById(elemento.getAttribute("aria-controls"))
-        .classList.remove("alerta-ativo");
-      if (elemento == senha) {
-        console.log("removeu");
-        window.remove(evento, funcao);
-        confirm_senha.classList.remove("vermei");
-      }
-      elemento.removeEventListener(evento, funcao);
-      document.getElementById("butao").disabled = false;
-    }
-  };
-
-  // Já sabendo qual condição deve ser utilizada, é adicionado ao elemento seu evento (keydown ou keyup) e chamada da função, no qual fará uso da condicao setada pelo switch
-  document.getElementById("butao").disabled = true;
-  if (elemento.id == senha) {
-    console.log("ativou");
-    window.addEventListener(evento, funcao);
-  }
-  elemento.addEventListener(evento, funcao);
-};
-
 function validar() {
   limpar_inputs();
 
@@ -173,18 +118,13 @@ function validar() {
     confirm_senha.classList.add("vermei");
     senha.value = "";
     confirm_senha.value = "";
-  } else if (grecaptcha.getResponse() == "") {
-    alertaDeErro(captcha, "Preencha o CAPTCHA!");
+    // } else if (grecaptcha.getResponse() == "") {
+    //   alertaDeErro(captcha, "Preencha o CAPTCHA!");
   } else {
-    localStorage.setItem(nome.id, nome.value);
-    localStorage.setItem(tel.id, tel.value);
+    // localStorage.setItem(nome.id, nome.value);
+    // localStorage.setItem(tel.id, tel.value);
     abrirjanela("blue", "Validando Dados", "Andamento Cadastro", "carregar");
-    document.getElementById("asdf_cancelar").style.display = "none";
-    setTimeout(nada, 4000);
-    document
-      .getElementById("asdf_cancelar")
-      .addEventListener("click", function () {
-        document.getElementById("cadastro").submit();
-      });
+
+    setTimeout(enviar, 4000);
   }
 }
