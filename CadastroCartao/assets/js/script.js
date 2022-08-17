@@ -1,18 +1,9 @@
-const num = function () {
-  return document.getElementById("cardNumber");
-};
-const nome = function () {
-  return document.getElementById("cardName");
-};
-const mes = function () {
-  return document.getElementById("cardMonth");
-};
-const ano = function () {
-  return document.getElementById("cardYear");
-};
-const cvv = function () {
-  return document.getElementById("cardCvv");
-};
+const num = document.getElementById("cardNumber");
+const nome = document.getElementById("cardName");
+const mes = document.getElementById("cardMonth");
+const ano = document.getElementById("cardYear");
+const cvv = document.getElementById("cardCvv");
+
 const cpf = document.getElementById("cpf");
 const rua = document.getElementById("rua");
 const numero = document.getElementById("numero");
@@ -103,35 +94,33 @@ $(document).ready(function () {
 function validar() {
   limpar_inputs();
 
-  if (num().value.length != 19) {
-    alertaDeErro(num(), "Preencha o número do cartão!");
-    dispararEvento(num(), "keyup", "condicaoNum");
-    num().classList.add("vermei");
-  } else if (vazio(nome().value)) {
-    alertaDeErro(nome(), "Preencha o nome do titular!");
-    dispararEvento(nome(), "keyup", "condicaoVazio");
-    nome().classList.add("vermei");
-  } else if (vazio(mes().value)) {
-    alertaDeErro(mes(), "Selecione o mês!");
-    dispararEvento(mes(), "change", "condicaoSelect");
-    mes().classList.add("vermei");
-  } else if (vazio(ano().value)) {
-    alertaDeErro(ano(), "Selecione o ano!");
-    dispararEvento(ano(), "change", "condicaoSelect");
-    ano().classList.add("vermei");
-  } else if (cvv().value.length < 3) {
-    alertaDeErro(cvv(), "Preencha o CVV do cartão!");
-    dispararEvento(cvv(), "keyup", "condicaoCvv");
-    cvv().classList.add("vermei");
+  if (num.value.length != 19) {
+    alertaDeErro(num, "Preencha o número do cartão!");
+    dispararEvento(num, "keyup", "condicaoNum");
+    num.classList.add("vermei");
+  } else if (vazio(nome.value)) {
+    alertaDeErro(nome, "Preencha o nome do titular!");
+    dispararEvento(nome, "keyup", "condicaoVazio");
+    nome.classList.add("vermei");
+  } else if (vazio(mes.value)) {
+    alertaDeErro(mes, "Selecione o mês!");
+    dispararEvento(mes, "change", "condicaoSelect");
+    mes.classList.add("vermei");
+  } else if (vazio(ano.value)) {
+    alertaDeErro(ano, "Selecione o ano!");
+    dispararEvento(ano, "change", "condicaoSelect");
+    ano.classList.add("vermei");
+  } else if (cvv.value.length < 3) {
+    alertaDeErro(cvv, "Preencha o CVV do cartão!");
+    dispararEvento(cvv, "keyup", "condicaoCvv");
+    cvv.classList.add("vermei");
   } else if (validar_cpf(cpf.value) === 1) {
     alertaDeErro(cpf, "Insira um CPF válido");
     dispararEvento(cpf, "keyup", "condicaoCPF");
-    $("#cpf").addClass("vermei");
-  } else if ($("#cep").val().length < 10) {
+  } else if (cep.value.length < 10) {
     dispararEvento(cep, "keyup", "condicaoCep");
     alertaDeErro(cep, "Preencha o CEP!");
-    cep.classList.add("vermei");
-  } else if (vazio($("#numero").val())) {
+  } else if (vazio(numero.value)) {
     dispararEvento(numero, "keyup", "condicaoVazio");
     alertaDeErro(numero, "Preencha o Número!");
   } else {
