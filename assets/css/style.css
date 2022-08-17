@@ -219,7 +219,6 @@
     font-size: 3rem;
   }
   .planos-item {
-    grid-template-columns: 1fr;
     padding: 40px 30px;
   }
   .planos-preco {
@@ -235,6 +234,24 @@
   .btn {
     box-sizing: border-box;
     width: 100%;
+  }
+  label[for="cardCvv"] {
+    padding-top: 20px;
+  }
+  #cardCvv {
+    margin-bottom: -20px;
+  }
+  .cartao .formulario {
+    gap: 40px;
+    padding: 0 30px;
+  }
+  .validade,
+  .info-usuario,
+  .planos-item {
+    grid-template-columns: 1fr;
+  }
+  .validade label {
+    grid-row: auto;
   }
 }
 

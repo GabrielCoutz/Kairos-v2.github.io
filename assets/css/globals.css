@@ -139,7 +139,8 @@ img {
 }
 
 .perfil input:focus,
-.cartao input:focus {
+.cartao input:focus,
+.cartao select:focus {
   border-color: var(--cor-primaria) !important;
   box-shadow: var(--sombra-input);
 }

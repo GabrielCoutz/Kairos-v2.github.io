@@ -20,13 +20,7 @@
 
 <body class="body-form cartao">
 
-  <header class="header container">
-    <div class="header-logo">
-      <a href="../index.html"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
-    </div>
-  </header>
-
-  <div class="wrapper" id="app">
+  <div class="container" id="app">
     <div class="card-form">
       <div class="card-list">
         <div class="card-item" v-bind:class="{ '-active' : isCardFlipped }">
@@ -92,8 +86,8 @@
                   </transition>
                 </label>
                 <div class="card-item__date" ref="cardDate">
-                  <label for="cardMonth" class="card-item__dateTitle">Validade</label>
-                  <label for="cardMonth" class="card-item__dateItem">
+                  <label class="card-item__dateTitle">Validade</label>
+                  <label class="card-item__dateItem">
                     <transition name="slide-fade-up">
                       <span v-if="cardMonth" v-bind:key="cardMonth">{{cardMonth}}</span>
                       <span v-else key="2">MM</span>
@@ -146,48 +140,50 @@
               data-ref="cardName" autocomplete="cc-csc" name='nome_cartao' maxlength="30" onkeyup="apenasLetras(this)">
             <div id='cardNameAlert'></div>
           </div>
-          <div class="form-caixa">
-            <label for="cardMonth">Data de Validade</label>
-            <select class="form-caixa__input" id="cardMonth" v-model="cardMonth" v-on:focus="focusInput"
-              v-on:blur="blurInput" data-ref="cardDate" name='mes_cartao'>
-              <option value="" disabled selected>Mês</option>
-              <option v-bind:value="n < 10 ? '0' + n : n" v-for="n in 12" v-bind:disabled="n < minCardMonth"
-                v-bind:key="n">
-                {{n < 10 ? '0' + n : n}} </option>
-            </select>
-            <select class="form-caixa__input" id="cardYear" v-model="cardYear" v-on:focus="focusInput"
-              v-on:blur="blurInput" data-ref="cardDate" name='ano_cartao'>
-              <option value="" disabled selected>Ano</option>
-              <option v-bind:value="$index + minCardYear" v-for="(n, $index) in 12" v-bind:key="n">
-                {{$index + minCardYear}}
-              </option>
-            </select>
-            <div class='none seletor' id='cardYearAlert'></div>
-            <div class='none seletor' id='cardMonthAlert'></div>
-          </div>
-
-          <div class="form-caixa">
+          <div class="form-caixa validade">
+            <label>Data de Validade</label>
+            <div class="info-validade">
+              <select class="form-caixa__input" id="cardMonth" v-model="cardMonth" v-on:focus="focusInput"
+                v-on:blur="blurInput" data-ref="cardDate" name='mes_cartao'>
+                <option value="" disabled selected>Mês</option>
+                <option v-bind:value="n < 10 ? '0' + n : n" v-for="n in 12" v-bind:disabled="n < minCardMonth"
+                  v-bind:key="n">
+                  {{n < 10 ? '0' + n : n}} </option>
+              </select>
+              <select class="form-caixa__input" id="cardYear" v-model="cardYear" v-on:focus="focusInput"
+                v-on:blur="blurInput" data-ref="cardDate" name='ano_cartao'>
+                <option value="" disabled selected>Ano</option>
+                <option v-bind:value="$index + minCardYear" v-for="(n, $index) in 12" v-bind:key="n">
+                  {{$index + minCardYear}}
+                </option>
+              </select>
+            </div>
             <label for="cardCvv">CVV</label>
             <input type="tel" id="cardCvv" v-mask="'###'" maxlength="3" v-model="cardCvv" v-on:focus="flipCard(true)"
               v-on:blur="flipCard(false)" autocomplete="cc-csc" name='cvv_cartao'>
             <div id='cardCvvAlert'></div>
+            <div class='none seletor' id='cardYearAlert'></div>
+            <div class='none seletor' id='cardMonthAlert'></div>
           </div>
 
+
+          <div class="info-usuario">
           <div class="form-caixa">
-            <label for="cardName">CPF</label>
+            <label for="cpf">CPF</label>
             <input type="tel" class="form-caixa__input " id="cpf" name='cpf' onkeypress="$(this).mask('000.000.000-00')"
               onkeyup="evento_cpf(this)">
             <div id='cpfAlert'></div>
           </div>
 
           <div class="form-caixa">
-            <label for="cardName">CEP</label>
+            <label for="cep">CEP</label>
             <input type="tel" id="cep" name='cep' onkeypress="$(this).mask('00.000-000')" onkeyup="ler(this)">
             <div id='cepAlert'></div>
           </div>
 
           <div class="form-caixa">
-            <label for="cardName">Número</label>
+            
+            <label for="numero">Número</label>
             <input type="tel" id="numero" name='numero' maxlength="6">
             <div id='numeroAlert'></div>
 
@@ -197,10 +193,16 @@
             <input type="text" class="none" id="estado" name='estado'>
 
             <div id='endereco'></div>
+          </div>
+        </div>
+
+          <button class="btn primario" onclick="validar()" id='butao' type="button">
+                  Finalizar
+          </button>
+          <button class="btn terciario" type="button">
+                  Cancelar
+          </button>
       </form>
-      <button class="btn primario" onclick="validar()" id='butao'>
-              Validar
-            </button>
     </div>
   </div>
   </div>
