@@ -19,7 +19,7 @@
 
 <body class="body-form">
 
-    <header class="header container" id="header-cadastroUsuario">
+    <header class="header container">
         <div class="header-logo">
             <a href="../index.html"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
         </div>

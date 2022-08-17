@@ -51,29 +51,6 @@
   justify-self: end;
 }
 
-.perfil input,
-.perfil select {
-  border-radius: 4px;
-  background-color: #ededed;
-  border: 1px solid transparent;
-  padding: 8px 16px;
-  transition: all 0.3s;
-  outline: none;
-}
-.perfil select:hover {
-  cursor: pointer;
-}
-
-.perfil input:hover,
-.perfil select:hover {
-  box-shadow: var(--sombra-input);
-}
-
-.perfil input:focus {
-  border-color: var(--cor-primaria) !important;
-  box-shadow: var(--sombra-input);
-}
-
 .dados-coluna,
 .fundo-dados {
   display: flex;

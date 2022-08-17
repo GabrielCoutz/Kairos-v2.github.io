@@ -13,6 +13,7 @@
 
 @import url("../../Contato/assets/css/style.css");
 @import url("../../Perfil/assets/css/style.css");
+@import url("../../CadastroCartao/assets/css/animacaoCartao.css");
 
 @media (max-width: 1400px) {
   .container:not(.intro) {
@@ -193,7 +194,7 @@
     padding: 0 60px;
     align-content: center;
   }
-  #header-cadastroUsuario {
+  .body-form > header {
     display: none;
   }
 }

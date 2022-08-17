@@ -89,7 +89,7 @@ img[alt="Kairos Logo"]:hover {
   cursor: pointer;
 }
 
-select{
+select {
   cursor: pointer;
 }
 
@@ -114,6 +114,34 @@ img {
 .none,
 .caixa-senhas {
   display: none;
+}
+.cartao select,
+.cartao input,
+.perfil input,
+.perfil select {
+  border-radius: 4px;
+  background-color: #ededed;
+  border: 1px solid transparent;
+  padding: 8px 16px;
+  transition: all 0.3s;
+  outline: none;
+}
+.perfil select:hover,
+.cartao select:hover {
+  cursor: pointer;
+}
+
+.perfil input:hover,
+.perfil select:hover,
+.cartao input:hover,
+.cartao select:hover {
+  box-shadow: var(--sombra-input);
+}
+
+.perfil input:focus,
+.cartao input:focus {
+  border-color: var(--cor-primaria) !important;
+  box-shadow: var(--sombra-input);
 }
 
 div[id$="Alert"] {

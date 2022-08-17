@@ -35,7 +35,7 @@
   color: var(--p1);
 }
 
-.formulario > .form-caixa {
+.formulario > .form-caixa:not(.cartao .form-caixa) {
   position: relative;
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -43,7 +43,7 @@
   align-items: center;
 }
 
-.formulario > .form-caixa > input {
+.formulario > .form-caixa:not(.cartao .form-caixa) > input {
   transition: all 0.3s;
   position: relative;
   border: none;
@@ -96,7 +96,7 @@ input:focus ~ .underline {
   width: 100%;
 }
 
-.formulario > .form-caixa > label {
+.formulario > .form-caixa:not(.cartao .form-caixa) > label:not(.cartao label) {
   transition: all 0.3s ease-out;
   position: absolute;
   opacity: 0;
@@ -118,6 +118,6 @@ input:focus {
   border-color: transparent !important;
 }
 
-.label-ativo {
+.label:not(.cartao label)-ativo {
   opacity: 1 !important;
 }
