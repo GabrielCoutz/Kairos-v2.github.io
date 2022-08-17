@@ -111,9 +111,9 @@ function lerCEP(cep) {
           );
 
           if (window.location.href.includes("cadastro")) {
-            alertaDeErro(cep_empresa, "Preencha o CEP!");
-            dispararEvento(cep_empresa, "keyup", "condicaoCep");
-            cep_empresa.focus();
+            alertaDeErro(document.querySelector('input[id^="cep"]'), "CEP inválido!");
+            dispararEvento(document.querySelector('input[id^="cep"]'), "keyup", "condicaoCep");
+
           } else {
             salvarbtn.disabled = true;
             cancelarbtn.disabled = false;
@@ -187,7 +187,7 @@ function dispararEvento(elemento, evento, stringCondicao) {
       break;
     case "condicaoNum":
       var condicao = function () {
-        return num().value.length != 19;
+        return num.value.length != 19;
       };
       break;
     case "condicaoSelect":
@@ -197,7 +197,7 @@ function dispararEvento(elemento, evento, stringCondicao) {
       break;
     case "condicaoCvv":
       var condicao = function () {
-        return cvv().value.length < 3;
+        return cvv.value.length < 3;
       };
   }
 
