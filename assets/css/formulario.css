@@ -111,7 +111,7 @@ input:hover {
 }
 
 input:hover:not(.perfil input) {
-  border-color: var(--cor-primaria) !important;
+  border-color: var(--cor-primaria);
 }
 
 input:focus {

@@ -87,23 +87,6 @@ function validar_cpf(cpf) {
   return 0;
 }
 
-function evento_cpf(cpf) {
-  if (cpf.value.length == 14) {
-    if (validar_cpf(cpf.value) == 1) {
-      alertaDeErro(cpf, "Por favor, insira um CPF válido!");
-      cpf.focus();
-      cpf.classList.add("vermei");
-      document.getElementById("butao").disabled = true;
-    } else {
-      document
-        .getElementById(cpf.getAttribute("aria-constrols"))
-        .classList.add("none");
-      cpf.classList.remove("vermei");
-      document.getElementById("butao").disabled = false;
-    }
-  }
-}
-
 $(document).ready(function () {
   // desabilita CTRL+V por motivos de incompatibilidade de máscara
   $("#cpf").on("cut copy paste", function (e) {
@@ -117,96 +100,42 @@ $(document).ready(function () {
   });
 });
 
-// case "condicaoNum":
-//   var condicao = function () {
-//     return num().value.length == 19;
-//   };
-//   break;
-// case "condicaoNome":
-//   var condicao = function () {
-//     return nome().value.length > 5;
-//   };
-//   break;
-// case "condicaoMes":
-//   var condicao = function () {
-//     return !vazio(mes().value);
-//   };
-//   break;
-// case "condicaoAno":
-//   var condicao = function () {
-//     return !vazio(ano().value);
-//   };
-//   break;
-// case "condicaoCvv":
-//   var condicao = function () {
-//     return cvv().value.length == 3;
-//   };
-//   break;
-// case "condicaoNumero":
-//   var condicao = function () {
-//     return !$("#numero").val() == "";
-//   };
-//   break;
-// case "condicaoCep":
-//   var condicao = function () {
-//     return cep.value.length >= 10;
-//   };
-//   break;
-
 function validar() {
   limpar_inputs();
 
   if (num().value.length != 19) {
     alertaDeErro(num(), "Preencha o número do cartão!");
     dispararEvento(num(), "keyup", "condicaoNum");
-    num().focus();
     num().classList.add("vermei");
-  } else if (nome().value.length < 5) {
+  } else if (vazio(nome().value)) {
     alertaDeErro(nome(), "Preencha o nome do titular!");
-    dispararEvento(nome(), "keyup", "condicaoNome");
-    nome().focus();
+    dispararEvento(nome(), "keyup", "condicaoVazio");
     nome().classList.add("vermei");
   } else if (vazio(mes().value)) {
     alertaDeErro(mes(), "Selecione o mês!");
-    dispararEvento(mes(), "change", "condicaoMes");
-    mes().focus();
+    dispararEvento(mes(), "change", "condicaoSelect");
     mes().classList.add("vermei");
   } else if (vazio(ano().value)) {
     alertaDeErro(ano(), "Selecione o ano!");
-    dispararEvento(ano(), "change", "condicaoAno");
-    ano().focus();
+    dispararEvento(ano(), "change", "condicaoSelect");
     ano().classList.add("vermei");
   } else if (cvv().value.length < 3) {
     alertaDeErro(cvv(), "Preencha o CVV do cartão!");
     dispararEvento(cvv(), "keyup", "condicaoCvv");
-    cvv().focus();
     cvv().classList.add("vermei");
-  } else if ($("#cpf").val().length < 14) {
-    alertaDeErro(cpf, "Preencha o CPF!");
-    cpf.focus();
+  } else if (validar_cpf(cpf.value) === 1) {
+    alertaDeErro(cpf, "Insira um CPF válido");
+    dispararEvento(cpf, "keyup", "condicaoCPF");
     $("#cpf").addClass("vermei");
   } else if ($("#cep").val().length < 10) {
     dispararEvento(cep, "keyup", "condicaoCep");
     alertaDeErro(cep, "Preencha o CEP!");
-    cep.focus();
     cep.classList.add("vermei");
   } else if (vazio($("#numero").val())) {
-    dispararEvento(
-      document.getElementById("numero"),
-      "keyup",
-      "condicaoNumero"
-    );
+    dispararEvento(numero, "keyup", "condicaoVazio");
     alertaDeErro(numero, "Preencha o Número!");
-    numero.focus();
-    $("#numero").addClass("vermei");
   } else {
-    abrirjanela("blue", "Validando Dados", "Cadastrando Cartão", "carregar");
-    document.getElementById("asdf_cancelar").style.display = "none";
-    setTimeout(nada, 4000);
-    document
-      .getElementById("asdf_cancelar")
-      .addEventListener("click", function () {
-        document.getElementById("cadastro_cartao").submit();
-      });
+    // abrirjanela("blue", "Validando Dados", "Cadastrando Cartão", "carregar");
+    console.log("foi =)");
   }
 }

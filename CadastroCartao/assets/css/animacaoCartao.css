@@ -438,3 +438,11 @@
 .cartao form button {
   justify-self: stretch !important;
 }
+
+div[id$="Alert"] {
+  grid-column: 1;
+}
+
+.cartao #endereco {
+  text-align: center;
+}

@@ -48,6 +48,10 @@ body {
   padding: 0;
 }
 
+input {
+  font: 400 1rem/1 var(--fonte-display);
+}
+
 button {
   border: none;
   cursor: pointer;
@@ -141,7 +145,7 @@ img {
 .perfil input:focus,
 .cartao input:focus,
 .cartao select:focus {
-  border-color: var(--cor-primaria) !important;
+  border-color: var(--cor-primaria);
   box-shadow: var(--sombra-input);
 }
 

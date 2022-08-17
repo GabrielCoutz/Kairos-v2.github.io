@@ -44,6 +44,7 @@ function limparURL(url) {
 }
 
 function alertaDeErro(elemento, mensagem) {
+  elemento.focus()
   let caixa = document.getElementById(elemento.getAttribute("aria-controls"));
   document.getElementById(elemento.id).classList.add("vermei");
   caixa.id === "cnpj"
@@ -119,7 +120,7 @@ function lerCEP(cep) {
           }
           return;
         } else {
-          cep_empresa.classList.remove("vermei");
+          cep.classList.remove("vermei");
           document.querySelector('input[id^="rua"]').value =
             resposta.logradouro;
           document.querySelector('input[id^="bairro"]').value = resposta.bairro;
@@ -135,7 +136,7 @@ function lerCEP(cep) {
             resposta.localidade +
             ", " +
             resposta.uf;
-          numero_empresa.focus();
+          document.querySelector('input[id^="numero"').focus();
         }
       },
     });
@@ -174,35 +175,29 @@ function dispararEvento(elemento, evento, stringCondicao) {
         return validarCNPJ(cnpj.value) == 1;
       };
       break;
+    case "condicaoCPF":
+      var condicao = function () {
+        return validar_cpf(cpf.value) == 1;
+      };
+      break;
     case "condicaoCep":
       var condicao = function () {
         return elemento.value.length != 10;
       };
       break;
-
     case "condicaoNum":
       var condicao = function () {
-        return num().value.length == 19;
+        return num().value.length != 19;
       };
       break;
-    case "condicaoNome":
+    case "condicaoSelect":
       var condicao = function () {
-        return nome().value.length > 5;
-      };
-      break;
-    case "condicaoMes":
-      var condicao = function () {
-        return !vazio(mes().value);
-      };
-      break;
-    case "condicaoAno":
-      var condicao = function () {
-        return !vazio(ano().value);
+        return vazio(elemento.value);
       };
       break;
     case "condicaoCvv":
       var condicao = function () {
-        return cvv().value.length == 3;
+        return cvv().value.length < 3;
       };
   }
 

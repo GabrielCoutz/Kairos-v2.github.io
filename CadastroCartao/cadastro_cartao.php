@@ -143,7 +143,7 @@
           <label>Data de Validade</label>
           <div class="info-validade">
             <select class="form-caixa__input" id="cardMonth" v-model="cardMonth" v-on:focus="focusInput"
-              v-on:blur="blurInput" data-ref="cardDate" name='mes_cartao' aria-controls="CardMonthAlert">
+              v-on:blur="blurInput" data-ref="cardDate" name='mes_cartao' aria-controls="cardMonthAlert">
               <option value="" disabled selected>Mês</option>
               <option v-bind:value="n < 10 ? '0' + n : n" v-for="n in 12" v-bind:disabled="n < minCardMonth"
                 v-bind:key="n">
@@ -169,14 +169,13 @@
         <div class="info-usuario">
           <div class="form-caixa">
             <label for="cpf">CPF</label>
-            <input type="tel" class="form-caixa__input " id="cpf" name='cpf' onkeypress="$(this).mask('000.000.000-00')"
-              onkeyup="evento_cpf(this)" aria-controls="cpfAlert">
+            <input type="tel" class="form-caixa__input " id="cpf" name='cpf' onkeypress="$(this).mask('000.000.000-00')" aria-controls="cpfAlert">
             <div id='cpfAlert'></div>
           </div>
 
           <div class="form-caixa">
             <label for="cep">CEP</label>
-            <input type="tel" id="cep" name='cep' onkeypress="$(this).mask('00.000-000')" onkeyup="ler(this)" aria-controls="cepAlert">
+            <input type="tel" id="cep" name='cep' onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)" aria-controls="cepAlert">
             <div id='cepAlert'></div>
           </div>
 
@@ -191,9 +190,9 @@
             <input type="text" class="none" id="cidade" name='cidade'>
             <input type="text" class="none" id="estado" name='estado'>
 
-            <div id='endereco'></div>
           </div>
         </div>
+        <div id='endereco' class="none"></div>
 
         <button class="btn primario" onclick="validar()" id='butao' type="button">
           Finalizar
