@@ -179,6 +179,31 @@ function dispararEvento(elemento, evento, stringCondicao) {
         return elemento.value.length != 10;
       };
       break;
+
+    case "condicaoNum":
+      var condicao = function () {
+        return num().value.length == 19;
+      };
+      break;
+    case "condicaoNome":
+      var condicao = function () {
+        return nome().value.length > 5;
+      };
+      break;
+    case "condicaoMes":
+      var condicao = function () {
+        return !vazio(mes().value);
+      };
+      break;
+    case "condicaoAno":
+      var condicao = function () {
+        return !vazio(ano().value);
+      };
+      break;
+    case "condicaoCvv":
+      var condicao = function () {
+        return cvv().value.length == 3;
+      };
   }
 
   let funcao = function () {
