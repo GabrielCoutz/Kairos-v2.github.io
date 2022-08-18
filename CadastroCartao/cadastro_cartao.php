@@ -197,9 +197,9 @@
         <button class="btn primario" onclick="validar()" id='butao' type="button">
           Finalizar
         </button>
-        <button class="btn terciario" type="button">
+        <a class="btn terciario" href="../index.php">
           Cancelar
-        </button>
+        </a>
       </form>
     </div>
   </div>

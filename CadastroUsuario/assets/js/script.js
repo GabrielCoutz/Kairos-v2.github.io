@@ -43,46 +43,6 @@ switch (
     break;
 }
 
-// let timeout;
-// let password = document.getElementById("senha");
-// let strengthBadge = document.getElementById("StrengthDisp");
-// let strongPassword = new RegExp(
-//   "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})"
-// );
-// let mediumPassword = new RegExp(
-//   "((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))"
-// );
-
-// password.addEventListener("input", () => {
-//   strengthBadge.style.display = "block";
-//   clearTimeout(timeout);
-//   timeout = setTimeout(() => StrengthChecker(password.value), 500);
-//   if (password.value.length !== 0) {
-//     strengthBadge.style.display != "block";
-//   } else {
-//     strengthBadge.style.display = "none";
-//   }
-// });
-
-// function StrengthChecker(PasswordParameter) {
-//   if (!document.getElementById("senhaAlert").classList.contains("none")) {
-//     document.getElementById("senhaAlert").classList.add("none");
-//   }
-//   if (PasswordParameter.length <= 9) {
-//     strengthBadge.style.color = "red";
-//     strengthBadge.textContent = "Senha muito curta";
-//   } else if (strongPassword.test(PasswordParameter)) {
-//     strengthBadge.style.color = "green";
-//     strengthBadge.textContent = "Senha Forte";
-//   } else if (mediumPassword.test(PasswordParameter)) {
-//     strengthBadge.style.color = "#b6bf31";
-//     strengthBadge.textContent = "Senha Mediana";
-//   } else {
-//     strengthBadge.style.color = "red";
-//     strengthBadge.textContent = "Senha Fraca";
-//   }
-// }
-
 $(document).ready(function () {
   // desabilita CTRL+V por motivos de incompatibilidade de máscara
   $("#tel").on("cut copy paste", function (e) {
@@ -102,18 +62,15 @@ function validar() {
   if (vazio(nome.value)) {
     dispararEvento(nome, "keyup", "condicaoVazio");
     alertaDeErro(nome, "Insira apenas letras!");
-    nome.focus();
   } else if (!validarEmail(email.value)) {
     dispararEvento(email, "keyup", "condicaoEmail");
     alertaDeErro(email, "Insira um email válido!");
-    email.focus();
   } else if (
     senha.value != confirm_senha.value ||
     vazio(senha.value) ||
     vazio(confirm_senha.value)
   ) {
     alertaDeErro(senha, "Senhas não coincidem. Por favor, verifique-as!");
-    senha.focus();
     senha.classList.add("vermei");
     confirm_senha.classList.add("vermei");
     senha.value = "";

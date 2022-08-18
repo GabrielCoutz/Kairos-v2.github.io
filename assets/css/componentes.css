@@ -66,6 +66,10 @@
   border-color: red !important;
 }
 
-input.vermei ~ span.underline {
-  background: rgb(255, 0, 0) !important;
+input.vermei ~ .underline {
+  display: none !important;
+}
+
+input.vermei:focus ~ div[id$="Alert"]::before {
+  width: 100%;
 }

@@ -44,7 +44,7 @@ function limparURL(url) {
 }
 
 function alertaDeErro(elemento, mensagem) {
-  elemento.focus()
+  elemento.focus();
   let caixa = document.getElementById(elemento.getAttribute("aria-controls"));
   document.getElementById(elemento.id).classList.add("vermei");
   caixa.id === "cnpj"
@@ -105,15 +105,21 @@ function lerCEP(cep) {
         ) {
           abrirjanela(
             "red",
-            "CEP inválido!Por favor, verifique os números e tente novamente.",
+            "CEP inválido! Por favor, verifique os números e tente novamente.",
             "Dados Inválidos",
             "falha"
           );
 
           if (window.location.href.includes("cadastro")) {
-            alertaDeErro(document.querySelector('input[id^="cep"]'), "CEP inválido!");
-            dispararEvento(document.querySelector('input[id^="cep"]'), "keyup", "condicaoCep");
-
+            alertaDeErro(
+              document.querySelector('input[id^="cep"]'),
+              "CEP inválido!"
+            );
+            dispararEvento(
+              document.querySelector('input[id^="cep"]'),
+              "keyup",
+              "condicaoCep"
+            );
           } else {
             salvarbtn.disabled = true;
             cancelarbtn.disabled = false;

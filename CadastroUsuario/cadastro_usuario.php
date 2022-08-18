@@ -17,7 +17,7 @@
     <title>Cadastro</title>
 </head>
 
-<body class="body-form">
+<body class="body-form cadastro">
 
     <header class="header container">
         <div class="header-logo">
@@ -43,15 +43,19 @@
                     <span class="underline"></span>
                     <div id="emailAlert"></div>
                 </div>
-                <div class="form-caixa">
+                <div class="form-caixa senha-1">
                     <label for="senha">Senha</label>
                     <i class="gg-lock"></i>
                     <input type="password" name="senha" id="senha" placeholder="Senha" aria-controls="senhaAlert">
                     <i class="gg-eye" aria-controls="senha"></i>
+                    <div id="gerar-senha">Gerar</div>
                     <span class="underline"></span>
+                    <div class="progress-bar">
+                        <div></div>
+                    </div>
                     <div id="senhaAlert"></div>
                 </div>
-                <div class="form-caixa">
+                <div class="form-caixa senha-2">
                     <label for="confirm_senha">Confirmar senha</label>
                     <i class="gg-lock"></i>
                     <input type="password" name="confirm_senha" id="confirm_senha" placeholder="Confirmar senha">
@@ -76,6 +80,7 @@
 <script src="../assets/js/formulario.js"></script>
 <script src="../assets/js/popup.js"></script>
 
+<script src="assets/js/lslstrength.js"></script>
 <script src="assets/js/script.js"></script>
 
 </html>

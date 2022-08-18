@@ -1,0 +1,41 @@
+.progress-bar {
+  position: relative;
+  grid-row: 2;
+  grid-column: 1/-1;
+  text-align: center;
+}
+
+.progress-bar > div {
+  position: absolute;
+  border-radius: var(--borda-redonda);
+  border: 1px solid transparent;
+  right: 0;
+  padding: 0 10px;
+}
+
+div[class^="senha-"]::before {
+  font: 400 1rem/1 var(--fonte-display);
+  color: white;
+}
+
+.senha-vazia::before {
+  content: "";
+}
+.senha-fraca::before {
+  content: "Senha Fraca";
+}
+.senha-mediana::before {
+  content: "Senha Mediana";
+}
+.senha-forte::before {
+  content: "Senha Forte";
+}
+
+#gerar-senha {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+i[aria-controls="senha"] {
+  grid-column: 4;
+}

@@ -38,9 +38,18 @@
 .formulario > .form-caixa:not(.cartao .form-caixa) {
   position: relative;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto 1fr;
   gap: 0px 20px;
   align-items: center;
+}
+/* icone, input, gerador e toggle*/
+.form-caixa.senha-1 {
+  grid-template-columns: auto 1fr repeat(2, auto) !important;
+}
+
+/* icone, input e toggle*/
+.form-caixa.senha-2 {
+  grid-template-columns: auto 1fr auto !important;
 }
 
 .formulario > .form-caixa:not(.cartao .form-caixa) > input {
@@ -76,20 +85,24 @@ input::placeholder {
   background-color: var(--cor-fundo);
   outline: none !important;
 }
-.underline {
+.underline,
+div[id$="Alert"]::before {
   position: absolute;
   content: "";
   width: 0;
   height: 3px;
-  bottom: 0;
   border-radius: 10px;
-  background: #4e6ef1a6;
   transition: all 0.3s ease-out;
 }
 
-.vermei ~ .underline:not(:last-child) {
-  transition: none;
-  bottom: 25px;
+.underline {
+  bottom: 0;
+  background: #4e6ef1a6;
+}
+div[id$="Alert"]::before {
+  z-index: 1;
+  background: rgb(255, 0, 0);
+  top: 0;
 }
 
 input:focus ~ .underline {
