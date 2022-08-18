@@ -7,6 +7,10 @@
 //   document.querySelector(".preloader").style.display = "none";
 // }
 
+function apagarCookie(nome) {
+  document.cookie = nome + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
 function enviar() {
   janelaPopUp.fecha("asdf");
   document.querySelector("form").submit();
@@ -58,15 +62,15 @@ function vazio(item) {
   return item.trim() == "";
 }
 
-function validarEmail(email) {
+function validarEmail(valor) {
   // auto-explicativo
-  if (!vazio(email)) {
-    return /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi.test(
-      email
-    );
-  } else {
+  if (vazio(valor)) {
     return false;
   }
+
+  return /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/gi.test(
+    valor
+  );
 }
 
 function apenasLetras(event) {
@@ -262,7 +266,7 @@ function dispararEvento(elemento, evento, stringCondicao) {
       document
         .getElementById(elemento.getAttribute("aria-controls"))
         .classList.remove("alerta-ativo");
-      if (elemento.id === "senha") {
+      if (elemento.id === "senha" && window.location.href.includes("perfil")) {
         window.remove(evento, funcao);
         confirm_senha.classList.remove("vermei");
       }
@@ -273,7 +277,7 @@ function dispararEvento(elemento, evento, stringCondicao) {
 
   // Já sabendo qual condição deve ser utilizada, é adicionado ao elemento seu evento (keydown ou keyup) e chamada da função, no qual fará uso da condicao setada pelo switch
   document.getElementById("butao").disabled = true;
-  if (elemento.id === "senha") {
+  if (elemento.id === "senha" && window.location.href.includes("perfil")) {
     window.addEventListener(evento, funcao);
   }
   elemento.addEventListener(evento, funcao);

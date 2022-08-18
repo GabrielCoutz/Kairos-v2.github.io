@@ -67,9 +67,9 @@ select {
   color: var(--p4);
 }
 
-button:disabled {
+:disabled {
   opacity: 0.5;
-  cursor: not-allowed;
+  cursor: not-allowed !important;
 }
 
 li {
@@ -114,9 +114,9 @@ select {
 img {
   max-width: 100%;
 }
-
 .none,
-.caixa-senhas {
+.caixa-senhas,
+#alterarsenha.none {
   display: none;
 }
 .cartao select,
@@ -129,10 +129,6 @@ img {
   padding: 8px 16px;
   transition: all 0.3s;
   outline: none;
-}
-.perfil select:hover,
-.cartao select:hover {
-  cursor: pointer;
 }
 
 .perfil input:hover,

@@ -73,7 +73,8 @@
                     <div class="form-caixa">
                         <label for="nome">Nome</label>
                         <input type="text" name="nome" id="nome" onkeyup="apenasLetras(this)" maxlength="50"
-                            placeholder="Texto de texto">
+                            placeholder="Texto de texto" aria-controls="nomeAlert" value="gabriel">
+                        <div id="nomeAlert"></div>
                     </div>
                     <div class="form-caixa">
                         <label>CPF</label>
@@ -88,11 +89,14 @@
                     <div class="dados-coluna">
                         <div class="form-caixa">
                             <label for="cep">CEP</label>
-                            <input type="tel" name="cep" id="cep" placeholder="Texto de texto">
+                            <input type="tel" name="cep" id="cep" placeholder="Texto de texto" aria-controls="cepAlert">
+                            <div id="cepAlert"></div>
                         </div>
                         <div class="form-caixa">
                             <label for="numero">Número</label>
-                            <input type="tel" name="numero" id="numero" placeholder="Texto de texto">
+                            <input type="tel" name="numero" id="numero" placeholder="Texto de texto"
+                                aria-controls="numeroAlert">
+                            <div id="numeroAlert"></div>
                         </div>
                         <div class="form-caixa">
                             <label>Endereço</label>
@@ -102,7 +106,9 @@
                     <div class="dados-coluna">
                         <div class="form-caixa">
                             <label for="telefone">Telefone</label>
-                            <input type="text" name="telefone" id="telefone" placeholder="Texto de texto">
+                            <input type="text" name="telefone" id="telefone" placeholder="Texto de texto"
+                                aria-controls="telefoneAlert">
+                            <div id="telefoneAlert"></div>
                         </div>
                     </div>
                 </div>
@@ -129,20 +135,30 @@
 
                         </div>
                         <button type="button" class="btn terciario" aria-controls="caixa-senhas"
-                            onclick="alterarSenha(this)">Alterar
+                            onclick="alterarSenha()" id="alterarsenha">Alterar
                             senha</button>
                     </div>
                 </div>
                 <div class="botoes">
-                    <button class="btn primario" type="submit">Salvar</button>
-                    <button class="btn secundario" type="button">Cancelar</button>
+                    <button class="btn primario" type="submit" id="salvarbtn" disabled="true">Salvar</button>
+                    <button class="btn secundario" type="reset" id="cancelarbtn" onclick="cancelar(this)"
+                        disabled="true">Cancelar</button>
                 </div>
             </form>
         </div>
     </div>
 </body>
-<script src="assets/js/script.js"></script>
-<script src="../assets/js/script.js"></script>
+<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.12.0/js/md5.min.js'></script>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script src="https://cdn.lordicon.com/lusqsztk.js"></script>
+
+<script src="../assets/js/globals.js"></script>
 <script src="../assets/js/formulario.js"></script>
+<script src="../assets/js/popup.js"></script>
+
+<script src="assets/js/telefone.js"></script>
+<script src="assets/js/script.js"></script>
 
 </html>

@@ -32,17 +32,19 @@
                 <div class="form-caixa">
                     <label for="email">Email</label>
                     <i class="gg-mail"></i>
-                    <input type="email" name="email" id="email" placeholder="Email">
+                    <input type="email" name="email" id="email" placeholder="Email" aria-controls="emailAlert">
                     <span class="underline"></span>
+                    <div id="emailAlert"></div>
                 </div>
                 <div class="form-caixa">
                     <label for="senha">Senha</label>
                     <i class="gg-lock"></i>
-                    <input type="password" name="senha" id="senha" placeholder="Senha">
+                    <input type="password" name="senha" id="senha" placeholder="Senha" aria-controls="senhaAlert">
                     <i class="gg-eye" aria-controls="senha"></i>
                     <span class="underline"></span>
+                    <div id="senhaAlert"></div>
                 </div>
-                <button type="submit" class="btn secundario" onclick="validar()">Entrar</button>
+                <button type="button" class="btn secundario" onclick="validar()" id="butao">Entrar</button>
                 <a href="../CadastroUsuario/cadastro_usuario.html" class="btn primario">Registrar-se</a>
                 <a href="../Recuperacao/recuperacao.html" class="btn terciario">Esqueci a senha</a>
             </form>
@@ -52,9 +54,15 @@
     </div>
 </body>
 <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.12.0/js/md5.min.js'></script>
+
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script src="https://cdn.lordicon.com/lusqsztk.js"></script>
+
+<script src="../assets/js/globals.js"></script>
 <script src="../assets/js/formulario.js"></script>
-<!-- <script src="assets/js/script.js"></script> -->
+<script src="../assets/js/popup.js"></script>
+
+<script src="assets/js/script.js"></script>
 
 </html>

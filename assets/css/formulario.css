@@ -86,7 +86,7 @@ input::placeholder {
   outline: none !important;
 }
 .underline,
-div[id$="Alert"]::before {
+.body-form div[id$="Alert"]::before {
   position: absolute;
   content: "";
   width: 0;
@@ -99,7 +99,8 @@ div[id$="Alert"]::before {
   bottom: 0;
   background: #4e6ef1a6;
 }
-div[id$="Alert"]::before {
+
+.body-form div[id$="Alert"]::before {
   z-index: 1;
   background: rgb(255, 0, 0);
   top: -2px;
@@ -128,7 +129,7 @@ input:hover:not(.perfil input) {
 }
 
 input:focus {
-  border-color: transparent !important;
+  border-color: transparent;
 }
 
 .label-ativo:not(.cartao .label-ativo) {
