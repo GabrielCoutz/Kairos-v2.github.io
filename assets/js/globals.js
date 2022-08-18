@@ -47,7 +47,7 @@ function alertaDeErro(elemento, mensagem) {
   elemento.focus();
   let caixa = document.getElementById(elemento.getAttribute("aria-controls"));
   document.getElementById(elemento.id).classList.add("vermei");
-  caixa.id === "cnpj"
+  caixa.id === "valor"
     ? caixa.classList.toggle("alerta-ativo")
     : caixa.classList.add("alerta-ativo");
   caixa.innerHTML = mensagem;
@@ -149,6 +149,54 @@ function lerCEP(cep) {
   }
 }
 
+function validarCNPJ(valor) {
+  valor = valor.replace(/[^\d]+/g, "");
+
+  if (valor === "") return false;
+  if (valor.length != 14) return false;
+
+  // Elimina CNPJs invalidos conhecidos
+  if (
+    valor == "00000000000000" ||
+    valor == "11111111111111" ||
+    valor == "22222222222222" ||
+    valor == "33333333333333" ||
+    valor == "44444444444444" ||
+    valor == "55555555555555" ||
+    valor == "66666666666666" ||
+    valor == "77777777777777" ||
+    valor == "88888888888888" ||
+    valor == "99999999999999"
+  )
+    return false;
+
+  // Valida DVs
+  tamanho = valor.length - 2;
+  numeros = valor.substring(0, tamanho);
+  digitos = valor.substring(tamanho);
+  soma = 0;
+  pos = tamanho - 7;
+  for (i = tamanho; i >= 1; i--) {
+    soma += numeros.charAt(tamanho - i) * pos--;
+    if (pos < 2) pos = 9;
+  }
+  resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+  if (resultado != digitos.charAt(0)) return false;
+
+  tamanho = tamanho + 1;
+  numeros = valor.substring(0, tamanho);
+  soma = 0;
+  pos = tamanho - 7;
+  for (i = tamanho; i >= 1; i--) {
+    soma += numeros.charAt(tamanho - i) * pos--;
+    if (pos < 2) pos = 9;
+  }
+  resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+  if (resultado != digitos.charAt(1)) return false;
+
+  return true;
+}
+
 function dispararEvento(elemento, evento, stringCondicao) {
   //dispara um evento de confirmação para o input no qual o valor inserido é inválido ou insatisfatório
 
@@ -178,7 +226,7 @@ function dispararEvento(elemento, evento, stringCondicao) {
       break;
     case "condicaoCNPJ":
       var condicao = function () {
-        return validarCNPJ(cnpj.value) == 1;
+        return !validarCNPJ(elemento.value);
       };
       break;
     case "condicaoCPF":

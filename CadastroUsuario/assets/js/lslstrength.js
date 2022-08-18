@@ -1,6 +1,5 @@
 var bar = document.querySelector(".progress-bar > div");
 var currentPercent = document.querySelector(".percentage > .forca-senha");
-
 var inputPasswordField = document.querySelector("#senha");
 inputPasswordField.addEventListener("keyup", (e) => {
   detPasswordStrength(inputPasswordField.value);
@@ -18,21 +17,28 @@ function detPasswordStrength(password) {
   });
 
   if (pwdPercent == 100) {
-    bar.style.background = "green";
-    bar.style.border = "green";
+    bar.style.background = "#2EDF36";
+    bar.style.border = "#2EDF36";
+
     bar.classList.add("senha-forte");
   } else if (pwdPercent >= 75) {
-    bar.style.background = "gold";
-    bar.style.border = "gold";
+    bar.style.background = "#DEBB00";
+    bar.style.border = "#DEBB00";
     bar.classList.add("senha-mediana");
   } else if (pwdPercent >= 50) {
-    bar.style.background = "gold";
-    bar.style.border = "gold";
+    bar.style.background = "#DEBB00";
+    bar.style.border = "#DEBB00";
     bar.classList.add("senha-mediana");
   } else {
-    bar.style.background = "red";
-    bar.style.border = "red";
+    bar.style.background = "#A32323";
+    bar.style.border = "#A32323";
     bar.classList.add("senha-fraca");
+  }
+  const before = document.querySelector('div[class^="senha-"]');
+  if (before) {
+    before.classList[0] === "senha-fraca"
+      ? (before.style.color = "white")
+      : (before.style.color = "#121212");
   }
 }
 

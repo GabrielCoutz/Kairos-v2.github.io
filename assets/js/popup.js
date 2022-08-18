@@ -120,7 +120,7 @@ janelaPopUp.abre = function (
     }
   });
 
-  if (!icone === "carregar") {
+  if (icone != "carregar") {
     $("#popFundo_asdf").on("click", function () {
       if (functionCancelar !== undefined && functionCancelar !== "") {
         functionCancelar();

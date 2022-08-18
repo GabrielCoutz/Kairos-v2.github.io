@@ -102,7 +102,7 @@ div[id$="Alert"]::before {
 div[id$="Alert"]::before {
   z-index: 1;
   background: rgb(255, 0, 0);
-  top: 0;
+  top: -2px;
 }
 
 input:focus ~ .underline {
@@ -131,6 +131,6 @@ input:focus {
   border-color: transparent !important;
 }
 
-.label:not(.cartao label)-ativo {
+.label-ativo:not(.cartao .label-ativo) {
   opacity: 1 !important;
 }

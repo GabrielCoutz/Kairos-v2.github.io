@@ -11,11 +11,12 @@
   border: 1px solid transparent;
   right: 0;
   padding: 0 10px;
+  z-index: 1;
 }
 
 div[class^="senha-"]::before {
   font: 400 1rem/1 var(--fonte-display);
-  color: white;
+  color: inherit;
 }
 
 .senha-vazia::before {
@@ -34,6 +35,8 @@ div[class^="senha-"]::before {
 #gerar-senha {
   grid-column: 3;
   grid-row: 1;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
 i[aria-controls="senha"] {

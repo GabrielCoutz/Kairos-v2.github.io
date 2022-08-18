@@ -150,7 +150,7 @@ img {
 }
 
 div[id$="Alert"] {
-  grid-column: 2/-1;
+  grid-column: 2/3;
   display: none;
   color: red;
   position: relative;
