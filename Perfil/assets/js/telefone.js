@@ -10,9 +10,6 @@ $(function () {
     if (document.getElementById("del_tel").style.display != "none") {
       $("#del_tel").toggle();
     }
-    // if (document.getElementById("tel").style.display != "none") {
-    //   $("#tel").toggle();
-    // }
 
     var index = $(".phone-input").length;
     var num = "'(00) 0000-00009'";
@@ -82,31 +79,20 @@ function verificarTelefone(input) {
 function verificar_input() {
   // se ouver entrada nos inputs, o botão de salvar é liberado
 
-  let lista = document.getElementsByClassName("adicional");
-  let tel_input = false;
-
-  for (let i = 0; i < lista.length; i++) {
+  for (item of document.getElementsByClassName("adicional")) {
     // impede que o usuário salve o telefone adicionado sem que o mesmo esteja completo, com 15 dígitos
-    if (lista[i].value.length < 15) {
-      tel_input = false;
-      lista[i].classList.add("vermei");
+    if (item.value.length < 15) {
+      item.classList.add("vermei");
       document.getElementById("salvarbtn").disabled = true;
       break;
     } else {
       document.getElementById("salvarbtn").disabled = false;
-      lista[i].classList.remove("vermei");
-      tel_input = true;
+      item.classList.remove("vermei");
     }
   }
 
-  let deletar = false;
-  let ranks = document.getElementsByClassName("del_num");
-
-  if (document.getElementsByClassName("exclusao_tel")[0]) {
-    for (let i = 0; i < ranks.length; i++) {
-      if (ranks[i].style.opacity == "0.5") {
-        deletar = true;
-      }
+  for (item of document.getElementsByClassName("del_num")) {
+    if (item.style.opacity == "0.5") {
     }
   }
 }
