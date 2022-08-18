@@ -10,59 +10,52 @@ $(function () {
     if (document.getElementById("del_tel").style.display != "none") {
       $("#del_tel").toggle();
     }
-    if (document.getElementById("tel").style.display != "none") {
-      $("#tel").toggle();
-    }
+    // if (document.getElementById("tel").style.display != "none") {
+    //   $("#tel").toggle();
+    // }
 
     var index = $(".phone-input").length;
     var num = "'(00) 0000-00009'";
-    $(".phone-list").append(
+    $(".telefone").append(
       "" +
-        '<div class="input-group phone-input">' +
+        '<div class="phone-input">' +
         '<input type="tel" name="phone' +
         index +
         'number" placeholder="(00) 0000-00000" class="adicional" onkeypress="$(this).mask(' +
         num +
         ')"/ onkeyup="verificarTelefone(this)">' +
-        '<span class="input-group-btn" >' +
         '<button class="btn btn-danger btn-remove-phone btn-info" type="button" onclick="removerTelefoneAdicional(this)"><i class="gg-remove remove"></button>' +
-        "</span>" +
         "</div>"
     );
   });
 
   $(".btn-del-phone").click(function () {
     cancelarbtn.disabled = false;
-    var pos = 1;
-    if (document.getElementById("tel").style.display != "none") {
-      $("#tel").toggle();
-    }
+
+    document.querySelectorAll(".numeros").forEach((num) => {
+      num.style.display != "none"
+        ? (num.style.display = "none")
+        : (num.style.display = "initial");
+    });
     $(".btn-add-phone").toggle();
     $(".btn-del-phone").toggle();
-    while (
-      document.getElementById("tel").innerText.split("(")[pos] != undefined
-    ) {
-      $(".phone-list").append(
+    document.querySelectorAll(".numeros").forEach((num) => {
+      $(".telefone").append(
         "" +
           '<div class="exclusao_tel">' +
           '<div class="del_num" id="del_tel' +
-          pos +
           '" name="del_tel' +
-          pos +
           '">' +
-          "(" +
-          document.getElementById("tel").innerText.split("(")[pos].trim() +
-          '<span class="input-group-btn">' +
+          num.innerHTML +
+          '<span class="-btn">' +
           '<button class="btn btn-danger btn-remove-phone btn-info" type="button" onclick="deletar_tel(this)" id="del_telbtn' +
-          pos +
           '"><i class="gg-remove remove"></i></button>' +
           "</div>" +
           "</span>" +
           "<br>" +
           "</div>"
       );
-      pos += 1;
-    }
+    });
   });
 });
 

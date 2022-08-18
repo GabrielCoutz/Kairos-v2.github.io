@@ -162,10 +162,13 @@ function alterarSenha() {
   caixa_senha.classList.toggle("senha-ativa");
   senhabtn.classList.toggle("none");
   cancelarbtn.disabled = false;
+  document.getElementById("add_tel").disabled = true;
+  document.getElementById("del_tel").disabled = true;
 }
 
-function cancelar(item) {
+function cancelar() {
   limpar_alertas();
+  document.forms[0].reset();
 
   if (caixa_senha.classList.contains("senha-ativa")) {
     document.querySelectorAll('input:not([id^="senha"])').forEach((input) => {
@@ -174,10 +177,9 @@ function cancelar(item) {
     caixa_senha.classList.toggle("senha-ativa");
     senhabtn.classList.toggle("none");
     cancelarbtn.disabled = true;
-    // document.getElementById("add_tel").disabled = false;
-    // document.getElementById("del_tel").disabled = false;
     // apagarCookie("senha");
-
+    document.getElementById("add_tel").disabled = false;
+    document.getElementById("del_tel").disabled = false;
     return;
   }
 
@@ -186,21 +188,16 @@ function cancelar(item) {
   $(".adicional").closest(".phone-input").remove();
   $(".exclusao_tel").remove();
 
-  if (document.getElementById("tel").style.display == "none") {
-    $("#tel").toggle();
+  if (document.getElementById("del_tel").style.display == "none") {
+    $("#del_tel").toggle();
   }
-  endereco.innerHTML = vazio(conteudo_endereco.replace(", , ,", ""))
-    ? "Não Cadastrado"
-    : endereco.innerText;
-
-  nome.value = conteudo_nome;
-  cep.value = conteudo_cep;
-  numero.value = conteudo_numero;
+  // endereco.innerHTML = vazio(conteudo_endereco.replace(", , ,", ""))
+  //   ? "Não Cadastrado"
+  //   : endereco.innerText;
 
   salvarbtn.disabled = true;
   cancelarbtn.disabled = true;
-  document.getElementById("del_tel").style.display = "inline-block";
-  document.getElementById("add_tel").style.display = "inline-block";
+
   apagarCookie("endereco");
   apagarCookie("excluir_num");
   apagarCookie("tels");
