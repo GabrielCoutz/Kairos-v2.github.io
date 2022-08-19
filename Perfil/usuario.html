@@ -69,7 +69,7 @@
         <div class="perfil">
             <h1 class="titulo">Olá, Gabriel</h1>
             <form action="" class="container perfil">
-                <div class="fundo-dados" id="xampson">
+                <div class="fundo-dados">
                     <div class="form-caixa">
                         <label for="nome">Nome</label>
                         <input type="text" name="nome" id="nome" onkeyup="apenasLetras(this)" maxlength="50"
@@ -103,21 +103,23 @@
                             <p class="desativado">Estrada Da Promissão, Jardim Carolina, Itaquaquecetuba, SP</p>
                         </div>
                     </div>
-                    <div class="dados-coluna">
+                    <div class="dados-coluna telefone">
+                        <label>Telefone</label>
                         <div class="form-caixa telefone">
-                            <label>Telefone</label>
                             <p class="desativado numeros">11 11111-1111</p>
                             <p class="desativado numeros">11 22222-2222</p>
                             <p class="desativado numeros">11 33333-3333</p>
                             <p class="desativado numeros">11 44444-4444</p>
                             <p class="desativado numeros">11 55555-5555</p>
                             <p class="desativado numeros">11 66666-6666</p>
-                            <button class="btn terciario" id='add_tel' type="button">Adicionar
-                                telefone</button>
-                            <button class="btn terciario" id='del_tel' type="button">Excluir
-                                telefone</button>
-                            <div id="telefoneAlert"></div>
                         </div>
+                        <div id="telefoneAlert">Preencha o número por completo!</div>
+                    </div>
+                    <div class="dados-coluna" id="manipularNumeros">
+                        <button class="btn terciario" id='add_tel' type="button">Adicionar
+                            telefone</button>
+                        <button class="btn terciario" id='del_tel' type="button">Excluir
+                            telefone</button>
                     </div>
                 </div>
                 <div class="fundo-dados">

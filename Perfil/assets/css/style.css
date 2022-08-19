@@ -9,17 +9,6 @@
   padding: 15px 30px;
 }
 
-.fundo-barra-lateral {
-  height: 100vh;
-  background-image: url("../../assets/img/img-lateral.jpg");
-}
-
-.barra-lateral {
-  background-color: rgb(0 76 223 / 83%);
-  height: 100%;
-  grid-column: 1;
-}
-
 .principal {
   grid-column: 2;
 }
@@ -37,6 +26,7 @@
   grid-template-columns: repeat(2, 1fr);
   padding: 15px;
   padding-bottom: 0;
+  position: relative;
 }
 
 .perfil .form-caixa {
@@ -73,19 +63,33 @@
   justify-content: space-between;
 }
 
-#xampson{
-  display: none !important;
-}
-
 .fundo-dados:nth-child(1),
 .perfil > h1,
 .perfil {
   grid-column: 1/-1;
 }
 
-.fundo-dados:nth-child(3) {
-  justify-self: start;
-  min-width: 242px;
+.dados-coluna.telefone {
+  gap: 8px !important;
+}
+
+.dados-coluna.telefone.none {
+  display: none !important;
+}
+
+.form-caixa.telefone {
+  max-height: 150px;
+  overflow-y: scroll;
+  gap: 16px !important;
+  padding: 16px;
+  background-color: #ededed;
+  border-radius: var(--borda-redonda);
+}
+
+#manipularNumeros {
+  max-height: 300px;
+  flex-direction: row;
+  overflow-y: scroll;
 }
 
 .senha-ativa {
@@ -104,47 +108,14 @@
   gap: 18px;
 }
 
-.menu-btn {
-  display: none;
-}
-
-.nav-lateral {
-  padding: 35px 20px;
-  gap: 50px 10px;
-  display: flex;
-  flex-direction: column;
-}
-
-.body-perfil .hamburguer {
-  padding: 20px;
-}
-
-.nav-lateral > li {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  align-items: center;
-  transition: all 0.3s;
-  border-radius: var(--borda-redonda);
-}
-
-.nav-lateral > li > a {
-  justify-self: start;
-  color: var(--branco-puro);
-  padding: 15px 0;
-}
-
-.nav-lateral > li:hover {
-  background: #ffffff63;
-  padding-left: 5px;
-}
-
-.nav-lateral > li:active {
-  background: #bebebe63;
-  transform: scale(0.9);
-}
-
 .form-caixa > label {
   font: 500 1.1rem/1 var(--fonte-display);
   color: var(--c2);
+}
+
+.adicinarNumero {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: -40px;
 }

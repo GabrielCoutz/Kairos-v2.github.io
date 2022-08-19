@@ -185,8 +185,9 @@ function cancelar() {
 
   limpar_inputs();
 
-  $(".adicional").closest(".adicionarNumero").remove();
-  $(".exclusao_tel").remove();
+  $(".adicionarNumero").remove();
+  $(".deletarNumero").remove();
+  $(".dados-coluna.telefone").toggle();
 
   if (document.getElementById("del_tel").style.display === "none") {
     $("#del_tel").toggle();

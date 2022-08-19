@@ -38,25 +38,6 @@ if (document.location.href.includes("index")) {
   };
 }
 
-// menu hamburguer
-
-let hamburguer = document.querySelector(".hamburguer");
-let navMenu = document.location.href.toLocaleLowerCase().includes("perfil")
-  ? document.querySelector(".nav-lateral")
-  : document.querySelector(".header-nav");
-
-hamburguer.addEventListener("click", () => {
-  navMenu.classList.toggle("menu-ativo");
-  hamburguer.classList.toggle("menu-ativo");
-});
-
-document.querySelectorAll(".header-nav > li").forEach((n) =>
-  n.addEventListener("click", () => {
-    hamburguer.classList.remove("menu-ativo");
-    navMenu.classList.remove("menu-ativo");
-  })
-);
-
 // botões perguntas
 
 document.querySelectorAll(".sobre-lista > li > button").forEach((e) =>

@@ -83,7 +83,8 @@ a {
   color: inherit;
 }
 
-a:not(.perfil a) {
+a:not(.perfil a),
+.hamburguer {
   cursor: pointer;
 }
 
@@ -170,4 +171,57 @@ div[id$="Alert"] {
 
 ::-webkit-scrollbar {
   width: 10px;
+}
+
+/* navegação lateral dentro do perfil */
+
+.fundo-barra-lateral {
+  height: 100vh;
+  background-image: url("../../Perfil/assets/img/img-lateral.jpg");
+}
+
+.barra-lateral {
+  background-color: rgb(0 76 223 / 83%);
+  height: 100%;
+  grid-column: 1;
+}
+.menu-btn {
+  display: none !important;
+}
+
+.nav-lateral {
+  padding: 35px 20px;
+  gap: 50px 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.body-perfil .hamburguer {
+  padding: 20px;
+}
+
+.nav-lateral > li {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  transition: all 0.3s;
+  border-radius: var(--borda-redonda);
+}
+
+.nav-lateral > li > a {
+  justify-self: start;
+  color: var(--branco-puro);
+  padding: 15px 0;
+  width: 100%;
+}
+
+.nav-lateral > li:hover {
+  background: #ffffff63;
+  padding-left: 5px;
+}
+
+.nav-lateral > li:active {
+  background: #bebebe63;
+  transform: scale(0.9);
 }

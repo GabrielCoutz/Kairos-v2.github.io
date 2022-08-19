@@ -11,9 +11,10 @@ $(function () {
     if (document.getElementById("del_tel").style.display != "none") {
       $("#del_tel").toggle();
     }
+    $(".dados-coluna.telefone").toggle();
 
     var num = "'(00) 0000-00009'";
-    $(".telefone").append(
+    $("#manipularNumeros").append(
       "" +
         '<div class="adicionarNumero">' +
         '<input type="tel" placeholder="(00) 0000-00000" class="adicionar" onkeypress="$(this).mask(' +
@@ -28,16 +29,12 @@ $(function () {
     Cookies.set("excluir_num", 1);
     cancelarbtn.disabled = false;
 
-    document.querySelectorAll(".numeros").forEach((num) => {
-      num.style.display != "none"
-        ? (num.style.display = "none")
-        : (num.style.display = "initial");
-    });
+    $(".dados-coluna.telefone").toggle();
     $("#add_tel").toggle();
     $("#del_tel").toggle();
 
     document.querySelectorAll(".numeros").forEach((num) => {
-      $(".telefone").append(
+      $("#manipularNumeros").append(
         '<div class="deletarNumero"' +
           " ><span>" +
           num.innerHTML +
@@ -53,10 +50,12 @@ function deletar_tel(tel) {
   let anterior = tel.previousElementSibling;
 
   anterior.classList.toggle("deletar");
-  anterior.classList[0] === "deletar"
+
+  anterior.classList.toString().includes("deletar")
     ? (salvarbtn.disabled = false)
     : (salvarbtn.disabled = true);
 }
+const alerta = document.getElementById("telefoneAlert").classList;
 
 function verificarTelefone(input) {
   if (input.value.length == 15) {
@@ -66,20 +65,8 @@ function verificarTelefone(input) {
     input.classList.add("vermei");
     salvarbtn.disabled = true;
   }
-}
 
-function verificar_input() {
-  // se ouver entrada nos inputs, o botão de salvar é liberado
-
-  for (item of document.getElementsByClassName("adicionar")) {
-    // impede que o usuário salve o telefone adicionado sem que o mesmo esteja completo, com 15 dígitos
-    if (item.value.length < 15) {
-      item.classList.add("vermei");
-      document.getElementById("salvarbtn").disabled = true;
-      break;
-    } else {
-      document.getElementById("salvarbtn").disabled = false;
-      item.classList.remove("vermei");
-    }
-  }
+  input.classList.toString().includes("vermei")
+    ? alerta.add("alerta-ativo")
+    : alerta.remove("alerta-ativo");
 }
