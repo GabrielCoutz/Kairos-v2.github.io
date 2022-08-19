@@ -73,6 +73,10 @@
   justify-content: space-between;
 }
 
+#xampson{
+  display: none !important;
+}
+
 .fundo-dados:nth-child(1),
 .perfil > h1,
 .perfil {

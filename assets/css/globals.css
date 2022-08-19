@@ -8,6 +8,7 @@
 @import url("https://css.gg/organisation.css");
 @import url("https://css.gg/feed.css");
 @import url("https://css.gg/pin.css");
+@import url("https://css.gg/remove.css");
 
 :root {
   --largura-max: 1400px;
@@ -33,7 +34,8 @@
   --c4: #0c0c0c;
 }
 
-.desativado {
+.desativado,
+.deletar {
   color: var(--p4);
 }
 

@@ -185,11 +185,14 @@ function cancelar() {
 
   limpar_inputs();
 
-  $(".adicional").closest(".phone-input").remove();
+  $(".adicional").closest(".adicionarNumero").remove();
   $(".exclusao_tel").remove();
 
-  if (document.getElementById("del_tel").style.display == "none") {
+  if (document.getElementById("del_tel").style.display === "none") {
     $("#del_tel").toggle();
+  }
+  if (document.getElementById("add_tel").style.display === "none") {
+    $("#add_tel").toggle();
   }
   // endereco.innerHTML = vazio(conteudo_endereco.replace(", , ,", ""))
   //   ? "Não Cadastrado"
@@ -203,8 +206,9 @@ function cancelar() {
   apagarCookie("tels");
 }
 
-function salvar(item) {
-  if (item.id == "salvar_senhabtn") {
+function salvar() {
+  let index = 0;
+  if (caixa_senha.classList.contains("senha-ativa")) {
     limpar_inputs();
 
     if (
@@ -227,58 +231,30 @@ function salvar(item) {
         "carregar"
       );
       Cookies.set("senha", 1);
-      document.getElementById("asdf_cancelar").style.display = "none";
-      setTimeout(nada, 3000);
-      console.log("tudo certo");
+      setTimeout(enviar, 3000);
     }
     return;
   }
 
   limpar_inputs();
 
-  let numeros = [];
-
-  if (document.getElementsByClassName("exclusao_tel")[0] != undefined) {
-    // se existirem números a serem excluídos, cada um selecionado vai para lista de Cookies, usada como lista de exclusão
-
-    let pos = 1;
-    while (document.getElementById("del_tel" + pos) != undefined) {
-      if (document.getElementById("del_tel" + pos).style.opacity == "0.5") {
-        numeros.push(document.getElementById("del_tel" + pos).innerText);
-      }
-      pos++;
-    }
-    Cookies.set("excluir_num", 1);
-    Cookies.set("excluir_nums", numeros.length);
-
-    let a = 1;
-    numeros.forEach((item) => {
-      Cookies.set("del_num" + a, item);
-      a++;
-    });
+  for (numeroDeletar of document.getElementsByClassName("deletar")) {
+    Cookies.set("deletar" + index, numeroDeletar.innerText);
+    index++;
   }
 
-  var tels = 0;
-  if (document.querySelectorAll(".adicional")[0]) {
-    document.querySelectorAll(".adicional").forEach((item) => {
-      // se existirem números a serem adicionados, são guardados nos Cookies, usados como lista de adição
-      item.classList.remove("vermei");
-      tels++;
-      Cookies.set(item.getAttribute("name"), item.value);
-      Cookies.set("usuario", 1);
-    });
-    Cookies.set("usuario", 1);
-    Cookies.set("tels", tels);
+  for (numeroAdicionar of document.getElementsByClassName("adicionar")) {
+    Cookies.set("adicionar" + index, numeroAdicionar.value);
+    index++;
   }
 
   if (!vazio(cep.value) && cep.value.length <= 10 && vazio(numero.value)) {
-    alertaDeErro(cep.id, "Complete o endereço!");
+    alertaDeErro(cep, "Complete o endereço!");
     cep.classList.add("vermei");
     numero.classList.add("vermei");
   } else {
     Cookies.set("usuario", 1);
     abrirjanela("blue", "Verificando dados", "Validando Alteração", "carregar");
-    document.getElementById("asdf_cancelar").style.display = "none";
-    setTimeout(nada, 2000);
+    setTimeout(enviar, 3000);
   }
 }

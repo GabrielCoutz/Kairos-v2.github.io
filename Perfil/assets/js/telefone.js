@@ -1,32 +1,31 @@
 function removerTelefoneAdicional(elemento) {
-  elemento.closest(".phone-input").remove();
+  elemento.closest(".adicionarNumero").remove();
 }
 
 $(function () {
   // código para adicionar/remover números de telefone
 
-  $(".btn-add-phone").click(function () {
+  $("#add_tel").click(function () {
     cancelarbtn.disabled = false;
+
     if (document.getElementById("del_tel").style.display != "none") {
       $("#del_tel").toggle();
     }
 
-    var index = $(".phone-input").length;
     var num = "'(00) 0000-00009'";
     $(".telefone").append(
       "" +
-        '<div class="phone-input">' +
-        '<input type="tel" name="phone' +
-        index +
-        'number" placeholder="(00) 0000-00000" class="adicional" onkeypress="$(this).mask(' +
+        '<div class="adicionarNumero">' +
+        '<input type="tel" placeholder="(00) 0000-00000" class="adicionar" onkeypress="$(this).mask(' +
         num +
         ')"/ onkeyup="verificarTelefone(this)">' +
-        '<button class="btn btn-danger btn-remove-phone btn-info" type="button" onclick="removerTelefoneAdicional(this)"><i class="gg-remove remove"></button>' +
+        '<button class="btn" type="button" onclick="removerTelefoneAdicional(this)"><i class="gg-remove remove"></button>' +
         "</div>"
     );
   });
 
-  $(".btn-del-phone").click(function () {
+  $("#del_tel").click(function () {
+    Cookies.set("excluir_num", 1);
     cancelarbtn.disabled = false;
 
     document.querySelectorAll(".numeros").forEach((num) => {
@@ -34,22 +33,16 @@ $(function () {
         ? (num.style.display = "none")
         : (num.style.display = "initial");
     });
-    $(".btn-add-phone").toggle();
-    $(".btn-del-phone").toggle();
+    $("#add_tel").toggle();
+    $("#del_tel").toggle();
+
     document.querySelectorAll(".numeros").forEach((num) => {
       $(".telefone").append(
-        "" +
-          '<div class="exclusao_tel">' +
-          '<div class="del_num" id="del_tel' +
-          '" name="del_tel' +
-          '">' +
+        '<div class="deletarNumero"' +
+          " ><span>" +
           num.innerHTML +
-          '<span class="-btn">' +
-          '<button class="btn btn-danger btn-remove-phone btn-info" type="button" onclick="deletar_tel(this)" id="del_telbtn' +
-          '"><i class="gg-remove remove"></i></button>' +
-          "</div>" +
-          "</span>" +
-          "<br>" +
+          '</span><button class="btn" type="button" onclick="deletar_tel(this)"' +
+          '><i class="gg-remove remove"></i></button>' +
           "</div>"
       );
     });
@@ -57,15 +50,14 @@ $(function () {
 });
 
 function deletar_tel(tel) {
-  let elemento = document.getElementById(tel.id.replace("btn", ""));
-  if (elemento.style.opacity != "0.5") {
-    elemento.style.opacity = "0.5";
-    salvarbtn.disabled = false;
-  } else {
-    elemento.style.opacity = "1";
-    salvarbtn.disabled = true;
-  }
+  let anterior = tel.previousElementSibling;
+
+  anterior.classList.toggle("deletar");
+  anterior.classList[0] === "deletar"
+    ? (salvarbtn.disabled = false)
+    : (salvarbtn.disabled = true);
 }
+
 function verificarTelefone(input) {
   if (input.value.length == 15) {
     input.classList.remove("vermei");
@@ -79,7 +71,7 @@ function verificarTelefone(input) {
 function verificar_input() {
   // se ouver entrada nos inputs, o botão de salvar é liberado
 
-  for (item of document.getElementsByClassName("adicional")) {
+  for (item of document.getElementsByClassName("adicionar")) {
     // impede que o usuário salve o telefone adicionado sem que o mesmo esteja completo, com 15 dígitos
     if (item.value.length < 15) {
       item.classList.add("vermei");
@@ -88,11 +80,6 @@ function verificar_input() {
     } else {
       document.getElementById("salvarbtn").disabled = false;
       item.classList.remove("vermei");
-    }
-  }
-
-  for (item of document.getElementsByClassName("del_num")) {
-    if (item.style.opacity == "0.5") {
     }
   }
 }
