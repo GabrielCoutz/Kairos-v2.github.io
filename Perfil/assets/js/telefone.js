@@ -2,6 +2,27 @@ function removerTelefoneAdicional(elemento) {
   elemento.closest(".adicionarNumero").remove();
 }
 
+const caixa = document.createElement('div')
+caixa.setAttribute('class', 'adicionarNumero')
+
+const input = document.createElement('input')
+input.setAttribute('type', 'text')
+input.setAttribute('placeholder', '(00) 0000-00000')
+input.setAttribute('class', 'adicionar')
+input.setAttribute('onkeypress', '$(this).mask("(00) 0000-000009")')
+input.setAttribute('onkeyup', 'verificarTelefone(this)')
+
+const button = document.createElement('button')
+button.setAttribute('class', 'btn')
+button.setAttribute('type', 'button')
+button.setAttribute('onclick', 'removerTelefoneAdicional(this)')
+
+caixa.appendChild(input)
+caixa.appendChild(button)
+
+console.log(caixa)
+
+
 $(function () {
   // código para adicionar/remover números de telefone
 
@@ -13,17 +34,9 @@ $(function () {
     }
     $(".dados-coluna.telefone").toggle();
 
-    var num = "'(00) 0000-00009'";
-    $("#manipularNumeros").append(
-      "" +
-        '<div class="adicionarNumero">' +
-        '<input type="tel" placeholder="(00) 0000-00000" class="adicionar" onkeypress="$(this).mask(' +
-        num +
-        ')"/ onkeyup="verificarTelefone(this)">' +
-        '<button class="btn" type="button" onclick="removerTelefoneAdicional(this)"><i class="gg-remove remove"></button>' +
-        "</div>"
-    );
-  });
+
+    
+    $("#manipularNumeros").append(caixa);});
 
   $("#del_tel").click(function () {
     Cookies.set("excluir_num", 1);
