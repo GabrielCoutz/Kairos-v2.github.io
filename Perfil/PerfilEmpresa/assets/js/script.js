@@ -58,7 +58,7 @@ function abrirEmpresa() {
   janelaPopUp.abre(
     "asdf",
     "p" + " " + "blue" + " " + "confirm",
-    "Empresa Não encontrada",
+    "Empresa Não cadastrada",
     "Parece que você não tem uma empresa cadastrada. Gostaria de cadastrá-la agora?"
   );
 
@@ -81,7 +81,7 @@ function erro() {
     });
   document.getElementById("asdf_cancelar").click();
 }
-abrirEmpresa();
+
 let alerta = "";
 
 switch (true) {

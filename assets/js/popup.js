@@ -36,7 +36,7 @@ janelaPopUp.abre = function (
     }
   });
 
-  let src = "";
+  let src = "src='https://cdn.lordicon.com/gqdnbnwt.json'";
   let trigger = "trigger='loop' ";
   let delay = "delay='1000' ";
   let colors = "";

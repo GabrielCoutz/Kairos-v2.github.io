@@ -94,6 +94,16 @@
   display: none;
 }
 
+.body-perfil.empresa .p {
+  max-height: none;
+}
+
+.body-perfil.empresa .p > .btn {
+  margin-bottom: 8px;
+  width: 100%;
+  font-size: 1rem;
+}
+
 .popUpEntrada {
   animation: popUpEntrada 0.5s;
   -webkit-animation: popUpEntrada 0.5s;
