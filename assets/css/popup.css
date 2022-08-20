@@ -50,7 +50,7 @@
 }
 
 .popUpFundo {
-  display: none;
+  display: block;
   position: fixed;
   top: 0;
   width: 100%;
@@ -59,11 +59,11 @@
   z-index: 10;
 }
 
-.popUp > button {
+#popUp > button {
   padding: 10px 50px;
 }
 
-.popUp {
+#popUp {
   box-sizing: border-box;
   display: none;
   position: fixed;
@@ -73,24 +73,26 @@
   border: 3px solid transparent;
 }
 
-.popUp > h1 {
+#popUp > h1 {
   font: 600 1.4rem/1.3rem var(--fonte-display);
 }
 
-.popUp > span {
+#popUp > span {
   color: var(--c4);
   font: 500 1rem/1.5 var(--fonte-texto);
   padding-bottom: 10px;
+  align-self: center;
 }
 
 .p {
   max-width: 320px;
   min-width: 310px;
   max-height: 270px;
+  min-height: 250px;
   transform: translate(-50%, -50%);
 }
 
-.puEnviar:not(.body-perfil.empresa .puEnviar) {
+#popUpEnviar:not(.body-perfil.empresa > #popUpEnviar) {
   display: none;
 }
 
@@ -99,6 +101,8 @@
 }
 
 .body-perfil.empresa .p > .btn {
+  justify-self: center;
+  align-self: center;
   margin-bottom: 8px;
   width: 100%;
   font-size: 1rem;
@@ -116,36 +120,36 @@
   animation-fill-mode: forwards;
 }
 
-.blue,
-.red,
-.green {
-  background-color: var(--branco-puro);
-}
-
-#asdf {
+#popUp {
   display: grid;
-  justify-items: center;
   gap: 5px;
   padding: 10px;
   border-radius: var(--borda-redonda);
   box-shadow: rgb(0 0 0 / 30%) 0px 8px 10px -6px;
+  background-color: var(--branco-puro);
 }
 
-.popUp.red {
+.popUpFundo.red ~ #popUp {
   border-color: rgb(255 76 76);
 }
 
-.popUp.green {
+.popUpFundo.green ~ #popUp {
   border-color: #45df4c;
 }
 
-.popUp.blue {
+.popUpFundo.blue ~ #popUp {
   border-color: #659cff;
 }
 
 .popUpFundo {
   backdrop-filter: blur(8px);
   background: rgb(0 0 0 / 46%);
+}
+
+lord-icon {
+  position: absolute;
+  justify-self: center;
+  top: 30px;
 }
 
 #img {
@@ -160,7 +164,7 @@
   border-radius: 10px;
 }
 
-/* #asdf.marketing {
+/* #popUp.marketing {
   border-radius: 16px;
   color: #666666;
   font-weight: bold;

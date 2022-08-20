@@ -15,19 +15,22 @@
         rel="stylesheet">
     <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
     <title>Cadastro</title>
+    <?php
+        session_start();
+    ?>
 </head>
 
 <body class="body-form cadastro">
 
     <header class="header container">
         <div class="header-logo">
-            <a href="../index.html"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
+            <a href="../index.php"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
         </div>
     </header>
 
     <div class="fundo-form container">
         <div class="form-holder">
-            <form method="POST" class="formulario" onsubmit="return false">
+            <form action="assets/php/cadastrar" method="POST" class="formulario" onsubmit="return false">
                 <h1 class="titulo" >Cadastro</h1>
                 <div class="form-caixa">
                     <label for="nome">Nome completo</label>
@@ -63,7 +66,7 @@
                     <span class="underline"></span>
                 </div>
                 <button type="button" id="butao" class="btn primario" onclick="validar()">Registrar</button>
-                <a href="../Login/login.html" class="btn terciario">Fazer login</a>
+                <a href="../Login/login.php" class="btn terciario">Fazer login</a>
             </form>
         </div>
 
@@ -74,8 +77,8 @@
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-<script src="https://cdn.lordicon.com/lusqsztk.js"></script>
 
+<script src="https://cdn.lordicon.com/xdjxvujz.js"></script>
 <script src="../assets/js/globals.js"></script>
 <script src="../assets/js/formulario.js"></script>
 <script src="../assets/js/popup.js"></script>

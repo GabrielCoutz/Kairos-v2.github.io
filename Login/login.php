@@ -15,20 +15,23 @@
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
         rel="stylesheet">
     <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <?php
+        session_start();
+    ?>
 </head>
 
 <body class="body-form">
 
     <header class="header container" id="header-cadastroUsuario">
         <div class="header-logo">
-            <a href="../index.html"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
+            <a href="../index"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
         </div>
     </header>
 
     <div class="fundo-form container">
         <div class="form-holder">
-            <form action="#" method="POST" class="formulario login">
-                <h1 class="titulo" onsubmit="return false">Login</h1>
+            <form action="assets/php/logar" method="POST" class="formulario login" onsubmit="return false">
+                <h1 class="titulo">Login</h1>
                 <div class="form-caixa">
                     <label for="email">Email</label>
                     <i class="gg-mail"></i>
@@ -45,8 +48,8 @@
                     <div id="senhaAlert"></div>
                 </div>
                 <button type="button" class="btn secundario" onclick="validar()" id="butao">Entrar</button>
-                <a href="../CadastroUsuario/cadastro_usuario.html" class="btn primario">Registrar-se</a>
-                <a href="../Recuperacao/recuperacao.html" class="btn terciario">Esqueci a senha</a>
+                <a href="../CadastroUsuario/cadastro_usuario.php" class="btn primario">Registrar-se</a>
+                <a href="../Recuperacao/recuperacao.php" class="btn terciario">Esqueci a senha</a>
             </form>
         </div>
 

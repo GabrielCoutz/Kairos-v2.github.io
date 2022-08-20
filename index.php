@@ -32,13 +32,13 @@
     <header class="fundo-header">
         <div class="header container">
             <div class="header-logo">
-                <a href="index.html"><img src="assets/img/logo/airos.png" alt="Kairos Logo"></a>
+                <a href="index.php"><img src="assets/img/logo/airos.png" alt="Kairos Logo"></a>
             </div>
             <nav aria-label="Navegação Principal" class="navbar">
                 <ul class="header-nav">
                     <li><a href="#sobre" class="page-scroll">Sobre</a></li>
                     <li><a href="#planos" class="page-scroll">Planos</a></li>
-                    <li><a href="Login/login.html">Login</a></li>
+                    <li><a href="Login/login.php">Login</a></li>
                 </ul>
                 <div class="hamburguer">
                     <span class="bar"></span>
@@ -143,7 +143,7 @@
                     <li>Suporte 08:00 às 18:00</li>
                     <li>1 Visita presencial p/mês</li>
                 </ul>
-                <a href="CadastroUsuario/cadastro_usuario.html" class="btn secundario btn-plano">Escolher plano</a>
+                <a href="CadastroUsuario/cadastro_usuario.php" class="btn secundario btn-plano">Escolher plano</a>
             </div>
             <div class="planos-item">
                 <span class="planos-titulo titulo">Médio</span>
@@ -155,7 +155,7 @@
                     <li>3 Visita presencial p/mês</li>
                     <li>Consultoria de Marketing</li>
                 </ul>
-                <a href="CadastroUsuario/cadastro_usuario.html" class="btn primario btn-plano-ativo">Escolher plano</a>
+                <a href="CadastroUsuario/cadastro_usuario.php" class="btn primario btn-plano-ativo">Escolher plano</a>
             </div>
             <div class="planos-item">
                 <span class="planos-titulo titulo">Premium</span>
@@ -169,7 +169,7 @@
                     <li>Plano de Negócios</li>
                     <li>Análise de Resultadoss</li>
                 </ul>
-                <a href="CadastroUsuario/cadastro_usuario.html" class="btn secundario btn-plano">Escolher plano</a>
+                <a href="CadastroUsuario/cadastro_usuario.php" class="btn secundario btn-plano">Escolher plano</a>
             </div>
         </div>
     </section>
@@ -178,17 +178,17 @@
         <h1 class="titulo">Já tem um projeto em mente?<br>Maravilha!<br>
             Vamos começar agora mesmo!</h1>
 
-        <a href="CadastroUsuario/cadastro_usuario.html" class="btn primario">Por aqui</a>
+        <a href="CadastroUsuario/cadastro_usuario.php" class="btn primario">Por aqui</a>
     </section>
     <footer class="container">
         <div class="footer-itens">
             <span class="titulo">Links</span>
             <nav aria-label="Navegação Secundária">
                 <ul class="links-lista">
-                    <li class="texto"><a href="index.html">Início</a></li>
+                    <li class="texto"><a href="index.php">Início</a></li>
                     <li class="texto"><a href="#sobre">Sobre</a></li>
                     <li class="texto"><a href="#planos">Planos</a></li>
-                    <li class="texto"><a href="Contato/contato.html">Contato</a></li>
+                    <li class="texto"><a href="Contato/contato.php">Contato</a></li>
                 </ul>
             </nav>
         </div>

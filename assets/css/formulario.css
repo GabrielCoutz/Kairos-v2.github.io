@@ -102,12 +102,17 @@ input::placeholder {
 
 .body-form div[id$="Alert"]::before {
   z-index: 1;
-  background: rgb(255, 0, 0);
+  background: red;
   top: -2px;
 }
 
 input:focus ~ .underline {
   width: 100%;
+}
+
+input.erro ~ .underline {
+  background: red;
+  display: initial !important;
 }
 
 .formulario > .form-caixa:not(.cartao .form-caixa) > label:not(.cartao label) {

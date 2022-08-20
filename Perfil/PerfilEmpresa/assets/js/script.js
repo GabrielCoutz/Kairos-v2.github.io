@@ -62,9 +62,9 @@ function abrirEmpresa() {
     "Parece que você não tem uma empresa cadastrada. Gostaria de cadastrá-la agora?"
   );
 
-  document.getElementById("asdf_enviar").innerHTML = "Não, talvez mais tarde";
+  document.getElementById("popUp_enviar").innerHTML = "Não, talvez mais tarde";
   document
-    .getElementById("asdf_enviar")
+    .getElementById("popUp_enviar")
     .addEventListener("click", cancelarCadastroEmpresa);
 
   document
@@ -72,7 +72,6 @@ function abrirEmpresa() {
     .addEventListener("click", IniciarCadastroEmpresa);
   document.getElementById("asdf_cancelar").innerHTML = "Sim, gostaria";
 }
-
 function erro() {
   document
     .getElementById("asdf_cancelar")

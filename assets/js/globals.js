@@ -14,24 +14,26 @@ let navMenu = document.location.href.includes("Perfil")
   ? document.querySelector(".nav-lateral")
   : document.querySelector(".header-nav");
 
-hamburguer.addEventListener("click", () => {
-  navMenu.classList.toggle("menu-ativo");
-  hamburguer.classList.toggle("menu-ativo");
-});
+if (hamburguer) {
+  hamburguer.addEventListener("click", () => {
+    navMenu.classList.toggle("menu-ativo");
+    hamburguer.classList.toggle("menu-ativo");
+  });
 
-document.querySelectorAll(".header-nav > li").forEach((n) =>
-  n.addEventListener("click", () => {
-    hamburguer.classList.remove("menu-ativo");
-    navMenu.classList.remove("menu-ativo");
-  })
-);
+  document.querySelectorAll(".header-nav > li").forEach((n) =>
+    n.addEventListener("click", () => {
+      hamburguer.classList.remove("menu-ativo");
+      navMenu.classList.remove("menu-ativo");
+    })
+  );
+}
 
 function apagarCookie(nome) {
   document.cookie = nome + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
 function enviar() {
-  janelaPopUp.fecha("asdf");
+  janelaPopUp.fecha("popUp");
   document.querySelector("form").submit();
 }
 

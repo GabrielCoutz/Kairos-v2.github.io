@@ -1,5 +1,4 @@
 const nome = document.getElementById("nome");
-const tel = document.getElementById("tel");
 const email = document.getElementById("email");
 const senha = document.getElementById("senha");
 const confirm_senha = document.getElementById("confirm_senha");
@@ -20,15 +19,8 @@ switch (
 
   case verificarURL(md5("email=false")): //email já cadastrado
     email.classList.add("vermei");
+    nome.value = localStorage.getItem(nome.id);
     abrirjanela("red", "Email já utilizado!", "Dados Duplicados", "falha");
-    localStorage.setItem("erro", 1);
-    cep.value = localStorage.getItem("cep");
-    nome.value = localStorage.getItem("nome");
-    tel.value = localStorage.getItem("tel");
-    numero.value = localStorage.getItem("numero");
-
-    ler(localStorage.getItem("cep"));
-    document.querySelector("form").focus();
     limparURL(md5("email=false"));
     break;
 
@@ -42,19 +34,6 @@ switch (
     limparURL(md5("sucesso=false"));
     break;
 }
-
-$(document).ready(function () {
-  // desabilita CTRL+V por motivos de incompatibilidade de máscara
-  $("#tel").on("cut copy paste", function (e) {
-    e.preventDefault();
-  });
-  $("#cpf").on("cut copy paste", function (e) {
-    e.preventDefault();
-  });
-  $("#numero").on("cut copy paste", function (e) {
-    e.preventDefault();
-  });
-});
 
 function validar() {
   limpar_inputs();
@@ -78,10 +57,8 @@ function validar() {
     // } else if (grecaptcha.getResponse() == "") {
     //   alertaDeErro(captcha, "Preencha o CAPTCHA!");
   } else {
-    // localStorage.setItem(nome.id, nome.value);
-    // localStorage.setItem(tel.id, tel.value);
+    localStorage.setItem(nome.id, nome.value);
     abrirjanela("blue", "Validando Dados", "Andamento Cadastro", "carregar");
-
     setTimeout(enviar, 4000);
   }
 }

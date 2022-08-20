@@ -5,13 +5,15 @@ switch (true) {
   case verificarURL(md5("login=false")):
     abrirjanela(
       "red",
-      "Credenciais incorretas!<br>Por favor, verifique os dados inseridos!",
+      "Credenciais incorretas! Por favor, verifique os dados inseridos!",
       "Falha no login",
       "falha"
     );
     limparURL(md5("login=false"));
     document.getElementById("email").classList.add("vermei");
     document.getElementById("senha").classList.add("vermei");
+    document.getElementById("email").classList.add("erro");
+    document.getElementById("senha").classList.add("erro");
     break;
 
   case verificarURL(md5("sucesso=true")):
@@ -32,16 +34,6 @@ switch (true) {
       "sucesso"
     );
     limparURL(md5("sucesso_senha=true"));
-    break;
-
-  case verificarURL(md5("sucesso=false")):
-    abrirjanela(
-      "red",
-      "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
-      "Erro inesperado",
-      "falha"
-    );
-    limparURL(md5("sucesso=false"));
     break;
 }
 

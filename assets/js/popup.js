@@ -13,8 +13,6 @@ janelaPopUp.abre = function (
   textoCancelar,
   textoEnviar
 ) {
-  let cancelar = textoCancelar !== undefined ? textoCancelar : "OK";
-  let enviar = textoEnviar !== undefined ? textoEnviar : "Send";
   classes += " ";
   let classArray = classes.split(" ");
   classes = "";
@@ -26,93 +24,91 @@ janelaPopUp.abre = function (
         break;
       case "blue":
         classesFundo += this + " ";
+        break;
       case "green":
         classesFundo += this + " ";
+        break;
       case "red":
         classesFundo += this + " ";
+        break;
       default:
         classes += this + " ";
         break;
     }
   });
 
-  let src = "src='https://cdn.lordicon.com/gqdnbnwt.json'";
-  let trigger = "trigger='loop' ";
-  let delay = "delay='1000' ";
+  let src = "https://cdn.lordicon.com/gqdnbnwt.json";
   let colors = "";
-  let style = "style= 'width:46px;height:46px'> ";
 
   switch (
     true // determina qual ícone aparecerá no popup de acordo com a string passada na variável 'icone'
   ) {
     case icone == "sucesso":
-      src = "src='https://cdn.lordicon.com/lupuorrc.json' ";
+      src = "https://cdn.lordicon.com/lupuorrc.json";
       colors = "colors= 'primary:#121331,secondary:#16c72e' ";
       break;
     case icone == "falha":
-      src = "src= 'https://cdn.lordicon.com/tdrtiskw.json' ";
+      src = "https://cdn.lordicon.com/tdrtiskw.json";
       colors = "colors= 'primary:#c71f16,secondary:#000000' ";
       break;
     case icone == "carregar":
-      src = "src= 'https://cdn.lordicon.com/dpinvufc.json' ";
+      src = "https://cdn.lordicon.com/dpinvufc.json";
       delay = "delay = '10' ";
       colors = "  colors='primary:#4E6EF1,secondary:#4E6EF1' ";
       break;
     case icone == "encontrado":
-      src = "src='https://cdn.lordicon.com/msoeawqm.json' ";
+      src = "https://cdn.lordicon.com/msoeawqm.json";
       break;
   }
+  let popFundo2 = document.createElement("div");
+  popFundo2.setAttribute("class", "popUpFundo " + classesFundo);
 
-  let popFundo =
-    '<div id="popFundo_' +
-    id +
-    '" class="popUpFundo ' +
-    classesFundo +
-    '"></div>';
-  let janela =
-    '<div id="' +
-    id +
-    '" class="popUp ' +
-    classes +
-    '">' +
-    img +
-    "<h1>" +
-    titulo +
-    "</h1>" +
-    "<lord-icon " +
-    src +
-    trigger +
-    delay +
-    colors +
-    style +
-    "</lord-icon><span>" +
-    corpo +
-    "</span><button class='puCancelar btn secundario" +
-    classBot +
-    "' id='" +
-    id +
-    "_cancelar' data-parent=" +
-    id +
-    ">" +
-    cancelar +
-    "</button><button class='puEnviar btn primario" +
-    classBot +
-    "' data-parent=" +
-    id +
-    " id='" +
-    id +
-    "_enviar'>" +
-    enviar +
-    "</button></div>";
+  let janela2 = document.createElement("div");
+  janela2.setAttribute("id", "popUp");
+  janela2.setAttribute("class", "popUp " + classes);
 
-  $("body").append(popFundo);
-  $("body").append(janela);
-  $("body").append(popFundo);
+  let h1 = document.createElement("h1");
+  h1.append(titulo);
+  janela2.append(h1);
+  popFundo2.appendChild(janela2);
+
+  let lord_icon = document.createElement("lord-icon");
+  lord_icon.setAttribute("src", src);
+  lord_icon.setAttribute("trigger", "loop");
+  lord_icon.setAttribute("delay", "1000");
+  lord_icon.setAttribute("colors", colors);
+  lord_icon.setAttribute("style", "width:46px;height:46px");
+
+  janela2.appendChild(lord_icon);
+
+  let span = document.createElement("span");
+
+  span.append(corpo);
+
+  janela2.appendChild(span);
+
+  let botaoOk = document.createElement("button");
+  botaoOk.setAttribute("id", "popUpCancelar");
+  botaoOk.setAttribute("class", "secundario btn");
+
+  let botaoCancelar = document.createElement("button");
+  botaoCancelar.setAttribute("id", "popUpEnviar");
+  botaoCancelar.setAttribute("class", "secundario btn");
+
+  botaoOk.append("ok");
+  botaoCancelar.append("cancelar");
+
+  janela2.append(botaoOk);
+  janela2.append(botaoCancelar);
+
+  $("body").append(popFundo2);
+  $("body").append(janela2);
+
   //alert(janela);
-  $("#popFundo_" + id).fadeIn("fast");
-  $("#" + id).addClass("popUpEntrada");
+  $(".popFundo").fadeIn("fast");
+  $("#popUp").addClass("popUpEntrada");
 
-  $("#" + id + "_cancelar").on("click", function () {
+  $("#popUpCancelar").on("click", function () {
     if (functionCancelar !== undefined && functionCancelar !== "") {
       functionCancelar();
     } else {
@@ -121,42 +117,31 @@ janelaPopUp.abre = function (
   });
 
   if (icone != "carregar") {
-    $("#popFundo_asdf").on("click", function () {
+    $("#popFundo").on("click", function () {
       if (functionCancelar !== undefined && functionCancelar !== "") {
         functionCancelar();
       } else {
-        janelaPopUp.fecha(id);
+        janelaPopUp.fecha();
       }
     });
   }
 
-  $("#" + id + "_enviar").on("click", function () {
+  $("#popUpEnviar").on("click", function () {
     if (functionEnviar !== undefined && functionEnviar !== "") {
       functionEnviar();
     } else {
-      janelaPopUp.fecha(id);
+      janelaPopUp.fecha();
     }
   });
 };
 
-janelaPopUp.fecha = function (id) {
-  if (id !== undefined) {
-    $("#" + id)
-      .removeClass("popUpEntrada")
-      .addClass("popUpSaida");
+janelaPopUp.fecha = function () {
+  $(".popUp").removeClass("popUpEntrada").addClass("popUpSaida");
 
-    $("#popFundo_" + id).fadeOut(1000, function () {
-      $("#popFundo_" + id).remove();
-      $("#" + $(this).attr("id") + ", #" + id).remove();
-    });
-  } else {
-    $(".popUp").removeClass("popUpEntrada").addClass("popUpSaida");
-
-    $(".popUpFundo").fadeOut(1000, function () {
-      $(".popUpFundo").remove();
-      $(".popUp").remove();
-    });
-  }
+  $(".popUpFundo").fadeOut(1000, function () {
+    $(".popUpFundo").remove();
+    $("#popUp").remove();
+  });
 };
 
 function abrirjanela(cor, texto, titulo, trigger) {
@@ -165,7 +150,7 @@ function abrirjanela(cor, texto, titulo, trigger) {
   img = "";
   janelaPopUp.abre("asdf", "p" + " " + cor + " " + "alert", titulo, texto);
   if (icone == "carregar") {
-    document.getElementById("asdf_cancelar").style.display = "none";
+    document.getElementById("popUpCancelar").style.display = "none";
   }
 }
 

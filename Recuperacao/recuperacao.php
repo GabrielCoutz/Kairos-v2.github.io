@@ -21,7 +21,7 @@
 
     <header class="header container" id="header-cadastroUsuario">
         <div class="header-logo">
-            <a href="../index.html"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
+            <a href="../index.php"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
         </div>
     </header>
 
@@ -29,7 +29,8 @@
         <div class="form-holder">
             <form action="#" method="POST" class="formulario recuperacao">
                 <h1 class="titulo" onsubmit="return false">Recuperação de conta</h1>
-                <p>Não tem problema se esqueceu sua senha, para recuperá-la basta inserir os dados cadastrados da conta abaixo.</p>
+                <p>Não tem problema se esqueceu sua senha, para recuperá-la basta inserir os dados cadastrados da conta
+                    abaixo.</p>
                 <div class="form-caixa">
                     <label for="nome">Nome completo</label>
                     <i class="gg-user"></i>
