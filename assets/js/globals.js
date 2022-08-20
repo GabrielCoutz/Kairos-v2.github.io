@@ -10,7 +10,7 @@
 // menu hamburguer
 
 let hamburguer = document.querySelector(".hamburguer");
-let navMenu = document.location.href.toLocaleLowerCase().includes("perfil")
+let navMenu = document.location.href.includes("Perfil")
   ? document.querySelector(".nav-lateral")
   : document.querySelector(".header-nav");
 
@@ -50,10 +50,6 @@ const limpar_inputs = function () {
     input.classList.remove("vermei");
   });
 
-  limpar_alertas();
-};
-
-const limpar_alertas = function () {
   document.querySelectorAll(".alerta-ativo").forEach((alerta) => {
     alerta.classList.toggle("alerta-ativo");
   });
@@ -63,17 +59,24 @@ function limparURL(url) {
   // tira o disparador de popup da url, limpando-a
   let nextURL = window.location.href.replace(url, "").replace("?", "");
   let nextState = { additionalInformation: "Updated the URL with JS" };
-  window.history.replaceState(nextState, "Cadastro", nextURL);
+  window.history.replaceState(nextState, "Kairos", nextURL);
 }
 
 function alertaDeErro(elemento, mensagem) {
-  elemento.focus();
+  if (
+    elemento.id === "senha_antiga" &&
+    window.location.href.includes("Perfil")
+  ) {
+    senha_nova.classList.add("vermei");
+    senha_nova_dup.classList.add("vermei");
+  }
   let caixa = document.getElementById(elemento.getAttribute("aria-controls"));
   document.getElementById(elemento.id).classList.add("vermei");
   caixa.id === "valor"
     ? caixa.classList.toggle("alerta-ativo")
     : caixa.classList.add("alerta-ativo");
   caixa.innerHTML = mensagem;
+  elemento.focus();
 }
 
 function vazio(item) {
@@ -240,7 +243,15 @@ function dispararEvento(elemento, evento, stringCondicao) {
       break;
     case "condicaoSenha":
       var condicao = function () {
-        if (vazio(senha.value) || vazio(confirm_senha.value)) {
+        if (window.location.href.includes("Perfil")) {
+          console.log("return");
+          return (
+            vazio(senha_antiga.value) ||
+            vazio(senha_nova.value) ||
+            vazio(senha_nova_dup.value) ||
+            senha_nova.value != senha_nova_dup.value
+          );
+        } else if (vazio(senha.value) || vazio(confirm_senha.value)) {
           return true;
         } else {
           return false;
@@ -285,19 +296,26 @@ function dispararEvento(elemento, evento, stringCondicao) {
       document
         .getElementById(elemento.getAttribute("aria-controls"))
         .classList.remove("alerta-ativo");
-      if (elemento.id === "senha" && window.location.href.includes("perfil")) {
-        window.remove(evento, funcao);
-        confirm_senha.classList.remove("vermei");
+      if (window.location.href.includes("Perfil")) {
+        senha_nova.classList.remove("vermei");
+        senha_nova_dup.classList.remove("vermei");
+        window.removeEventListener(evento, funcao);
       }
       elemento.removeEventListener(evento, funcao);
-      document.getElementById("butao").disabled = false;
+      window.location.href.includes("Perfil")
+        ? (document.getElementById("salvarbtn").disabled = false)
+        : (document.getElementById("butao").disabled = false);
     }
   };
 
   // Já sabendo qual condição deve ser utilizada, é adicionado ao elemento seu evento (keydown ou keyup) e chamada da função, no qual fará uso da condicao setada pelo switch
-  document.getElementById("butao").disabled = true;
-  if (elemento.id === "senha" && window.location.href.includes("perfil")) {
+  window.location.href.includes("Perfil")
+    ? (document.getElementById("salvarbtn").disabled = true)
+    : (document.getElementById("butao").disabled = true);
+  if (window.location.href.includes("Perfil")) {
     window.addEventListener(evento, funcao);
+    senha_nova.classList.add("vermei");
+    senha_nova_dup.classList.add("vermei");
   }
   elemento.addEventListener(evento, funcao);
 }

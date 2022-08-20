@@ -162,12 +162,13 @@ function alterarSenha() {
   caixa_senha.classList.toggle("senha-ativa");
   senhabtn.classList.toggle("none");
   cancelarbtn.disabled = false;
+  salvarbtn.disabled = false;
   document.getElementById("add_tel").disabled = true;
   document.getElementById("del_tel").disabled = true;
 }
 
 function cancelar() {
-  limpar_alertas();
+  limpar_inputs();
   document.forms[0].reset();
 
   if (caixa_senha.classList.contains("senha-ativa")) {
@@ -177,13 +178,12 @@ function cancelar() {
     caixa_senha.classList.toggle("senha-ativa");
     senhabtn.classList.toggle("none");
     cancelarbtn.disabled = true;
+    salvarbtn.disabled = true;
     // apagarCookie("senha");
     document.getElementById("add_tel").disabled = false;
     document.getElementById("del_tel").disabled = false;
     return;
   }
-
-  limpar_inputs();
 
   $(".adicionarNumero").remove();
   $(".deletarNumero").remove();
@@ -218,12 +218,11 @@ function salvar() {
       vazio(senha_nova_dup.value) ||
       senha_nova.value != senha_nova_dup.value
     ) {
-      senha_nova.classList.add("vermei");
-      senha_nova_dup.classList.add("vermei");
       alertaDeErro(
-        senha_antiga.id,
+        senha_antiga,
         "Por favor, verifique os campos e tente novamente!"
       );
+      dispararEvento(senha_antiga, "keyup", "condicaoSenha");
     } else {
       abrirjanela(
         "blue",

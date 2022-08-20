@@ -96,7 +96,7 @@ img[alt="Kairos Logo"]:hover {
   cursor: pointer;
 }
 
-select {
+select, .gg-remove {
   cursor: pointer;
 }
 

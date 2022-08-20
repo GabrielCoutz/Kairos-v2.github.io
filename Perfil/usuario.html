@@ -85,7 +85,7 @@
                         <a class="desativado">exemplo@gmail.com</a>
                     </div>
                 </div>
-                <div class="fundo-dados">
+                <div class="fundo-dados info-2">
                     <div class="dados-coluna">
                         <div class="form-caixa">
                             <label for="cep">CEP</label>
@@ -113,22 +113,22 @@
                             <p class="desativado numeros">11 55555-5555</p>
                             <p class="desativado numeros">11 66666-6666</p>
                         </div>
-                        <div id="telefoneAlert">Preencha o número por completo!</div>
                     </div>
                     <div class="dados-coluna" id="manipularNumeros">
                         <button class="btn terciario" id='add_tel' type="button">Adicionar
                             telefone</button>
+                        <div id="telefoneAlert">Preencha o número por completo!</div>
                         <button class="btn terciario" id='del_tel' type="button">Excluir
                             telefone</button>
                     </div>
                 </div>
-                <div class="fundo-dados">
+                <div class="fundo-dados info-3">
                     <div class="form-caixa">
                         <label>Senha</label>
                         <div class="caixa-senhas">
                             <label for="senha_antiga">Senha Antiga</label>
                             <div class="senha-holder">
-                                <input type="password" name="senha_antiga" id="senha_antiga">
+                                <input type="password" name="senha_antiga" id="senha_antiga" aria-controls="senhaAlert">
                                 <i class="gg-eye" aria-controls="senha_antiga"></i>
                             </div>
                             <label for="senha_nova">Senha Nova</label>
@@ -141,6 +141,7 @@
                                 <input type="password" name="senha_nova_dup" id="senha_nova_dup">
                                 <i class="gg-eye" aria-controls="senha_nova_dup"></i>
                             </div>
+                            <div id="senhaAlert"></div>
 
 
                         </div>
