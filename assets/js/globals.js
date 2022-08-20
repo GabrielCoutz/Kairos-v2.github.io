@@ -45,7 +45,7 @@ function verificarURL(parametro) {
   return verificarURL.has(parametro);
 }
 
-const limpar_inputs = function () {
+function limpar_inputs() {
   document.querySelectorAll("input").forEach((input) => {
     input.classList.remove("vermei");
   });
@@ -53,7 +53,7 @@ const limpar_inputs = function () {
   document.querySelectorAll(".alerta-ativo").forEach((alerta) => {
     alerta.classList.toggle("alerta-ativo");
   });
-};
+}
 
 function limparURL(url) {
   // tira o disparador de popup da url, limpando-a
@@ -153,14 +153,17 @@ function lerCEP(cep) {
           return;
         } else {
           cep.classList.remove("vermei");
+          document
+            .getElementById(cep.getAttribute("aria-controls"))
+            .classList.remove("alerta-ativo");
           document.querySelector('input[id^="rua"]').value =
             resposta.logradouro;
           document.querySelector('input[id^="bairro"]').value = resposta.bairro;
           document.querySelector('input[id^="cidade"]').value =
             resposta.localidade;
           document.querySelector('input[id^="estado"]').value = resposta.uf;
-          document.querySelector('div[id^="endereco"').classList.remove("none");
-          document.querySelector('div[id^="endereco"').innerHTML =
+          document.querySelector("#endereco").classList.remove("none");
+          document.querySelector("#endereco").innerHTML =
             resposta.logradouro +
             ", " +
             resposta.bairro +
@@ -168,7 +171,7 @@ function lerCEP(cep) {
             resposta.localidade +
             ", " +
             resposta.uf;
-          document.querySelector('input[id^="numero"').focus();
+          document.querySelector('input[id^="numero"]').focus();
         }
       },
     });

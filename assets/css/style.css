@@ -85,6 +85,9 @@
   .sobre-lista button {
     font-size: 1.6rem;
   }
+  .perfil button {
+    font-size: 1.3rem;
+  }
   .metodos-item > .texto,
   .sobre-lista p,
   .planos-beneficios > li {

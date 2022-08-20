@@ -89,7 +89,8 @@
                     <div class="dados-coluna">
                         <div class="form-caixa">
                             <label for="cep">CEP</label>
-                            <input type="tel" name="cep" id="cep" placeholder="Texto de texto" aria-controls="cepAlert">
+                            <input type="tel" name="cep" id="cep" placeholder="Texto de texto" aria-controls="cepAlert"
+                                onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)">
                             <div id="cepAlert"></div>
                         </div>
                         <div class="form-caixa">
@@ -99,8 +100,12 @@
                             <div id="numeroAlert"></div>
                         </div>
                         <div class="form-caixa">
+                            <input type="text" class="none" id="rua" name="rua">
+                            <input type="text" class="none" id="bairro" name="bairro">
+                            <input type="text" class="none" id="cidade" name="cidade">
+                            <input type="text" class="none" id="estado" name="estado">
                             <label>Endereço</label>
-                            <p class="desativado">Estrada Da Promissão, Jardim Carolina, Itaquaquecetuba, SP</p>
+                            <p class="desativado" id="endereco"></p>
                         </div>
                     </div>
                     <div class="dados-coluna telefone">

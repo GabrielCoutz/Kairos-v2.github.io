@@ -16,7 +16,7 @@
     <title>Perfil Empresa</title>
 </head>
 
-<body class="body-perfil">
+<body class="body-perfil empresa">
     <div class="fundo-barra-lateral">
         <div class="barra-lateral">
             <nav aria-label="Navegação Lateral">
@@ -71,8 +71,17 @@
             <form action="" class="container perfil empresa">
                 <div class="fundo-dados">
                     <div class="form-caixa">
-                        <label for="nome">Nome da empresa</label>
-                        <input type="text" name="nome" id="nome" maxlength="50" placeholder="Texto de texto">
+                        <label for="nome_empresa">Nome da empresa</label>
+                        <input type="text" name="nome_empresa" id="nome_empresa" maxlength="50"
+                            placeholder="Texto de texto" value="teste" aria-controls="nome_empresaAlert"
+                            onkeyup="apenasLetras(this)">
+                        <div id="nome_empresaAlert"></div>
+                    </div>
+                    <div class="form-caixa">
+                        <label for="nome_fantasia">Nome Fantasia</label>
+                        <input type="text" name="nome_fantasia" id="nome_fantasia" maxlength="50"
+                            placeholder="Texto de texto" aria-controls="nome_fantasiaAlert">
+                        <div id="nome_fantasiaAlert"></div>
                     </div>
                     <div class="form-caixa">
                         <label>CNPJ</label>
@@ -82,22 +91,31 @@
                 <div class="fundo-dados info-1">
                     <div class="dados-coluna">
                         <div class="form-caixa">
-                            <label for="cep">CEP</label>
-                            <input type="tel" name="cep" id="cep" placeholder="Texto de texto">
+                            <label for="cep_empresa">CEP</label>
+                            <input type="tel" name="cep_empresa" id="cep_empresa" placeholder="Texto de texto"
+                                aria-controls="cep_empresaAlert" onkeypress="$(this).mask('00.000-000')"
+                                onkeyup="lerCEP(this)">
+                            <div id="cep_empresaAlert"></div>
                         </div>
                         <div class="form-caixa">
-                            <label for="numero">Número</label>
-                            <input type="tel" name="numero" id="numero" placeholder="Texto de texto">
+                            <label for="numero_empresa">Número</label>
+                            <input type="tel" name="numero_empresa" id="numero_empresa" placeholder="Texto de texto"
+                                aria-controls="numero_empresaAlert" value="">
+                            <div id="numero_empresaAlert"></div>
                         </div>
                         <div class="form-caixa">
+                            <input type="text" class="none" id="rua_empresa" name="rua_empresa">
+                            <input type="text" class="none" id="bairro_empresa" name="bairro_empresa">
+                            <input type="text" class="none" id="cidade_empresa" name="cidade_empresa">
+                            <input type="text" class="none" id="estado_empresa" name="estado_empresa">
                             <label>Endereço</label>
-                            <p class="desativado">Estrada Da Promissão, Jardim Carolina, Itaquaquecetuba, SP</p>
+                            <p class="desativado" id="endereco"></p>
                         </div>
                     </div>
                     <div class="dados-coluna">
                         <div class="form-caixa">
                             <label for="ramo">Ramo</label>
-                            <select name="ramo" id="ramo">
+                            <select name="ramo" id="ramo" aria-controls="ramoAlert">
                                 <option value disabled selected>Selecione o ramo</option>
                                 <option>Alimentação</option>
                                 <option>Saúde</option>
@@ -105,13 +123,15 @@
                                 <option>Tecnologia</option>
                                 <option>Moda</option>
                             </select>
-
                         </div>
+                        <div id="ramoAlert"></div>
                     </div>
                 </div>
                 <div class="botoes">
-                    <button class="btn primario" type="submit">Salvar</button>
-                    <button class="btn secundario" type="button">Cancelar</button>
+                    <button class="btn primario" type="button" id="salvarbtn" onclick="salvar()"
+                        disabled="true">Salvar</button>
+                    <button class="btn secundario" type="reset" id="cancelarbtn" onclick="cancelar()"
+                        disabled="true">Cancelar</button>
                 </div>
             </form>
         </div>

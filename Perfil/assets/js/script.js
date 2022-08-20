@@ -1,7 +1,12 @@
 const nome = document.getElementById("nome");
 const cep = document.getElementById("cep");
 const numero = document.getElementById("numero");
-const endereco = document.getElementById("endereco");
+const endereco = vazio(
+  document.getElementById("endereco").innerText.replace(", , ,", "")
+)
+  ? (document.getElementById("endereco").innerText = "Não Cadastrado")
+  : document.getElementById("endereco").innerText;
+
 const senha_antiga = document.getElementById("senha_antiga");
 const senha_nova = document.getElementById("senha_nova");
 const senha_nova_dup = document.getElementById("senha_nova_dup");
@@ -9,23 +14,21 @@ const senha_nova_dup = document.getElementById("senha_nova_dup");
 const conteudo_nome = document.getElementById("nome").value;
 const conteudo_cep = document.getElementById("cep").value;
 const conteudo_numero = document.getElementById("numero").value;
-// const conteudo_endereco = document.getElementById("endereco").innerText;
 
 const salvarbtn = document.getElementById("salvarbtn");
 const cancelarbtn = document.getElementById("cancelarbtn");
 const senhabtn = document.getElementById("alterarsenha");
 const caixa_senha = document.getElementsByClassName("caixa-senhas")[0];
 
-// $(document).ready(function(){
-//   if(vazio(cep.value)){
-//       cep.placeholder = '00.000-000'
-//       endereco.innerHTML = 'Não cadastrado'
-//   }
+$(document).ready(function () {
+  if (vazio(cep.value)) {
+    cep.placeholder = "00.000-000";
+  }
 
-//   if (vazio(numero.value)){
-//       numero.placeholder = 'Não cadastrado'
-//   }
-// });
+  if (vazio(numero.value)) {
+    numero.placeholder = "Não cadastrado";
+  }
+});
 
 function erro() {
   document
@@ -195,9 +198,8 @@ function cancelar() {
   if (document.getElementById("add_tel").style.display === "none") {
     $("#add_tel").toggle();
   }
-  // endereco.innerHTML = vazio(conteudo_endereco.replace(", , ,", ""))
-  //   ? "Não Cadastrado"
-  //   : endereco.innerText;
+
+  document.getElementById("endereco").innerHTML = endereco;
 
   salvarbtn.disabled = true;
   cancelarbtn.disabled = true;
