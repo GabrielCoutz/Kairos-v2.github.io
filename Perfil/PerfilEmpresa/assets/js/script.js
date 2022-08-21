@@ -23,7 +23,7 @@ const IniciarCadastroEmpresa = function () {
     abrirjanela(
       "blue",
       "Tudo bem, redirecionando para página de cadastro",
-      "Empresa não encontrada",
+      "Empresa não cadastrada",
       "carregar"
     );
     document.getElementById("asdf_cancelar").style.display = "none";
@@ -39,8 +39,8 @@ const cancelarCadastroEmpresa = function () {
   let popup = function () {
     abrirjanela(
       "blue",
-      "Tudo bem, redirecionando para página do usuário",
-      "Empresa não encontrada",
+      "Tudo bem, estamos te tirando daqui",
+      "Empresa não cadastrada",
       "carregar"
     );
     document.getElementById("asdf_cancelar").style.display = "none";
@@ -62,23 +62,28 @@ function abrirEmpresa() {
     "Parece que você não tem uma empresa cadastrada. Gostaria de cadastrá-la agora?"
   );
 
-  document.getElementById("popUp_enviar").innerHTML = "Não, talvez mais tarde";
-  document
-    .getElementById("popUp_enviar")
-    .addEventListener("click", cancelarCadastroEmpresa);
+  document.getElementById("popUpEnviar").innerHTML = "Sim, gostaria";
+  document.getElementById("popUpEnviar");
+  document.addEventListener("click", IniciarCadastroEmpresa);
 
+  document.getElementById("popUpEnviar").style.display = "block";
+  document.getElementById("popUpEnviar").classList.remove("secundario");
+  document.getElementById("popUpEnviar").classList.add("primario");
+
+  document.getElementById("popUpCancelar").innerHTML = "Não, talvez mais tarde";
+  document.getElementById("popUpCancelar").style.order = "2";
   document
-    .getElementById("asdf_cancelar")
-    .addEventListener("click", IniciarCadastroEmpresa);
-  document.getElementById("asdf_cancelar").innerHTML = "Sim, gostaria";
+    .getElementById("popUpCancelar")
+    .addEventListener("click", cancelarCadastroEmpresa);
 }
+
 function erro() {
   document
-    .getElementById("asdf_cancelar")
+    .getElementById("popUpcancelar")
     .addEventListener("click", function () {
       window.location.href = "../../Login/login";
     });
-  document.getElementById("asdf_cancelar").click();
+  document.getElementById("popUpcancelar").click();
 }
 
 let alerta = "";

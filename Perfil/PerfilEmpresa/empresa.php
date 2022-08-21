@@ -14,6 +14,52 @@
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
         rel="stylesheet">
     <title>Perfil Empresa</title>
+
+    <?php
+        session_start();
+
+        $dbHost     = 'localhost';
+        $dbUname = 'root';
+        $dbPass = '';
+        $dbName     = 'kairos';
+
+        $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
+
+        if($conec->connect_error){ // se não for localhost, usa a conexão do banco no site
+            $dbHost = 'sql309.epizy.com';
+            $dbUname = 'epiz_31926454';
+            $dbPass = 'VOjqZcbwH38iVo';
+            $dbName = 'epiz_31926454_Banco_Kairos';
+            $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
+        }
+
+        error_reporting(E_ERROR | E_PARSE);
+
+        $email=$_SESSION['email'];
+
+        $select_empresa=mysqli_query($conec, "SELECT * FROM empresa WHERE email_usuario = '$email'")->fetch_assoc();
+
+        switch (true) {
+            case !isset($_SESSION['email_padrao']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true')):
+                header("Refresh:0; url=empresa".'?'.md5('erro=true'));
+                exit;
+                break;
+
+            case empty($select_empresa['ramo']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('dados_empresa=false')) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true')):
+                header("Refresh:0; url=empresa".'?'.md5('dados_empresa=false'));
+                exit;
+                break;
+        }
+
+        $_SESSION['ramo_padrao']=$select_empresa['ramo'];
+        $_SESSION['nome_empresa_padrao']=$select_empresa['nome'];
+        $_SESSION['nome_fantasia_padrao']=$select_empresa['nome_fantasia'];
+
+        $cnpj = substr($select_empresa['cnpj'], 0, 5).'*.***/***'.substr($select_empresa['cnpj'], 14, 17);
+        $_SESSION['cnpj_padrao'] = $select_empresa['cnpj'];
+
+        $select_empresa_endereco = mysqli_query($conec, "SELECT * FROM endereco_empresa WHERE cnpj_empresa  =  '".$select_empresa['cnpj']."'")->fetch_assoc();
+    ?>
 </head>
 
 <body class="body-perfil empresa">
@@ -64,43 +110,42 @@
     </div>
     <div class="principal">
         <header>
-            <a href="../../index.php" class="btn secundario">Sair</a>
+            <a href="../../index" class="btn secundario">Sair</a>
         </header>
         <div class="perfil">
-            <h1 class="titulo">Olá, Gabriel</h1>
-            <form action="" class="container perfil empresa">
+            <h1 class="titulo">Sua empresa</h1>
+            <form action="assets/php/atualiar_empresa" class="container perfil empresa">
                 <div class="fundo-dados">
                     <div class="form-caixa">
                         <label for="nome_empresa">Nome da empresa</label>
-                        <input type="text" name="nome_empresa" id="nome_empresa" maxlength="50"
-                            placeholder="Texto de texto" value="teste" aria-controls="nome_empresaAlert"
+                        <input type="text" name="nome_empresa" id="nome_empresa" maxlength="50" value='<?= $select_empresa['nome'] ?>' aria-controls="nome_empresaAlert"
                             onkeyup="apenasLetras(this)">
                         <div id="nome_empresaAlert"></div>
                     </div>
                     <div class="form-caixa">
                         <label for="nome_fantasia">Nome Fantasia</label>
                         <input type="text" name="nome_fantasia" id="nome_fantasia" maxlength="50"
-                            placeholder="Texto de texto" aria-controls="nome_fantasiaAlert">
+                        value='<?= $select_empresa['nome_fantasia'] ?>' aria-controls="nome_fantasiaAlert">
                         <div id="nome_fantasiaAlert"></div>
                     </div>
                     <div class="form-caixa">
                         <label>CNPJ</label>
-                        <a class="desativado">000.000.000-00</a>
+                        <a class="desativado"><?= $cnpj; ?></a>
                     </div>
                 </div>
                 <div class="fundo-dados info-1">
                     <div class="dados-coluna">
                         <div class="form-caixa">
                             <label for="cep_empresa">CEP</label>
-                            <input type="tel" name="cep_empresa" id="cep_empresa" placeholder="Texto de texto"
+                            <input type="tel" name="cep_empresa" id="cep_empresa" value='<?= $select_empresa_endereco['cep'] ?>'
                                 aria-controls="cep_empresaAlert" onkeypress="$(this).mask('00.000-000')"
                                 onkeyup="lerCEP(this)">
                             <div id="cep_empresaAlert"></div>
                         </div>
                         <div class="form-caixa">
                             <label for="numero_empresa">Número</label>
-                            <input type="tel" name="numero_empresa" id="numero_empresa" placeholder="Texto de texto"
-                                aria-controls="numero_empresaAlert" value="">
+                            <input type="tel" name="numero_empresa" id="numero_empresa" value='<?= $select_empresa_endereco['numero'] ?>'
+                                aria-controls="numero_empresaAlert">
                             <div id="numero_empresaAlert"></div>
                         </div>
                         <div class="form-caixa">
@@ -109,7 +154,7 @@
                             <input type="text" class="none" id="cidade_empresa" name="cidade_empresa">
                             <input type="text" class="none" id="estado_empresa" name="estado_empresa">
                             <label>Endereço</label>
-                            <p class="desativado" id="endereco"></p>
+                            <p class="desativado" id="endereco"><?= ucwords($select_empresa_endereco['rua']) ?>, <?= ucwords($select_empresa_endereco['bairro']) ?>, <?= ucwords($select_empresa_endereco['cidade']) ?>, <?= $select_empresa_endereco['estado'] ?></p>
                         </div>
                     </div>
                     <div class="dados-coluna">
