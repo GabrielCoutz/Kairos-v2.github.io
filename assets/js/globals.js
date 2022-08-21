@@ -131,12 +131,13 @@ function lerCEP(cep) {
           resposta.localidade == undefined ||
           resposta.uf == undefined
         ) {
-          abrirjanela(
-            "red",
-            "CEP inválido! Por favor, verifique os números e tente novamente.",
-            "Dados Inválidos",
-            "falha"
-          );
+          abrirjanela({
+            cor: "red",
+            corpo:
+              "CEP inválido! Por favor, verifique os números e tente novamente.",
+            titulo: "Dados Inválidos",
+            icone: "falha",
+          });
 
           if (window.location.href.includes("cadastro")) {
             alertaDeErro(

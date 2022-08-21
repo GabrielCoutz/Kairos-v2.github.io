@@ -7,19 +7,24 @@ const ramo = document.getElementById("ramo");
 
 switch (true) {
   case verificarURL(md5("erro=true")):
-    abrirjanela(
-      "red",
-      "<br>Não foi possível realizar o cadastro!",
-      "Conta não sincronizada",
-      "falha"
-    );
+    abrirjanela({
+      cor: "red",
+      corpo: "Não foi possível realizar o cadastro!",
+      titulo: "Conta não sincronizada",
+      icone: "falha",
+    });
     document.getElementById("asdf_cancelar").style.display = "none";
     limparURL(md5("erro=true"));
     setTimeout(paginaInicial, 4000);
     break;
 
   case verificarURL(md5("cnpj=false")):
-    abrirjanela("red", "CNPJ já cadastrado!", "Andamento Cadastro", "falha");
+    abrirjanela({
+      cor: "red",
+      corpo: "CNPJ já cadastrado!",
+      titulo: "Andamento Cadastro",
+      icone: "falha",
+    });
     cnpj.classList.add("vermei");
     cnpj.focus();
 
@@ -54,7 +59,12 @@ function validar() {
     localStorage.setItem(nome_empresa.id, nome_empresa.value);
     localStorage.setItem(nome_fantasia.id, nome_fantasia.value);
 
-    abrirjanela("blue", "Verificando Dados", "Andamento Cadastro", "carregar");
+    abrirjanela({
+      cor: "blue",
+      corpo: "Verificando Dados",
+      titulo: "Andamento Cadastro",
+      icone: "carregar",
+    });
     setTimeout(enviar, 4000);
   }
 }

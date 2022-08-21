@@ -8,29 +8,36 @@ switch (
   true // verifica se há erros passados na URL
 ) {
   case verificarURL(md5("erro=true")): //erro no captcha
-    abrirjanela(
-      "red",
-      "Possível Fraude detectada! Por favor, insira as informações novamente.",
-      "Erro no CAPTCHA",
-      "falha"
-    );
+    abrirjanela({
+      cor: "red",
+      corpo:
+        "Possível Fraude detectada! Por favor, insira as informações novamente.",
+      titulo: "Erro no CAPTCHA",
+      icone: "falha",
+    });
     limparURL(md5("erro=true"));
     break;
 
   case verificarURL(md5("email=false")): //email já cadastrado
     email.classList.add("vermei");
     nome.value = localStorage.getItem(nome.id);
-    abrirjanela("red", "Email já utilizado!", "Dados Duplicados", "falha");
+    abrirjanela({
+      cor: "red",
+      corpo: "Email já utilizado!",
+      titulo: "Dados Duplicados",
+      icone: "falha",
+    });
     limparURL(md5("email=false"));
     break;
 
   case verificarURL(md5("sucesso=false")):
-    abrirjanela(
-      "red",
-      "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
-      "Erro inesperado",
-      "falha"
-    );
+    abrirjanela({
+      cor: "red",
+      corpo:
+        "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
+      titulo: "Erro inesperado",
+      icone: "falha",
+    });
     limparURL(md5("sucesso=false"));
     break;
 }
@@ -58,7 +65,12 @@ function validar() {
     //   alertaDeErro(captcha, "Preencha o CAPTCHA!");
   } else {
     localStorage.setItem(nome.id, nome.value);
-    abrirjanela("blue", "Validando Dados", "Andamento Cadastro", "carregar");
+    abrirjanela({
+      cor: "blue",
+      corpo: "Validando Dados",
+      titulo: "Andamento Cadastro",
+      icone: "carregar",
+    });
     setTimeout(enviar, 4000);
   }
 }

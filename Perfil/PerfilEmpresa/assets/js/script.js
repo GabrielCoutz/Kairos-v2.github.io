@@ -18,86 +18,31 @@ const conteudo_numero_empresa = document.getElementById("numero_empresa").value;
 const salvarbtn = document.getElementById("salvarbtn");
 const cancelarbtn = document.getElementById("cancelarbtn");
 
-const IniciarCadastroEmpresa = function () {
-  let popup = function () {
-    abrirjanela(
-      "blue",
-      "Tudo bem, redirecionando para página de cadastro",
-      "Empresa não cadastrada",
-      "carregar"
-    );
-    document.getElementById("asdf_cancelar").style.display = "none";
-  };
-  let redirecionar = function () {
-    window.location.href = "assets/php/enviar_empresa?cadastrar=true";
-  };
-  setTimeout(popup, 1500);
-  setTimeout(redirecionar, 3000);
-};
-
-const cancelarCadastroEmpresa = function () {
-  let popup = function () {
-    abrirjanela(
-      "blue",
-      "Tudo bem, estamos te tirando daqui",
-      "Empresa não cadastrada",
-      "carregar"
-    );
-    document.getElementById("asdf_cancelar").style.display = "none";
-  };
-  let redirecionar = function () {
-    window.location.href = "../usuario";
-  };
-
-  setTimeout(popup, 1500);
-
-  setTimeout(redirecionar, 6000);
-};
-
 function abrirEmpresa() {
-  janelaPopUp.abre(
-    "asdf",
-    "p" + " " + "blue" + " " + "confirm",
-    "Empresa Não cadastrada",
-    "Parece que você não tem uma empresa cadastrada. Gostaria de cadastrá-la agora?"
-  );
-
-  document.getElementById("popUpEnviar").innerHTML = "Sim, gostaria";
-  document.getElementById("popUpEnviar");
-  document.addEventListener("click", IniciarCadastroEmpresa);
-
-  document.getElementById("popUpEnviar").style.display = "block";
-  document.getElementById("popUpEnviar").classList.remove("secundario");
-  document.getElementById("popUpEnviar").classList.add("primario");
-
-  document.getElementById("popUpCancelar").innerHTML = "Não, talvez mais tarde";
-  document.getElementById("popUpCancelar").style.order = "2";
-  document
-    .getElementById("popUpCancelar")
-    .addEventListener("click", cancelarCadastroEmpresa);
-}
-
-function erro() {
-  document
-    .getElementById("popUpcancelar")
-    .addEventListener("click", function () {
-      window.location.href = "../../Login/login";
-    });
-  document.getElementById("popUpcancelar").click();
+  abrirjanela({
+    cor: "blue",
+    corpo:
+      "Parece que você não tem uma empresa cadastrada. Gostaria de cadastrá-la agora?",
+    titulo: "Empresa não cadastrada",
+    abrirEmpresa: true,
+  });
 }
 
 let alerta = "";
 
 switch (true) {
   case verificarURL(md5("erro=true")):
-    abrirjanela(
-      "red",
-      "Erro inesperado!<br>Por favor, faça login novamente.",
-      "Conta não sincronizada",
-      "falha"
-    );
-    document.getElementsByClassName("content")[0].style.display = "none";
-    document.getElementById("asdf_cancelar").style.display = "none";
+    abrirjanela({
+      cor: "red",
+      corpo: "Erro inesperado! Por favor, faça login novamente.",
+      titulo: "Conta não sincronizada",
+      icone: "falha",
+      semBotoes: true,
+    });
+    document.getElementsByClassName("principal")[0].style.display = "none";
+    setTimeout(() => {
+      window.location.href = "../../Login/login";
+    }, 3000);
     setTimeout(erro, 3000);
     limparURL(md5("erro=true"));
     break;
@@ -108,46 +53,45 @@ switch (true) {
     break;
 
   case verificarURL(md5("nome_empresa_duplicado=true")):
-    document.getElementById("editarbtn").click();
-    document.getElementById("nome_empresa").classList.add("vermei");
-    alerta += "Nome para Empresa já cadastrado!<br>";
+    nome_empresa.classList.add("vermei");
+    alerta += " Nome para Empresa já cadastrado!";
     limparURL(md5("nome_empresa_duplicado=true"));
     break;
 
   case verificarURL(md5("nome_fantasia_duplicado=true")):
-    document.getElementById("editarbtn").click();
-    document.getElementById("nome_fantasia").classList.add("vermei");
-    alerta += "Nome Fantasia já cadastrado!<br>";
+    nome_fantasia.classList.add("vermei");
+    alerta += " Nome Fantasia já cadastrado!";
     limparURL(md5("nome_fantasia_duplicado=true"));
     break;
 
   case verificarURL(md5("sucesso=true")):
-    abrirjanela(
-      "green",
-      "Dados alterados com êxito.",
-      "Alteração realizada com sucesso",
-      "sucesso"
-    );
+    abrirjanela({
+      cor: "green",
+      corpo: "Dados alterados com êxito.",
+      titulo: "Alteração realizada com sucesso",
+      icone: "sucesso",
+    });
     limparURL(md5("sucesso=true"));
     break;
 
   case verificarURL(md5("cadastro=true")):
-    abrirjanela(
-      "green",
-      "Dados registrados com êxito.",
-      "Cadastro realizado com sucesso",
-      "sucesso"
-    );
+    abrirjanela({
+      cor: "green",
+      corpo: "Dados registrados com êxito.",
+      titulo: "Cadastro realizado com sucesso",
+      icone: "sucesso",
+    });
     limparURL(md5("cadastro=true"));
     break;
 
   case verificarURL(md5("sucesso=false")):
-    abrirjanela(
-      "red",
-      "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
-      "Erro inesperado",
-      "falha"
-    );
+    abrirjanela({
+      cor: "red",
+      corpo:
+        "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
+      titulo: "Erro inesperado",
+      icone: "falha",
+    });
     limparURL(md5("sucesso=false"));
     break;
 }
@@ -165,7 +109,12 @@ $("#ramo")
   .change();
 
 if (!vazio(alerta)) {
-  abrirjanela("red", alerta, "Alteração Inválida", "falha");
+  abrirjanela({
+    cor: "red",
+    corpo: alerta,
+    titulo: "Alteração Inválida",
+    icone: "falha",
+  });
 }
 
 document.querySelectorAll("input").forEach((item) => {
@@ -273,7 +222,12 @@ function salvar() {
     numero_empresa.classList.add("vermei");
   } else {
     Cookies.set("empresa", 1);
-    abrirjanela("blue", "Verificando dados", "Validando Alteração", "carregar");
+    abrirjanela({
+      cor: "blue",
+      corpo: "Verificando dados",
+      titulo: "Validando Alteração",
+      icone: "carregar",
+    });
     setTimeout(enviar, 3000);
   }
 }

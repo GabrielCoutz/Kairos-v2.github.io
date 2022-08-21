@@ -14,12 +14,12 @@ const endereco = document.getElementById("endereco");
 
 switch (true) {
   case verificarURL(md5("erro=true")): // erro de cadastro
-    abrirjanela(
-      "red",
-      "<br>Não foi possível realizar o cadastro!",
-      "Conta não sincronizada",
-      "falha"
-    );
+    abrirjanela({
+      cor: "red",
+      corpo: "Não foi possível realizar o cadastro!",
+      titulo: "Conta não sincronizada",
+      icone: "falha",
+    });
 
     document.getElementById("asdf_cancelar").style.display = "none";
     setTimeout(paginaInicial, 4000);
@@ -28,17 +28,23 @@ switch (true) {
 
   case verificarURL(md5("cpf=false")):
     limparURL(md5("cpf=false"));
-    abrirjanela("red", "CPF já utilizado!", "Dados Duplicados", "falha");
+    abrirjanela({
+      cor: "red",
+      corpo: "CPF já utilizado!",
+      titulo: "Dados Duplicados",
+      icone: "falha",
+    });
     cpf.classList.add("vermei");
     break;
 
   case verificarURL(md5("sucesso=false")):
-    abrirjanela(
-      "red",
-      "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
-      "Erro inesperado",
-      "falha"
-    );
+    abrirjanela({
+      cor: "red",
+      corpo:
+        "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
+      titulo: "Erro inesperado",
+      icone: "falha",
+    });
     limparURL(md5("sucesso=false"));
     break;
 }
@@ -124,7 +130,11 @@ function validar() {
     dispararEvento(numero, "keyup", "condicaoVazio");
     alertaDeErro(numero, "Preencha o Número!");
   } else {
-    // abrirjanela("blue", "Validando Dados", "Cadastrando Cartão", "carregar");
-    console.log("foi =)");
+    abrirjanela({
+      cor: "blue",
+      corpo: "Validando Dados",
+      titulo: "Cadastrando Cartão",
+      icone: "carregar",
+    });
   }
 }

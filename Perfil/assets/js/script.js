@@ -41,24 +41,25 @@ function erro() {
 
 switch (true) {
   case verificarURL(md5("erro=true")):
-    abrirjanela(
-      "red",
-      "Erro inesperado!<br>Por favor, faça login novamente.",
-      "Conta não sincronizada",
-      "falha"
-    );
+    abrirjanela({
+      cor: "red",
+      corpo: "Erro inesperado!<br>Por favor, faça login novamente.",
+      titulo: "Conta não sincronizada",
+      icone: "falha",
+    });
     document.getElementsByClassName("principal")[0].style.display = "none";
     setTimeout(erro, 4000);
     limparURL(md5("erro=true"));
     break;
 
   case verificarURL(md5("senha=false")): // senha diferente da já utilizada
-    abrirjanela(
-      "red",
-      "Não foi possível alterar sua senha! Por favor, verifique os campos e tente novamente.",
-      "Alteração Inválida",
-      "falha"
-    );
+    abrirjanela({
+      cor: "red",
+      corpo:
+        "Não foi possível alterar sua senha! Por favor, verifique os campos e tente novamente.",
+      titulo: "Alteração Inválida",
+      icone: "falha",
+    });
     limparURL(md5("senha=false"));
     document.getElementById("alterarsenha").click();
     document.getElementById("senha_antiga").classList.add("vermei");
@@ -67,22 +68,23 @@ switch (true) {
     break;
 
   case verificarURL(md5("sucesso=true")):
-    abrirjanela(
-      "green",
-      "Dados alterados com êxito.",
-      "Alteração realizada",
-      "sucesso"
-    );
+    abrirjanela({
+      cor: "green",
+      corpo: "Dados alterados com êxito.",
+      titulo: "Alteração realizada",
+      icone: "sucesso",
+    });
     limparURL(md5("sucesso=true"));
     break;
 
   case verificarURL(md5("sucesso=false")):
-    abrirjanela(
-      "red",
-      "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
-      "Erro inesperado",
-      "falha"
-    );
+    abrirjanela({
+      cor: "red",
+      corpo:
+        "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
+      titulo: "Erro inesperado",
+      icone: "falha",
+    });
     limparURL(md5("sucesso=false"));
     break;
 
@@ -226,12 +228,12 @@ function salvar() {
       );
       dispararEvento(senha_antiga, "keyup", "condicaoSenha");
     } else {
-      abrirjanela(
-        "blue",
-        "Verificando dados",
-        "Validando Alteração",
-        "carregar"
-      );
+      abrirjanela({
+        cor: "blue",
+        corpo: "Verificando dados",
+        titulo: "Validando Alteração",
+        icone: "carregar",
+      });
       Cookies.set("senha", 1);
       setTimeout(enviar, 3000);
     }
@@ -256,7 +258,12 @@ function salvar() {
     numero.classList.add("vermei");
   } else {
     Cookies.set("usuario", 1);
-    abrirjanela("blue", "Verificando dados", "Validando Alteração", "carregar");
+    abrirjanela({
+      cor: "blue",
+      corpo: "Verificando dados",
+      titulo: "Validando Alteração",
+      icone: "carregar",
+    });
     setTimeout(enviar, 3000);
   }
 }

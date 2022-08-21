@@ -1,74 +1,39 @@
-// Código usado para popups, usando a função abrirjanela(cor, texto, titulo, icone)
 let janelaPopUp = new Object();
-let icone = "";
-let img = "";
+let colors = "colors= 'primary:#121331,secondary:#16c72e' ";
+let src = "";
 
-janelaPopUp.abre = function (
-  id,
-  classes,
-  titulo,
-  corpo,
-  functionCancelar,
-  functionEnviar,
-  textoCancelar,
-  textoEnviar
-) {
-  classes += " ";
-  let classArray = classes.split(" ");
-  classes = "";
-  let classesFundo = "";
-  let classBot = "";
-  $.each(classArray, function (index, value) {
-    switch (value) {
-      case "alert":
-        break;
-      case "blue":
-        classesFundo += this + " ";
-        break;
-      case "green":
-        classesFundo += this + " ";
-        break;
-      case "red":
-        classesFundo += this + " ";
-        break;
-      default:
-        classes += this + " ";
-        break;
-    }
-  });
-
-  let src = "https://cdn.lordicon.com/gqdnbnwt.json";
-  let colors = "";
-
+janelaPopUp.abre = function (param) {
   switch (
     true // determina qual ícone aparecerá no popup de acordo com a string passada na variável 'icone'
   ) {
-    case icone == "sucesso":
+    case param.icone == "sucesso":
       src = "https://cdn.lordicon.com/lupuorrc.json";
-      colors = "colors= 'primary:#121331,secondary:#16c72e' ";
       break;
-    case icone == "falha":
+    case param.icone == "falha":
       src = "https://cdn.lordicon.com/tdrtiskw.json";
       colors = "colors= 'primary:#c71f16,secondary:#000000' ";
       break;
-    case icone == "carregar":
+    case param.icone == "carregar":
       src = "https://cdn.lordicon.com/dpinvufc.json";
       delay = "delay = '10' ";
-      colors = "  colors='primary:#4E6EF1,secondary:#4E6EF1' ";
+      colors = "colors='primary:#4E6EF1,secondary:#4E6EF1' ";
       break;
-    case icone == "encontrado":
+    case param.icone == "encontrado":
       src = "https://cdn.lordicon.com/msoeawqm.json";
+      break;
+    case param.icone == "marketing":
+      src = "https://cdn.lordicon.com/gqdnbnwt.json";
       break;
   }
   let popFundo2 = document.createElement("div");
-  popFundo2.setAttribute("class", "popUpFundo " + classesFundo);
+  popFundo2.setAttribute("class", "popUpFundo " + param.cor);
 
   let janela2 = document.createElement("div");
   janela2.setAttribute("id", "popUp");
-  janela2.setAttribute("class", "popUp " + classes);
+  janela2.setAttribute("class", "popUp " + param.cor);
 
   let h1 = document.createElement("h1");
-  h1.append(titulo);
+  h1.append(param.titulo);
   janela2.append(h1);
   popFundo2.appendChild(janela2);
 
@@ -83,55 +48,102 @@ janelaPopUp.abre = function (
 
   let span = document.createElement("span");
 
-  span.append(corpo);
+  span.append(param.corpo);
 
   janela2.appendChild(span);
 
-  let botaoOk = document.createElement("button");
-  botaoOk.setAttribute("id", "popUpCancelar");
-  botaoOk.setAttribute("class", "secundario btn");
+  if (!param.semBotoes) {
+    let botaoCancelar = document.createElement("button");
+    botaoCancelar.setAttribute("id", "popUpEnviar");
+    botaoCancelar.setAttribute("class", "secundario btn");
+    botaoCancelar.append("cancelar");
 
-  let botaoCancelar = document.createElement("button");
-  botaoCancelar.setAttribute("id", "popUpEnviar");
-  botaoCancelar.setAttribute("class", "secundario btn");
+    let botaoOk = document.createElement("button");
+    botaoOk.setAttribute("id", "popUpCancelar");
+    botaoOk.setAttribute("class", "secundario btn");
+    botaoOk.append("ok");
 
-  botaoOk.append("ok");
-  botaoCancelar.append("cancelar");
-
-  janela2.append(botaoOk);
-  janela2.append(botaoCancelar);
+    janela2.append(botaoCancelar);
+    janela2.append(botaoOk);
+  }
 
   $("body").append(popFundo2);
   $("body").append(janela2);
 
-  //alert(janela);
-  $(".popFundo").fadeIn("fast");
+  $(".popUpFundo").fadeIn("fast");
   $("#popUp").addClass("popUpEntrada");
 
+  if (param.cadastrarEmpresa === true) {
+    setTimeout(() => {
+      window.location.href = "../../../CadastroEmpresa/cadastro_empresa";
+    }, 3000);
+  } else if (param.cadastrarEmpresa === false) {
+    setTimeout(() => {
+      window.location.href = "../usuario";
+    }, 3000);
+  }
+
+  if (param.abrirEmpresa) {
+    document.getElementById("popUpEnviar").innerHTML = "Sim, gostaria";
+    document.getElementById("popUpEnviar");
+    document.getElementById("popUpEnviar").style.display = "block";
+    document.getElementById("popUpEnviar").classList.remove("secundario");
+    document.getElementById("popUpEnviar").classList.add("primario");
+
+    document.getElementById("popUpCancelar").innerHTML =
+      "Não, talvez mais tarde";
+    document.getElementById("popUpCancelar").style.order = "2";
+
+    document
+      .getElementById("popUpEnviar")
+      .addEventListener("click", function () {
+        janelaPopUp.fecha();
+        setTimeout(() => {
+          abrirjanela({
+            cor: "blue",
+            corpo: "Tudo bem, redirecionando para página de cadastro",
+            titulo: "Empresa não cadastrada",
+            icone: "carregar",
+            semBotoes: true,
+            cadastrarEmpresa: true,
+          });
+        }, 2000);
+      });
+
+    document
+      .getElementById("popUpCancelar")
+      .addEventListener("click", function () {
+        janelaPopUp.fecha();
+        setTimeout(() => {
+          abrirjanela({
+            cor: "blue",
+            corpo: "Tudo bem, estamos te tirando daqui",
+            titulo: "Empresa não cadastrada",
+            icone: "carregar",
+            semBotoes: true,
+            cadastrarEmpresa: false,
+          });
+        }, 2000);
+      });
+    return;
+  }
+
   $("#popUpCancelar").on("click", function () {
-    if (functionCancelar !== undefined && functionCancelar !== "") {
-      functionCancelar();
-    } else {
-      janelaPopUp.fecha(id);
-    }
+    janelaPopUp.fecha();
   });
 
-  if (icone != "carregar") {
-    $("#popFundo").on("click", function () {
-      if (functionCancelar !== undefined && functionCancelar !== "") {
-        functionCancelar();
-      } else {
-        janelaPopUp.fecha();
-      }
+  if (
+    param.icone != "carregar" &&
+    param.icone != "marketing" &&
+    !param.cadastrarEmpresa
+  ) {
+    $(".popUpFundo").on("click", function () {
+      janelaPopUp.fecha();
     });
   }
 
   $("#popUpEnviar").on("click", function () {
-    if (functionEnviar !== undefined && functionEnviar !== "") {
-      functionEnviar();
-    } else {
-      janelaPopUp.fecha();
-    }
+    janelaPopUp.fecha();
   });
 };
 
@@ -144,14 +156,8 @@ janelaPopUp.fecha = function () {
   });
 };
 
-function abrirjanela(cor, texto, titulo, trigger) {
-  // trigger é usado para sinalizar qual ícone vai ser usado
-  icone = trigger;
-  img = "";
-  janelaPopUp.abre("asdf", "p" + " " + cor + " " + "alert", titulo, texto);
-  if (icone == "carregar") {
-    document.getElementById("popUpCancelar").style.display = "none";
-  }
+function abrirjanela(params) {
+  janelaPopUp.abre(params);
 }
 
 function abrirJanelaMarketing() {
@@ -218,12 +224,12 @@ function abrirJanelaPlanos(plano_mudança, plano_atual) {
 
     let abrir = function () {
       setTimeout(
-        abrirjanela(
-          "blue",
-          "Sem problemas, redirecionando para seu perfil",
-          "Mudança de Planos",
-          "carregar"
-        ),
+        abrirjanela({
+          cor: "blue",
+          corpo: "Sem problemas, redirecionando para seu perfil",
+          titulo: "Mudança de Planos",
+          icone: "carregar",
+        }),
         3000
       );
       document.getElementById("asdf_cancelar").style.display = "none";
