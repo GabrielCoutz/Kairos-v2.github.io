@@ -18,7 +18,6 @@ $("#add_tel").click(function () {
 
 // mostra numeros para serem deletados
 $("#del_tel").click(function () {
-  Cookies.set("excluir_num", 1);
   cancelarbtn.disabled = false;
 
   if ($(".dados-coluna.telefone")[0].style.display != "none") {
@@ -34,7 +33,6 @@ $("#del_tel").click(function () {
 
 function deletar_tel(tel) {
   let anterior = tel.previousElementSibling;
-
   anterior.classList.toggle("deletar");
 
   anterior.classList.toString().includes("deletar")

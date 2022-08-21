@@ -55,7 +55,7 @@ switch (true) {
   case verificarURL(md5("senha=false")): // senha diferente da já utilizada
     abrirjanela(
       "red",
-      "Não foi possível alterar sua senha!<br>Por favor, verifique os campos e tente novamente.",
+      "Não foi possível alterar sua senha! Por favor, verifique os campos e tente novamente.",
       "Alteração Inválida",
       "falha"
     );
@@ -130,6 +130,7 @@ document.querySelectorAll("input").forEach((item) => {
 
           default:
             limpar_inputs();
+            Cookies.set("endereco", 1);
             salvarbtn.disabled = false;
             cancelarbtn.disabled = false;
         }
@@ -150,6 +151,7 @@ document.querySelectorAll("input").forEach((item) => {
 
           default:
             limpar_inputs();
+            Cookies.set("endereco", 1);
             salvarbtn.disabled = false;
             cancelarbtn.disabled = false;
         }
@@ -205,8 +207,6 @@ function cancelar() {
   cancelarbtn.disabled = true;
 
   apagarCookie("endereco");
-  apagarCookie("excluir_num");
-  apagarCookie("tels");
 }
 
 function salvar() {

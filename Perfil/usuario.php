@@ -14,6 +14,61 @@
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
         rel="stylesheet">
     <title>Perfil</title>
+    <?php
+        session_start();
+        error_reporting(E_ERROR | E_PARSE);
+
+
+        $dbHost     = 'localhost';
+        $dbUname = 'root';
+        $dbPass = '';
+        $dbName     = 'kairos';
+
+        $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
+
+        if($conec->connect_error){ // se não for localhost, usa a conexão do banco no site
+            $dbHost = 'sql309.epizy.com';
+            $dbUname = 'epiz_31926454';
+            $dbPass = 'VOjqZcbwH38iVo';
+            $dbName = 'epiz_31926454_Banco_Kairos';
+            $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
+        }
+        
+
+        if(!isset($_SESSION['email']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true'))){
+          header("Refresh:0; url=usuario".'?'.md5('erro=true'));
+          exit;
+        } else {
+          $email=$_SESSION['email'];
+        }
+
+        $select=mysqli_query($conec, "SELECT * FROM usuario WHERE email = '$email'")->fetch_assoc();
+
+        // if (empty(mysqli_query($conec, "SELECT * FROM analise_swot WHERE email_usuario = '$email'")->fetch_assoc()) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('analise=false')) && !$_COOKIE[md5('analise')] && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true'))){
+        //     header("Refresh:0; url=usuario".'?'.md5('analise=false'));
+        //     exit;
+        // }
+
+        $cpf=$select['cpf'];
+
+        empty($cpf) ? $cpf = 'Não Cadastrado' : $cpf = substr($select['cpf'], 0, 3).'.***.***'.substr($select['cpf'], -3, 3);
+
+        $_SESSION['email_padrao']=$email;
+        $_SESSION['nome_padrao']=$select['nome'];
+
+        $select_telefone=mysqli_query($conec, "SELECT tel FROM telefone WHERE email_usuario = '$email'");
+
+        if($select_telefone->fetch_assoc()['tel']){
+            foreach ($select_telefone as $key => $value) {
+                $telefone.="<a class='desativado numeros'>".$value['tel']."</a>";
+            }
+        } else {
+            $telefone = "<a class='desativado'>Não Cadastrado</a>";
+        }
+
+        $select_endereco=mysqli_query($conec, "SELECT * FROM endereco WHERE email_usuario = '$email'")->fetch_assoc();
+
+  ?>
 </head>
 
 <body class="body-perfil">
@@ -67,36 +122,36 @@
             <a href="../index.php" class="btn secundario">Sair</a>
         </header>
         <div class="perfil">
-            <h1 class="titulo">Olá, Gabriel</h1>
-            <form action="" class="container perfil">
+            <h1 class="titulo">Olá, <?= ucfirst(strtok($select['nome'], " ")) ?></h1>
+            <form action="assets/php/atualizar_usuario" method="POST" class="container perfil" onsubmit="return false">
                 <div class="fundo-dados">
                     <div class="form-caixa">
                         <label for="nome">Nome</label>
                         <input type="text" name="nome" id="nome" onkeyup="apenasLetras(this)" maxlength="50"
-                            placeholder="Texto de texto" aria-controls="nomeAlert" value="gabriel">
+                        value="<?= $select['nome'] ?>" aria-controls="nomeAlert">
                         <div id="nomeAlert"></div>
                     </div>
                     <div class="form-caixa">
                         <label>CPF</label>
-                        <a class="desativado">000.000.000-00</a>
+                        <a class="desativado"><?= $cpf ?></a>
                     </div>
                     <div class="form-caixa">
                         <label>Email</label>
-                        <a class="desativado">exemplo@gmail.com</a>
+                        <a class="desativado"><?= $select['email'] ?></a>
                     </div>
                 </div>
                 <div class="fundo-dados info-2">
                     <div class="dados-coluna">
                         <div class="form-caixa">
                             <label for="cep">CEP</label>
-                            <input type="tel" name="cep" id="cep" placeholder="Texto de texto" aria-controls="cepAlert"
-                                onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)">
+                            <input type="tel" name="cep" id="cep" aria-controls="cepAlert"
+                                onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)" value='<?= $select_endereco['cep'] ?>'>
                             <div id="cepAlert"></div>
                         </div>
                         <div class="form-caixa">
                             <label for="numero">Número</label>
-                            <input type="tel" name="numero" id="numero" placeholder="Texto de texto"
-                                aria-controls="numeroAlert">
+                            <input type="tel" name="numero" id="numero" 
+                                aria-controls="numeroAlert" value='<?= $select_endereco['numero'] ?>'>
                             <div id="numeroAlert"></div>
                         </div>
                         <div class="form-caixa">
@@ -105,18 +160,13 @@
                             <input type="text" class="none" id="cidade" name="cidade">
                             <input type="text" class="none" id="estado" name="estado">
                             <label>Endereço</label>
-                            <p class="desativado" id="endereco"></p>
+                            <p class="desativado" id="endereco"><a><?= ucwords($select_endereco['rua']) ?>, <?= ucwords($select_endereco['bairro']) ?>, <?= ucwords($select_endereco['cidade']) ?>, <?= $select_endereco['estado'] ?></a></p>
                         </div>
                     </div>
                     <div class="dados-coluna telefone">
                         <label>Telefone</label>
                         <div class="form-caixa telefone">
-                            <p class="desativado numeros">11 11111-1111</p>
-                            <p class="desativado numeros">11 22222-2222</p>
-                            <p class="desativado numeros">11 33333-3333</p>
-                            <p class="desativado numeros">11 44444-4444</p>
-                            <p class="desativado numeros">11 55555-5555</p>
-                            <p class="desativado numeros">11 66666-6666</p>
+                            <?= $telefone ?>
                         </div>
                     </div>
                     <div class="dados-coluna" id="manipularNumeros">
