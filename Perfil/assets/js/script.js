@@ -30,15 +30,6 @@ $(document).ready(function () {
   }
 });
 
-function erro() {
-  document
-    .getElementById("asdf_cancelar")
-    .addEventListener("click", function () {
-      window.location.href = "../Login/login";
-    });
-  document.getElementById("asdf_cancelar").click();
-}
-
 switch (true) {
   case verificarURL(md5("erro=true")):
     abrirjanela({
@@ -49,7 +40,9 @@ switch (true) {
       semBotoes: true,
     });
     document.getElementsByClassName("principal")[0].style.display = "none";
-    setTimeout(erro, 4000);
+    setTimeout(() => {
+      window.location.href = "../Login/login";
+    }, 3000);
     limparURL(md5("erro=true"));
     break;
 

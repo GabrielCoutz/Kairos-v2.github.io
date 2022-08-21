@@ -105,7 +105,7 @@
                                 fill="#ffffff" />
                         </svg><a href="#">Análise de Marketing</a></li>
                     <li><i aria-hidden="true" class="gg-credit-card"></i>
-                        <a href="#">Minha assinatura</a>
+                        <a href="../Assinaturas/assinaturas">Minha assinatura</a>
                     </li>
                     <a href="../index" class="btn secundario menu-btn">Sair</a>
                 </ul>

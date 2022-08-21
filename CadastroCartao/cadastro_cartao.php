@@ -16,6 +16,9 @@
   <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
 
   <title>Pagamento</title>
+  <?php
+    $_SESSION['plano']=$_GET['plano'];
+  ?>
 </head>
 
 <body class="body-form cartao">
