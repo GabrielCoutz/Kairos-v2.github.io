@@ -50,7 +50,6 @@
                 exit;
                 break;
         }
-
         $_SESSION['ramo_padrao']=$select_empresa['ramo'];
         $_SESSION['nome_empresa_padrao']=$select_empresa['nome'];
         $_SESSION['nome_fantasia_padrao']=$select_empresa['nome_fantasia'];
@@ -114,7 +113,7 @@
         </header>
         <div class="perfil">
             <h1 class="titulo">Sua empresa</h1>
-            <form action="assets/php/atualiar_empresa" class="container perfil empresa">
+            <form method="POST" action="assets/php/atualizar_empresa" class="container perfil empresa">
                 <div class="fundo-dados">
                     <div class="form-caixa">
                         <label for="nome_empresa">Nome da empresa</label>
@@ -160,7 +159,8 @@
                     <div class="dados-coluna">
                         <div class="form-caixa">
                             <label for="ramo">Ramo</label>
-                            <select name="ramo" id="ramo" aria-controls="ramoAlert">
+                            <div class="none" id="ramo_php"><?= $select_empresa['ramo']; ?></div>
+                            <select name="ramo" id="ramo" aria-controls="ramoAlert" value="trste">
                                 <option value disabled selected>Selecione o ramo</option>
                                 <option>Alimentação</option>
                                 <option>Saúde</option>

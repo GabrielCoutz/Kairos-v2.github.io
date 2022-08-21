@@ -19,11 +19,12 @@ switch (true) {
       corpo: "Não foi possível realizar o cadastro!",
       titulo: "Conta não sincronizada",
       icone: "falha",
+      semBotoes: true,
     });
-
-    document.getElementById("asdf_cancelar").style.display = "none";
-    setTimeout(paginaInicial, 4000);
     limparURL(md5("erro=true"));
+    setTimeout(() => {
+      window.location.href = "../index";
+    }, 3000);
     break;
 
   case verificarURL(md5("cpf=false")):
@@ -35,17 +36,6 @@ switch (true) {
       icone: "falha",
     });
     cpf.classList.add("vermei");
-    break;
-
-  case verificarURL(md5("sucesso=false")):
-    abrirjanela({
-      cor: "red",
-      corpo:
-        "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
-      titulo: "Erro inesperado",
-      icone: "falha",
-    });
-    limparURL(md5("sucesso=false"));
     break;
 }
 

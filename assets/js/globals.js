@@ -37,10 +37,6 @@ function enviar() {
   document.querySelector("form").submit();
 }
 
-function paginaInicial() {
-  window.location.href = "../index";
-}
-
 function verificarURL(parametro) {
   //procura o parametro passado na URL, retornando booleano
   let verificarURL = new URLSearchParams(window.location.search);
@@ -175,6 +171,9 @@ function lerCEP(cep) {
             ", " +
             resposta.uf;
           document.querySelector('input[id^="numero"]').focus();
+          if (window.location.href.includes("Perfil")) {
+            Cookies.set("endereco", 1);
+          }
         }
       },
     });

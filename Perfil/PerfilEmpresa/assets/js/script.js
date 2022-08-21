@@ -1,6 +1,6 @@
 const nome_empresa = document.getElementById("nome_empresa");
 const nome_fantasia = document.getElementById("nome_fantasia");
-const ramo_empresa = document.getElementById("ramo");
+const ramo = document.getElementById("ramo");
 const cep_empresa = document.getElementById("cep_empresa");
 const numero_empresa = document.getElementById("numero_empresa");
 const endereco = vazio(
@@ -8,6 +8,10 @@ const endereco = vazio(
 )
   ? (document.getElementById("endereco").innerText = "Não Cadastrado")
   : document.getElementById("endereco").innerText;
+
+if (!vazio(document.getElementById("ramo_php").innerText)) {
+  ramo.value = document.getElementById("ramo_php").innerText;
+}
 
 const conteudo_nome_empresa = document.getElementById("nome_empresa").value;
 const conteudo_ramo = document.getElementById("ramo").value;
@@ -83,17 +87,6 @@ switch (true) {
     });
     limparURL(md5("cadastro=true"));
     break;
-
-  case verificarURL(md5("sucesso=false")):
-    abrirjanela({
-      cor: "red",
-      corpo:
-        "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
-      titulo: "Erro inesperado",
-      icone: "falha",
-    });
-    limparURL(md5("sucesso=false"));
-    break;
 }
 
 $("#ramo")
@@ -168,7 +161,6 @@ document.querySelectorAll("input").forEach((item) => {
             break;
 
           default:
-            console.log("pegou3");
             salvarbtn.disabled = false;
             cancelarbtn.disabled = false;
         }
@@ -209,6 +201,7 @@ function cancelar() {
     : (ramo.value = conteudo_ramo);
 
   document.getElementById("endereco").innerHTML = endereco;
+  apagarCookie('endereco')
 }
 
 function salvar() {
@@ -227,6 +220,7 @@ function salvar() {
       corpo: "Verificando dados",
       titulo: "Validando Alteração",
       icone: "carregar",
+      semBotoes: true,
     });
     setTimeout(enviar, 3000);
   }

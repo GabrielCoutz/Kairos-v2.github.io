@@ -43,9 +43,10 @@ switch (true) {
   case verificarURL(md5("erro=true")):
     abrirjanela({
       cor: "red",
-      corpo: "Erro inesperado!<br>Por favor, faça login novamente.",
+      corpo: "Erro inesperado! Por favor, faça login novamente.",
       titulo: "Conta não sincronizada",
       icone: "falha",
+      semBotoes: true,
     });
     document.getElementsByClassName("principal")[0].style.display = "none";
     setTimeout(erro, 4000);
@@ -75,17 +76,6 @@ switch (true) {
       icone: "sucesso",
     });
     limparURL(md5("sucesso=true"));
-    break;
-
-  case verificarURL(md5("sucesso=false")):
-    abrirjanela({
-      cor: "red",
-      corpo:
-        "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
-      titulo: "Erro inesperado",
-      icone: "falha",
-    });
-    limparURL(md5("sucesso=false"));
     break;
 
   case verificarURL(md5("analise=false")):
@@ -132,7 +122,6 @@ document.querySelectorAll("input").forEach((item) => {
 
           default:
             limpar_inputs();
-            Cookies.set("endereco", 1);
             salvarbtn.disabled = false;
             cancelarbtn.disabled = false;
         }
@@ -233,6 +222,7 @@ function salvar() {
         corpo: "Verificando dados",
         titulo: "Validando Alteração",
         icone: "carregar",
+        semBotoes: true,
       });
       Cookies.set("senha", 1);
       setTimeout(enviar, 3000);
@@ -263,6 +253,7 @@ function salvar() {
       corpo: "Verificando dados",
       titulo: "Validando Alteração",
       icone: "carregar",
+      semBotoes: true,
     });
     setTimeout(enviar, 3000);
   }

@@ -15,19 +15,27 @@
         rel="stylesheet">
     <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
     <title>Cadastro da Empresa</title>
+    <?php
+        session_start();
+        error_reporting(E_ERROR | E_PARSE);
+        if(!isset($_SESSION['email']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true'))){
+            header("Refresh:0; //url=cadastro_empresa".'?'.md5('erro=true'));
+            exit;
+        }
+	?>
 </head>
 
 <body class="body-form">
 
     <header class="header container">
         <div class="header-logo">
-            <a href="../index.php"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
+            <a href="../index"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
         </div>
     </header>
 
     <div class="fundo-form container">
         <div class="form-holder">
-            <form method="get" class="formulario empresa" onsubmit="return false">
+            <form method="POST" action="assets/php/cadastrar" class="formulario empresa" onsubmit="return false">
                 <h1 class="titulo" >Cadastre sua empresa</h1>
                 <div class="form-caixa">
                     <label for="nome_empresa">Nome da empresa</label>

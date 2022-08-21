@@ -29,17 +29,6 @@ switch (
     });
     limparURL(md5("email=false"));
     break;
-
-  case verificarURL(md5("sucesso=false")):
-    abrirjanela({
-      cor: "red",
-      corpo:
-        "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
-      titulo: "Erro inesperado",
-      icone: "falha",
-    });
-    limparURL(md5("sucesso=false"));
-    break;
 }
 
 function validar() {
@@ -70,6 +59,7 @@ function validar() {
       corpo: "Validando Dados",
       titulo: "Andamento Cadastro",
       icone: "carregar",
+      semBotoes: true,
     });
     setTimeout(enviar, 4000);
   }

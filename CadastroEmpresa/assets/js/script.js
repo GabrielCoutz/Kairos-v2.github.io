@@ -12,10 +12,12 @@ switch (true) {
       corpo: "Não foi possível realizar o cadastro!",
       titulo: "Conta não sincronizada",
       icone: "falha",
+      semBotoes: true,
     });
-    document.getElementById("asdf_cancelar").style.display = "none";
     limparURL(md5("erro=true"));
-    setTimeout(paginaInicial, 4000);
+    setTimeout(() => {
+      window.location.href = "../index";
+    }, 3000);
     break;
 
   case verificarURL(md5("cnpj=false")):
@@ -64,6 +66,7 @@ function validar() {
       corpo: "Verificando Dados",
       titulo: "Andamento Cadastro",
       icone: "carregar",
+      semBotoes: true,
     });
     setTimeout(enviar, 4000);
   }

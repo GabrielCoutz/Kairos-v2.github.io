@@ -4,7 +4,7 @@ let src = "";
 
 janelaPopUp.abre = function (param) {
   switch (
-    true // determina qual ícone aparecerá no popup de acordo com a string passada na variável 'icone'
+    true // determina qual ícone aparecerá no popup de acordo com a string passada no parametro icone
   ) {
     case param.icone == "sucesso":
       src = "https://cdn.lordicon.com/lupuorrc.json";
@@ -53,15 +53,16 @@ janelaPopUp.abre = function (param) {
   janela2.appendChild(span);
 
   if (!param.semBotoes) {
+    // se 'semBotoes' for true, esse bloco, que adiciona os botões, não é executado
     let botaoCancelar = document.createElement("button");
     botaoCancelar.setAttribute("id", "popUpEnviar");
     botaoCancelar.setAttribute("class", "secundario btn");
-    botaoCancelar.append("cancelar");
+    botaoCancelar.append("Cancelar");
 
     let botaoOk = document.createElement("button");
     botaoOk.setAttribute("id", "popUpCancelar");
     botaoOk.setAttribute("class", "secundario btn");
-    botaoOk.append("ok");
+    botaoOk.append("Ok");
 
     janela2.append(botaoCancelar);
     janela2.append(botaoOk);
@@ -75,7 +76,7 @@ janelaPopUp.abre = function (param) {
 
   if (param.cadastrarEmpresa === true) {
     setTimeout(() => {
-      window.location.href = "../../../CadastroEmpresa/cadastro_empresa";
+      window.location.href = "../../CadastroEmpresa/cadastro_empresa";
     }, 3000);
   } else if (param.cadastrarEmpresa === false) {
     setTimeout(() => {
@@ -241,4 +242,15 @@ function abrirJanelaPlanos(plano_mudança, plano_atual) {
     setTimeout(abrir, 2500);
     setTimeout(redirecionar, 6000);
   });
+}
+
+if (verificarURL(md5("sucesso=false"))) {
+  abrirjanela({
+    cor: "red",
+    corpo:
+      "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
+    titulo: "Erro inesperado",
+    icone: "falha",
+  });
+  limparURL(md5("sucesso=false"));
 }

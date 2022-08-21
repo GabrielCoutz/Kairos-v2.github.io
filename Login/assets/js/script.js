@@ -37,8 +37,6 @@ switch (true) {
     break;
 }
 
-apagarCookie(md5("analise"));
-
 function validar() {
   limpar_inputs();
 
@@ -50,11 +48,13 @@ function validar() {
     dispararEvento(senha, "keyup", "condicaoVazio");
   } else {
     localStorage.clear();
+    apagarCookie(md5("analise"));
     abrirjanela({
       cor: "blue",
       corpo: "Aguarde",
       titulo: "Validando dados",
       icone: "carregar",
+      semBotoes: true
     });
     setTimeout(enviar, 4000);
   }
