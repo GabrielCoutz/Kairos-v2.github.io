@@ -17,6 +17,8 @@
 
   <title>Pagamento</title>
   <?php
+    error_reporting(E_ERROR | E_PARSE);
+    session_start();
     $_SESSION['plano']=$_GET['plano'];
   ?>
 </head>
@@ -128,7 +130,7 @@
           </div>
         </div>
       </div>
-      <form method="POST" onsubmit="return false" autocomplete="off" class="formulario">
+      <form method="POST" action="assets/php/cadastrar_cartao" onsubmit="return false" autocomplete="off" class="formulario">
         <div class="form-caixa">
           <label for="cardNumber">Número do Cartão</label>
           <input type="tel" id="cardNumber" v-mask="generateCardNumberMask" v-model="cardNumber" v-on:focus="focusInput"
@@ -200,9 +202,9 @@
         <button class="btn primario" onclick="validar()" id='butao' type="button">
           Finalizar
         </button>
-        <a class="btn terciario" href="../index.php">
+        <button class="btn terciario" type="reset" onclick="cancelar()">
           Cancelar
-        </a>
+        </button>
       </form>
     </div>
   </div>

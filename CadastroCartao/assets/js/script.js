@@ -87,10 +87,32 @@ $(document).ready(function () {
   });
 });
 
+function cancelar() {
+  abrirjanela({
+    cor: "blue",
+    titulo: "Cancelando",
+    corpo: "Pena que mudou de ideia =(",
+    icone: "carregar",
+    semBotoes: true,
+  });
+  setTimeout(() => {
+    window.location.href = "../Perfil/usuario";
+  }, 3000);
+}
+
 function validar() {
+  let validarNumero;
+
+  !vazio(num.value) &&
+  document.body.contains(document.getElementById("imagem")) &&
+  document.getElementById("imagem").getAttribute("src").includes("amex")
+    ? (validarNumero = 17)
+    : (validarNumero = 19);
+
   limpar_inputs();
 
-  if (num.value.length != 19) {
+  if (num.value.length != validarNumero) {
+    console.log(validarNumero);
     alertaDeErro(num, "Preencha o número do cartão!");
     dispararEvento(num, "keyup", "condicaoNum");
     num.classList.add("vermei");
@@ -125,6 +147,8 @@ function validar() {
       corpo: "Validando Dados",
       titulo: "Cadastrando Cartão",
       icone: "carregar",
+      semBotoes: true,
     });
+    setTimeout(enviar, 3000);
   }
 }
