@@ -71,3 +71,7 @@
   background-color: var(--branco-puro);
   border: 1px solid var(--cor-primaria);
 }
+
+.planos-item > button {
+  grid-column: 1/-1;
+}

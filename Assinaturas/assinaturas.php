@@ -64,7 +64,7 @@
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M13 7H23V21H1V3H13V7ZM8 5H11V7H8V5ZM11 19V17H8V19H11ZM11 15V13H8V15H11ZM11 11V9H8V11H11ZM21 19V9H13V11H15V13H13V15H15V17H13V19H21ZM3 19V17H6V19H3ZM3 15H6V13H3V15ZM6 11V9H3V11H6ZM3 7H6V5H3V7Z"
                                 fill="#ffffff" />
-                        </svg><a href="PerfilEmpresa/empresa">Perfil da Empresa</a></li>
+                        </svg><a href="../Perfil/PerfilEmpresa/empresa">Perfil da Empresa</a></li>
                     <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M12.552 8C11.9997 8 11.552 8.44772 11.552 9C11.552 9.55228 11.9997 10 12.552 10H16.552C17.1043 10 17.552 9.55228 17.552 9C17.552 8.44772 17.1043 8 16.552 8H12.552Z"
@@ -86,7 +86,7 @@
                                 fill="#ffffff" />
                         </svg><a href="#">Análise de Marketing</a></li>
                     <li><i aria-hidden="true" class="gg-credit-card"></i>
-                        <a href="#">Minha assinatura</a>
+                        <a href="assinaturas">Minha assinatura</a>
                     </li>
                     <a href="../index" class="btn secundario menu-btn">Sair</a>
                 </ul>
@@ -104,8 +104,8 @@
         </header>
         <div class="perfil">
             <section class="planos container" id="planos">
-        <h1 class="titulo">Planos de Serviço</h1>
-        <p class="texto">Seu negócio, suas regras</p>
+        <h1 class="titulo">Conheça nossos planos</h1>
+        <p class="texto">Feitos sob medida para seu negócio.</p>
         <div class="planos-cards">
             <div class="planos-item" id="basico">
                 <span class="planos-titulo titulo">Básico</span>
@@ -116,7 +116,7 @@
                     <li>Suporte 08:00 às 18:00</li>
                     <li>1 Visita presencial p/mês</li>
                 </ul>
-                <a href="../CadastroCartao/cadastro_cartao?plano=Básico" class="btn secundario btn-plano">Escolher plano</a>
+                <button onclick='window.location.href="../CadastroCartao/cadastro_cartao?plano=Básico"' class="btn secundario btn-plano">Escolher plano</button>
             </div>
             <div class="planos-item" id="medio">
                 <span class="planos-titulo titulo">Médio</span>
@@ -128,7 +128,7 @@
                     <li>3 Visita presencial p/mês</li>
                     <li>Consultoria de Marketing</li>
                 </ul>
-                <a href="../CadastroCartao/cadastro_cartao?plano=Médio" class="btn primario btn-plano-ativo">Escolher plano</a>
+                <button onclick='window.location.href="../CadastroCartao/cadastro_cartao?plano=Médio"' class="btn secundario">Escolher plano</button>
             </div>
             <div class="planos-item" id="premium">
                 <span class="planos-titulo titulo">Premium</span>
@@ -140,9 +140,9 @@
                     <li>5 Visita presencial p/mês</li>
                     <li>Consultoria de Marketing</li>
                     <li>Plano de Negócios</li>
-                    <li>Análise de Resultadoss</li>
+                    <li>Análise de Resultados</li>
                 </ul>
-                <a href="../CadastroCartao/cadastro_cartao?plano=Premium" class="btn secundario btn-plano">Escolher plano</a>
+                <button onclick='window.location.href="../CadastroCartao/cadastro_cartao?plano=Premium"' class="btn secundario btn-plano">Escolher plano</button>
             </div>
         </div>
     </section>

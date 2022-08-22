@@ -20,6 +20,31 @@
     error_reporting(E_ERROR | E_PARSE);
     session_start();
     $_SESSION['plano']=$_GET['plano'];
+    $dbHost     = 'localhost';
+    $dbUname = 'root';
+    $dbPass = '';
+    $dbName     = 'kairos';
+
+    $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
+
+    if($conec->connect_error){ // se não for localhost, usa a conexão do banco no site
+        $dbHost = 'sql309.epizy.com';
+        $dbUname = 'epiz_31926454';
+        $dbPass = 'VOjqZcbwH38iVo';
+        $dbName = 'epiz_31926454_Banco_Kairos';
+        $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
+    }
+
+    $email = $_SESSION['email'];
+    $select = mysqli_query($conec, "SELECT id from cartao where email_usuario='$email'")->fetch_assoc()['id'];
+
+    
+    if($select){ // alteração de plano contratado
+      $plano = $_GET['plano'];
+      $result_alterar=mysqli_query($conec, "UPDATE cartao SET assinatura='$plano' WHERE email_usuario='$email'") or die(mysqli_error($conec)."alteração_plano");
+      header('Location: ../Perfil/usuario?'.md5('sucesso=true'));
+      exit;
+  }
   ?>
 </head>
 

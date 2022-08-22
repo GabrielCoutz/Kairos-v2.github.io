@@ -24,7 +24,7 @@
 
     <header class="header container">
         <div class="header-logo">
-            <a href="../index.php"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
+            <a href="../index"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
         </div>
     </header>
 
@@ -66,7 +66,7 @@
                     <span class="underline"></span>
                 </div>
                 <button type="button" id="butao" class="btn primario" onclick="validar()">Registrar</button>
-                <a href="../Login/login.php" class="btn terciario">Fazer login</a>
+                <a href="../Login/login" class="btn terciario">Fazer login</a>
             </form>
         </div>
 

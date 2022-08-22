@@ -5,4 +5,5 @@
 #planos {
   grid-column: 1/-1;
   padding: 20px;
+  border-radius: var(--borda-redonda);
 }

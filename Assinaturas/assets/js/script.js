@@ -19,16 +19,22 @@ const plano = document.getElementById("plano-php").innerText;
 switch (plano) {
   case "Básico":
     document.getElementById("basico").classList.add("escolhido");
-    document.getElementById("basicobtn").disabled = true;
+    document.querySelector(".planos-item.escolhido > button").disabled = true;
+    document.querySelector(".planos-item.escolhido > button").innerHTML =
+      "Plano Ativo";
     break;
 
-  case "Intermediário":
-    document.getElementById("intermediario").classList.add("escolhido");
-    document.getElementById("intermediariobtn").disabled = true;
+  case "Médio":
+    document.getElementById("medio").classList.add("escolhido");
+    document.querySelector(".planos-item.escolhido > button").disabled = true;
+    document.querySelector(".planos-item.escolhido > button").innerHTML =
+      "Plano Ativo";
     break;
 
   case "Premium":
     document.getElementById("premium").classList.add("escolhido");
-    document.getElementById("premiumbtn").disabled = true;
+    document.querySelector(".planos-item.escolhido > button").disabled = true;
+    document.querySelector(".planos-item.escolhido > button").innerHTML =
+      "Plano Ativo";
     break;
 }

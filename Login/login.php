@@ -48,8 +48,8 @@
                     <div id="senhaAlert"></div>
                 </div>
                 <button type="button" class="btn secundario" onclick="validar()" id="butao">Entrar</button>
-                <a href="../CadastroUsuario/cadastro_usuario.php" class="btn primario">Registrar-se</a>
-                <a href="../Recuperacao/recuperacao.php" class="btn terciario">Esqueci a senha</a>
+                <a href="../CadastroUsuario/cadastro_usuario" class="btn primario">Registrar-se</a>
+                <a href="../Recuperacao/recuperacao" class="btn terciario">Esqueci a senha</a>
             </form>
         </div>
 

@@ -21,7 +21,7 @@
 
     <header class="header container" id="header-cadastroUsuario">
         <div class="header-logo">
-            <a href="../../index.php"><img src="../../assets/img/logo/airos.png" alt="Kairos Logo"></a>
+            <a href="../../index"><img src="../../assets/img/logo/airos.png" alt="Kairos Logo"></a>
         </div>
     </header>
 

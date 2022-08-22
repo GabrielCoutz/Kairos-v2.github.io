@@ -21,7 +21,7 @@
 
     <header class="header container" id="header-cadastroUsuario">
         <div class="header-logo">
-            <a href="../index.php"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
+            <a href="../index"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
         </div>
     </header>
 
@@ -40,7 +40,7 @@
             <button class="copiar btn terciario"
                 data-clipboard-text="kairozprojeto@gmail.com">kairozprojeto@gmail.com</button>
             <div id="mensagem" class="none"></div>
-            <a href="../index.php" class="btn primario">Voltar à página inicial</a>
+            <a href="../index" class="btn primario">Voltar à página inicial</a>
         </div>
     </section>
 
