@@ -48,7 +48,7 @@
     <?= $plano; ?>
 </div>
 
-<body class="body-perfil">
+<body class="body-perfil assinaturas">
     <div class="fundo-barra-lateral">
         <div class="barra-lateral">
             <nav aria-label="Navegação Lateral">
@@ -115,8 +115,7 @@
                             <li>Suporte 08:00 às 18:00</li>
                             <li>1 Visita presencial p/mês</li>
                         </ul>
-                        <button onclick='window.location.href="../CadastroCartao/cadastro_cartao?plano=Básico"'
-                            class="btn secundario btn-plano">Escolher plano</button>
+                        <button onclick="mudarPlano(this)" value="Básico" class="btn secundario btn-plano">Escolher plano</button>
                     </div>
                     <div class="planos-item" id="medio">
                         <span class="planos-titulo titulo">Médio</span>
@@ -128,8 +127,7 @@
                             <li>3 Visita presencial p/mês</li>
                             <li>Consultoria de Marketing</li>
                         </ul>
-                        <button onclick='window.location.href="../CadastroCartao/cadastro_cartao?plano=Médio"'
-                            class="btn secundario">Escolher plano</button>
+                        <button onclick="mudarPlano(this)" value="Médio" class="btn secundario">Escolher plano</button>
                     </div>
                     <div class="planos-item" id="premium">
                         <span class="planos-titulo titulo">Premium</span>
@@ -143,8 +141,7 @@
                             <li>Plano de Negócios</li>
                             <li>Análise de Resultados</li>
                         </ul>
-                        <button onclick='window.location.href="../CadastroCartao/cadastro_cartao?plano=Premium"'
-                            class="btn secundario btn-plano">Escolher plano</button>
+                        <button onclick="mudarPlano(this)" value="Premium" class="btn secundario btn-plano">Escolher plano</button>
                     </div>
                 </div>
             </section>

@@ -30,3 +30,7 @@ switch (plano) {
       "Plano Ativo";
     break;
 }
+
+function mudarPlano(btn) {
+  abrirJanelaPlanos(btn.value, plano);
+}

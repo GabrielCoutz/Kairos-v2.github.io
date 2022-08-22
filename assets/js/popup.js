@@ -3,25 +3,29 @@ let colors = "colors= 'primary:#121331,secondary:#16c72e' ";
 let src = "";
 
 janelaPopUp.abre = function (param) {
+  console.log(param);
   switch (
     true // determina qual ícone aparecerá no popup de acordo com a string passada no parametro icone
   ) {
-    case param.icone == "sucesso":
+    case param.icone === "plano":
+      src = "https://cdn.lordicon.com/qhviklyi.json";
+      break;
+    case param.icone === "sucesso":
       src = "https://cdn.lordicon.com/lupuorrc.json";
       break;
-    case param.icone == "falha":
+    case param.icone === "falha":
       src = "https://cdn.lordicon.com/tdrtiskw.json";
       colors = "colors= 'primary:#c71f16,secondary:#000000' ";
       break;
-    case param.icone == "carregar":
+    case param.icone === "carregar":
       src = "https://cdn.lordicon.com/dpinvufc.json";
       delay = "delay = '10' ";
       colors = "colors='primary:#4E6EF1,secondary:#4E6EF1' ";
       break;
-    case param.icone == "encontrado":
+    case param.icone === "encontrado":
       src = "https://cdn.lordicon.com/msoeawqm.json";
       break;
-    case param.icone == "marketing":
+    case param.icone === "marketing":
       src = "https://cdn.lordicon.com/gqdnbnwt.json";
       break;
   }
@@ -47,6 +51,23 @@ janelaPopUp.abre = function (param) {
   janela2.appendChild(lord_icon);
 
   let span = document.createElement("span");
+
+  if (param.mudarPlanos === true) {
+    let item1 = document.createElement("span");
+    item1.innerHTML = param.planoAtual;
+
+    let item2 = document.createElement("span");
+    item2.innerHTML = param.planoMudanca;
+
+    item1.setAttribute("class", "enfase-plano");
+    item2.setAttribute("class", "enfase-plano");
+
+    span.append("Você está prestes a mudar do plano ");
+    span.append(item1);
+    span.append(" para ");
+    span.append(item2);
+    param.corpo = "!";
+  }
 
   span.append(param.corpo);
 
@@ -245,55 +266,26 @@ function abrirJanelaMarketing() {
   });
 }
 
-function abrirJanelaPlanos(plano_mudança, plano_atual) {
-  img = "";
-  janelaPopUp.abre(
-    "asdf",
-    "p" + " " + "blue" + " " + "alert",
-    "Mudança de Planos",
-    "Você está prestes a mudar seu plano de <text>" +
-      plano_atual +
-      "</text>  para <text>" +
-      plano_mudança +
-      "</text><br>Deseja completar a mudança?"
-  );
-  document.getElementById("asdf_cancelar").innerHTML = "Sim, desejo mudar";
-  $("#asdf").append(
-    '<div id="esqueci" >' + '<a href="#"> Não, mudei de ideia </a>' + "</div>"
-  );
-  document.getElementById("asdf").classList.add("plano");
+function abrirJanelaPlanos(plano_mudanca, plano_atual) {
+  abrirjanela({
+    cor: "blue",
+    titulo: "Mudança de Planos",
+    mudarPlanos: true,
+    planoAtual: plano_atual,
+    planoMudanca: plano_mudanca,
+    icone: "plano",
+  });
+  document.getElementById("popUpEnviar").innerHTML = "Sim, desejo mudar";
+  document.getElementById("popUpEnviar").classList.remove("secundario");
+  document.getElementById("popUpEnviar").classList.add("primario");
+  document.getElementById("popUpCancelar").innerHTML = "Não, talvez depois";
 
-  document
-    .getElementById("asdf_cancelar")
-    .addEventListener("click", function () {
-      //BTN - Sim, desejo mudar
-      window.location.href =
-        "../CadastroCartao/assets/php/enviar_cartao?alterar_plano=true&assinatura=" +
-        plano_mudança;
-    });
-
-  document.getElementById("esqueci").addEventListener("click", function () {
-    // BTN - Não, mudei de ideia
-    janelaPopUp.fecha("asdf");
-
-    let abrir = function () {
-      setTimeout(
-        abrirjanela({
-          cor: "blue",
-          corpo: "Sem problemas, redirecionando para seu perfil",
-          titulo: "Mudança de Planos",
-          icone: "carregar",
-        }),
-        3000
-      );
-      document.getElementById("asdf_cancelar").style.display = "none";
-    };
-    let redirecionar = function () {
-      window.location.href = "../Perfil/usuario";
-    };
-
-    setTimeout(abrir, 2500);
-    setTimeout(redirecionar, 6000);
+  document.getElementById("popUpEnviar").addEventListener("click", function () {
+    janelaPopUp.fecha();
+    window.location.href =
+      "../CadastroCartao/cadastro_cartao?plano=" +
+      plano_mudanca +
+      "&alterar-plano=true";
   });
 }
 

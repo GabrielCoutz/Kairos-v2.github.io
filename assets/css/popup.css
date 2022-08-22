@@ -92,12 +92,18 @@
   transform: translate(-50%, -50%);
 }
 
-#popUpEnviar:not(.body-perfil.empresa > #popUpEnviar, .resultado #popUpEnviar) {
+#popUpEnviar:not(.body-perfil.empresa > #popUpEnviar, .resultado
+    #popUpEnviar, .assinaturas #popUpEnviar) {
   display: none;
 }
 
 .body-perfil.empresa .p {
   max-height: none;
+}
+
+.enfase-plano {
+  color: var(--cor-primaria);
+  font: 500 1rem/1.5 var(--fonte-display);
 }
 
 .body-perfil.empresa .p > .btn {

@@ -35,11 +35,8 @@
         $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
     }
 
-    $email = $_SESSION['email'];
-    $select = mysqli_query($conec, "SELECT id from cartao where email_usuario='$email'")->fetch_assoc()['id'];
-
-    
-    if($select){ // alteração de plano contratado
+    if(isset($_GET['alterar-plano'])){ // alteração de plano contratado
+      $email = $_SESSION['email'];
       $plano = $_GET['plano'];
       $result_alterar=mysqli_query($conec, "UPDATE cartao SET assinatura='$plano' WHERE email_usuario='$email'") or die(mysqli_error($conec)."alteração_plano");
       header('Location: ../Perfil/usuario?'.md5('sucesso=true'));
