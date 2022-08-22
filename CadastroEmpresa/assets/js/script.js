@@ -7,17 +7,8 @@ const ramo = document.getElementById("ramo");
 
 switch (true) {
   case verificarURL(md5("erro=true")):
-    abrirjanela({
-      cor: "red",
-      corpo: "Não foi possível realizar o cadastro!",
-      titulo: "Conta não sincronizada",
-      icone: "falha",
-      semBotoes: true,
-    });
+    erroSincronizacao("../Login/login");
     limparURL(md5("erro=true"));
-    setTimeout(() => {
-      window.location.href = "../index";
-    }, 3000);
     break;
 
   case verificarURL(md5("cnpj=false")):

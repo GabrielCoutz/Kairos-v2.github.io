@@ -36,25 +36,21 @@
         $select_swot=mysqli_query($conec, "SELECT * FROM analise_swot WHERE email_usuario = '$email'")->fetch_assoc();
         $select_4ps=mysqli_query($conec, "SELECT * FROM analise_4ps WHERE email_usuario = '$email'")->fetch_assoc();
 
-        // switch (true) {
-        //     case !isset($_SESSION['email_padrao']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true')):
-        //         header("Refresh:0; url=resultado".'?'.md5('erro=true'));
-        //         exit;
-        //         break;
+        switch (true) {
+            case !isset($_SESSION['email']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true')):
+                header("Refresh:0; url=resultado".'?'.md5('erro=true'));
+                exit;
+                break;
             
-        //     case !$select_swot && !$select_4ps && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('analise=false')) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('sucesso=false')) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true')):
-        //         header("Refresh:0; url=resultado".'?'.md5('analise=false'));
-        //         exit;
-        //         break;
-        //     }
+            case !$select_swot && !$select_4ps && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('analise=false')) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('sucesso=false')) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true')):
+                header("Refresh:0; url=resultado".'?'.md5('analise=false'));
+                exit;
+                break;
+        }
     ?>
 </head>
 
-<div id="plano-php" class="none">
-    <?= $plano; ?>
-</div>
-
-<body class="body-perfil">
+<body class="body-perfil resultado">
     <div class="fundo-barra-lateral">
         <div class="barra-lateral">
             <nav aria-label="Navegação Lateral">

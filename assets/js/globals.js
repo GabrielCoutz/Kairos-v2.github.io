@@ -324,3 +324,10 @@ function dispararEvento(elemento, evento, stringCondicao) {
   }
   elemento.addEventListener(evento, funcao);
 }
+
+function esperar(parametos) {
+  //espera o dedlay e redireciona para a url
+  setTimeout(() => {
+    window.location.href = parametos.url;
+  }, parametos.delay);
+}

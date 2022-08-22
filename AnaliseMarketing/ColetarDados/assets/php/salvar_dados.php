@@ -1,9 +1,6 @@
 <meta charset="UTF-8">
 <?php
     session_start();
-
-    ini_set('display_errors', '1');
-    ini_set('display_startup_errors', '1');
     error_reporting(E_ALL);
 
     $dbHost     = 'localhost';
@@ -42,7 +39,7 @@
             $valor = str_replace('<br>',', ',$valor);
         }
 
-        echo $chave.' = '.$valor.'<br>';
+        // echo $chave.' = '.$valor.'<br>';
 
         if (is_int(strpos($chave, 'SWOT'))){ // análise SWOT
         switch (true) {
@@ -107,17 +104,16 @@
 
     $result_swot=mysqli_query($conec, "INSERT INTO analise_swot(email_usuario, forcas, fraquezas, oportunidades, ameacas) VALUES('$email', '$fortes', '$fracos', '$oportunidades', '$ameacas')");
 
-    // ver erro --> or die(mysqli_error($conec) ou printf("Errormessage: %s\n", $conec->error);;
-
     $result_4ps=mysqli_query($conec, "INSERT INTO analise_4ps(email_usuario, produto, preco, praca, promocao) VALUES('$email', '$produto', '$preco', '$praca', '$promocao' )");
+
+    // ver erro --> or die(mysqli_error($conec) ou printf("Errormessage: %s\n", $conec->error);;
 
     if($result_4ps && $result_swot){
         header('Location: ../../../resultado?'.md5('sucesso=true'));
         exit;
-    } else {
-        header('Location: ../../../resultado?'.md5('sucesso=false'));
-        exit;
     }
+    header('Location: ../../../resultado?'.md5('sucesso=false'));
+    exit;
 
 ?>
 <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.12.0/js/md5.min.js'></script>

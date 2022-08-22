@@ -75,13 +75,27 @@ janelaPopUp.abre = function (param) {
   $("#popUp").addClass("popUpEntrada");
 
   if (param.cadastrarEmpresa === true) {
-    setTimeout(() => {
-      window.location.href = "../../CadastroEmpresa/cadastro_empresa";
-    }, 3000);
+    esperar({
+      url: "../../CadastroEmpresa/cadastro_empresa",
+      delay: 3000,
+    });
   } else if (param.cadastrarEmpresa === false) {
-    setTimeout(() => {
-      window.location.href = "../usuario";
-    }, 3000);
+    esperar({
+      url: "../usuario",
+      delay: 3000,
+    });
+  }
+
+  if (param.realizarAnalise === true) {
+    esperar({
+      url: "../ColetarDados/coletar",
+      delay: 3000,
+    });
+  } else if (param.realizarAnalise === false) {
+    esperar({
+      url: "../Perfil/usuario",
+      delay: 3000,
+    });
   }
 
   if (param.abrirEmpresa) {
@@ -123,6 +137,45 @@ janelaPopUp.abre = function (param) {
             icone: "carregar",
             semBotoes: true,
             cadastrarEmpresa: false,
+          });
+        }, 2000);
+      });
+    return;
+  }
+
+  if (param.analise) {
+    document.getElementById("popUpEnviar").innerHTML = "Sim, gostaria";
+    document.getElementById("popUpEnviar").classList.remove("secundario");
+    document.getElementById("popUpEnviar").classList.add("primario");
+    document.getElementById("popUpCancelar").innerHTML = "Não, talvez depois";
+
+    document
+      .getElementById("popUpEnviar")
+      .addEventListener("click", function () {
+        janelaPopUp.fecha();
+        setTimeout(() => {
+          abrirjanela({
+            cor: "blue",
+            corpo: "Tudo bem, redirecionando para página de análise",
+            titulo: "Análise não realizada",
+            icone: "carregar",
+            semBotoes: true,
+            realizarAnalise: true,
+          });
+        }, 2000);
+      });
+    document
+      .getElementById("popUpCancelar")
+      .addEventListener("click", function () {
+        janelaPopUp.fecha();
+        setTimeout(() => {
+          abrirjanela({
+            cor: "blue",
+            corpo: "Tudo bem, estamos te tirando daqui",
+            titulo: "Análise não realizada",
+            icone: "carregar",
+            semBotoes: true,
+            realizarAnalise: false,
           });
         }, 2000);
       });
@@ -253,4 +306,18 @@ if (verificarURL(md5("sucesso=false"))) {
     icone: "falha",
   });
   limparURL(md5("sucesso=false"));
+}
+
+function erroSincronizacao(url) {
+  abrirjanela({
+    cor: "red",
+    corpo: "Erro inesperado! Por favor, faça login novamente.",
+    titulo: "Conta não sincronizada",
+    icone: "falha",
+    semBotoes: true,
+  });
+  esperar({
+    url: url,
+    delay: 3000,
+  });
 }

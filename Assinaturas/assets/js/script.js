@@ -1,20 +1,12 @@
 if (verificarURL(md5("erro=true"))) {
-  // erro de cadastro
-  abrirjanela({
-    cor: "red",
-    corpo: "Erro inesperado! Por favor, faça login novamente.",
-    titulo: "Conta não sincronizada",
-    icone: "falha",
-    semBotoes: true,
-  });
-  document.getElementsByClassName("principal")[0].style.display = "none";
-  setTimeout(() => {
-    window.location.href = "../Login/login";
-  }, 3000);
+  erroSincronizacao("../Login/login");
   limparURL(md5("erro=true"));
 }
 
-const plano = document.getElementById("plano-php").innerText;
+const plano = document
+  .getElementById("plano-php")
+  .innerText.replace("/n", "")
+  .trim();
 
 switch (plano) {
   case "Básico":

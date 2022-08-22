@@ -34,20 +34,13 @@
         }
 
         if(!isset($_SESSION['email']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true'))){
-          header("Refresh:0; url=usuario".'?'.md5('erro=true'));
+          header("Refresh:0; url=assinaturas".'?'.md5('erro=true'));
           exit;
-        } else {
-          $email=$_SESSION['email'];
         }
 
+        $email=$_SESSION['email'];
+
         $plano=mysqli_query($conec, "SELECT assinatura FROM cartao WHERE email_usuario = '$email'")->fetch_assoc()['assinatura'];
-
-        // if (empty(mysqli_query($conec, "SELECT * FROM analise_swot WHERE email_usuario = '$email'")->fetch_assoc()) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('analise=false')) && !$_COOKIE[md5('analise')] && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true'))){
-        //     header("Refresh:0; url=usuario".'?'.md5('analise=false'));
-        //     exit;
-        // }
-
-
   ?>
 </head>
 

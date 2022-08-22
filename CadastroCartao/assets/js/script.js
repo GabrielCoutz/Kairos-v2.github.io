@@ -13,18 +13,9 @@ const estado = document.getElementById("estado");
 const endereco = document.getElementById("endereco");
 
 switch (true) {
-  case verificarURL(md5("erro=true")): // erro de cadastro
-    abrirjanela({
-      cor: "red",
-      corpo: "Não foi possível realizar o cadastro!",
-      titulo: "Conta não sincronizada",
-      icone: "falha",
-      semBotoes: true,
-    });
+  case verificarURL(md5("erro=true")):
+    erroSincronizacao("../../Login/login");
     limparURL(md5("erro=true"));
-    setTimeout(() => {
-      window.location.href = "../index";
-    }, 3000);
     break;
 
   case verificarURL(md5("cpf=false")):

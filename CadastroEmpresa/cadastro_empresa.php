@@ -19,7 +19,7 @@
         session_start();
         error_reporting(E_ERROR | E_PARSE);
         if(!isset($_SESSION['email']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true'))){
-            header("Refresh:0; //url=cadastro_empresa".'?'.md5('erro=true'));
+            header("Refresh:0; url=cadastro_empresa".'?'.md5('erro=true'));
             exit;
         }
 	?>
