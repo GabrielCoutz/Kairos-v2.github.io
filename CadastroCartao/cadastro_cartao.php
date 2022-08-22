@@ -155,18 +155,21 @@
           </div>
         </div>
       </div>
-      <form method="POST" action="assets/php/cadastrar_cartao" onsubmit="return false" autocomplete="off" class="formulario">
+      <form method="POST" action="assets/php/cadastrar_cartao" onsubmit="return false" autocomplete="off"
+        class="formulario">
         <div class="form-caixa">
           <label for="cardNumber">Número do Cartão</label>
           <input type="tel" id="cardNumber" v-mask="generateCardNumberMask" v-model="cardNumber" v-on:focus="focusInput"
-            v-on:blur="blurInput" data-ref="cardNumber" autocomplete="cc-csc" name='num_cartao' aria-controls="cardNumberAlert">
+            v-on:blur="blurInput" data-ref="cardNumber" autocomplete="cc-csc" name='num_cartao'
+            aria-controls="cardNumberAlert">
           <div id='cardNumberAlert'></div>
         </div>
 
         <div class="form-caixa">
           <label for="cardName">Nome Impresso no Cartão</label>
           <input type="text" id="cardName" v-model="cardName" v-on:focus="focusInput" v-on:blur="blurInput"
-            data-ref="cardName" autocomplete="cc-csc" name='nome_cartao' maxlength="30" onkeyup="apenasLetras(this)" aria-controls="cardNameAlert">
+            data-ref="cardName" autocomplete="cc-csc" name='nome_cartao' maxlength="30" onkeyup="apenasLetras(this)"
+            aria-controls="cardNameAlert">
           <div id='cardNameAlert'></div>
         </div>
         <div class="form-caixa validade">
@@ -199,13 +202,15 @@
         <div class="info-usuario">
           <div class="form-caixa">
             <label for="cpf">CPF</label>
-            <input type="tel" class="form-caixa__input " id="cpf" name='cpf' onkeypress="$(this).mask('000.000.000-00')" aria-controls="cpfAlert">
+            <input type="tel" class="form-caixa__input " id="cpf" name='cpf' onkeypress="$(this).mask('000.000.000-00')"
+              aria-controls="cpfAlert">
             <div id='cpfAlert'></div>
           </div>
 
           <div class="form-caixa">
             <label for="cep">CEP</label>
-            <input type="tel" id="cep" name='cep' onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)" aria-controls="cepAlert">
+            <input type="tel" id="cep" name='cep' onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)"
+              aria-controls="cepAlert">
             <div id='cepAlert'></div>
           </div>
 

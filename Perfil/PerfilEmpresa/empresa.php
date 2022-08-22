@@ -93,7 +93,10 @@
                             <path
                                 d="M3.448 12.9979C2.89571 12.9979 2.448 13.4456 2.448 13.9979V18.9979C2.448 19.5502 2.89571 19.9979 3.448 19.9979H8.448C9.00028 19.9979 9.448 19.5502 9.448 18.9979V13.9979C9.448 13.4456 9.00028 12.9979 8.448 12.9979H3.448Z"
                                 fill="#ffffff" />
-                        </svg><a href="#">Análise de Marketing</a></li>
+                        </svg><a href="../../AnaliseMarketing/resultado">Análise de Marketing</a></li>
+                    <li><i aria-hidden="true" class="gg-credit-card"></i>
+                        <a href="../../Assinaturas/assinaturas">Minha assinatura</a>
+                    </li>
                     <li><i aria-hidden="true" class="gg-user"></i>
                         <a href="../usuario">Perfil</a>
                     </li>
@@ -117,34 +120,39 @@
                 <div class="fundo-dados">
                     <div class="form-caixa">
                         <label for="nome_empresa">Nome da empresa</label>
-                        <input type="text" name="nome_empresa" id="nome_empresa" maxlength="50" value='<?= $select_empresa['nome'] ?>' aria-controls="nome_empresaAlert"
-                            onkeyup="apenasLetras(this)">
+                        <input type="text" name="nome_empresa" id="nome_empresa" maxlength="50"
+                            value='<?= $select_empresa[' nome'] ?>' aria-controls="nome_empresaAlert"
+                        onkeyup="apenasLetras(this)">
                         <div id="nome_empresaAlert"></div>
                     </div>
                     <div class="form-caixa">
                         <label for="nome_fantasia">Nome Fantasia</label>
                         <input type="text" name="nome_fantasia" id="nome_fantasia" maxlength="50"
-                        value='<?= $select_empresa['nome_fantasia'] ?>' aria-controls="nome_fantasiaAlert">
+                            value='<?= $select_empresa[' nome_fantasia'] ?>' aria-controls="nome_fantasiaAlert">
                         <div id="nome_fantasiaAlert"></div>
                     </div>
                     <div class="form-caixa">
                         <label>CNPJ</label>
-                        <a class="desativado"><?= $cnpj; ?></a>
+                        <a class="desativado">
+                            <?= $cnpj; ?>
+                        </a>
                     </div>
                 </div>
                 <div class="fundo-dados info-1">
                     <div class="dados-coluna">
                         <div class="form-caixa">
                             <label for="cep_empresa">CEP</label>
-                            <input type="tel" name="cep_empresa" id="cep_empresa" value='<?= $select_empresa_endereco['cep'] ?>'
-                                aria-controls="cep_empresaAlert" onkeypress="$(this).mask('00.000-000')"
-                                onkeyup="lerCEP(this)">
+                            <input type="tel" name="cep_empresa" id="cep_empresa" value='<?= $select_empresa_endereco['
+                                cep'] ?>'
+                            aria-controls="cep_empresaAlert" onkeypress="$(this).mask('00.000-000')"
+                            onkeyup="lerCEP(this)">
                             <div id="cep_empresaAlert"></div>
                         </div>
                         <div class="form-caixa">
                             <label for="numero_empresa">Número</label>
-                            <input type="tel" name="numero_empresa" id="numero_empresa" value='<?= $select_empresa_endereco['numero'] ?>'
-                                aria-controls="numero_empresaAlert">
+                            <input type="tel" name="numero_empresa" id="numero_empresa"
+                                value='<?= $select_empresa_endereco[' numero'] ?>'
+                            aria-controls="numero_empresaAlert">
                             <div id="numero_empresaAlert"></div>
                         </div>
                         <div class="form-caixa">
@@ -153,13 +161,20 @@
                             <input type="text" class="none" id="cidade_empresa" name="cidade_empresa">
                             <input type="text" class="none" id="estado_empresa" name="estado_empresa">
                             <label>Endereço</label>
-                            <p class="desativado" id="endereco"><?= ucwords($select_empresa_endereco['rua']) ?>, <?= ucwords($select_empresa_endereco['bairro']) ?>, <?= ucwords($select_empresa_endereco['cidade']) ?>, <?= $select_empresa_endereco['estado'] ?></p>
+                            <p class="desativado" id="endereco">
+                                <?= ucwords($select_empresa_endereco['rua']) ?>,
+                                <?= ucwords($select_empresa_endereco['bairro']) ?>,
+                                <?= ucwords($select_empresa_endereco['cidade']) ?>,
+                                <?= $select_empresa_endereco['estado'] ?>
+                            </p>
                         </div>
                     </div>
                     <div class="dados-coluna">
                         <div class="form-caixa">
                             <label for="ramo">Ramo</label>
-                            <div class="none" id="ramo_php"><?= $select_empresa['ramo']; ?></div>
+                            <div class="none" id="ramo_php">
+                                <?= $select_empresa['ramo']; ?>
+                            </div>
                             <select name="ramo" id="ramo" aria-controls="ramoAlert" value="trste">
                                 <option value disabled selected>Selecione o ramo</option>
                                 <option>Alimentação</option>

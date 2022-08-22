@@ -36,25 +36,28 @@
     <div class="fundo-form container">
         <div class="form-holder">
             <form method="POST" action="assets/php/cadastrar" class="formulario empresa" onsubmit="return false">
-                <h1 class="titulo" >Cadastre sua empresa</h1>
+                <h1 class="titulo">Cadastre sua empresa</h1>
                 <div class="form-caixa">
                     <label for="nome_empresa">Nome da empresa</label>
                     <i class="gg-organisation"></i>
-                    <input type="text" name="nome_empresa" id="nome_empresa" placeholder="Nome da empresa" aria-controls="nome_empresaAlert" maxlength="50">
+                    <input type="text" name="nome_empresa" id="nome_empresa" placeholder="Nome da empresa"
+                        aria-controls="nome_empresaAlert" maxlength="50">
                     <span class="underline"></span>
                     <div id="nome_empresaAlert"></div>
                 </div>
                 <div class="form-caixa">
                     <label for="nome_fantasia">Nome Fantasia</label>
                     <i class="gg-organisation"></i>
-                    <input type="text" name="nome_fantasia" id="nome_fantasia" placeholder="Nome Fantasia" aria-controls="nome_fantasiaAlert" maxlength="50">
+                    <input type="text" name="nome_fantasia" id="nome_fantasia" placeholder="Nome Fantasia"
+                        aria-controls="nome_fantasiaAlert" maxlength="50">
                     <span class="underline"></span>
                     <div id="nome_fantasiaAlert"></div>
                 </div>
                 <div class="form-caixa">
                     <label for="cnpj">CNPJ</label>
                     <i class="gg-organisation"></i>
-                    <input type="tel" name="cnpj" id="cnpj" placeholder="CNPJ" aria-controls="cnpjAlert" onkeypress="$(this).mask('00.000.000/0000-00')">
+                    <input type="tel" name="cnpj" id="cnpj" placeholder="CNPJ" aria-controls="cnpjAlert"
+                        onkeypress="$(this).mask('00.000.000/0000-00')">
                     <span class="underline"></span>
                     <div id="cnpjAlert"></div>
                 </div>
@@ -74,22 +77,24 @@
                 <div class="form-caixa">
                     <label for="cep_empresa">CEP</label>
                     <i class="gg-pin"></i>
-                    <input type="tel" name="cep_empresa" id="cep_empresa" placeholder="CEP" aria-controls="cep_empresaAlert" onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)">
+                    <input type="tel" name="cep_empresa" id="cep_empresa" placeholder="CEP"
+                        aria-controls="cep_empresaAlert" onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)">
                     <span class="underline"></span>
                     <div id="cep_empresaAlert"></div>
                 </div>
                 <div class="form-caixa">
                     <label for="numero_empresa">Número</label>
                     <i class="gg-pin"></i>
-                    <input type="tel" name="numero_empresa" id="numero_empresa" placeholder="Número" aria-controls="numero_empresaAlert">
+                    <input type="tel" name="numero_empresa" id="numero_empresa" placeholder="Número"
+                        aria-controls="numero_empresaAlert">
                     <span class="underline"></span>
                     <div id="numero_empresaAlert"></div>
                 </div>
                 <div id='endereco' class="none"></div>
-					<input type="text" class="none" id="rua_empresa" name="rua_empresa">
-					<input type="text" class="none"  id="bairro_empresa" name="bairro_empresa">
-					<input type="text" class="none"  id="cidade_empresa" name="cidade_empresa">
-					<input type="text" class="none"  id="estado_empresa" name="estado_empresa">
+                <input type="text" class="none" id="rua_empresa" name="rua_empresa">
+                <input type="text" class="none" id="bairro_empresa" name="bairro_empresa">
+                <input type="text" class="none" id="cidade_empresa" name="cidade_empresa">
+                <input type="text" class="none" id="estado_empresa" name="estado_empresa">
 
                 <button type="button" id="butao" class="btn primario" onclick="validar()">Registrar</button>
             </form>

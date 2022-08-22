@@ -31,11 +31,12 @@
     <div class="fundo-form container">
         <div class="form-holder">
             <form action="assets/php/cadastrar" method="POST" class="formulario" onsubmit="return false">
-                <h1 class="titulo" >Cadastro</h1>
+                <h1 class="titulo">Cadastro</h1>
                 <div class="form-caixa">
                     <label for="nome">Nome completo</label>
                     <i class="gg-user"></i>
-                    <input type="text" name="nome" id="nome" placeholder="Nome Completo" onkeyup="apenasLetras(this)" aria-controls="nomeAlert">
+                    <input type="text" name="nome" id="nome" placeholder="Nome Completo" onkeyup="apenasLetras(this)"
+                        aria-controls="nomeAlert">
                     <span class="underline"></span>
                     <div id="nomeAlert"></div>
                 </div>

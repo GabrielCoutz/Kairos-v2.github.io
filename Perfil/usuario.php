@@ -103,9 +103,12 @@
                             <path
                                 d="M3.448 12.9979C2.89571 12.9979 2.448 13.4456 2.448 13.9979V18.9979C2.448 19.5502 2.89571 19.9979 3.448 19.9979H8.448C9.00028 19.9979 9.448 19.5502 9.448 18.9979V13.9979C9.448 13.4456 9.00028 12.9979 8.448 12.9979H3.448Z"
                                 fill="#ffffff" />
-                        </svg><a href="#">Análise de Marketing</a></li>
+                        </svg><a href="../AnaliseMarketing/resultado">Análise de Marketing</a></li>
                     <li><i aria-hidden="true" class="gg-credit-card"></i>
                         <a href="../Assinaturas/assinaturas">Minha assinatura</a>
+                    </li>
+                    <li><i aria-hidden="true" class="gg-user"></i>
+                        <a href="usuario">Perfil</a>
                     </li>
                     <a href="../index" class="btn secundario menu-btn">Sair</a>
                 </ul>
@@ -122,22 +125,28 @@
             <a href="../index" class="btn secundario">Sair</a>
         </header>
         <div class="perfil">
-            <h1 class="titulo">Olá, <?= ucfirst(strtok($select['nome'], " ")) ?></h1>
+            <h1 class="titulo">Olá,
+                <?= ucfirst(strtok($select['nome'], " ")) ?>
+            </h1>
             <form action="assets/php/atualizar_usuario" method="POST" class="container perfil" onsubmit="return false">
                 <div class="fundo-dados">
                     <div class="form-caixa">
                         <label for="nome">Nome</label>
                         <input type="text" name="nome" id="nome" onkeyup="apenasLetras(this)" maxlength="50"
-                        value="<?= $select['nome'] ?>" aria-controls="nomeAlert">
+                            value="<?= $select['nome'] ?>" aria-controls="nomeAlert">
                         <div id="nomeAlert"></div>
                     </div>
                     <div class="form-caixa">
                         <label>CPF</label>
-                        <a class="desativado"><?= $cpf ?></a>
+                        <a class="desativado">
+                            <?= $cpf ?>
+                        </a>
                     </div>
                     <div class="form-caixa">
                         <label>Email</label>
-                        <a class="desativado"><?= $select['email'] ?></a>
+                        <a class="desativado">
+                            <?= $select['email'] ?>
+                        </a>
                     </div>
                 </div>
                 <div class="fundo-dados info-2">
@@ -145,13 +154,14 @@
                         <div class="form-caixa">
                             <label for="cep">CEP</label>
                             <input type="tel" name="cep" id="cep" aria-controls="cepAlert"
-                                onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)" value='<?= $select_endereco['cep'] ?>'>
+                                onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)"
+                                value='<?= $select_endereco[' cep'] ?>'>
                             <div id="cepAlert"></div>
                         </div>
                         <div class="form-caixa">
                             <label for="numero">Número</label>
-                            <input type="tel" name="numero" id="numero" 
-                                aria-controls="numeroAlert" value='<?= $select_endereco['numero'] ?>'>
+                            <input type="tel" name="numero" id="numero" aria-controls="numeroAlert"
+                                value='<?= $select_endereco[' numero'] ?>'>
                             <div id="numeroAlert"></div>
                         </div>
                         <div class="form-caixa">
@@ -160,7 +170,12 @@
                             <input type="text" class="none" id="cidade" name="cidade">
                             <input type="text" class="none" id="estado" name="estado">
                             <label>Endereço</label>
-                            <p class="desativado" id="endereco"><a><?= ucwords($select_endereco['rua']) ?>, <?= ucwords($select_endereco['bairro']) ?>, <?= ucwords($select_endereco['cidade']) ?>, <?= $select_endereco['estado'] ?></a></p>
+                            <p class="desativado" id="endereco"><a>
+                                    <?= ucwords($select_endereco['rua']) ?>,
+                                    <?= ucwords($select_endereco['bairro']) ?>,
+                                    <?= ucwords($select_endereco['cidade']) ?>,
+                                    <?= $select_endereco['estado'] ?>
+                                </a></p>
                         </div>
                     </div>
                     <div class="dados-coluna telefone">

@@ -51,7 +51,10 @@
   ?>
 </head>
 
-<div id="plano-php" class="none"><?= $plano; ?></div>
+<div id="plano-php" class="none">
+    <?= $plano; ?>
+</div>
+
 <body class="body-perfil">
     <div class="fundo-barra-lateral">
         <div class="barra-lateral">
@@ -84,9 +87,12 @@
                             <path
                                 d="M3.448 12.9979C2.89571 12.9979 2.448 13.4456 2.448 13.9979V18.9979C2.448 19.5502 2.89571 19.9979 3.448 19.9979H8.448C9.00028 19.9979 9.448 19.5502 9.448 18.9979V13.9979C9.448 13.4456 9.00028 12.9979 8.448 12.9979H3.448Z"
                                 fill="#ffffff" />
-                        </svg><a href="#">Análise de Marketing</a></li>
+                        </svg><a href="../AnaliseMarketing/resultado">Análise de Marketing</a></li>
                     <li><i aria-hidden="true" class="gg-credit-card"></i>
                         <a href="assinaturas">Minha assinatura</a>
+                    </li>
+                    <li><i aria-hidden="true" class="gg-user"></i>
+                        <a href="../Perfil/usuario">Perfil</a>
                     </li>
                     <a href="../index" class="btn secundario menu-btn">Sair</a>
                 </ul>
@@ -104,48 +110,51 @@
         </header>
         <div class="perfil">
             <section class="planos container" id="planos">
-        <h1 class="titulo">Conheça nossos planos</h1>
-        <p class="texto">Feitos sob medida para seu negócio.</p>
-        <div class="planos-cards">
-            <div class="planos-item" id="basico">
-                <span class="planos-titulo titulo">Básico</span>
-                <span class="planos-preco texto">R$ 19,00</span>
-                <ul class="planos-beneficios">
-                    <li>Análise de Marketing</li>
-                    <li>Atendimento seg á sex</li>
-                    <li>Suporte 08:00 às 18:00</li>
-                    <li>1 Visita presencial p/mês</li>
-                </ul>
-                <button onclick='window.location.href="../CadastroCartao/cadastro_cartao?plano=Básico"' class="btn secundario btn-plano">Escolher plano</button>
-            </div>
-            <div class="planos-item" id="medio">
-                <span class="planos-titulo titulo">Médio</span>
-                <span class="planos-preco texto">R$ 35,00</span>
-                <ul class="planos-beneficios">
-                    <li>Análise de Marketing</li>
-                    <li>Atendimento seg á sex</li>
-                    <li>Suporte 24h</li>
-                    <li>3 Visita presencial p/mês</li>
-                    <li>Consultoria de Marketing</li>
-                </ul>
-                <button onclick='window.location.href="../CadastroCartao/cadastro_cartao?plano=Médio"' class="btn secundario">Escolher plano</button>
-            </div>
-            <div class="planos-item" id="premium">
-                <span class="planos-titulo titulo">Premium</span>
-                <span class="planos-preco texto">R$ 45,00</span>
-                <ul class="planos-beneficios">
-                    <li>Análise de Marketing</li>
-                    <li>Atendimento 24/7 premium</li>
-                    <li>Suporte 24h premium</li>
-                    <li>5 Visita presencial p/mês</li>
-                    <li>Consultoria de Marketing</li>
-                    <li>Plano de Negócios</li>
-                    <li>Análise de Resultados</li>
-                </ul>
-                <button onclick='window.location.href="../CadastroCartao/cadastro_cartao?plano=Premium"' class="btn secundario btn-plano">Escolher plano</button>
-            </div>
-        </div>
-    </section>
+                <h1 class="titulo">Conheça nossos planos</h1>
+                <p class="texto">Feitos sob medida para seu negócio.</p>
+                <div class="planos-cards">
+                    <div class="planos-item" id="basico">
+                        <span class="planos-titulo titulo">Básico</span>
+                        <span class="planos-preco texto">R$ 19,00</span>
+                        <ul class="planos-beneficios">
+                            <li>Análise de Marketing</li>
+                            <li>Atendimento seg á sex</li>
+                            <li>Suporte 08:00 às 18:00</li>
+                            <li>1 Visita presencial p/mês</li>
+                        </ul>
+                        <button onclick='window.location.href="../CadastroCartao/cadastro_cartao?plano=Básico"'
+                            class="btn secundario btn-plano">Escolher plano</button>
+                    </div>
+                    <div class="planos-item" id="medio">
+                        <span class="planos-titulo titulo">Médio</span>
+                        <span class="planos-preco texto">R$ 35,00</span>
+                        <ul class="planos-beneficios">
+                            <li>Análise de Marketing</li>
+                            <li>Atendimento seg á sex</li>
+                            <li>Suporte 24h</li>
+                            <li>3 Visita presencial p/mês</li>
+                            <li>Consultoria de Marketing</li>
+                        </ul>
+                        <button onclick='window.location.href="../CadastroCartao/cadastro_cartao?plano=Médio"'
+                            class="btn secundario">Escolher plano</button>
+                    </div>
+                    <div class="planos-item" id="premium">
+                        <span class="planos-titulo titulo">Premium</span>
+                        <span class="planos-preco texto">R$ 45,00</span>
+                        <ul class="planos-beneficios">
+                            <li>Análise de Marketing</li>
+                            <li>Atendimento 24/7 premium</li>
+                            <li>Suporte 24h premium</li>
+                            <li>5 Visita presencial p/mês</li>
+                            <li>Consultoria de Marketing</li>
+                            <li>Plano de Negócios</li>
+                            <li>Análise de Resultados</li>
+                        </ul>
+                        <button onclick='window.location.href="../CadastroCartao/cadastro_cartao?plano=Premium"'
+                            class="btn secundario btn-plano">Escolher plano</button>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 </body>
