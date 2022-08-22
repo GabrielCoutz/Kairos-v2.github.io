@@ -103,7 +103,6 @@ function validar() {
   limpar_inputs();
 
   if (num.value.length != validarNumero) {
-    console.log(validarNumero);
     alertaDeErro(num, "Preencha o número do cartão!");
     dispararEvento(num, "keyup", "condicaoNum");
     num.classList.add("vermei");

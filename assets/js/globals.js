@@ -249,7 +249,6 @@ function dispararEvento(elemento, evento, stringCondicao) {
     case "condicaoSenha":
       var condicao = function () {
         if (window.location.href.includes("Perfil")) {
-          console.log("return");
           return (
             vazio(senha_antiga.value) ||
             vazio(senha_nova.value) ||

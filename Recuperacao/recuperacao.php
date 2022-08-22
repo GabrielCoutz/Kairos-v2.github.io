@@ -17,7 +17,7 @@
     <title>Recuperação de conta</title>
 </head>
 
-<body class="body-form">
+<body class="body-form recuperacao">
 
     <header class="header container" id="header-cadastroUsuario">
         <div class="header-logo">
@@ -27,8 +27,8 @@
 
     <div class="fundo-form container">
         <div class="form-holder">
-            <form action="assets/php/validarDados" method="POST" class="formulario recuperacao">
-                <h1 class="titulo" onsubmit="return false">Recuperação de conta</h1>
+            <form action="assets/php/validarDados" method="POST" class="formulario recuperacao" onsubmit="return false">
+                <h1 class="titulo">Recuperação de conta</h1>
                 <p>Não tem problema se esqueceu sua senha, para recuperá-la basta inserir os dados cadastrados da conta
                     abaixo.</p>
                 <div class="form-caixa">
@@ -45,7 +45,7 @@
                     <span class="underline"></span>
                     <div id="emailAlert"></div>
                 </div>
-                <button type="submit" class="btn secundario" onclick="validar()">Verificar</button>
+                <button type="submit" id='butao' class="btn secundario" onclick="validar()">Verificar</button>
             </form>
         </div>
 

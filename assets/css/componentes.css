@@ -66,12 +66,16 @@
   border-color: red !important;
 }
 
-input.vermei ~ .underline {
+input.vermei ~ .underline{
   display: none;
 }
 
 .cartao div[id$="Alert"]::before {
   display: none !important;
+}
+
+.recuperacao .vermei:focus ~ .underline {
+  background-color: red !important;
 }
 
 input.vermei:focus ~ div[id$="Alert"]::before {

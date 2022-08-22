@@ -3,7 +3,6 @@ let colors = "colors= 'primary:#121331,secondary:#16c72e' ";
 let src = "";
 
 janelaPopUp.abre = function (param) {
-  console.log(param);
   switch (
     true // determina qual ícone aparecerá no popup de acordo com a string passada no parametro icone
   ) {
