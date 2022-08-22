@@ -10,7 +10,7 @@ const endereco = vazio(
   : document.getElementById("endereco").innerText;
 
 if (!vazio(document.getElementById("ramo_php").innerText)) {
-  ramo.value = document.getElementById("ramo_php").innerText;
+  ramo.value = document.getElementById("ramo_php").innerText.trim();
 }
 
 const conteudo_nome_empresa = document.getElementById("nome_empresa").value;

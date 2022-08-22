@@ -38,7 +38,6 @@
         $email=$_SESSION['email'];
 
         $select_empresa=mysqli_query($conec, "SELECT * FROM empresa WHERE email_usuario = '$email'")->fetch_assoc();
-
         switch (true) {
             case !isset($_SESSION['email_padrao']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true')):
                 header("Refresh:0; url=empresa".'?'.md5('erro=true'));
@@ -66,13 +65,13 @@
         <div class="barra-lateral">
             <nav aria-label="Navegação Lateral">
                 <ul class="nav-lateral">
-                    <li><svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff"
+                    <li class='nav-lateral-ativo'><svg width="24" height="24" viewBox="0 0 24 24" fill="#000000"
                             xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17 15H19V17H17V15Z" fill="#ffffff" />
-                            <path d="M19 11H17V13H19V11Z" fill="#ffffff" />
+                            <path d="M17 15H19V17H17V15Z" fill="#000000" />
+                            <path d="M19 11H17V13H19V11Z" fill="#000000" />
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M13 7H23V21H1V3H13V7ZM8 5H11V7H8V5ZM11 19V17H8V19H11ZM11 15V13H8V15H11ZM11 11V9H8V11H11ZM21 19V9H13V11H15V13H13V15H15V17H13V19H21ZM3 19V17H6V19H3ZM3 15H6V13H3V15ZM6 11V9H3V11H6ZM3 7H6V5H3V7Z"
-                                fill="#ffffff" />
+                                fill="#000000" />
                         </svg><a href="empresa">Perfil da Empresa</a></li>
                     <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -121,14 +120,14 @@
                     <div class="form-caixa">
                         <label for="nome_empresa">Nome da empresa</label>
                         <input type="text" name="nome_empresa" id="nome_empresa" maxlength="50"
-                            value='<?= $select_empresa[' nome'] ?>' aria-controls="nome_empresaAlert"
+                            value='<?= $select_empresa['nome'] ?>' aria-controls="nome_empresaAlert"
                         onkeyup="apenasLetras(this)">
                         <div id="nome_empresaAlert"></div>
                     </div>
                     <div class="form-caixa">
                         <label for="nome_fantasia">Nome Fantasia</label>
                         <input type="text" name="nome_fantasia" id="nome_fantasia" maxlength="50"
-                            value='<?= $select_empresa[' nome_fantasia'] ?>' aria-controls="nome_fantasiaAlert">
+                            value='<?= $select_empresa['nome_fantasia'] ?>' aria-controls="nome_fantasiaAlert">
                         <div id="nome_fantasiaAlert"></div>
                     </div>
                     <div class="form-caixa">
@@ -142,8 +141,7 @@
                     <div class="dados-coluna">
                         <div class="form-caixa">
                             <label for="cep_empresa">CEP</label>
-                            <input type="tel" name="cep_empresa" id="cep_empresa" value='<?= $select_empresa_endereco['
-                                cep'] ?>'
+                            <input type="tel" name="cep_empresa" id="cep_empresa" value='<?= $select_empresa_endereco['cep'] ?>'
                             aria-controls="cep_empresaAlert" onkeypress="$(this).mask('00.000-000')"
                             onkeyup="lerCEP(this)">
                             <div id="cep_empresaAlert"></div>
@@ -151,7 +149,7 @@
                         <div class="form-caixa">
                             <label for="numero_empresa">Número</label>
                             <input type="tel" name="numero_empresa" id="numero_empresa"
-                                value='<?= $select_empresa_endereco[' numero'] ?>'
+                                value='<?= $select_empresa_endereco['numero'] ?>'
                             aria-controls="numero_empresaAlert">
                             <div id="numero_empresaAlert"></div>
                         </div>
@@ -175,7 +173,7 @@
                             <div class="none" id="ramo_php">
                                 <?= $select_empresa['ramo']; ?>
                             </div>
-                            <select name="ramo" id="ramo" aria-controls="ramoAlert" value="trste">
+                            <select name="ramo" id="ramo" aria-controls="ramoAlert">
                                 <option value disabled selected>Selecione o ramo</option>
                                 <option>Alimentação</option>
                                 <option>Saúde</option>

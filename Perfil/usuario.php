@@ -107,7 +107,7 @@
                     <li><i aria-hidden="true" class="gg-credit-card"></i>
                         <a href="../Assinaturas/assinaturas">Minha assinatura</a>
                     </li>
-                    <li><i aria-hidden="true" class="gg-user"></i>
+                    <li class='nav-lateral-ativo'><i aria-hidden="true" class="gg-user"></i>
                         <a href="usuario">Perfil</a>
                     </li>
                     <a href="../index" class="btn secundario menu-btn">Sair</a>

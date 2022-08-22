@@ -81,7 +81,7 @@
                                 d="M3.448 12.9979C2.89571 12.9979 2.448 13.4456 2.448 13.9979V18.9979C2.448 19.5502 2.89571 19.9979 3.448 19.9979H8.448C9.00028 19.9979 9.448 19.5502 9.448 18.9979V13.9979C9.448 13.4456 9.00028 12.9979 8.448 12.9979H3.448Z"
                                 fill="#ffffff" />
                         </svg><a href="../AnaliseMarketing/resultado">Análise de Marketing</a></li>
-                    <li><i aria-hidden="true" class="gg-credit-card"></i>
+                    <li class='nav-lateral-ativo'><i aria-hidden="true" class="gg-credit-card"></i>
                         <a href="assinaturas">Minha assinatura</a>
                     </li>
                     <li><i aria-hidden="true" class="gg-user"></i>

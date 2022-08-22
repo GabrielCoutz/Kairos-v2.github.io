@@ -88,6 +88,35 @@ a:not(.perfil a),
   cursor: pointer;
 }
 
+.nav-lateral-ativo {
+  background-color: var(--cor-fundo);
+  border-radius: 10px 0px 0px 10px !important;
+  position: relative;
+}
+
+.nav-lateral-ativo > a {
+  color: var(--preto-puro) !important;
+}
+
+li.nav-lateral-ativo::before {
+  content: "";
+  background-color: var(--cor-fundo);
+  width: 50px;
+  height: 100%;
+  position: absolute;
+  right: -30px;
+}
+
+li.nav-lateral-ativo:hover {
+  background: var(--cor-fundo) !important;
+}
+
+.nav-lateral-ativo *[class^="gg"],
+.nav-lateral-ativo *[class^="gg"]::after,
+.nav-lateral-ativo *[class^="gg"]::before {
+  border-color: var(--preto-puro) !important;
+}
+
 img[alt="Kairos Logo"] {
   max-width: 200px;
 }
@@ -96,7 +125,13 @@ img[alt="Kairos Logo"]:hover {
   cursor: pointer;
 }
 
-select, .gg-remove {
+.nav-lateral > li > i,
+.nav-lateral > li > svg {
+  margin-left: 10px;
+}
+
+select,
+.gg-remove {
   cursor: pointer;
 }
 
