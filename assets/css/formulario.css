@@ -25,12 +25,12 @@
   padding-top: 0 !important;
 }
 
-.formulario > h1,
 .formulario > .btn {
-  justify-self: center;
+  justify-self: stretch;
 }
 
 .formulario > h1 {
+  justify-self: center;
   font: 500 2rem/1 var(--fonte-display);
   color: var(--p1);
 }
@@ -69,7 +69,7 @@ input::placeholder {
 
 .formulario.login,
 .formulario.recuperacao {
-  max-width: 430px;
+  max-width: 350px;
   margin: 0 auto;
 }
 

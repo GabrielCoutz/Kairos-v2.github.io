@@ -292,6 +292,12 @@ function dispararEvento(elemento, evento, stringCondicao) {
       var condicao = function () {
         return cvv.value.length < 3;
       };
+      break;
+    case "condicaoCaptcha":
+      var condicao = function () {
+        return grecaptcha.getResponse() == "";
+      };
+      break;
   }
 
   let funcao = function () {
