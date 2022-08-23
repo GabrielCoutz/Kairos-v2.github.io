@@ -86,6 +86,10 @@
   box-shadow: 0 4px 0 var(--c1), -4px 4px 0 var(--c1), -4px 0 0 var(--c1);
 }
 
+.gg-credit-card::after {
+  width: 20px;
+}
+
 .recuperar-senha i[class^="gg-eye"] {
   grid-column: 3;
 }

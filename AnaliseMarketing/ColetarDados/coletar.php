@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kairos | Análise de Marketing">
-    <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -16,7 +16,6 @@
     <title>Análise de Marketing</title>
     <?php
       error_reporting(E_ALL);
-      
       session_start();
 
       if(!isset($_SESSION['email_padrao']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true'))){
@@ -63,9 +62,9 @@
                         <a href="assinaturas">Minha assinatura</a>
                     </li>
                     <li><i aria-hidden="true" class="gg-user"></i>
-                        <a href="../Perfil/usuario">Perfil</a>
+                        <a href="../../Perfil/usuario">Perfil</a>
                     </li>
-                    <a href="../index" class="btn secundario menu-btn">Sair</a>
+                    <a href="../../index" class="btn secundario menu-btn">Sair</a>
                 </ul>
                 <div class="hamburguer">
                     <span class="bar"></span>
@@ -77,10 +76,10 @@
     </div>
     <div class="principal">
         <header>
-            <a href="../index" class="btn secundario">Sair</a>
+            <a href="../../index" class="btn secundario">Sair</a>
         </header>
         <div class="perfil">
-
+            <script type="text/javascript" src="https://form.jotform.com/jsform/220553064751047"></script>
         </div>
     </div>
 </body>
@@ -91,11 +90,10 @@
 <script src="https://cdn.lordicon.com/lusqsztk.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
-<script src="../assets/js/globals.js"></script>
-<script src="../assets/js/formulario.js"></script>
-<script src="../assets/js/popup.js"></script>
+<script src="../../assets/js/globals.js"></script>
+<script src="../../assets/js/formulario.js"></script>
+<script src="../../assets/js/popup.js"></script>
 
 <script src="assets/js/script.js"></script>
-<script type="text/javascript" src="https://form.jotform.com/jsform/220553064751047"></script>
 
 </html>

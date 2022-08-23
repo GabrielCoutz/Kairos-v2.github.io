@@ -93,7 +93,8 @@
 }
 
 #popUpEnviar:not(.body-perfil.empresa > #popUpEnviar, .resultado
-    #popUpEnviar, .assinaturas #popUpEnviar) {
+    #popUpEnviar, .assinaturas #popUpEnviar),
+.resultado #popUpEnviar {
   display: none;
 }
 

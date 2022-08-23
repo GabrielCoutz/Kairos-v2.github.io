@@ -63,7 +63,7 @@
                 break;
             }
         } else if (is_int(strpos($chave, '4PS'))){ // metodologia 4P's
-            
+
             switch (true) {
                 case is_int(strpos($chave,'4PSproduto2')) && is_int(strpos($valor, 'Serviços Agregados (Pós venda, garantia, etc)')):
                     $produto .= 'Serviços Agregados'.', ';
@@ -99,8 +99,7 @@
         }
     }
 
-    $email = $_SESSION['email_padrao'];
-
+    $email = $_SESSION['email'];
 
     $result_swot=mysqli_query($conec, "INSERT INTO analise_swot(email_usuario, forcas, fraquezas, oportunidades, ameacas) VALUES('$email', '$fortes', '$fracos', '$oportunidades', '$ameacas')");
 
@@ -114,6 +113,5 @@
     }
     header('Location: ../../../resultado?'.md5('sucesso=false'));
     exit;
-
 ?>
 <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.12.0/js/md5.min.js'></script>

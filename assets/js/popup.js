@@ -108,7 +108,7 @@ janelaPopUp.abre = function (param) {
 
   if (param.realizarAnalise === true) {
     esperar({
-      url: "../ColetarDados/coletar",
+      url: "../AnaliseMarketing/ColetarDados/coletar",
       delay: 3000,
     });
   } else if (param.realizarAnalise === false) {

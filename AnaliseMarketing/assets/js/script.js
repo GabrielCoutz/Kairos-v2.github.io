@@ -1,3 +1,9 @@
+var conteudo;
+
+$(".swot-caixa > span").innerText !== undefined
+  ? (conteudo = false)
+  : (conteudo = true);
+
 switch (true) {
   case verificarURL(md5("erro=true")):
     erroSincronizacao("../Login/login");
@@ -35,4 +41,11 @@ switch (true) {
     });
     limparURL(md5("analise=false"));
     break;
+}
+
+if (conteudo) {
+  document.querySelectorAll(".swot-caixa > span").forEach((item) => {
+    item.innerHTML = item.innerHTML.replace(",", "<br>");
+    item.innerHTML = item.innerHTML.replace(",", "");
+  });
 }
