@@ -24,6 +24,7 @@
   gap: 60px;
   flex-wrap: wrap;
   flex-direction: column;
+  padding: 10px;
 }
 
 .orientacoes-swot > h1 {
@@ -72,12 +73,12 @@
 }
 
 .swot-caixa:nth-child(2) {
-  border-left: 1px solid black;
-  border-bottom: 1px solid black;
+  border-left: 1px solid var(--cor-primaria);
+  border-bottom: 1px solid var(--cor-primaria);
 }
 .swot-caixa:nth-child(3) {
-  border-right: 1px solid black;
-  border-top: 1px solid black;
+  border-right: 1px solid var(--cor-primaria);
+  border-top: 1px solid var(--cor-primaria);
 }
 
 .swot-caixa {
