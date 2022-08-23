@@ -86,6 +86,10 @@
   box-shadow: 0 4px 0 var(--c1), -4px 4px 0 var(--c1), -4px 0 0 var(--c1);
 }
 
+.recuperar-senha i[class^="gg-eye"] {
+  grid-column: 3;
+}
+
 /* icones de popup */
 
 @media (min-width: 501px) {

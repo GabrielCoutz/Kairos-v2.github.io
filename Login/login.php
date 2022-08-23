@@ -16,6 +16,8 @@
         rel="stylesheet">
     <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
     <?php
+        error_reporting(E_ERROR | E_PARSE);
+        session_unset();
         session_start();
     ?>
 </head>

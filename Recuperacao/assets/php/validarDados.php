@@ -46,7 +46,7 @@ $select=mysqli_query($conec, "SELECT email, nome FROM usuario WHERE email ='$ema
 if($select){
     if($email === $select['email'] && $nome === strtolower($select['nome'])){ // dados corretos
         $_SESSION['email'] = $email;
-        header('Location: ../../MudarSenha/mudar?'.md5('sucesso=true'));
+        header('Location: ../../MudarSenha/mudar?'.md5('conta_encontrada=true'));
         exit;
     }
 }

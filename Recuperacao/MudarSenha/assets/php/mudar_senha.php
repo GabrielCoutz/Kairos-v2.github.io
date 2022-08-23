@@ -30,7 +30,7 @@ $senha_nova = md5($_POST['senha_nova']);
 $email = $_SESSION['email'];
 
 $result_senha=mysqli_query($conec,"UPDATE usuario SET senha = '$senha_nova' WHERE email = '$email'");
-verificarOperacao($result_senha, '../../../../Login/login?');
+verificarOperacao($result_senha, '../../../../Login/login');
 header('Location: ../../../../Login/login?'.md5('sucesso_senha=true'));
 exit;
 ?>

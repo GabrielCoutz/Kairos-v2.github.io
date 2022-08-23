@@ -1,5 +1,5 @@
 let janelaPopUp = new Object();
-let colors = "colors= 'primary:#121331,secondary:#16c72e' ";
+let colors = "primary:#121331,secondary:#16c72e";
 let src = "";
 
 janelaPopUp.abre = function (param) {
@@ -14,12 +14,12 @@ janelaPopUp.abre = function (param) {
       break;
     case param.icone === "falha":
       src = "https://cdn.lordicon.com/tdrtiskw.json";
-      colors = "colors= 'primary:#c71f16,secondary:#000000' ";
+      colors = "primary:#c71f16,secondary:#000000";
       break;
     case param.icone === "carregar":
       src = "https://cdn.lordicon.com/dpinvufc.json";
       delay = "delay = '10' ";
-      colors = "colors='primary:#4E6EF1,secondary:#4E6EF1' ";
+      colors = "primary:#4E6EF1,secondary:#4E6EF1";
       break;
     case param.icone === "encontrado":
       src = "https://cdn.lordicon.com/msoeawqm.json";

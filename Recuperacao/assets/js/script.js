@@ -45,6 +45,7 @@ function validar() {
       corpo: "Validando Dados",
       titulo: "Recuperação de Conta",
       icone: "carregar",
+      semBotoes: true,
     });
     setTimeout(enviar, 3000);
   }

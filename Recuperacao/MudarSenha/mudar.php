@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Kairos | Recuperação de conta">
+    <meta name="description" content="Kairos | Recuperação de conta - final">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../../assets/css/style.css">
@@ -15,11 +15,19 @@
         rel="stylesheet">
     <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
     <title>Recuperação de conta</title>
+    <?php
+        session_start();
+        error_reporting(E_ERROR | E_PARSE);
+        if (!isset($_SESSION['email']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true'))){
+            header("Refresh:0; url=mudar".'?'.md5('erro=true'));
+            exit;
+        }
+    ?>
 </head>
 
-<body class="body-form">
+<body class="body-form recuperar-senha">
 
-    <header class="header container" id="header-cadastroUsuario">
+    <header class="header container">
         <div class="header-logo">
             <a href="../../index"><img src="../../assets/img/logo/airos.png" alt="Kairos Logo"></a>
         </div>
@@ -27,12 +35,12 @@
 
     <div class="fundo-form container">
         <div class="form-holder">
-            <form action="#" method="POST" class="formulario recuperacao">
-                <h1 class="titulo" onsubmit="return false">Etapa final</h1>
+            <form action="assets/php/mudar_senha" method="POST" class="formulario recuperacao" onsubmit="return false">
+                <h1 class="titulo">Etapa final</h1>
                 <div class="form-caixa">
                     <label for="senha_nova">Nova senha</label>
                     <i class="gg-lock"></i>
-                    <input type="password" name="senha_nova" id="senha_nova" placeholder="Nova senha">
+                    <input type="password" name="senha_nova" id="senha_nova" placeholder="Nova senha" aria-controls="senha_novaAlert">
                     <i class="gg-eye" aria-controls="senha_nova"></i>
                     <span class="underline"></span>
                     <div id="senha_novaAlert"></div>
@@ -40,7 +48,7 @@
                 <div class="form-caixa">
                     <label for="senha_nova_dup">Digite novamente</label>
                     <i class="gg-lock"></i>
-                    <input type="password" name="senha_nova_dup" id="senha_nova_dup" placeholder="Digite novamente">
+                    <input type="password" name="senha_nova_dup" id="senha_nova_dup" placeholder="Digite novamente" aria-controls="senha_nova_dupAlert">
                     <i class="gg-eye" aria-controls="senha_nova_dup"></i>
                     <span class="underline"></span>
                     <div id="senha_nova_dupAlert"></div>
@@ -53,9 +61,16 @@
     </div>
 </body>
 <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.12.0/js/md5.min.js'></script>
+
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script src="https://cdn.lordicon.com/lusqsztk.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+<script src="../../assets/js/globals.js"></script>
 <script src="../../assets/js/formulario.js"></script>
-<!-- <script src="assets/js/script.js"></script> -->
+<script src="../../assets/js/popup.js"></script>
+
+<script src="assets/js/script.js"></script>
 
 </html>
