@@ -35,6 +35,7 @@
                     <input type="password" name="senha_nova" id="senha_nova" placeholder="Nova senha">
                     <i class="gg-eye" aria-controls="senha_nova"></i>
                     <span class="underline"></span>
+                    <div id="senha_novaAlert"></div>
                 </div>
                 <div class="form-caixa">
                     <label for="senha_nova_dup">Digite novamente</label>
@@ -42,6 +43,7 @@
                     <input type="password" name="senha_nova_dup" id="senha_nova_dup" placeholder="Digite novamente">
                     <i class="gg-eye" aria-controls="senha_nova_dup"></i>
                     <span class="underline"></span>
+                    <div id="senha_nova_dupAlert"></div>
                 </div>
                 <button type="submit" class="btn primario" onclick="validar()">Atualizar senha</button>
             </form>

@@ -19,7 +19,7 @@
 
 <body class="body-form recuperacao">
 
-    <header class="header container" id="header-cadastroUsuario">
+    <header class="header container">
         <div class="header-logo">
             <a href="../index"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
         </div>
@@ -48,8 +48,6 @@
                 <button type="submit" id='butao' class="btn secundario" onclick="validar()">Verificar</button>
             </form>
         </div>
-
-
     </div>
 </body>
 <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.12.0/js/md5.min.js'></script>

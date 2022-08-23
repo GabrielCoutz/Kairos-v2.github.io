@@ -33,7 +33,7 @@ if(isset($_POST['g-recaptcha-response']) && $_POST['g-recaptcha-response'] != ""
     $resp = json_decode(curl_exec($ch));
 
     if ($resp->success != 1){
-        header('Location: ../../recuperacao?'.md5('captcha=true'));
+        header('Location: ../../recuperacao?'.md5('captcha=false'));
         exit;
     }
 }

@@ -3,7 +3,7 @@ const email = document.getElementById("email");
 const captcha = document.getElementById("captcha");
 
 switch (true) {
-  case verificarURL(md5("captcha=true")):
+  case verificarURL(md5("captcha=false")):
     abrirjanela({
       cor: "red",
       corpo:
@@ -11,7 +11,7 @@ switch (true) {
       titulo: "Erro no CAPTCHA",
       icone: "falha",
     });
-    limparURL(md5("erro=true"));
+    limparURL(md5("captcha=false"));
     break;
 
   case verificarURL(md5("conta=false")):
