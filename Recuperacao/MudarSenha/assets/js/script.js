@@ -1,6 +1,6 @@
 switch (true) {
   case verificarURL(md5("conta_encontrada=true")):
-    abrirjanela({
+    abrirPopUp({
       cor: "green",
       corpo:
         "Sua conta foi localizada com sucesso! Agora basta inserir sua nova senha.",
@@ -11,7 +11,7 @@ switch (true) {
     break;
 
   case verificarURL(md5("sucesso=false")):
-    abrirjanela({
+    abrirPopUp({
       cor: "red",
       corpo:
         "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
@@ -49,12 +49,13 @@ function validar() {
       .getElementById(senha_nova_dup.getAttribute("aria-controls"))
       .classList.add("alerta-ativo");
   } else {
-    abrirjanela({
+    abrirPopUp({
       cor: "blue",
       titulo: "Recuperando",
       corpo: "Aguarde só mais um pouquinho...",
       icone: "carregar",
       semBotoes: true,
+      bgFechar: false,
     });
     setTimeout(enviar, 3000);
   }

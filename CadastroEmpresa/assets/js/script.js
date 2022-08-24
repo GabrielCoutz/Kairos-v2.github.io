@@ -12,7 +12,7 @@ switch (true) {
     break;
 
   case verificarURL(md5("cnpj=false")):
-    abrirjanela({
+    abrirPopUp({
       cor: "red",
       corpo: "CNPJ já cadastrado!",
       titulo: "Andamento Cadastro",
@@ -52,12 +52,13 @@ function validar() {
     localStorage.setItem(nome_empresa.id, nome_empresa.value);
     localStorage.setItem(nome_fantasia.id, nome_fantasia.value);
 
-    abrirjanela({
+    abrirPopUp({
       cor: "blue",
       corpo: "Verificando Dados",
       titulo: "Andamento Cadastro",
       icone: "carregar",
       semBotoes: true,
+      bgFechar: false,
     });
     setTimeout(enviar, 4000);
   }

@@ -61,6 +61,7 @@
 
 #popUp > button {
   padding: 10px 50px;
+  align-self: center;
 }
 
 #popUp {
@@ -75,13 +76,14 @@
 
 #popUp > h1 {
   font: 600 1.4rem/1.3rem var(--fonte-display);
+  text-align: center;
 }
 
 #popUp > span {
   color: var(--c4);
   font: 500 1rem/1.5 var(--fonte-texto);
   padding-bottom: 10px;
-  align-self: center;
+  /* align-self: center; */
 }
 
 .p {
@@ -154,9 +156,7 @@
 }
 
 lord-icon {
-  position: absolute;
   justify-self: center;
-  top: 30px;
 }
 
 #img {

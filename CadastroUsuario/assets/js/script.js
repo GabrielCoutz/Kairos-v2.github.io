@@ -8,7 +8,7 @@ switch (
   true // verifica se há erros passados na URL
 ) {
   case verificarURL(md5("erro=true")): //erro no captcha
-    abrirjanela({
+    abrirPopUp({
       cor: "red",
       corpo:
         "Possível Fraude detectada! Por favor, insira as informações novamente.",
@@ -21,7 +21,7 @@ switch (
   case verificarURL(md5("email=false")): //email já cadastrado
     email.classList.add("vermei");
     nome.value = localStorage.getItem(nome.id);
-    abrirjanela({
+    abrirPopUp({
       cor: "red",
       corpo: "Email já utilizado!",
       titulo: "Dados Duplicados",
@@ -54,12 +54,13 @@ function validar() {
     //   alertaDeErro(captcha, "Preencha o CAPTCHA!");
   } else {
     localStorage.setItem(nome.id, nome.value);
-    abrirjanela({
+    abrirPopUp({
       cor: "blue",
       corpo: "Validando Dados",
       titulo: "Andamento Cadastro",
       icone: "carregar",
       semBotoes: true,
+      bgFechar: false,
     });
     setTimeout(enviar, 4000);
   }

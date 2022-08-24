@@ -29,7 +29,7 @@ $(document).ready(function () {
     numero.placeholder = "Não cadastrado";
   }
 });
-
+abrirJanelaMarketing();
 switch (true) {
   case verificarURL(md5("erro=true")):
     erroSincronizacao("../Login/login");
@@ -37,7 +37,7 @@ switch (true) {
     break;
 
   case verificarURL(md5("senha=false")): // senha diferente da já utilizada
-    abrirjanela({
+    abrirPopUp({
       cor: "red",
       corpo:
         "Não foi possível alterar sua senha! Por favor, verifique os campos e tente novamente.",
@@ -52,7 +52,7 @@ switch (true) {
     break;
 
   case verificarURL(md5("sucesso=true")):
-    abrirjanela({
+    abrirPopUp({
       cor: "green",
       corpo: "Dados alterados com êxito.",
       titulo: "Alteração realizada",
@@ -200,12 +200,13 @@ function salvar() {
       );
       dispararEvento(senha_antiga, "keyup", "condicaoSenha");
     } else {
-      abrirjanela({
+      abrirPopUp({
         cor: "blue",
         corpo: "Verificando dados",
         titulo: "Validando Alteração",
         icone: "carregar",
         semBotoes: true,
+        bgFechar: false,
       });
       Cookies.set("senha", 1);
       setTimeout(enviar, 3000);
@@ -231,12 +232,13 @@ function salvar() {
     numero.classList.add("vermei");
   } else {
     Cookies.set("usuario", 1);
-    abrirjanela({
+    abrirPopUp({
       cor: "blue",
       corpo: "Verificando dados",
       titulo: "Validando Alteração",
       icone: "carregar",
       semBotoes: true,
+      bgFechar: false,
     });
     setTimeout(enviar, 3000);
   }

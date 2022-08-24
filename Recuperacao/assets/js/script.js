@@ -4,7 +4,7 @@ const captcha = document.getElementById("captcha");
 
 switch (true) {
   case verificarURL(md5("captcha=false")):
-    abrirjanela({
+    abrirPopUp({
       cor: "red",
       corpo:
         "Possível Fraude detectada! Por favor, insira as informações novamente.",
@@ -15,7 +15,7 @@ switch (true) {
     break;
 
   case verificarURL(md5("conta=false")):
-    abrirjanela({
+    abrirPopUp({
       cor: "red",
       corpo:
         "Sua conta não foi localizada! Por favor, verifique se os dados estão escritos corretamente.",
@@ -40,12 +40,13 @@ function validar() {
     //     dispararEvento(captcha, "keyup", "condicaoCaptcha");
     //     alertaDeErro(captcha, "Por favor, preencha o CAPTCHA!");
   } else {
-    abrirjanela({
+    abrirPopUp({
       cor: "blue",
       corpo: "Validando Dados",
       titulo: "Recuperação de Conta",
       icone: "carregar",
       semBotoes: true,
+      bgFechar: false,
     });
     setTimeout(enviar, 3000);
   }

@@ -23,12 +23,13 @@ const salvarbtn = document.getElementById("salvarbtn");
 const cancelarbtn = document.getElementById("cancelarbtn");
 
 function abrirEmpresa() {
-  abrirjanela({
+  abrirPopUp({
     cor: "blue",
     corpo:
       "Parece que você não tem uma empresa cadastrada. Gostaria de cadastrá-la agora?",
     titulo: "Empresa não cadastrada",
     abrirEmpresa: true,
+    bgFechar: false,
   });
 }
 
@@ -58,7 +59,7 @@ switch (true) {
     break;
 
   case verificarURL(md5("sucesso=true")):
-    abrirjanela({
+    abrirPopUp({
       cor: "green",
       corpo: "Dados alterados com êxito.",
       titulo: "Alteração realizada com sucesso",
@@ -68,7 +69,7 @@ switch (true) {
     break;
 
   case verificarURL(md5("cadastro=true")):
-    abrirjanela({
+    abrirPopUp({
       cor: "green",
       corpo: "Dados registrados com êxito.",
       titulo: "Cadastro realizado com sucesso",
@@ -91,7 +92,7 @@ $("#ramo")
   .change();
 
 if (!vazio(alerta)) {
-  abrirjanela({
+  abrirPopUp({
     cor: "red",
     corpo: alerta,
     titulo: "Alteração Inválida",
@@ -204,12 +205,13 @@ function salvar() {
     numero_empresa.classList.add("vermei");
   } else {
     Cookies.set("empresa", 1);
-    abrirjanela({
+    abrirPopUp({
       cor: "blue",
       corpo: "Verificando dados",
       titulo: "Validando Alteração",
       icone: "carregar",
       semBotoes: true,
+      bgFechar: false,
     });
     setTimeout(enviar, 3000);
   }

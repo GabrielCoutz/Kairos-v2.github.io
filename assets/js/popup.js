@@ -33,7 +33,7 @@ janelaPopUp.abre = function (param) {
 
   let janela2 = document.createElement("div");
   janela2.setAttribute("id", "popUp");
-  janela2.setAttribute("class", "popUp " + param.cor);
+  janela2.setAttribute("class", "popUp p " + param.cor);
 
   let h1 = document.createElement("h1");
   h1.append(param.titulo);
@@ -94,6 +94,35 @@ janelaPopUp.abre = function (param) {
   $(".popUpFundo").fadeIn("fast");
   $("#popUp").addClass("popUpEntrada");
 
+  if (param.marketing === true) {
+    document.getElementById("popUpEnviar").innerHTML = "Realizar Agora";
+    document.getElementById("popUpEnviar").classList.remove("secundario");
+    document.getElementById("popUpEnviar").classList.add("primario");
+    document.getElementById("popUpEnviar").style.display = "block";
+    document.getElementById("popUpCancelar").innerHTML = "Talvez depois";
+
+    document
+      .getElementById("popUpEnviar")
+      .addEventListener("click", function () {
+        janelaPopUp.fecha();
+        setTimeout(() => {
+          abrirPopUp({
+            cor: "blue",
+            titulo: "Análise de Marketing",
+            corpo:
+              "Boa escolha! Te levaremos para realizar uma análise agora mesmo.",
+            icone: "marketing",
+            semBotoes: true,
+            bgFechar: false,
+          });
+          esperar({
+            url: "../AnaliseMarketing/ColetarDados/coletar",
+            delay: 3000,
+          });
+        }, 2000);
+      });
+  }
+
   if (param.cadastrarEmpresa === true) {
     esperar({
       url: "../../CadastroEmpresa/cadastro_empresa",
@@ -134,13 +163,14 @@ janelaPopUp.abre = function (param) {
       .addEventListener("click", function () {
         janelaPopUp.fecha();
         setTimeout(() => {
-          abrirjanela({
+          abrirPopUp({
             cor: "blue",
             corpo: "Tudo bem, redirecionando para página de cadastro",
             titulo: "Empresa não cadastrada",
             icone: "carregar",
             semBotoes: true,
             cadastrarEmpresa: true,
+            bgFechar: false,
           });
         }, 2000);
       });
@@ -150,13 +180,14 @@ janelaPopUp.abre = function (param) {
       .addEventListener("click", function () {
         janelaPopUp.fecha();
         setTimeout(() => {
-          abrirjanela({
+          abrirPopUp({
             cor: "blue",
             corpo: "Tudo bem, estamos te tirando daqui",
             titulo: "Empresa não cadastrada",
             icone: "carregar",
             semBotoes: true,
             cadastrarEmpresa: false,
+            bgFechar: false,
           });
         }, 2000);
       });
@@ -174,13 +205,14 @@ janelaPopUp.abre = function (param) {
       .addEventListener("click", function () {
         janelaPopUp.fecha();
         setTimeout(() => {
-          abrirjanela({
+          abrirPopUp({
             cor: "blue",
             corpo: "Tudo bem, redirecionando para página de análise",
             titulo: "Análise não realizada",
             icone: "carregar",
             semBotoes: true,
             realizarAnalise: true,
+            bgFechar: false,
           });
         }, 2000);
       });
@@ -189,13 +221,14 @@ janelaPopUp.abre = function (param) {
       .addEventListener("click", function () {
         janelaPopUp.fecha();
         setTimeout(() => {
-          abrirjanela({
+          abrirPopUp({
             cor: "blue",
             corpo: "Tudo bem, estamos te tirando daqui",
             titulo: "Análise não realizada",
             icone: "carregar",
             semBotoes: true,
             realizarAnalise: false,
+            bgFechar: false,
           });
         }, 2000);
       });
@@ -206,11 +239,7 @@ janelaPopUp.abre = function (param) {
     janelaPopUp.fecha();
   });
 
-  if (
-    param.icone != "carregar" &&
-    param.icone != "marketing" &&
-    !param.cadastrarEmpresa
-  ) {
+  if (param.bgFechar !== false) {
     $(".popUpFundo").on("click", function () {
       janelaPopUp.fecha();
     });
@@ -230,43 +259,23 @@ janelaPopUp.fecha = function () {
   });
 };
 
-function abrirjanela(params) {
+function abrirPopUp(params) {
   janelaPopUp.abre(params);
 }
 
 function abrirJanelaMarketing() {
-  img = ' <img src="assets/img/teste2.png" id="img"> ';
-  janelaPopUp.abre(
-    "asdf",
-    "p" + " " + "blue" + " " + "alert",
-    "Faça sua análise hoje mesmo!",
-    "Sabia que você pode impulsionar sua gestão de marketing com alguns clicks?"
-  );
-  document.getElementById("asdf_cancelar").innerHTML = "Realizar Agora";
-  $("#asdf").append(
-    '<div id="esqueci" >' +
-      '<a href="#" style="text-align: center;cursor: pointer; display: block; font-weight: bold; font-family: ' +
-      "'San Francisco'" +
-      ' !important; font-size: 15px; color: #4e6ef1 !important;"> Talvez, depois </a>' +
-      "</div>"
-  );
-  document.getElementById("asdf").classList.add("marketing");
-  Cookies.set(md5("analise"), md5("true"));
-
-  document
-    .getElementById("asdf_cancelar")
-    .addEventListener("click", function () {
-      //BTN - Realizar Agora
-      window.location.href = "AnaliseMarketing/ColetarDados/ColetadeDados";
-    });
-  document.getElementById("esqueci").addEventListener("click", function () {
-    //BTN - Talvez, depois
-    janelaPopUp.fecha("asdf");
+  abrirPopUp({
+    cor: "blue",
+    titulo: "Faça sua análise hoje mesmo!",
+    corpo:
+      "Sabia que você pode impulsionar sua gestão de marketing com alguns clicks?",
+    icone: "marketing",
+    marketing: true,
   });
 }
 
 function abrirJanelaPlanos(plano_mudanca, plano_atual) {
-  abrirjanela({
+  abrirPopUp({
     cor: "blue",
     titulo: "Mudança de Planos",
     mudarPlanos: true,
@@ -289,7 +298,7 @@ function abrirJanelaPlanos(plano_mudanca, plano_atual) {
 }
 
 if (verificarURL(md5("sucesso=false"))) {
-  abrirjanela({
+  abrirPopUp({
     cor: "red",
     corpo:
       "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
@@ -300,12 +309,13 @@ if (verificarURL(md5("sucesso=false"))) {
 }
 
 function erroSincronizacao(url) {
-  abrirjanela({
+  abrirPopUp({
     cor: "red",
     corpo: "Erro inesperado! Por favor, faça login novamente.",
     titulo: "Conta não sincronizada",
     icone: "falha",
     semBotoes: true,
+    bgFechar: false,
   });
   esperar({
     url: url,

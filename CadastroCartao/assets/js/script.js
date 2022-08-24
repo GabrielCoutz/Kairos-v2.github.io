@@ -20,7 +20,7 @@ switch (true) {
 
   case verificarURL(md5("cpf=false")):
     limparURL(md5("cpf=false"));
-    abrirjanela({
+    abrirPopUp({
       cor: "red",
       corpo: "CPF já utilizado!",
       titulo: "Dados Duplicados",
@@ -79,12 +79,13 @@ $(document).ready(function () {
 });
 
 function cancelar() {
-  abrirjanela({
+  abrirPopUp({
     cor: "blue",
     titulo: "Cancelando",
     corpo: "Pena que mudou de ideia =(",
     icone: "carregar",
     semBotoes: true,
+    bgFechar: false,
   });
   setTimeout(() => {
     window.location.href = "../Perfil/usuario";
@@ -132,12 +133,13 @@ function validar() {
     dispararEvento(numero, "keyup", "condicaoVazio");
     alertaDeErro(numero, "Preencha o Número!");
   } else {
-    abrirjanela({
+    abrirPopUp({
       cor: "blue",
       corpo: "Validando Dados",
       titulo: "Cadastrando Cartão",
       icone: "carregar",
       semBotoes: true,
+      bgFechar: false,
     });
     setTimeout(enviar, 3000);
   }

@@ -3,7 +3,7 @@ const senha = document.getElementById("senha");
 
 switch (true) {
   case verificarURL(md5("login=false")):
-    abrirjanela({
+    abrirPopUp({
       cor: "red",
       corpo: "Credenciais incorretas! Por favor, verifique os dados inseridos!",
       titulo: "Falha no login",
@@ -17,7 +17,7 @@ switch (true) {
     break;
 
   case verificarURL(md5("sucesso=true")):
-    abrirjanela({
+    abrirPopUp({
       cor: "green",
       corpo: "Dados cadastrados com sucesso!",
       titulo: "Cadastro",
@@ -27,7 +27,7 @@ switch (true) {
     break;
 
   case verificarURL(md5("sucesso_senha=true")):
-    abrirjanela({
+    abrirPopUp({
       cor: "green",
       corpo: "Senha alterada com sucesso!",
       titulo: "Recuperação de Conta",
@@ -49,12 +49,13 @@ function validar() {
   } else {
     localStorage.clear();
     apagarCookie(md5("analise"));
-    abrirjanela({
+    abrirPopUp({
       cor: "blue",
       corpo: "Aguarde",
       titulo: "Validando dados",
       icone: "carregar",
-      semBotoes: true
+      semBotoes: true,
+      bgFechar: false,
     });
     setTimeout(enviar, 4000);
   }
