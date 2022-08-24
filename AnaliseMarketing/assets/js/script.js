@@ -1,8 +1,13 @@
-var conteudo;
+var conteudoSwot;
+var conteudoComposto;
 
 $(".swot-caixa > span").innerText !== undefined
-  ? (conteudo = false)
-  : (conteudo = true);
+  ? (conteudoSwot = false)
+  : (conteudoSwot = true);
+
+$(".composto-caixa > span").innerText !== undefined
+  ? (conteudoComposto = false)
+  : (conteudoComposto = true);
 
 switch (true) {
   case verificarURL(md5("erro=true")):
@@ -43,9 +48,20 @@ switch (true) {
     break;
 }
 
-if (conteudo) {
+if (conteudoSwot) {
   document.querySelectorAll(".swot-caixa > span").forEach((item) => {
     item.innerHTML = item.innerHTML.replace(",", "<br>");
     item.innerHTML = item.innerHTML.replace(",", "");
+  });
+}
+
+if (conteudoComposto) {
+  document.querySelectorAll(".composto-caixa > span").forEach((item) => {
+    item.innerHTML = item.innerHTML.replace(",", "<br>");
+    item.innerHTML = item.innerHTML.replace(",", "<br>");
+    item.innerHTML = item.innerHTML.replace(",", "<br>");
+    item.innerHTML = item.innerHTML.replace(",", "<br>");
+    item.innerHTML = item.innerHTML.replace(",", "<br>");
+    item.innerHTML = item.innerHTML.replace(",", "<br>");
   });
 }

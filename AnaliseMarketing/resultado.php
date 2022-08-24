@@ -47,6 +47,68 @@
                 exit;
                 break;
         }
+        
+        foreach ($_GET as $key => $value) {
+            if(!is_int(strpos($key, 'SWOT'))){
+                echo $key.' = '.str_replace('<br>',', ',$value).'<br>'.'<br>';
+            }
+        }
+
+        echo '<br>---------------------<br>';
+
+        $produto = '';
+        $preco = '';
+        $praca = '';
+        $promocao = '';
+        $incentivo = '';
+        foreach ($_GET as $chave => $valor) { 
+            switch (true) {
+                    case is_int(strpos($chave,'produto')):
+                        $produto .= $valor.', ';
+                        break;
+                    case is_int(strpos($chave,'4PSproduto2')) && is_int(strpos($valor, 'Serviços Agregados (Pós venda, garantia, etc)')):
+                        $produto .= 'Serviços Agregados'.', ';
+                        break;
+
+                    case is_int(strpos($chave,'4PSpreço1')) && is_int(strpos($valor, 'Alto Custo')):
+                        $preco .= 'Alto Preço de Produção'.', ';
+                        break;
+                    case is_int(strpos($chave,'4PSpreço2')) && is_int(strpos($valor, 'Alto Custo')):
+                    $preco .= 'Alto Preço Final'.', ';
+                    break;
+                    case is_int(strpos($chave, '4PSpreçosensivel')) && is_int(strpos($valor, 'Sim')):
+                        $ameacas .= 'Clientes Sensíveis ao Preço'.', ';
+                        break;
+                    case is_int(strpos($chave, '4PSpreçosensivel')) && is_int(strpos($valor, 'Não')):
+                        break;
+
+                    case is_int(strpos($chave,'praça')):
+                        $praca .= $valor.', ';
+                        break;
+                    case is_int(strpos($chave,'4PSpraça2') && !is_int(strpos($valor, 'Orientar o cliente sobre uma decisão'))): 
+                        $incentivo.= 'Orientar na compra'.', ';
+                        break;
+                    case is_int(strpos($chave,'4PSpraça2') && !is_int(strpos($valor, 'Fazer com que o cliente sinta a necessidade do produto'))): 
+                        $incentivo.= 'Sensação de necessidade'.', ';
+                        break;
+                    case is_int(strpos($chave,'4PSpraça2') && !is_int(strpos($valor, 'Fazer com que o cliente deseje o produto'))): 
+                        $incentivo.= 'Desejo de compra'.', ';
+                        break;
+                    case is_int(strpos($chave,'4PSpraça3')):
+                        break;
+
+                    case is_int(strpos($chave,'promoção')):
+                        $promocao .=$valor.', ';
+                        break;
+                }
+        }
+        
+        
+            echo $produto.'<br>'.'<br>';
+            echo $preco.'<br>'.'<br>';
+            echo $praca.'<br>'.'<br>';
+            echo $promocao.'<br>'.'<br>';
+            echo $incentivo.'<br>'.'<br>';
     ?>
 </head>
 
@@ -105,61 +167,95 @@
             <a href="../index" class="btn secundario">Sair</a>
         </header>
         <div class="perfil">
-            <div class="bloco-swot">
+            <div class="bloco-metodologia">
                 <div class="SWOT">
                     <div class="swot-caixa">
                         <h1 class="titulo-metodo">Forças</h1>
-                        <span><?= $select_swot['forcas']; ?></span>
+                        <span>
+                            <?= $select_swot['forcas']; ?>
+                        </span>
                     </div>
                     <div class="swot-caixa">
                         <h1 class="titulo-metodo">Fraquezas</h1>
-                        <span><?= $select_swot['fraquezas']; ?></span>
+                        <span>
+                            <?= $select_swot['fraquezas']; ?>
+                        </span>
                     </div>
                     <div class="swot-caixa">
                         <h1 class="titulo-metodo">Oportunidades</h1>
-                        <span><?= $select_swot['oportunidades']; ?></span>
+                        <span>
+                            <?= $select_swot['oportunidades']; ?>
+                        </span>
                     </div>
                     <div class="swot-caixa">
                         <h1 class="titulo-metodo">Ameaças</h1>
-                        <span><?= $select_swot['ameacas']; ?></span>
+                        <span>
+                            <?= $select_swot['ameacas']; ?>
+                        </span>
                     </div>
                 </div>
                 <div class="orientacoes-swot">
                     <h1>Agora sim podemos começar!</h1>
                     <span>
-                        <p>Utilize estes resultados a fim de basear estratégias benéficas para a administração em sua empresa.</p>
+                        <p>Utilize estes resultados a fim de basear estratégias benéficas para a administração em sua
+                            empresa.</p>
                         <p>Imaginamos que você está pensando "Como faço isso?", certo?</p>
-                        <p>Sem stress! Precisa fazer as relações de cada item da matriz. Separamos algumas perguntas para ajudá-lo nessa:</p>
+                        <p>Sem stress! Precisa fazer as relações de cada item da matriz. Separamos algumas perguntas
+                            para ajudá-lo nessa:</p>
                     </span>
                     <ul>
                         <li>
-                        <h1>Forças + Oportunidades</h1>Quais pontos fortes podem ser potencializados para maximizar as oportunidades?
+                            <h1>Forças + Oportunidades</h1>Quais pontos fortes podem ser potencializados para maximizar
+                            as oportunidades?
                         </li>
                         <li>
-                        <h1>Forças + Ameaças</h1>Quais pontos fortes podem ser estudados para minimizar o impacto das ameaças?
+                            <h1>Forças + Ameaças</h1>Quais pontos fortes podem ser estudados para minimizar o impacto
+                            das ameaças?
                         </li>
                         <li>
-                        <h1>Fraquezas + Oportunidades</h1>Quais pontos fracos podem ser corrigidos para aproveitar as oportunidades?
+                            <h1>Fraquezas + Oportunidades</h1>Quais pontos fracos podem ser corrigidos para aproveitar
+                            as oportunidades?
                         </li>
                         <li>
-                        <h1>Fraquezas + Ameaças</h1>Quais pontos fracos podem ser resolvidos para minimizar o efeito das ameaças?
+                            <h1>Fraquezas + Ameaças</h1>Quais pontos fracos podem ser resolvidos para minimizar o efeito
+                            das ameaças?
                         </li>
                     </ul>
                 </div>
             </div>
-
-            <div class="compostoMK">
-                <div class="composto-caixa">
-                    <?= $select_4ps['produto']; ?>
+            <div class="bloco-metodologia">
+                <div class="compostoMK">
+                    <div class="composto-caixa">
+                        <h1 class="titulo-metodo">Produto</h1>
+                        <span>
+                            <?= $select_4ps['produto']; ?>
+                        </span>
+                    </div>
+                    <div class="composto-caixa">
+                        <h1 class="titulo-metodo">Preço</h1>
+                        <span>
+                            <?= $select_4ps['preco']; ?>
+                        </span>
+                    </div>
+                    <div class="composto-caixa">
+                        <h1 class="titulo-metodo">Praça</h1>
+                        <span>
+                            <?= $select_4ps['praca']; ?>
+                        </span>
+                    </div>
+                    <div class="composto-caixa">
+                        <h1 class="titulo-metodo">Promoção</h1>
+                        <span>
+                            <?= $select_4ps['promocao']; ?>
+                        </span>
+                    </div>
                 </div>
-                <div class="composto-caixa">
-                    <?= $select_4ps['preco']; ?>
-                </div>
-                <div class="composto-caixa">
-                    <?= $select_4ps['praca']; ?>
-                </div>
-                <div class="composto-caixa">
-                    <?= $select_4ps['promocao']; ?>
+                <div class="orientacoes-composto">
+                    <h1>Sua estratégia pode ser mais que competitiva, pode ser imbatível.</h1>
+                    <p>É o alinhamento desses itens que irá compor toda a estratégia de marketing da sua empresa.</p>
+                    <p>Pense neles como peças de um quebra-cabeça que irão se encaixar para formar o todo.</p>
+                    <p>Portanto, você comunicará aos seus consumidores o posicionamento da sua marca e irá promover o desejo de
+                    compra no seu público-alvo.</p>
                 </div>
             </div>
         </div>
