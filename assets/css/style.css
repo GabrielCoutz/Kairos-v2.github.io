@@ -29,12 +29,30 @@
     padding-left: 30px;
     padding-right: 30px;
   }
-  .perfil {
+  .perfil,
+  .bloco-metodologia {
     grid-template-columns: 1fr;
   }
   .fundo-dados.info-2,
-  .fundo-dados.info-3 {
+  .fundo-dados.info-3,
+  .orientacoes-swot,
+  .orientacoes-composto,
+  .compostoMK {
     grid-column: 1;
+  }
+  .orientacoes-swot,
+  .orientacoes-composto {
+    grid-row: 1;
+  }
+  .compostoMK {
+    grid-row: auto;
+  }
+  .orientacoes-swot > span,
+  .orientacoes-composto > span {
+    max-width: none;
+  }
+  .composto-caixa {
+    flex: 1;
   }
 }
 
@@ -272,8 +290,13 @@
   }
   .validade,
   .info-usuario,
-  .planos-item {
+  .planos-item,
+  .SWOT {
     grid-template-columns: 1fr;
+  }
+  .swot-caixa,
+  .composto-caixa {
+    border: none !important;
   }
   .validade label {
     grid-row: auto;

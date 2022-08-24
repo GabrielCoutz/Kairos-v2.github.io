@@ -50,18 +50,12 @@ switch (true) {
 
 if (conteudoSwot) {
   document.querySelectorAll(".swot-caixa > span").forEach((item) => {
-    item.innerHTML = item.innerHTML.replace(",", "<br>");
-    item.innerHTML = item.innerHTML.replace(",", "");
+    item.innerHTML = item.innerText.replace(/,/g,'<br>')
   });
 }
 
 if (conteudoComposto) {
   document.querySelectorAll(".composto-caixa > span").forEach((item) => {
-    item.innerHTML = item.innerHTML.replace(",", "<br>");
-    item.innerHTML = item.innerHTML.replace(",", "<br>");
-    item.innerHTML = item.innerHTML.replace(",", "<br>");
-    item.innerHTML = item.innerHTML.replace(",", "<br>");
-    item.innerHTML = item.innerHTML.replace(",", "<br>");
-    item.innerHTML = item.innerHTML.replace(",", "<br>");
+    item.innerHTML = item.innerText.replace(/,/g,'<br>')
   });
 }

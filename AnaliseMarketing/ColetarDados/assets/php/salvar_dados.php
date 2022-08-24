@@ -29,11 +29,12 @@
     $preco = '';
     $praca = '';
     $promocao = '';
+    $incentivo = '';
 
     foreach ($_GET as $chave => $valor) { 
         if(is_int(strpos($valor, '%3c'))){
-            $valor = str_replace('%3c','',$valor);
-            $valor = str_replace('%3e','',$valor);
+            $valor = str_replace('%3c',', ',$valor);
+            $valor = str_replace('%3e',', ',$valor);
         }
         if(is_int(strpos($valor, '<br>'))){
             $valor = str_replace('<br>',', ',$valor);
@@ -65,9 +66,6 @@
         } else if (is_int(strpos($chave, '4PS'))){ // metodologia 4P's
 
             switch (true) {
-                case is_int(strpos($chave,'4PSproduto2')) && is_int(strpos($valor, 'Serviços Agregados (Pós venda, garantia, etc)')):
-                    $produto .= 'Serviços Agregados'.', ';
-                    break;
                 case is_int(strpos($chave,'produto')):
                     $produto .= $valor.', ';
                     break;
@@ -77,12 +75,19 @@
                 case is_int(strpos($chave,'4PSpreço2')) && is_int(strpos($valor, 'Alto Custo')):
                     $preco .= 'Alto Preço Final'.', ';
                     break;
-                case is_int(strpos($chave,'preço')) && !is_int(strpos($valor, 'Sim')):
-                    $preco .= $valor.', ';
+                case is_int(strpos($chave, '4PSpreçosensivel')) && is_int(strpos($valor, 'Sim')):
+                    $ameacas .= 'Clientes Sensíveis ao Preço'.', ';
                     break;
-                case is_int(strpos($chave,'4PSpraça3')): //usar em resultado
-                    break;
-                case is_int(strpos($chave,'4PSpraça2')): //usar em resultado
+                case is_int(strpos($chave,'4PSpraça2')):
+                    if(is_int(strpos($valor, 'Orientar o cliente sobre uma decisão'))){
+                        $incentivo.= 'Orientar na compra'.', ';
+                    }
+                    if(is_int(strpos($valor, 'Fazer com que o cliente sinta a necessidade do produto'))){
+                        $incentivo.= 'Sensação de necessidade'.', ';
+                    }
+                    if(is_int(strpos($valor, 'Fazer com que o cliente deseje o produto'))){
+                        $incentivo.= 'Desejo de compra';
+                    }
                     break;
                 case is_int(strpos($chave,'praça')):
                     $praca .= $valor.', ';
@@ -90,12 +95,7 @@
                 case is_int(strpos($chave,'promoção')):
                     $promocao .=$valor.', ';
                     break;
-                case is_int(strpos($chave, '4PSpreçosensivel')) && is_int(strpos($valor, 'Sim')):
-                    $ameacas .= 'Clientes Sensíveis ao Preço'.', ';
-                    break;
-                case is_int(strpos($chave, '4PSpreçosensivel')) && is_int(strpos($valor, 'Não')):
-                    break;
-                }
+            }
         }
     }
 
@@ -103,7 +103,7 @@
 
     $result_swot=mysqli_query($conec, "INSERT INTO analise_swot(email_usuario, forcas, fraquezas, oportunidades, ameacas) VALUES('$email', '$fortes', '$fracos', '$oportunidades', '$ameacas')");
 
-    $result_4ps=mysqli_query($conec, "INSERT INTO analise_4ps(email_usuario, produto, preco, praca, promocao) VALUES('$email', '$produto', '$preco', '$praca', '$promocao' )");
+    $result_4ps=mysqli_query($conec, "INSERT INTO analise_4ps(email_usuario, produto, preco, praca, promocao, incentivo) VALUES('$email', '$produto', '$preco', '$praca', '$promocao', '$incentivo' )");
 
     // ver erro --> or die(mysqli_error($conec) ou printf("Errormessage: %s\n", $conec->error);;
 

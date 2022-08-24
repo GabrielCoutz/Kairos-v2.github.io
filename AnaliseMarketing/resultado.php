@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Kairos | Assinaturas">
+    <meta name="description" content="Kairos | Resultados">
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,7 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
         rel="stylesheet">
-    <title>Assinaturas</title>
+    <title>Seus resultados</title>
     <?php
         error_reporting(E_ERROR | E_PARSE);
         session_start();
@@ -41,74 +41,12 @@
                 header("Refresh:0; url=resultado".'?'.md5('erro=true'));
                 exit;
                 break;
-            
-            case !$select_swot && !$select_4ps && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('analise=false')) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('sucesso=false')) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true')):
-                header("Refresh:0; url=resultado".'?'.md5('analise=false'));
+                
+                case !$select_swot && !$select_4ps && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('analise=false')) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('sucesso=false')) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true')):
+                    header("Refresh:0; url=resultado".'?'.md5('analise=false'));
                 exit;
                 break;
         }
-        
-        foreach ($_GET as $key => $value) {
-            if(!is_int(strpos($key, 'SWOT'))){
-                echo $key.' = '.str_replace('<br>',', ',$value).'<br>'.'<br>';
-            }
-        }
-
-        echo '<br>---------------------<br>';
-
-        $produto = '';
-        $preco = '';
-        $praca = '';
-        $promocao = '';
-        $incentivo = '';
-        foreach ($_GET as $chave => $valor) { 
-            switch (true) {
-                    case is_int(strpos($chave,'produto')):
-                        $produto .= $valor.', ';
-                        break;
-                    case is_int(strpos($chave,'4PSproduto2')) && is_int(strpos($valor, 'Serviços Agregados (Pós venda, garantia, etc)')):
-                        $produto .= 'Serviços Agregados'.', ';
-                        break;
-
-                    case is_int(strpos($chave,'4PSpreço1')) && is_int(strpos($valor, 'Alto Custo')):
-                        $preco .= 'Alto Preço de Produção'.', ';
-                        break;
-                    case is_int(strpos($chave,'4PSpreço2')) && is_int(strpos($valor, 'Alto Custo')):
-                    $preco .= 'Alto Preço Final'.', ';
-                    break;
-                    case is_int(strpos($chave, '4PSpreçosensivel')) && is_int(strpos($valor, 'Sim')):
-                        $ameacas .= 'Clientes Sensíveis ao Preço'.', ';
-                        break;
-                    case is_int(strpos($chave, '4PSpreçosensivel')) && is_int(strpos($valor, 'Não')):
-                        break;
-
-                    case is_int(strpos($chave,'praça')):
-                        $praca .= $valor.', ';
-                        break;
-                    case is_int(strpos($chave,'4PSpraça2') && !is_int(strpos($valor, 'Orientar o cliente sobre uma decisão'))): 
-                        $incentivo.= 'Orientar na compra'.', ';
-                        break;
-                    case is_int(strpos($chave,'4PSpraça2') && !is_int(strpos($valor, 'Fazer com que o cliente sinta a necessidade do produto'))): 
-                        $incentivo.= 'Sensação de necessidade'.', ';
-                        break;
-                    case is_int(strpos($chave,'4PSpraça2') && !is_int(strpos($valor, 'Fazer com que o cliente deseje o produto'))): 
-                        $incentivo.= 'Desejo de compra'.', ';
-                        break;
-                    case is_int(strpos($chave,'4PSpraça3')):
-                        break;
-
-                    case is_int(strpos($chave,'promoção')):
-                        $promocao .=$valor.', ';
-                        break;
-                }
-        }
-        
-        
-            echo $produto.'<br>'.'<br>';
-            echo $preco.'<br>'.'<br>';
-            echo $praca.'<br>'.'<br>';
-            echo $promocao.'<br>'.'<br>';
-            echo $incentivo.'<br>'.'<br>';
     ?>
 </head>
 
@@ -252,10 +190,36 @@
                 </div>
                 <div class="orientacoes-composto">
                     <h1>Sua estratégia pode ser mais que competitiva, pode ser imbatível.</h1>
-                    <p>É o alinhamento desses itens que irá compor toda a estratégia de marketing da sua empresa.</p>
-                    <p>Pense neles como peças de um quebra-cabeça que irão se encaixar para formar o todo.</p>
-                    <p>Portanto, você comunicará aos seus consumidores o posicionamento da sua marca e irá promover o desejo de
-                    compra no seu público-alvo.</p>
+                    <span>
+                        <p>É o alinhamento desses itens que irá compor toda a estratégia de marketing da sua empresa.
+                        </p>
+                        <p>Pense neles como peças de um quebra-cabeça que irão se encaixar para formar o todo.</p>
+                        <p>Portanto, você comunicará aos seus consumidores o posicionamento da sua marca e irá promover o desejo de compra no seu público-alvo.</p>
+                        <p>
+                            Com todos estes itens, foque em como mostrar à seus clientes o motivo, de maneira clara e
+                            objetiva, de:<br>
+                        </p>
+                    </span>
+                    <ul>
+                        <li>
+                            <h1>Produto</h1>Todos benefícios que podem obter.
+                        </li>
+                        <li>
+                            <h1>Preço</h1>Pagar pelo valor agregado no que você oferece.
+                        </li>
+                    </ul>
+                    <h1>E vá além.</h1>
+                    <span>
+                        <p>Explore o seu mercado:</p>
+                    </span>
+                    <ul>
+                        <li>
+                            <h1>Praça</h1> Investique os melhores canais de distribuição e logística.
+                        </li>
+                        <li>
+                            <h1>Promoção</h1> Valor da marca e do ofertado em relação ao mercado.
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -8,6 +8,10 @@
   border-radius: var(--borda-redonda);
 }
 
+.resultado .fundo-barra-lateral {
+  height: auto;
+}
+
 .SWOT,
 .compostoMK {
   background: white;
@@ -33,33 +37,56 @@
 .orientacoes-composto {
   grid-column: 2;
   display: flex;
-  gap: 60px;
   flex-wrap: wrap;
   flex-direction: column;
   padding: 10px;
 }
 
+.orientacoes-swot {
+  gap: 30px;
+}
+
+.orientacoes-composto {
+  gap: 20px;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.orientacoes-composto > h2 {
+  margin-bottom: -10px;
+}
+
+.compostoMK {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+}
+
 .orientacoes-swot > h1,
-.orientacoes-composto > h1 {
+.orientacoes-composto > h1,
+.orientacoes-composto > h2 {
   color: var(--p3);
   font: 600 2rem/1 var(--fonte-display);
 }
 
-.orientacoes-swot > ul {
+.orientacoes-swot > ul,
+.orientacoes-composto > ul {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
   gap: 10px;
 }
 
-.orientacoes-swot > ul > li {
+.orientacoes-swot > ul > li,
+.orientacoes-composto > ul > li {
   font: 400 1.2rem/1.4 var(--fonte-texto);
   color: var(--c2);
   flex: 1;
   flex-basis: 180px;
 }
 
-.orientacoes-swot > ul > li > h1 {
+.orientacoes-swot > ul > li > h1,
+.orientacoes-composto > ul > li > h1 {
   font: 500 1.4rem/1 var(--fonte-display);
   color: var(--p1);
   padding-bottom: 10px;
@@ -70,11 +97,14 @@
   font: 500 1.3rem/1.5 var(--fonte-texto);
   color: var(--c1);
   max-width: 47ch;
-  margin-top: -20px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   flex-wrap: wrap;
+}
+
+.orientacoes-composto > span:nth-child(1) {
+  margin-top: 0px;
 }
 
 .titulo-metodo {
@@ -84,7 +114,12 @@
 }
 
 .composto-caixa {
-  flex-basis: 160px;
+  flex-basis: 140px;
+  padding: 0px 10px;
+}
+
+.composto-caixa:nth-child(n + 1):not(:last-child) {
+  border-right: 1px solid var(--cor-primaria);
 }
 
 .swot-caixa:nth-child(2) {
