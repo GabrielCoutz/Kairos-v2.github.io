@@ -33,6 +33,7 @@
     <div class="fundo-form container">
         <div class="form-holder">
             <form action="assets/php/logar" method="POST" class="formulario login" onsubmit="return false">
+            <a href="../index" id="link-home"><i class="gg-home"></i></a>
                 <h1 class="titulo">Login</h1>
                 <div class="form-caixa">
                     <label for="email">Email</label>

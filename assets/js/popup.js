@@ -95,7 +95,7 @@ janelaPopUp.abre = function (param) {
   $("#popUp").addClass("popUpEntrada");
 
   if (param.marketing === true) {
-    document.getElementById("popUpEnviar").innerHTML = "Realizar Agora";
+    document.getElementById("popUpEnviar").innerHTML = "Impulsionar Agora";
     document.getElementById("popUpEnviar").classList.remove("secundario");
     document.getElementById("popUpEnviar").classList.add("primario");
     document.getElementById("popUpEnviar").style.display = "block";
@@ -261,17 +261,6 @@ janelaPopUp.fecha = function () {
 
 function abrirPopUp(params) {
   janelaPopUp.abre(params);
-}
-
-function abrirJanelaMarketing() {
-  abrirPopUp({
-    cor: "blue",
-    titulo: "Faça sua análise hoje mesmo!",
-    corpo:
-      "Sabia que você pode impulsionar sua gestão de marketing com alguns clicks?",
-    icone: "marketing",
-    marketing: true,
-  });
 }
 
 function abrirJanelaPlanos(plano_mudanca, plano_atual) {

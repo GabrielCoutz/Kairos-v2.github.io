@@ -173,7 +173,8 @@
     grid-column: 1;
   }
   .nav-lateral,
-  .principal > header {
+  .principal > header,
+  li.nav-lateral-ativo::before {
     display: none;
   }
   .header-nav > li > a.active::before,
@@ -183,8 +184,13 @@
     width: 0%;
   }
   .menu-ativo,
-  .hamburguer {
+  .hamburguer,
+  li.nav-lateral-ativo ~ .menu-btn,
+  #link-home {
     display: block;
+  }
+  .nav-lateral-ativo {
+    border-radius: var(--borda-redonda);
   }
   .body-perfil .hamburguer > .bar {
     background-color: var(--branco-puro);

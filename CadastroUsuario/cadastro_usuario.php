@@ -31,6 +31,7 @@
     <div class="fundo-form container">
         <div class="form-holder">
             <form action="assets/php/cadastrar" method="POST" class="formulario" onsubmit="return false">
+            <a href="../index" id="link-home"><i class="gg-home"></i></a>
                 <h1 class="titulo">Cadastro</h1>
                 <div class="form-caixa">
                     <label for="nome">Nome completo</label>

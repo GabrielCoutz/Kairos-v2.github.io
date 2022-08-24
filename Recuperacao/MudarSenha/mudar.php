@@ -36,6 +36,7 @@
     <div class="fundo-form container">
         <div class="form-holder">
             <form action="assets/php/mudar_senha" method="POST" class="formulario recuperacao" onsubmit="return false">
+            <a href="../../index" id="link-home"><i class="gg-home"></i></a>
                 <h1 class="titulo">Etapa final</h1>
                 <div class="form-caixa">
                     <label for="senha_nova">Nova senha</label>

@@ -29,7 +29,7 @@ $(document).ready(function () {
     numero.placeholder = "Não cadastrado";
   }
 });
-abrirJanelaMarketing();
+
 switch (true) {
   case verificarURL(md5("erro=true")):
     erroSincronizacao("../Login/login");
@@ -62,7 +62,14 @@ switch (true) {
     break;
 
   case verificarURL(md5("analise=false")):
-    abrirJanelaMarketing();
+    abrirPopUp({
+      cor: "blue",
+      titulo: "Faça sua análise hoje mesmo!",
+      corpo:
+        "Sabia que você pode impulsionar sua gestão de marketing com alguns clicks?",
+      icone: "marketing",
+      marketing: true,
+    });
     limparURL(md5("analise=false"));
     break;
 }

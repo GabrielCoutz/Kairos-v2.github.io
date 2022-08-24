@@ -36,6 +36,7 @@
     <div class="fundo-form container">
         <div class="form-holder">
             <form method="POST" action="assets/php/cadastrar" class="formulario empresa" onsubmit="return false">
+            <a href="../index" id="link-home"><i class="gg-home"></i></a>
                 <h1 class="titulo">Cadastre sua empresa</h1>
                 <div class="form-caixa">
                     <label for="nome_empresa">Nome da empresa</label>

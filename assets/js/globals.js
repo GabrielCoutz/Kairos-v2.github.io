@@ -10,9 +10,9 @@
 // menu hamburguer
 
 let hamburguer = document.querySelector(".hamburguer");
-let navMenu = document.location.href.includes("Perfil")
-  ? document.querySelector(".nav-lateral")
-  : document.querySelector(".header-nav");
+let navMenu = document.location.href.includes("index")
+  ? document.querySelector(".header-nav")
+  : document.querySelector(".nav-lateral");
 
 if (hamburguer) {
   hamburguer.addEventListener("click", () => {

@@ -28,6 +28,7 @@
     <div class="fundo-form container">
         <div class="form-holder">
             <form action="assets/php/validarDados" method="POST" class="formulario recuperacao" onsubmit="return false">
+            <a href="../index" id="link-home"><i class="gg-home"></i></a>
                 <h1 class="titulo">Recuperação de conta</h1>
                 <p>Não tem problema se esqueceu sua senha, para recuperá-la basta inserir os dados cadastrados da conta
                     abaixo.</p>
