@@ -15,15 +15,20 @@ if($conec->connect_error){ // se não for localhost, usa a conexão do banco no 
     $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
 }
 
-$_SESSION['email']=$_POST['email'];
 $email=$_POST['email'];
 $senha=md5($_POST['senha']);
 
-$select=mysqli_query($conec, "SELECT email, senha FROM usuario WHERE email ='$email'");
-$result=$select->fetch_assoc();
+// $select=mysqli_query($conec, "SELECT email, senha FROM usuario WHERE email ='$email'")->fetch_assoc();
 
-if(mysqli_num_rows($select)){
+$query="SELECT email, senha FROM usuario WHERE email=?";
+$exec=$conec->prepare($query);
+$exec->bind_param("s", $email);
+$exec->execute();
+$result=$exec->get_result()->fetch_assoc();
+
+if($result){
     if($result['email'] == $email && $result['senha'] == $senha){
+        $_SESSION['email']=$_POST['email'];
         header('Location: ../../../Perfil/usuario');
         exit;
     }

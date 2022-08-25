@@ -115,9 +115,15 @@ if(isset($_COOKIE['usuario'])){ // alteração de dados usuário
     while (isset($_COOKIE['deletar'.$i])) { // deleta numeros
         $tel = $_COOKIE['deletar'.$i];
         $conec = conec();
-        $result=mysqli_query($conec,"DELETE FROM telefone WHERE tel='$tel'") or die(mysqli_error($conec)."delTel");
-        mysqli_close($conec);
-        verificarOperacao($result, $local);
+
+        $query="DELETE FROM telefone WHERE tel=?";
+        $exec=$conec->prepare($query);
+        $exec->bind_param("s", $tel);
+        $exec->execute();
+        $result=$exec->get_result();
+
+        // $result=mysqli_query($conec,"DELETE FROM telefone WHERE tel='$tel'") or die(mysqli_error($conec)."delTel");
+        // mysqli_close($conec);
 
         setcookie('deletar'.$i, '', time() - 3600, '/');
         $i++;

@@ -13,7 +13,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
     rel="stylesheet">
-  <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+  
 
   <title>Pagamento</title>
   <?php
