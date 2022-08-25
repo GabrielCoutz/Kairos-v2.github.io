@@ -103,18 +103,20 @@ function apenasLetras(event) {
   }
 }
 
-$(document).keypress(
-  // desativa tecla ENTER
-  function (event) {
-    if (event.which == "13") {
-      event.preventDefault();
+if (!document.location.href === "https://kairosprojeto.great-site.net/") {
+  $(document).keypress(
+    // desativa tecla ENTER
+    function (event) {
+      if (event.which == "13") {
+        event.preventDefault();
+      }
     }
-  }
-);
+  );
+}
 
 function lerCEP(cep) {
   if (cep.value.length == 10) {
-    $.ajax({
+    $.ajax({ 
       url:
         "https://viacep.com.br/ws/" +
         cep.value.replace(/-/, "").replace(".", "") +

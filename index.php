@@ -27,9 +27,9 @@
     <header class="fundo-header">
         <div class="header container">
             <div class="header-logo">
-                <a href="index"><img src="assets/img/logo/airos.png" alt="Kairos Logo"></a>
+                <a href="index"><img src="assets/img/logo/airos.png" alt="Kairos Logo" width="740" height="210"></a>
             </div>
-            <nav aria-label="Navegação Principal" class="navbar">
+            <nav aria-label="Navegação Primária" class="navbar">
                 <ul class="header-nav">
                     <li><a href="#sobre" class="page-scroll">Sobre</a></li>
                     <li><a href="#planos" class="page-scroll">Planos</a></li>
@@ -44,8 +44,7 @@
         </div>
 
     </header>
-
-    <section class="intro container">
+    <main class="intro container">
         <div class="intro-info">
             <span>Bem vindo ao Kairos</span>
             <h1>Uma plataforma pensada e desenvolvida para Você</h1>
@@ -53,16 +52,16 @@
             <a href="CadastroUsuario/cadastro_usuario" class="btn primario btn-hover">Começar Agora</a>
         </div>
         <div class="intro-img">
-            <img src="assets/img/hero/equipe.png" alt="Equipe de pessoas">
+            <img src="assets/img/hero/equipe.png" alt="" aria-hidden="true">
         </div>
-    </section>
+    </main >
 
-    <section class="sobre container" id="sobre">
+    <section class="sobre container" id="sobre" aria-labelledby="sobre-titulo">
         <div class="sobre-img">
-            <img src="assets/img/about/sobre.png" alt="Time de pessoas em um escritório">
+            <img src="assets/img/about/sobre.png" alt="" aria-hidden="true">
         </div>
         <div class="sobre-info">
-            <h1 class="titulo">Conheça um pouco sobre nós</h1>
+            <h1 class="titulo" id="sobre-titulo">Conheça um pouco sobre nós</h1>
             <p class="texto">Utilizamos táticas de marketing para auxiliar na criação e desenvolimento de negócios,
                 apoiando startups,
                 micro e pequenas empresas a entenderem seu público alvo e personas, bem como posicionar serviços e
@@ -90,14 +89,14 @@
         </div>
     </section>
 
-    <section class="metodos container">
-        <h1 class="titulo">Nossos Métodos</h1>
+    <section class="metodos container" aria-labelledby="metodos-titulo">
+        <h1 class="titulo" id="metodos-titulo">Nossos Métodos</h1>
         <p class="texto">Assim como cada pessoa, nossos projetos são únicos, especiais e sempre desenvolvidos com muito
             carinho e
             atenção.</p>
         <div class="metodos-cards">
             <div class="metodos-item">
-                <div class="icone swot">
+                <div class="icone swot" aria-hidden="true">
                     <i class="lni lni-grid-alt"></i>
                 </div>
                 <span class="titulo">Análise SWOT/FOFA</span>
@@ -106,33 +105,32 @@
                 </p>
             </div>
             <div class="metodos-item">
-                <div class="icone composto">
+                <div class="icone composto" aria-hidden="true">
                     <i class="lni lni-target-revenue"></i>
                 </div>
                 <span class="titulo">Composto de Marketing</span>
-                <p class="texto">Pesquisas sobre Strengths/Forças, Weaknesses/Fraquezas, Opportunities/Oportunidades e
-                    Threats/Ameaças.
+                <p class="texto">Explorar os 4P's do marketing, Produto, Preço, Praça e Promoção
                 </p>
             </div>
             <div class="metodos-item">
-                <div class="icone mkd">
+                <div class="icone mkd" aria-hidden="true">
                     <i class="lni lni-graph"></i>
                 </div>
                 <span class="titulo">Marketing Digital</span>
                 <p class="texto">Aplicação e Validação das informações obtidas.</p>
             </div>
         </div>
-        <a href="" class="btn primario">Porque não começar hoje?</a>
-    </section class>
+        <a href="CadastroUsuario/cadastro_usuario" class="btn primario">Porque não começar hoje?</a>
+    </section>
 
-    <section class="planos container" id="planos">
-        <h1 class="titulo">Planos de Serviço</h1>
+    <section class="planos container" id="planos" aria-labelledby="plano-sec-titulo">
+        <h1 class="titulo" id="plano-sec-titulo">Planos de Serviço</h1>
         <p class="texto">Seu negócio, suas regras</p>
         <div class="planos-cards">
             <div class="planos-item">
                 <span class="planos-titulo titulo">Básico</span>
                 <span class="planos-preco texto">R$ 19,00</span>
-                <ul class="planos-beneficios">
+                <ul class="planos-beneficios" aria-label="Benefícios do plano">
                     <li>Análise de Marketing</li>
                     <li>Atendimento seg á sex</li>
                     <li>Suporte 08:00 às 18:00</li>
@@ -143,7 +141,7 @@
             <div class="planos-item">
                 <span class="planos-titulo titulo">Médio</span>
                 <span class="planos-preco texto">R$ 35,00</span>
-                <ul class="planos-beneficios">
+                <ul class="planos-beneficios" aria-label="Benefícios do plano">
                     <li>Análise de Marketing</li>
                     <li>Atendimento seg á sex</li>
                     <li>Suporte 24h</li>
@@ -155,7 +153,7 @@
             <div class="planos-item">
                 <span class="planos-titulo titulo">Premium</span>
                 <span class="planos-preco texto">R$ 45,00</span>
-                <ul class="planos-beneficios">
+                <ul class="planos-beneficios" aria-label="Benefícios do plano">
                     <li>Análise de Marketing</li>
                     <li>Atendimento 24/7 premium</li>
                     <li>Suporte 24h premium</li>
@@ -169,12 +167,12 @@
         </div>
     </section>
 
-    <section class="captacao container">
+    <section class="captacao container" aria-hidden="true">
         <h1 class="titulo">Já tem um projeto em mente?<br>Maravilha!<br>
             Vamos começar agora mesmo!</h1>
-
         <a href="CadastroUsuario/cadastro_usuario" class="btn primario">Por aqui</a>
     </section>
+
     <footer class="container">
         <div class="footer-itens">
             <span class="titulo">Links</span>
@@ -187,16 +185,16 @@
                 </ul>
             </nav>
         </div>
-        <div class="footer-itens">
-            <span class="titulo">Serviços</span>
+        <div class="footer-itens" aria-label="Metodologias que utilizamos em nossas análises">
+            <span class="titulo">Metodologias</span>
             <ul class="links-lista">
                 <li class="texto">Análise SWOT</li>
                 <li class="texto">4P's do Marketing</li>
                 <li class="texto">Marketing Digital</li>
             </ul>
         </div>
-        <div class="footer-itens">
-            <span class="titulo">Contato</span>
+        <div class="footer-itens" aria-labelledby="contato-titulo">
+            <span class="titulo" id="contato-titulo">Contato</span>
             <ul class="links-lista">
                 <li class="texto">kairozprojeto@gmail.com</li>
             </ul>

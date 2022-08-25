@@ -24,30 +24,30 @@
 
 <body class="body-form">
 
-    <header class="header container" id="header-cadastroUsuario">
+    <header class="header container" aria-label="Voltar para a página inicial">
         <div class="header-logo">
             <a href="../index"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
         </div>
     </header>
 
-    <div class="fundo-form container">
+    <div class="fundo-form container" aria-label="Formulário de login">
         <div class="form-holder">
-            <form action="assets/php/logar" method="POST" class="formulario login" onsubmit="return false">
+            <form action="assets/php/logar" method="POST" class="formulario login" onsubmit="return false" contenteditable="false">
             <a href="../index" id="link-home"><i class="gg-home"></i></a>
-                <h1 class="titulo">Login</h1>
+                <h1 class="titulo" id="login-titulo">Login</h1>
                 <div class="form-caixa">
-                    <label for="email">Email</label>
-                    <i class="gg-mail"></i>
-                    <input type="email" name="email" id="email" placeholder="Email" aria-controls="emailAlert">
-                    <span class="underline"></span>
+                    <label for="email" aria-label="Email">Email</label>
+                    <i class="gg-mail" aria-hidden="true"></i>
+                    <input type="email" name="email" id="email" placeholder="Email" aria-controls="emailAlert" aria-labelledby="emailAlert">
+                    <span class="underline" aria-hidden="true"></span>
                     <div id="emailAlert"></div>
                 </div>
-                <div class="form-caixa">
-                    <label for="senha">Senha</label>
-                    <i class="gg-lock"></i>
+                <div class="form-caixa senha-2">
+                    <label for="senha" aria-label="Senha">Senha</label>
+                    <i class="gg-lock" aria-hidden="true"></i>
                     <input type="password" name="senha" id="senha" placeholder="Senha" aria-controls="senhaAlert">
-                    <i class="gg-eye" aria-controls="senha"></i>
-                    <span class="underline"></span>
+                    <button class="gg-eye" type="button" aria-controls="senha" title="Mostrar senha" aria-pressed="false"></button>
+                    <span class="underline" aria-hidden="true"></span>
                     <div id="senhaAlert"></div>
                 </div>
                 <button type="button" class="btn secundario" onclick="validar()" id="butao">Entrar</button>

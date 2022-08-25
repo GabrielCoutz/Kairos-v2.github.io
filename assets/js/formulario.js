@@ -22,14 +22,23 @@ document.querySelectorAll(".gg-eye").forEach((botao) => {
     input.setAttribute("type", tipo);
     botao.classList.toggle("gg-eye");
     botao.classList.toggle("gg-eye-alt");
+    if (botao.classList[0].includes("gg-eye-alt")) {
+      botao.setAttribute("title", "Esconder Senha");
+      botao.setAttribute("aria-pressed", "true");
+    } else {
+      botao.setAttribute("title", "Mostrar Senha");
+      botao.setAttribute("aria-pressed", "false");
+    }
   });
 });
 
 //Permite somente letras com ou sem acento
 
 function apenasLetras(event) {
-  if(event.value != undefined){
-      let limpo = event.value.replace(/[^\w\s-zÀ-ÖØ-öø-ÿ]/gi, '').replace(/[0-9]/g,'')
-      event.value = limpo.replace('-','').replace('_','')
+  if (event.value != undefined) {
+    let limpo = event.value
+      .replace(/[^\w\s-zÀ-ÖØ-öø-ÿ]/gi, "")
+      .replace(/[0-9]/g, "");
+    event.value = limpo.replace("-", "").replace("_", "");
   }
 }

@@ -34,8 +34,11 @@ janelaPopUp.abre = function (param) {
   let janela2 = document.createElement("div");
   janela2.setAttribute("id", "popUp");
   janela2.setAttribute("class", "popUp p " + param.cor);
+  janela2.setAttribute("role", "alert");
+  janela2.setAttribute("aria-labelledby", "popUp-titulo");
 
   let h1 = document.createElement("h1");
+  h1.setAttribute("id", "popUp-titulo");
   h1.append(param.titulo);
   janela2.append(h1);
   popFundo2.appendChild(janela2);

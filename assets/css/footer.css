@@ -3,7 +3,7 @@ footer {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: flex-start;
-  background-image: url("../img/footer/footer-bg.svg");
+  background-image: url("../img/bg/footer-bg.svg");
   background-size: cover;
   background-position: top center;
 }

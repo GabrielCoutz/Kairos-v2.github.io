@@ -52,7 +52,7 @@
                     <label for="senha">Senha</label>
                     <i class="gg-lock"></i>
                     <input type="password" name="senha" id="senha" placeholder="Senha" aria-controls="senhaAlert">
-                    <i class="gg-eye" aria-controls="senha"></i>
+                    <button class="gg-eye" type="button" aria-controls="senha" title="Mostrar senha" aria-pressed="false"></button>
                     <div id="gerar-senha">Gerar</div>
                     <span class="underline"></span>
                     <div class="progress-bar">
@@ -64,7 +64,7 @@
                     <label for="confirm_senha">Confirmar senha</label>
                     <i class="gg-lock"></i>
                     <input type="password" name="confirm_senha" id="confirm_senha" placeholder="Confirmar senha">
-                    <i class="gg-eye" aria-controls="confirm_senha"></i>
+                    <button class="gg-eye" type="button" aria-controls="confirm_senha" title="Mostrar senha" aria-pressed="false"></button>
                     <span class="underline"></span>
                 </div>
                 <button type="button" id="butao" class="btn primario" onclick="validar()">Registrar</button>

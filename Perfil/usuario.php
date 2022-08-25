@@ -199,17 +199,17 @@
                             <label for="senha_antiga">Senha Antiga</label>
                             <div class="senha-holder">
                                 <input type="password" name="senha_antiga" id="senha_antiga" aria-controls="senhaAlert">
-                                <i class="gg-eye" aria-controls="senha_antiga"></i>
+                                <button class="gg-eye" type="button" aria-controls="senha_antiga" title="Mostrar senha" aria-pressed="false"></button>
                             </div>
                             <label for="senha_nova">Senha Nova</label>
                             <div class="senha-holder">
                                 <input type="password" name="senha_nova" id="senha_nova">
-                                <i class="gg-eye" aria-controls="senha_nova"></i>
+                                <button class="gg-eye" type="button" aria-controls="senha_nova" title="Mostrar senha" aria-pressed="false"></button>
                             </div>
                             <label for="senha_nova_dup">Digite Novamente</label>
                             <div class="senha-holder">
                                 <input type="password" name="senha_nova_dup" id="senha_nova_dup">
-                                <i class="gg-eye" aria-controls="senha_nova_dup"></i>
+                                <button class="gg-eye" type="button" aria-controls="senha_nova_dup" title="Mostrar senha" aria-pressed="false"></button>
                             </div>
                             <div id="senhaAlert"></div>
 

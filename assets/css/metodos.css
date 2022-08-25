@@ -2,7 +2,7 @@
   display: grid;
   justify-items: center;
   gap: 30px;
-  background-image: url("../img/service/service-bg.jpg");
+  background-image: url("../img/bg/service-bg.jpg");
 }
 
 .metodos-cards {
