@@ -36,6 +36,7 @@ janelaPopUp.abre = function (param) {
   janela2.setAttribute("class", "popUp p " + param.cor);
   janela2.setAttribute("role", "alert");
   janela2.setAttribute("aria-labelledby", "popUp-titulo");
+  janela2.setAttribute("tabindex", "0");
 
   let h1 = document.createElement("h1");
   h1.setAttribute("id", "popUp-titulo");
@@ -246,6 +247,11 @@ janelaPopUp.abre = function (param) {
     $(".popUpFundo").on("click", function () {
       janelaPopUp.fecha();
     });
+    $(document).keyup(function (e) {
+      if (e.key === "Escape") {
+        janelaPopUp.fecha();
+      }
+    });
   }
 
   $("#popUpEnviar").on("click", function () {
@@ -264,6 +270,7 @@ janelaPopUp.fecha = function () {
 
 function abrirPopUp(params) {
   janelaPopUp.abre(params);
+  document.getElementById("popUp").focus();
 }
 
 function abrirJanelaPlanos(plano_mudanca, plano_atual) {

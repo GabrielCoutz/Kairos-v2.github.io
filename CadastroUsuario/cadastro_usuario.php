@@ -35,37 +35,37 @@
                 <h1 class="titulo">Cadastro</h1>
                 <div class="form-caixa">
                     <label for="nome">Nome completo</label>
-                    <i class="gg-user"></i>
+                    <i class="gg-user" aria-hidden="true"></i>
                     <input type="text" name="nome" id="nome" placeholder="Nome Completo" onkeyup="apenasLetras(this)"
                         aria-controls="nomeAlert">
-                    <span class="underline"></span>
-                    <div id="nomeAlert"></div>
+                    <span class="underline" aria-hidden="true"></span>
+                    <div id="nomeAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa">
                     <label for="email">Email</label>
-                    <i class="gg-mail"></i>
+                    <i class="gg-mail" aria-hidden="true"></i>
                     <input type="email" name="email" id="email" placeholder="Email" aria-controls="emailAlert">
-                    <span class="underline"></span>
-                    <div id="emailAlert"></div>
+                    <span class="underline" aria-hidden="true"></span>
+                    <div id="emailAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa senha-1">
                     <label for="senha">Senha</label>
-                    <i class="gg-lock"></i>
+                    <i class="gg-lock" aria-hidden="true"></i>
                     <input type="password" name="senha" id="senha" placeholder="Senha" aria-controls="senhaAlert">
+                    <button type="button" id="gerar-senha" title="Gerar senha forte aleatória" class="btn terciario">Gerar</button>
                     <button class="gg-eye" type="button" aria-controls="senha" title="Mostrar senha" aria-pressed="false"></button>
-                    <div id="gerar-senha">Gerar</div>
-                    <span class="underline"></span>
+                    <span class="underline" aria-hidden="true"></span>
                     <div class="progress-bar">
                         <div></div>
                     </div>
-                    <div id="senhaAlert"></div>
+                    <div id="senhaAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa senha-2">
                     <label for="confirm_senha">Confirmar senha</label>
-                    <i class="gg-lock"></i>
+                    <i class="gg-lock" aria-hidden="true"></i>
                     <input type="password" name="confirm_senha" id="confirm_senha" placeholder="Confirmar senha">
                     <button class="gg-eye" type="button" aria-controls="confirm_senha" title="Mostrar senha" aria-pressed="false"></button>
-                    <span class="underline"></span>
+                    <span class="underline" aria-hidden="true"></span>
                 </div>
                 <button type="button" id="butao" class="btn primario" onclick="validar()">Registrar</button>
                 <a href="../Login/login" class="btn terciario">Fazer login</a>

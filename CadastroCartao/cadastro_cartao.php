@@ -159,7 +159,7 @@
           <input type="tel" id="cardNumber" v-mask="generateCardNumberMask" v-model="cardNumber" v-on:focus="focusInput"
             v-on:blur="blurInput" data-ref="cardNumber" autocomplete="cc-csc" name='num_cartao'
             aria-controls="cardNumberAlert">
-          <div id='cardNumberAlert'></div>
+          <div id='cardNumberAlert' role="alert"></div>
         </div>
 
         <div class="form-caixa">
@@ -167,7 +167,7 @@
           <input type="text" id="cardName" v-model="cardName" v-on:focus="focusInput" v-on:blur="blurInput"
             data-ref="cardName" autocomplete="cc-csc" name='nome_cartao' maxlength="30" onkeyup="apenasLetras(this)"
             aria-controls="cardNameAlert">
-          <div id='cardNameAlert'></div>
+          <div id='cardNameAlert' role="alert"></div>
         </div>
         <div class="form-caixa validade">
           <label>Data de Validade</label>
@@ -190,9 +190,9 @@
           <label for="cardCvv">CVV</label>
           <input type="tel" id="cardCvv" v-mask="'###'" maxlength="3" v-model="cardCvv" v-on:focus="flipCard(true)"
             v-on:blur="flipCard(false)" autocomplete="cc-csc" name='cvv_cartao' aria-controls="cardCvvAlert">
-          <div id='cardCvvAlert'></div>
-          <div id='cardYearAlert'></div>
-          <div id='cardMonthAlert'></div>
+          <div id='cardCvvAlert' role="alert"></div>
+          <div id='cardYearAlert' role="alert"></div>
+          <div id='cardMonthAlert' role="alert"></div>
         </div>
 
 
@@ -201,21 +201,21 @@
             <label for="cpf">CPF</label>
             <input type="tel" class="form-caixa__input " id="cpf" name='cpf' onkeypress="$(this).mask('000.000.000-00')"
               aria-controls="cpfAlert">
-            <div id='cpfAlert'></div>
+            <div id='cpfAlert' role="alert"></div>
           </div>
 
           <div class="form-caixa">
             <label for="cep">CEP</label>
             <input type="tel" id="cep" name='cep' onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)"
               aria-controls="cepAlert">
-            <div id='cepAlert'></div>
+            <div id='cepAlert' role="alert"></div>
           </div>
 
           <div class="form-caixa">
 
             <label for="numero">Número</label>
             <input type="tel" id="numero" name='numero' maxlength="6" aria-controls="numeroAlert">
-            <div id='numeroAlert'></div>
+            <div id='numeroAlert' role="alert"></div>
 
             <input type="text" class="none" id="rua" name='rua'>
             <input type="text" class="none" id="bairro" name='bairro'>

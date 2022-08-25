@@ -38,9 +38,9 @@
                 <div class="form-caixa">
                     <label for="email" aria-label="Email">Email</label>
                     <i class="gg-mail" aria-hidden="true"></i>
-                    <input type="email" name="email" id="email" placeholder="Email" aria-controls="emailAlert" aria-labelledby="emailAlert">
+                    <input type="email" name="email" id="email" placeholder="Email" aria-controls="emailAlert">
                     <span class="underline" aria-hidden="true"></span>
-                    <div id="emailAlert"></div>
+                    <div id="emailAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa senha-2">
                     <label for="senha" aria-label="Senha">Senha</label>
@@ -48,7 +48,7 @@
                     <input type="password" name="senha" id="senha" placeholder="Senha" aria-controls="senhaAlert">
                     <button class="gg-eye" type="button" aria-controls="senha" title="Mostrar senha" aria-pressed="false"></button>
                     <span class="underline" aria-hidden="true"></span>
-                    <div id="senhaAlert"></div>
+                    <div id="senhaAlert" role="alert"></div>
                 </div>
                 <button type="button" class="btn secundario" onclick="validar()" id="butao">Entrar</button>
                 <a href="../CadastroUsuario/cadastro_usuario" class="btn primario">Registrar-se</a>

@@ -40,31 +40,31 @@
                 <h1 class="titulo">Cadastre sua empresa</h1>
                 <div class="form-caixa">
                     <label for="nome_empresa">Nome da empresa</label>
-                    <i class="gg-organisation"></i>
+                    <i class="gg-organisation" aria-hidden="true"></i>
                     <input type="text" name="nome_empresa" id="nome_empresa" placeholder="Nome da empresa"
                         aria-controls="nome_empresaAlert" maxlength="50">
-                    <span class="underline"></span>
-                    <div id="nome_empresaAlert"></div>
+                    <span class="underline" aria-hidden="true"></span>
+                    <div id="nome_empresaAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa">
                     <label for="nome_fantasia">Nome Fantasia</label>
-                    <i class="gg-organisation"></i>
+                    <i class="gg-organisation" aria-hidden="true"></i>
                     <input type="text" name="nome_fantasia" id="nome_fantasia" placeholder="Nome Fantasia"
                         aria-controls="nome_fantasiaAlert" maxlength="50">
-                    <span class="underline"></span>
-                    <div id="nome_fantasiaAlert"></div>
+                    <span class="underline" aria-hidden="true"></span>
+                    <div id="nome_fantasiaAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa">
                     <label for="cnpj">CNPJ</label>
-                    <i class="gg-organisation"></i>
+                    <i class="gg-organisation" aria-hidden="true"></i>
                     <input type="tel" name="cnpj" id="cnpj" placeholder="CNPJ" aria-controls="cnpjAlert"
                         onkeypress="$(this).mask('00.000.000/0000-00')">
-                    <span class="underline"></span>
-                    <div id="cnpjAlert"></div>
+                    <span class="underline" aria-hidden="true"></span>
+                    <div id="cnpjAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa">
                     <label for="ramo">Ramo</label>
-                    <i class="gg-organisation"></i>
+                    <i class="gg-organisation" aria-hidden="true"></i>
                     <select name="ramo" id="ramo" aria-controls="ramoAlert">
                         <option value disabled selected>Selecione o Ramo</option>
                         <option>Alimentação</option>
@@ -73,23 +73,23 @@
                         <option>Tecnologia</option>
                         <option>Moda</option>
                     </select>
-                    <div id="ramoAlert"></div>
+                    <div id="ramoAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa">
                     <label for="cep_empresa">CEP</label>
-                    <i class="gg-pin"></i>
+                    <i class="gg-pin" aria-hidden="true"></i>
                     <input type="tel" name="cep_empresa" id="cep_empresa" placeholder="CEP"
                         aria-controls="cep_empresaAlert" onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)">
-                    <span class="underline"></span>
-                    <div id="cep_empresaAlert"></div>
+                    <span class="underline" aria-hidden="true"></span>
+                    <div id="cep_empresaAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa">
                     <label for="numero_empresa">Número</label>
-                    <i class="gg-pin"></i>
+                    <i class="gg-pin" aria-hidden="true"></i>
                     <input type="tel" name="numero_empresa" id="numero_empresa" placeholder="Número"
                         aria-controls="numero_empresaAlert">
-                    <span class="underline"></span>
-                    <div id="numero_empresaAlert"></div>
+                    <span class="underline" aria-hidden="true"></span>
+                    <div id="numero_empresaAlert" role="alert"></div>
                 </div>
                 <div id='endereco' class="none"></div>
                 <input type="text" class="none" id="rua_empresa" name="rua_empresa">

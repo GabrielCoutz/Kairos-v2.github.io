@@ -34,17 +34,17 @@
                     abaixo.</p>
                 <div class="form-caixa">
                     <label for="nome">Nome completo</label>
-                    <i class="gg-user"></i>
+                    <i class="gg-user" aria-hidden="true"></i>
                     <input type="text" name="nome" id="nome" placeholder="Nome Completo" onkeyup="apenasLetras(this)" aria-controls="nomeAlert">
-                    <span class="underline"></span>
-                    <div id="nomeAlert"></div>
+                    <span class="underline" aria-hidden="true"></span>
+                    <div id="nomeAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa">
                     <label for="email">Email</label>
-                    <i class="gg-mail"></i>
+                    <i class="gg-mail" aria-hidden="true"></i>
                     <input type="email" name="email" id="email" placeholder="Email" aria-controls="emailAlert">
-                    <span class="underline"></span>
-                    <div id="emailAlert"></div>
+                    <span class="underline" aria-hidden="true"></span>
+                    <div id="emailAlert" role="alert"></div>
                 </div>
                 <button type="submit" id='butao' class="btn secundario" onclick="validar()">Verificar</button>
             </form>

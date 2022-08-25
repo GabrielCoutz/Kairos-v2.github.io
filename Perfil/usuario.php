@@ -134,7 +134,7 @@
                         <label for="nome">Nome</label>
                         <input type="text" name="nome" id="nome" onkeyup="apenasLetras(this)" maxlength="50"
                             value="<?= $select['nome'] ?>" aria-controls="nomeAlert">
-                        <div id="nomeAlert"></div>
+                        <div id="nomeAlert" role="alert"></div>
                     </div>
                     <div class="form-caixa">
                         <label>CPF</label>
@@ -156,13 +156,13 @@
                             <input type="tel" name="cep" id="cep" aria-controls="cepAlert"
                                 onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)"
                                 value='<?= $select_endereco[' cep'] ?>'>
-                            <div id="cepAlert"></div>
+                            <div id="cepAlert" role="alert"></div>
                         </div>
                         <div class="form-caixa">
                             <label for="numero">Número</label>
                             <input type="tel" name="numero" id="numero" aria-controls="numeroAlert"
                                 value='<?= $select_endereco[' numero'] ?>'>
-                            <div id="numeroAlert"></div>
+                            <div id="numeroAlert" role="alert"></div>
                         </div>
                         <div class="form-caixa">
                             <input type="text" class="none" id="rua" name="rua">
@@ -187,7 +187,7 @@
                     <div class="dados-coluna" id="manipularNumeros">
                         <button class="btn terciario" id='add_tel' type="button">Adicionar
                             telefone</button>
-                        <div id="telefoneAlert">Preencha o número por completo!</div>
+                        <div id="telefoneAlert" role="alert">Preencha o número por completo!</div>
                         <button class="btn terciario" id='del_tel' type="button">Excluir
                             telefone</button>
                     </div>
@@ -211,8 +211,7 @@
                                 <input type="password" name="senha_nova_dup" id="senha_nova_dup">
                                 <button class="gg-eye" type="button" aria-controls="senha_nova_dup" title="Mostrar senha" aria-pressed="false"></button>
                             </div>
-                            <div id="senhaAlert"></div>
-
+                            <div id="senhaAlert" role="alert"></div>
 
                         </div>
                         <button type="button" class="btn terciario" aria-controls="caixa-senhas"

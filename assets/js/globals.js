@@ -70,6 +70,10 @@ function alertaDeErro(elemento, mensagem) {
   }
   let caixa = document.getElementById(elemento.getAttribute("aria-controls"));
   document.getElementById(elemento.id).classList.add("vermei");
+  elemento.setAttribute(
+    "aria-labelledby",
+    elemento.getAttribute("aria-controls")
+  );
   caixa.id === "valor"
     ? caixa.classList.toggle("alerta-ativo")
     : caixa.classList.add("alerta-ativo");
@@ -116,7 +120,7 @@ if (!document.location.href === "https://kairosprojeto.great-site.net/") {
 
 function lerCEP(cep) {
   if (cep.value.length == 10) {
-    $.ajax({ 
+    $.ajax({
       url:
         "https://viacep.com.br/ws/" +
         cep.value.replace(/-/, "").replace(".", "") +
@@ -308,6 +312,9 @@ function dispararEvento(elemento, evento, stringCondicao) {
       document
         .getElementById(elemento.getAttribute("aria-controls"))
         .classList.remove("alerta-ativo");
+      document.getElementById(
+        elemento.getAttribute("aria-controls")
+      ).innerHTML = "";
       if (window.location.href.includes("Perfil")) {
         senha_nova.classList.remove("vermei");
         senha_nova_dup.classList.remove("vermei");

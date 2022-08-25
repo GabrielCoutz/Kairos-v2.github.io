@@ -38,21 +38,21 @@
             <form action="assets/php/mudar_senha" method="POST" class="formulario recuperacao" onsubmit="return false">
             <a href="../../index" id="link-home"><i class="gg-home"></i></a>
                 <h1 class="titulo">Etapa final</h1>
-                <div class="form-caixa">
+                <div class="form-caixa senha-2">
                     <label for="senha_nova">Nova senha</label>
-                    <i class="gg-lock"></i>
+                    <i class="gg-lock" aria-hidden="true"></i>
                     <input type="password" name="senha_nova" id="senha_nova" placeholder="Nova senha" aria-controls="senha_novaAlert">
-                    <i class="gg-eye" aria-controls="senha_nova"></i>
-                    <span class="underline"></span>
-                    <div id="senha_novaAlert"></div>
+                    <button type="button" title="Esconder senha" class="gg-eye" aria-controls="senha_nova"></button>
+                    <span class="underline" aria-hidden="true"></span>
+                    <div id="senha_novaAlert" role="alert"></div>
                 </div>
-                <div class="form-caixa">
+                <div class="form-caixa senha-2">
                     <label for="senha_nova_dup">Digite novamente</label>
-                    <i class="gg-lock"></i>
+                    <i class="gg-lock" aria-hidden="true"></i>
                     <input type="password" name="senha_nova_dup" id="senha_nova_dup" placeholder="Digite novamente" aria-controls="senha_nova_dupAlert">
-                    <i class="gg-eye" aria-controls="senha_nova_dup"></i>
-                    <span class="underline"></span>
-                    <div id="senha_nova_dupAlert"></div>
+                    <button type="button" title="Esconder senha" class="gg-eye" aria-controls="senha_nova_dup"></button>
+                    <span class="underline" aria-hidden="true"></span>
+                    <div id="senha_nova_dupAlert" role="alert"></div>
                 </div>
                 <button type="submit" class="btn primario" onclick="validar()">Atualizar senha</button>
             </form>

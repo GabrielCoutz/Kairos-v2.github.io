@@ -122,13 +122,13 @@
                         <input type="text" name="nome_empresa" id="nome_empresa" maxlength="50"
                             value='<?= $select_empresa['nome'] ?>' aria-controls="nome_empresaAlert"
                         onkeyup="apenasLetras(this)">
-                        <div id="nome_empresaAlert"></div>
+                        <div id="nome_empresaAlert" role="alert"></div>
                     </div>
                     <div class="form-caixa">
                         <label for="nome_fantasia">Nome Fantasia</label>
                         <input type="text" name="nome_fantasia" id="nome_fantasia" maxlength="50"
                             value='<?= $select_empresa['nome_fantasia'] ?>' aria-controls="nome_fantasiaAlert">
-                        <div id="nome_fantasiaAlert"></div>
+                        <div id="nome_fantasiaAlert" role="alert"></div>
                     </div>
                     <div class="form-caixa">
                         <label>CNPJ</label>
@@ -144,14 +144,14 @@
                             <input type="tel" name="cep_empresa" id="cep_empresa" value='<?= $select_empresa_endereco['cep'] ?>'
                             aria-controls="cep_empresaAlert" onkeypress="$(this).mask('00.000-000')"
                             onkeyup="lerCEP(this)">
-                            <div id="cep_empresaAlert"></div>
+                            <div id="cep_empresaAlert" role="alert"></div>
                         </div>
                         <div class="form-caixa">
                             <label for="numero_empresa">Número</label>
                             <input type="tel" name="numero_empresa" id="numero_empresa"
                                 value='<?= $select_empresa_endereco['numero'] ?>'
                             aria-controls="numero_empresaAlert">
-                            <div id="numero_empresaAlert"></div>
+                            <div id="numero_empresaAlert" role="alert"></div>
                         </div>
                         <div class="form-caixa">
                             <input type="text" class="none" id="rua_empresa" name="rua_empresa">
@@ -182,7 +182,7 @@
                                 <option>Moda</option>
                             </select>
                         </div>
-                        <div id="ramoAlert"></div>
+                        <div id="ramoAlert" role="alert"></div>
                     </div>
                 </div>
                 <div class="botoes">
