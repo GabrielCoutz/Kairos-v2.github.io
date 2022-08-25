@@ -1,6 +1,8 @@
 const email = document.getElementById("email");
 const senha = document.getElementById("senha");
 
+CryptoJS.SHA256("teste").toString();
+
 switch (true) {
   case verificarURL(md5("login=false")):
     abrirPopUp({
