@@ -319,4 +319,7 @@
   .contato-img {
     display: none;
   }
+  .form-caixa > input {
+    width: 100%;
+}
 }
