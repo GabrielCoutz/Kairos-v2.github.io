@@ -65,6 +65,9 @@ function limparURL(url) {
 }
 
 function alertaDeErro(elemento, mensagem) {
+  let iconeAlerta = document.createElement("i");
+  iconeAlerta.setAttribute("class", "gg-danger");
+  iconeAlerta.setAttribute("aria-hidden", "true");
   if (
     elemento.id === "senha_antiga" &&
     window.location.href.includes("Perfil")
@@ -81,7 +84,11 @@ function alertaDeErro(elemento, mensagem) {
   caixa.id === "valor"
     ? caixa.classList.toggle("alerta-ativo")
     : caixa.classList.add("alerta-ativo");
-  caixa.innerHTML = mensagem;
+  caixa.append(iconeAlerta);
+  caixa.innerHTML += mensagem;
+
+  // <i class="gg-danger" aria-hidden="true"></i>
+
   elemento.focus();
 }
 

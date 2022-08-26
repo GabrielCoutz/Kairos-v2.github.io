@@ -22,6 +22,12 @@
   margin-top: -17px;
 }
 
+.gg-danger,
+.gg-danger::after,
+.gg-danger::before {
+  border-color: #ff000099;
+}
+
 .gg-user::after {
   width: 11px;
   height: 7px;
