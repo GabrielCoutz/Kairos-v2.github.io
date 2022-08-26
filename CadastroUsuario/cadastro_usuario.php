@@ -34,36 +34,36 @@
             <a href="../index" id="link-home"><i class="gg-home"></i></a>
                 <h1 class="titulo">Cadastro</h1>
                 <div class="form-caixa">
-                    <label for="nome">Nome completo</label>
+                    <label aria-hidden="true" for="nome">Nome completo</label>
                     <i class="gg-user" aria-hidden="true"></i>
-                    <input type="text" name="nome" id="nome" placeholder="Nome Completo" onkeyup="apenasLetras(this)"
+                    <input type="text" required name="nome" id="nome" placeholder="Nome Completo" onkeyup="apenasLetras(this)"
                         aria-controls="nomeAlert">
                     <span class="underline" aria-hidden="true"></span>
                     <div id="nomeAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa">
-                    <label for="email">Email</label>
+                    <label aria-hidden="true" for="email">Email</label>
                     <i class="gg-mail" aria-hidden="true"></i>
-                    <input type="email" name="email" id="email" placeholder="Email" aria-controls="emailAlert">
+                    <input type="email" required name="email" id="email" placeholder="Email" aria-controls="emailAlert">
                     <span class="underline" aria-hidden="true"></span>
                     <div id="emailAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa senha-1">
-                    <label for="senha">Senha</label>
+                    <label aria-hidden="true" for="senha">Senha</label>
                     <i class="gg-lock" aria-hidden="true"></i>
-                    <input type="password" name="senha" id="senha" placeholder="Senha" aria-controls="senhaAlert">
-                    <button type="button" id="gerar-senha" title="Gerar senha forte aleatória" class="btn terciario">Gerar</button>
+                    <input type="password" required name="senha" id="senha" placeholder="Senha" aria-controls="senhaAlert">
+                    <button type="button" id="gerar-senha" title="Gerar senha forte aleatória" class="btn terciario" aria-label="Gerar senha forte aleatória">Gerar</button>
                     <button class="gg-eye" type="button" aria-controls="senha" title="Mostrar senha" aria-pressed="false"></button>
                     <span class="underline" aria-hidden="true"></span>
-                    <div class="progress-bar">
+                    <div class="progress-bar" aria-hidden="true">
                         <div></div>
                     </div>
                     <div id="senhaAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa senha-2">
-                    <label for="confirm_senha">Confirmar senha</label>
+                    <label aria-hidden="true" for="confirm_senha">Confirmar senha</label>
                     <i class="gg-lock" aria-hidden="true"></i>
-                    <input type="password" name="confirm_senha" id="confirm_senha" placeholder="Confirmar senha">
+                    <input type="password" required name="confirm_senha" id="confirm_senha" placeholder="Confirmar senha">
                     <button class="gg-eye" type="button" aria-controls="confirm_senha" title="Mostrar senha" aria-pressed="false"></button>
                     <span class="underline" aria-hidden="true"></span>
                 </div>

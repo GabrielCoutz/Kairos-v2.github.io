@@ -118,14 +118,14 @@
             <form method="POST" action="assets/php/atualizar_empresa" class="container perfil empresa">
                 <div class="fundo-dados">
                     <div class="form-caixa">
-                        <label for="nome_empresa">Nome da empresa</label>
+                        <label aria-hidden="true" for="nome_empresa">Nome da empresa</label>
                         <input type="text" name="nome_empresa" id="nome_empresa" maxlength="50"
                             value='<?= $select_empresa['nome'] ?>' aria-controls="nome_empresaAlert"
                         onkeyup="apenasLetras(this)">
                         <div id="nome_empresaAlert" role="alert"></div>
                     </div>
                     <div class="form-caixa">
-                        <label for="nome_fantasia">Nome Fantasia</label>
+                        <label aria-hidden="true" for="nome_fantasia">Nome Fantasia</label>
                         <input type="text" name="nome_fantasia" id="nome_fantasia" maxlength="50"
                             value='<?= $select_empresa['nome_fantasia'] ?>' aria-controls="nome_fantasiaAlert">
                         <div id="nome_fantasiaAlert" role="alert"></div>
@@ -140,14 +140,14 @@
                 <div class="fundo-dados info-1">
                     <div class="dados-coluna">
                         <div class="form-caixa">
-                            <label for="cep_empresa">CEP</label>
+                            <label aria-hidden="true" for="cep_empresa">CEP</label>
                             <input type="tel" name="cep_empresa" id="cep_empresa" value='<?= $select_empresa_endereco['cep'] ?>'
                             aria-controls="cep_empresaAlert" onkeypress="$(this).mask('00.000-000')"
                             onkeyup="lerCEP(this)">
                             <div id="cep_empresaAlert" role="alert"></div>
                         </div>
                         <div class="form-caixa">
-                            <label for="numero_empresa">Número</label>
+                            <label aria-hidden="true" for="numero_empresa">Número</label>
                             <input type="tel" name="numero_empresa" id="numero_empresa"
                                 value='<?= $select_empresa_endereco['numero'] ?>'
                             aria-controls="numero_empresaAlert">
@@ -169,7 +169,7 @@
                     </div>
                     <div class="dados-coluna">
                         <div class="form-caixa">
-                            <label for="ramo">Ramo</label>
+                            <label aria-hidden="true" for="ramo">Ramo</label>
                             <div class="none" id="ramo_php">
                                 <?= $select_empresa['ramo']; ?>
                             </div>

@@ -33,16 +33,16 @@
                 <p>Não tem problema se esqueceu sua senha, para recuperá-la basta inserir os dados cadastrados da conta
                     abaixo.</p>
                 <div class="form-caixa">
-                    <label for="nome">Nome completo</label>
+                    <label aria-hidden="true" for="nome">Nome completo</label>
                     <i class="gg-user" aria-hidden="true"></i>
-                    <input type="text" name="nome" id="nome" placeholder="Nome Completo" onkeyup="apenasLetras(this)" aria-controls="nomeAlert">
+                    <input type="text" required name="nome" id="nome" placeholder="Nome Completo" onkeyup="apenasLetras(this)" aria-controls="nomeAlert">
                     <span class="underline" aria-hidden="true"></span>
                     <div id="nomeAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa">
-                    <label for="email">Email</label>
+                    <label aria-hidden="true" for="email">Email</label>
                     <i class="gg-mail" aria-hidden="true"></i>
-                    <input type="email" name="email" id="email" placeholder="Email" aria-controls="emailAlert">
+                    <input type="email" required name="email" id="email" placeholder="Email" aria-controls="emailAlert">
                     <span class="underline" aria-hidden="true"></span>
                     <div id="emailAlert" role="alert"></div>
                 </div>

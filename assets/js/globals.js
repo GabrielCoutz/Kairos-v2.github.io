@@ -87,8 +87,6 @@ function alertaDeErro(elemento, mensagem) {
   caixa.append(iconeAlerta);
   caixa.innerHTML += mensagem;
 
-  // <i class="gg-danger" aria-hidden="true"></i>
-
   elemento.focus();
 }
 

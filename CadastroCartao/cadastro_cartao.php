@@ -68,7 +68,7 @@
                   </transition>
                 </div>
               </div>
-              <label for="cardNumber" class="card-item__number" ref="cardNumber">
+              <label aria-hidden="true" for="cardNumber" class="card-item__number" ref="cardNumber">
                 <template v-if="getCardType === 'amex'">
                   <span v-for="(n, $index) in amexCardMask" :key="$index">
                     <transition name="slide-fade-up">
@@ -100,7 +100,7 @@
                 </template>
               </label>
               <div class="card-item__content">
-                <label for="cardName" class="card-item__info" ref="cardName">
+                <label aria-hidden="true" for="cardName" class="card-item__info" ref="cardName">
                   <div class="card-item__holder">Titular Do Cartão</div>
                   <transition name="slide-fade-up">
                     <div class="card-item__name" v-if="cardName.length" key="1">
@@ -121,7 +121,7 @@
                     </transition>
                   </label>
                   /
-                  <label for="cardYear" class="card-item__dateItem">
+                  <label aria-hidden="true" for="cardYear" class="card-item__dateItem">
                     <transition name="slide-fade-up">
                       <span v-if="cardYear" v-bind:key="cardYear">{{String(cardYear).slice(2,4)}}</span>
                       <span v-else key="2">AA</span>
@@ -155,7 +155,7 @@
       <form method="POST" action="assets/php/cadastrar_cartao" onsubmit="return false" autocomplete="off"
         class="formulario">
         <div class="form-caixa">
-          <label for="cardNumber">Número do Cartão</label>
+          <label aria-hidden="true" for="cardNumber">Número do Cartão</label>
           <input type="tel" id="cardNumber" v-mask="generateCardNumberMask" v-model="cardNumber" v-on:focus="focusInput"
             v-on:blur="blurInput" data-ref="cardNumber" autocomplete="cc-csc" name='num_cartao'
             aria-controls="cardNumberAlert">
@@ -163,8 +163,8 @@
         </div>
 
         <div class="form-caixa">
-          <label for="cardName">Nome Impresso no Cartão</label>
-          <input type="text" id="cardName" v-model="cardName" v-on:focus="focusInput" v-on:blur="blurInput"
+          <label aria-hidden="true" for="cardName">Nome Impresso no Cartão</label>
+          <input type="text" required id="cardName" v-model="cardName" v-on:focus="focusInput" v-on:blur="blurInput"
             data-ref="cardName" autocomplete="cc-csc" name='nome_cartao' maxlength="30" onkeyup="apenasLetras(this)"
             aria-controls="cardNameAlert">
           <div id='cardNameAlert' role="alert"></div>
@@ -187,7 +187,7 @@
               </option>
             </select>
           </div>
-          <label for="cardCvv">CVV</label>
+          <label aria-hidden="true" for="cardCvv">CVV</label>
           <input type="tel" id="cardCvv" v-mask="'###'" maxlength="3" v-model="cardCvv" v-on:focus="flipCard(true)"
             v-on:blur="flipCard(false)" autocomplete="cc-csc" name='cvv_cartao' aria-controls="cardCvvAlert">
           <div id='cardCvvAlert' role="alert"></div>
@@ -198,14 +198,14 @@
 
         <div class="info-usuario">
           <div class="form-caixa">
-            <label for="cpf">CPF</label>
+            <label aria-hidden="true" for="cpf">CPF</label>
             <input type="tel" class="form-caixa__input " id="cpf" name='cpf' onkeypress="$(this).mask('000.000.000-00')"
               aria-controls="cpfAlert">
             <div id='cpfAlert' role="alert"></div>
           </div>
 
           <div class="form-caixa">
-            <label for="cep">CEP</label>
+            <label aria-hidden="true" for="cep">CEP</label>
             <input type="tel" id="cep" name='cep' onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)"
               aria-controls="cepAlert">
             <div id='cepAlert' role="alert"></div>
@@ -213,7 +213,7 @@
 
           <div class="form-caixa">
 
-            <label for="numero">Número</label>
+            <label aria-hidden="true" for="numero">Número</label>
             <input type="tel" id="numero" name='numero' maxlength="6" aria-controls="numeroAlert">
             <div id='numeroAlert' role="alert"></div>
 

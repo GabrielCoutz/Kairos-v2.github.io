@@ -114,6 +114,12 @@
   .planos-beneficios > li {
     font-size: 1.3rem;
   }
+  #gerar-senha {
+    font-size: 1rem;
+    outline-color: transparent;
+    background-color: transparent;
+    padding: 0px;
+  }
   .sobre-lista p {
     padding: 0px 70px;
   }

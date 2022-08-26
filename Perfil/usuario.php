@@ -131,7 +131,7 @@
             <form action="assets/php/atualizar_usuario" method="POST" class="container perfil" onsubmit="return false">
                 <div class="fundo-dados">
                     <div class="form-caixa">
-                        <label for="nome">Nome</label>
+                        <label aria-hidden="true" for="nome">Nome</label>
                         <input type="text" name="nome" id="nome" onkeyup="apenasLetras(this)" maxlength="50"
                             value="<?= $select['nome'] ?>" aria-controls="nomeAlert">
                         <div id="nomeAlert" role="alert"></div>
@@ -152,14 +152,14 @@
                 <div class="fundo-dados info-2">
                     <div class="dados-coluna">
                         <div class="form-caixa">
-                            <label for="cep">CEP</label>
+                            <label aria-hidden="true" for="cep">CEP</label>
                             <input type="tel" name="cep" id="cep" aria-controls="cepAlert"
                                 onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)"
                                 value='<?= $select_endereco[' cep'] ?>'>
                             <div id="cepAlert" role="alert"></div>
                         </div>
                         <div class="form-caixa">
-                            <label for="numero">Número</label>
+                            <label aria-hidden="true" for="numero">Número</label>
                             <input type="tel" name="numero" id="numero" aria-controls="numeroAlert"
                                 value='<?= $select_endereco[' numero'] ?>'>
                             <div id="numeroAlert" role="alert"></div>
@@ -196,17 +196,17 @@
                     <div class="form-caixa">
                         <label>Senha</label>
                         <div class="caixa-senhas">
-                            <label for="senha_antiga">Senha Antiga</label>
+                            <label aria-hidden="true" for="senha_antiga">Senha Antiga</label>
                             <div class="senha-holder">
                                 <input type="password" name="senha_antiga" id="senha_antiga" aria-controls="senhaAlert">
                                 <button class="gg-eye" type="button" aria-controls="senha_antiga" title="Mostrar senha" aria-pressed="false"></button>
                             </div>
-                            <label for="senha_nova">Senha Nova</label>
+                            <label aria-hidden="true" for="senha_nova">Senha Nova</label>
                             <div class="senha-holder">
                                 <input type="password" name="senha_nova" id="senha_nova">
                                 <button class="gg-eye" type="button" aria-controls="senha_nova" title="Mostrar senha" aria-pressed="false"></button>
                             </div>
-                            <label for="senha_nova_dup">Digite Novamente</label>
+                            <label aria-hidden="true" for="senha_nova_dup">Digite Novamente</label>
                             <div class="senha-holder">
                                 <input type="password" name="senha_nova_dup" id="senha_nova_dup">
                                 <button class="gg-eye" type="button" aria-controls="senha_nova_dup" title="Mostrar senha" aria-pressed="false"></button>

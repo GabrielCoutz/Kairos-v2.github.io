@@ -39,17 +39,17 @@
             <a href="../../index" id="link-home"><i class="gg-home"></i></a>
                 <h1 class="titulo">Etapa final</h1>
                 <div class="form-caixa senha-2">
-                    <label for="senha_nova">Nova senha</label>
+                    <label aria-hidden="true" for="senha_nova">Nova senha</label>
                     <i class="gg-lock" aria-hidden="true"></i>
-                    <input type="password" name="senha_nova" id="senha_nova" placeholder="Nova senha" aria-controls="senha_novaAlert">
+                    <input type="password" required name="senha_nova" id="senha_nova" placeholder="Nova senha" aria-controls="senha_novaAlert">
                     <button type="button" title="Esconder senha" class="gg-eye" aria-controls="senha_nova"></button>
                     <span class="underline" aria-hidden="true"></span>
                     <div id="senha_novaAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa senha-2">
-                    <label for="senha_nova_dup">Digite novamente</label>
+                    <label aria-hidden="true" for="senha_nova_dup">Digite novamente</label>
                     <i class="gg-lock" aria-hidden="true"></i>
-                    <input type="password" name="senha_nova_dup" id="senha_nova_dup" placeholder="Digite novamente" aria-controls="senha_nova_dupAlert">
+                    <input type="password" required name="senha_nova_dup" id="senha_nova_dup" placeholder="Digite novamente" aria-controls="senha_nova_dupAlert">
                     <button type="button" title="Esconder senha" class="gg-eye" aria-controls="senha_nova_dup"></button>
                     <span class="underline" aria-hidden="true"></span>
                     <div id="senha_nova_dupAlert" role="alert"></div>

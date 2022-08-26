@@ -39,23 +39,23 @@
             <a href="../index" id="link-home"><i class="gg-home"></i></a>
                 <h1 class="titulo">Cadastre sua empresa</h1>
                 <div class="form-caixa">
-                    <label for="nome_empresa">Nome da empresa</label>
+                    <label aria-hidden="true" for="nome_empresa">Nome da empresa</label>
                     <i class="gg-organisation" aria-hidden="true"></i>
-                    <input type="text" name="nome_empresa" id="nome_empresa" placeholder="Nome da empresa"
+                    <input type="text" required name="nome_empresa" id="nome_empresa" placeholder="Nome da empresa"
                         aria-controls="nome_empresaAlert" maxlength="50">
                     <span class="underline" aria-hidden="true"></span>
                     <div id="nome_empresaAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa">
-                    <label for="nome_fantasia">Nome Fantasia</label>
+                    <label aria-hidden="true" for="nome_fantasia">Nome Fantasia</label>
                     <i class="gg-organisation" aria-hidden="true"></i>
-                    <input type="text" name="nome_fantasia" id="nome_fantasia" placeholder="Nome Fantasia"
+                    <input type="text" required name="nome_fantasia" id="nome_fantasia" placeholder="Nome Fantasia"
                         aria-controls="nome_fantasiaAlert" maxlength="50">
                     <span class="underline" aria-hidden="true"></span>
                     <div id="nome_fantasiaAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa">
-                    <label for="cnpj">CNPJ</label>
+                    <label aria-hidden="true" for="cnpj">CNPJ</label>
                     <i class="gg-organisation" aria-hidden="true"></i>
                     <input type="tel" name="cnpj" id="cnpj" placeholder="CNPJ" aria-controls="cnpjAlert"
                         onkeypress="$(this).mask('00.000.000/0000-00')">
@@ -63,7 +63,7 @@
                     <div id="cnpjAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa">
-                    <label for="ramo">Ramo</label>
+                    <label aria-hidden="true" for="ramo">Ramo</label>
                     <i class="gg-organisation" aria-hidden="true"></i>
                     <select name="ramo" id="ramo" aria-controls="ramoAlert">
                         <option value disabled selected>Selecione o Ramo</option>
@@ -76,7 +76,7 @@
                     <div id="ramoAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa">
-                    <label for="cep_empresa">CEP</label>
+                    <label aria-hidden="true" for="cep_empresa">CEP</label>
                     <i class="gg-pin" aria-hidden="true"></i>
                     <input type="tel" name="cep_empresa" id="cep_empresa" placeholder="CEP"
                         aria-controls="cep_empresaAlert" onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)">
@@ -84,7 +84,7 @@
                     <div id="cep_empresaAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa">
-                    <label for="numero_empresa">Número</label>
+                    <label aria-hidden="true" for="numero_empresa">Número</label>
                     <i class="gg-pin" aria-hidden="true"></i>
                     <input type="tel" name="numero_empresa" id="numero_empresa" placeholder="Número"
                         aria-controls="numero_empresaAlert">

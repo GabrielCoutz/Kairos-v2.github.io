@@ -2,13 +2,14 @@
 
 document.querySelectorAll(".form-caixa > input").forEach((input) => {
   input.addEventListener("input", (e) => {
-    input.value != ""
-      ? document
-          .querySelector("label[for=" + e.currentTarget.id + "]")
-          .classList.add("label-ativo")
-      : document
-          .querySelector("label[for=" + e.currentTarget.id + "]")
-          .classList.remove("label-ativo");
+    let label = document.querySelector("label[for=" + e.currentTarget.id + "]");
+    if (input.value != "") {
+      label.classList.add("label-ativo");
+      label.setAttribute("aria-hidden", "false");
+    } else {
+      label.classList.remove("label-ativo");
+      label.setAttribute("aria-hidden", "true");
+    }
   });
 });
 
