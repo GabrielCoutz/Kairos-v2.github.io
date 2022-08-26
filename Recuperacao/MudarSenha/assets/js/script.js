@@ -1,5 +1,5 @@
 switch (true) {
-  case verificarURL(md5("conta_encontrada=true")):
+  case verificarURL(cripto("conta_encontrada=true")):
     abrirPopUp({
       cor: "green",
       corpo:
@@ -7,10 +7,10 @@ switch (true) {
       titulo: "Recuperação de Conta",
       icone: "encontrado",
     });
-    limparURL(md5("conta_encontrada=true"));
+    limparURL(cripto("conta_encontrada=true"));
     break;
 
-  case verificarURL(md5("sucesso=false")):
+  case verificarURL(cripto("sucesso=false")):
     abrirPopUp({
       cor: "red",
       corpo:
@@ -18,10 +18,10 @@ switch (true) {
       titulo: "Erro inesperado",
       icone: "falha",
     });
-    limparURL(md5("sucesso=false"));
+    limparURL(cripto("sucesso=false"));
     break;
 
-  case verificarURL(md5("erro=true")):
+  case verificarURL(cripto("erro=true")):
     erroSincronizacao("../../index");
     break;
 }

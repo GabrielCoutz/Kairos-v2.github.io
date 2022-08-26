@@ -36,46 +36,46 @@ function abrirEmpresa() {
 let alerta = "";
 
 switch (true) {
-  case verificarURL(md5("erro=true")):
+  case verificarURL(cripto("erro=true")):
     erroSincronizacao("../../Login/login");
-    limparURL(md5("erro=true"));
+    limparURL(cripto("erro=true"));
     break;
 
-  case verificarURL(md5("dados_empresa=false")):
+  case verificarURL(cripto("dados_empresa=false")):
     abrirEmpresa();
-    limparURL(md5("dados_empresa=false"));
+    limparURL(cripto("dados_empresa=false"));
     break;
 
-  case verificarURL(md5("nome_empresa_duplicado=true")):
+  case verificarURL(cripto("nome_empresa_duplicado=true")):
     nome_empresa.classList.add("vermei");
     alerta += " Nome para Empresa já cadastrado!";
-    limparURL(md5("nome_empresa_duplicado=true"));
+    limparURL(cripto("nome_empresa_duplicado=true"));
     break;
 
-  case verificarURL(md5("nome_fantasia_duplicado=true")):
+  case verificarURL(cripto("nome_fantasia_duplicado=true")):
     nome_fantasia.classList.add("vermei");
     alerta += " Nome Fantasia já cadastrado!";
-    limparURL(md5("nome_fantasia_duplicado=true"));
+    limparURL(cripto("nome_fantasia_duplicado=true"));
     break;
 
-  case verificarURL(md5("sucesso=true")):
+  case verificarURL(cripto("sucesso=true")):
     abrirPopUp({
       cor: "green",
       corpo: "Dados alterados com êxito.",
       titulo: "Alteração realizada com sucesso",
       icone: "sucesso",
     });
-    limparURL(md5("sucesso=true"));
+    limparURL(cripto("sucesso=true"));
     break;
 
-  case verificarURL(md5("cadastro=true")):
+  case verificarURL(cripto("cadastro=true")):
     abrirPopUp({
       cor: "green",
       corpo: "Dados registrados com êxito.",
       titulo: "Cadastro realizado com sucesso",
       icone: "sucesso",
     });
-    limparURL(md5("cadastro=true"));
+    limparURL(cripto("cadastro=true"));
     break;
 }
 

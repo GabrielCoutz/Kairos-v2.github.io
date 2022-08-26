@@ -35,8 +35,8 @@
         }
         
 
-        if(!isset($_SESSION['email']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true'))){
-          header("Refresh:0; url=usuario".'?'.md5('erro=true'));
+        if(!isset($_SESSION['email']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'erro=true'))){
+          header("Refresh:0; url=usuario".'?'.hash("sha512", 'erro=true'));
           exit;
         } else {
           $email=$_SESSION['email'];
@@ -44,8 +44,8 @@
 
         $select=mysqli_query($conec, "SELECT * FROM usuario WHERE email = '$email'")->fetch_assoc();
 
-        // if (empty(mysqli_query($conec, "SELECT * FROM analise_swot WHERE email_usuario = '$email'")->fetch_assoc()) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('analise=false')) && !$_COOKIE[md5('analise')] && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true'))){
-        //     header("Refresh:0; url=usuario".'?'.md5('analise=false'));
+        // if (empty(mysqli_query($conec, "SELECT * FROM analise_swot WHERE email_usuario = '$email'")->fetch_assoc()) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'analise=false')) && !$_COOKIE[hash("sha512", 'analise')] && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'erro=true'))){
+        //     header("Refresh:0; url=usuario".'?'.hash("sha512", 'analise=false'));
         //     exit;
         // }
 
@@ -229,7 +229,7 @@
         </div>
     </div>
 </body>
-<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.12.0/js/md5.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

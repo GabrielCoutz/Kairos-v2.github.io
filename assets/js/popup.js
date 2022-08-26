@@ -296,7 +296,7 @@ function abrirJanelaPlanos(plano_mudanca, plano_atual) {
   });
 }
 
-if (verificarURL(md5("sucesso=false"))) {
+if (verificarURL(cripto("sucesso=false"))) {
   abrirPopUp({
     cor: "red",
     corpo:
@@ -304,7 +304,7 @@ if (verificarURL(md5("sucesso=false"))) {
     titulo: "Erro inesperado",
     icone: "falha",
   });
-  limparURL(md5("sucesso=false"));
+  limparURL(cripto("sucesso=false"));
 }
 
 function erroSincronizacao(url) {

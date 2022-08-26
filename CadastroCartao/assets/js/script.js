@@ -13,13 +13,13 @@ const estado = document.getElementById("estado");
 const endereco = document.getElementById("endereco");
 
 switch (true) {
-  case verificarURL(md5("erro=true")):
+  case verificarURL(cripto("erro=true")):
     erroSincronizacao("../../Login/login");
-    limparURL(md5("erro=true"));
+    limparURL(cripto("erro=true"));
     break;
 
-  case verificarURL(md5("cpf=false")):
-    limparURL(md5("cpf=false"));
+  case verificarURL(cripto("cpf=false")):
+    limparURL(cripto("cpf=false"));
     abrirPopUp({
       cor: "red",
       corpo: "CPF já utilizado!",

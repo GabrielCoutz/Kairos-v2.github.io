@@ -26,7 +26,7 @@ $email_padrao=$_SESSION['email_padrao'];
 
 function verificarOperacao($query, $url){ // retorna uma sinalização de erro
     if(!$query){ // se a operação não tiver retorno, não foi feita. Então manda uma sinalização de erro mostrando que houve falha.
-        header('Location:'.$url.'?'.md5('sucesso=false'));
+        header('Location:'.$url.'?'.hash("sha512", 'sucesso=false'));
         exit;
         return;
     }
@@ -65,15 +65,15 @@ if(isset($_COOKIE['endereco'])){ // alteração do endereco
 }
 
 if(isset($_COOKIE['senha'])){ // alterar senha
-    $senha_antiga = md5($_POST['senha_antiga']);
-    $senha_nova = md5($_POST['senha_nova']);
-    $senha_nova_dup = md5($_POST['senha_nova_dup']);
+    $senha_antiga = hash("sha512", $_POST['senha_antiga']);
+    $senha_nova = hash("sha512", $_POST['senha_nova']);
+    $senha_nova_dup = hash("sha512", $_POST['senha_nova_dup']);
     $conec = conec();
     $select_senha=mysqli_query($conec, "SELECT senha FROM usuario WHERE email ='$email_padrao'")->fetch_assoc()['senha'];
     mysqli_close($conec);
     if($select_senha != $senha_antiga){ 
         setcookie('senha', '', time() - 3600, '/');
-        header('Location:'.$local.'?'.md5('senha=false'));
+        header('Location:'.$local.'?'.hash("sha512", 'senha=false'));
         exit;
 
     } else {
@@ -84,7 +84,7 @@ if(isset($_COOKIE['senha'])){ // alterar senha
         setcookie('senha', '', time() - 3600, '/');
         verificarOperacao($result_senha, $local);
 
-        header('Location:'.$local.'?'.md5('sucesso=true'));
+        header('Location:'.$local.'?'.hash("sha512", 'sucesso=true'));
         exit;
         }
 }
@@ -130,9 +130,9 @@ if(isset($_COOKIE['usuario'])){ // alteração de dados usuário
     }
 
     setcookie('usuario', '', time() - 3600, '/');
-    header('Location:'.$local.'?'.md5('sucesso=true'));
+    header('Location:'.$local.'?'.hash("sha512", 'sucesso=true'));
     exit;
 }
 ?>
 
-<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.12.0/js/md5.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

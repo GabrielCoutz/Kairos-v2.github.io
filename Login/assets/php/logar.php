@@ -16,8 +16,7 @@ if($conec->connect_error){ // se não for localhost, usa a conexão do banco no 
 }
 
 $email=$_POST['email'];
-$senha=md5($_POST['senha']);
-
+$senha=hash("sha512", $_POST['senha']);
 // $select=mysqli_query($conec, "SELECT email, senha FROM usuario WHERE email ='$email'");
 
 $query="SELECT email, senha FROM usuario WHERE email=?";
@@ -32,8 +31,8 @@ if($result && $result['email'] == $email && $result['senha'] == $senha){
     exit;
 }
 
-header('Location: ../../login?'.md5('login=false'));
+header('Location: ../../login?'.hash("sha512", 'login=false'));
 exit;
 
 ?>
-<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.12.0/js/md5.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

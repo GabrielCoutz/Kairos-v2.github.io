@@ -10,21 +10,21 @@ $(".composto-caixa > span").innerText !== undefined
   : (conteudoComposto = true);
 
 switch (true) {
-  case verificarURL(md5("erro=true")):
+  case verificarURL(cripto("erro=true")):
     erroSincronizacao("../Login/login");
-    limparURL(md5("erro=true"));
+    limparURL(cripto("erro=true"));
     break;
-  case verificarURL(md5("sucesso=true")):
+  case verificarURL(cripto("sucesso=true")):
     abrirPopUp({
       cor: "green",
       titulo: "Dados alterados com êxito.",
       corpo: "Alteração realizada com sucesso",
       icone: "sucesso",
     });
-    limparURL(md5("sucesso=true"));
+    limparURL(cripto("sucesso=true"));
     break;
 
-  case verificarURL(md5("sucesso=false")): // janela de erro na realização da análise
+  case verificarURL(cripto("sucesso=false")): // janela de erro na realização da análise
     abrirPopUp({
       cor: "red",
       corpo:
@@ -32,10 +32,10 @@ switch (true) {
       titulo: "Análise não concluída",
       icone: "falha",
     });
-    limparURL(md5("sucesso=false"));
+    limparURL(cripto("sucesso=false"));
     break;
 
-  case verificarURL(md5("analise=false")): // pergunta ao usuário se deseja iniciar a análise ou se prefere fazer depois
+  case verificarURL(cripto("analise=false")): // pergunta ao usuário se deseja iniciar a análise ou se prefere fazer depois
     abrirPopUp({
       cor: "blue",
       titulo: "Análise não realizada",
@@ -45,7 +45,7 @@ switch (true) {
       analise: true,
       bgFechar: false,
     });
-    limparURL(md5("analise=false"));
+    limparURL(cripto("analise=false"));
     break;
 }
 

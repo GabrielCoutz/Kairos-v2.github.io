@@ -28,6 +28,10 @@ if (hamburguer) {
   );
 }
 
+function cripto(string) {
+  return CryptoJS.SHA512(string).toString();
+}
+
 function apagarCookie(nome) {
   document.cookie = nome + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }

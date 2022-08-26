@@ -23,13 +23,13 @@ $plano = $_SESSION['plano'];
 if(isset($_GET['alterar_plano'])){ // alteração de plano contratado
     $email = $_SESSION['email'];
     $result_alterar=mysqli_query($conec, "UPDATE cartao SET assinatura='$plano' WHERE email_usuario='$email'") or die(mysqli_error($conec)."alteração");
-    header('Location: ../../../Perfil/usuario?'.md5('sucesso=true'));
+    header('Location: ../../../Perfil/usuario?'.hash("sha512", 'sucesso=true'));
     exit;
 }
 
 $num_cartao = $_POST['num_cartao'];
 $titular = $_POST['nome_cartao'];
-$cvv_cartao = md5($_POST['cvv_cartao']);
+$cvv_cartao = hash("sha512", $_POST['cvv_cartao']);
 $cpf=$_POST['cpf'];
 $validade = $_POST['mes_cartao'].'/'.$_POST['ano_cartao'];
 $email = $_SESSION['email'];
@@ -43,7 +43,7 @@ $estado=$_POST['estado'];
 
 function verificarOperacao($query, $url){ // retorna uma sinalização de erro
     if(!$query){ // se a operação não tiver retorno, não foi feita. Então manda uma sinalização de erro mostrando que houve falha.
-        header('Location:'.$url.'?'.md5('sucesso=false'));
+        header('Location:'.$url.'?'.hash("sha512", 'sucesso=false'));
         exit;
         return;
     }
@@ -54,7 +54,7 @@ $local='../../cadastro_cartao';
 $select=mysqli_query($conec, "SELECT cpf FROM usuario WHERE cpf = '$cpf'")->fetch_assoc()['cpf'];
 
 if (empty($select)){
-    $local=$local.'?'.md5('cpf=false').'&plano='.$plano;
+    $local=$local.'?'.hash("sha512", 'cpf=false').'&plano='.$plano;
     header("Refresh:0; url="."$local");
     exit;
 }
@@ -81,7 +81,7 @@ if (empty($select_endereco['email_usuario'])) { // se não tiver endereço, ent�
 
 verificarOperacao($result_endereco, $local);
 
-header('Location: ../../../Perfil/usuario?'.md5('sucesso=true'));
+header('Location: ../../../Perfil/usuario?'.hash("sha512", 'sucesso=true'));
 exit;
 ?>
-<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.12.0/js/md5.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

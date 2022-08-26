@@ -33,7 +33,7 @@ if(isset($_POST['g-recaptcha-response']) && $_POST['g-recaptcha-response'] != ""
     $resp = json_decode(curl_exec($ch));
 
     if ($resp->success != 1){
-        header('Location: ../../recuperacao?'.md5('captcha=false'));
+        header('Location: ../../recuperacao?'.hash("sha512", 'captcha=false'));
         exit;
     }
 }
@@ -46,11 +46,11 @@ $select=mysqli_query($conec, "SELECT email, nome FROM usuario WHERE email ='$ema
 if($select){
     if($email === $select['email'] && $nome === strtolower($select['nome'])){ // dados corretos
         $_SESSION['email'] = $email;
-        header('Location: ../../MudarSenha/mudar?'.md5('conta_encontrada=true'));
+        header('Location: ../../MudarSenha/mudar?'.hash("sha512", 'conta_encontrada=true'));
         exit;
     }
 }
-header('Location: ../../recuperacao?'.md5('conta=false'));
+header('Location: ../../recuperacao?'.hash("sha512", 'conta=false'));
 exit;
 
 ?>

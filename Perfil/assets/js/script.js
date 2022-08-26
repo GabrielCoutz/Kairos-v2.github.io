@@ -31,12 +31,12 @@ $(document).ready(function () {
 });
 
 switch (true) {
-  case verificarURL(md5("erro=true")):
+  case verificarURL(cripto("erro=true")):
     erroSincronizacao("../Login/login");
-    limparURL(md5("erro=true"));
+    limparURL(cripto("erro=true"));
     break;
 
-  case verificarURL(md5("senha=false")): // senha diferente da já utilizada
+  case verificarURL(cripto("senha=false")): // senha diferente da já utilizada
     abrirPopUp({
       cor: "red",
       corpo:
@@ -44,24 +44,24 @@ switch (true) {
       titulo: "Alteração Inválida",
       icone: "falha",
     });
-    limparURL(md5("senha=false"));
+    limparURL(cripto("senha=false"));
     document.getElementById("alterarsenha").click();
     document.getElementById("senha_antiga").classList.add("vermei");
     document.getElementById("senha_nova").classList.add("vermei");
     document.getElementById("senha_nova_dup").classList.add("vermei");
     break;
 
-  case verificarURL(md5("sucesso=true")):
+  case verificarURL(cripto("sucesso=true")):
     abrirPopUp({
       cor: "green",
       corpo: "Dados alterados com êxito.",
       titulo: "Alteração realizada",
       icone: "sucesso",
     });
-    limparURL(md5("sucesso=true"));
+    limparURL(cripto("sucesso=true"));
     break;
 
-  case verificarURL(md5("analise=false")):
+  case verificarURL(cripto("analise=false")):
     abrirPopUp({
       cor: "blue",
       titulo: "Faça sua análise hoje mesmo!",
@@ -70,7 +70,7 @@ switch (true) {
       icone: "marketing",
       marketing: true,
     });
-    limparURL(md5("analise=false"));
+    limparURL(cripto("analise=false"));
     break;
 }
 

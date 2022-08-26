@@ -17,7 +17,7 @@ if($conec->connect_error){ // se não for localhost, usa a conexão do banco no 
 }
 
 $nome=$_POST['nome'];
-$senha=md5($_POST['senha']);
+$senha=hash("sha512", $_POST['senha']);
 $email=$_POST['email'];
 
 $duplicado=false;
@@ -25,7 +25,7 @@ $local='../../cadastro_usuario';
 
 function verificarOperacao($query, $url){ // retorna uma sinalização de erro
     if(!$query){ // se a operação não tiver retorno, não foi feita. Então manda uma sinalização de erro mostrando que houve falha.
-        header('Location:'.$url.'?'.md5('sucesso=false'));
+        header('Location:'.$url.'?'.hash("sha512", 'sucesso=false'));
         exit;
         return;
     }
@@ -46,7 +46,7 @@ function verificarOperacao($query, $url){ // retorna uma sinalização de erro
 //         $resp = json_decode(curl_exec($ch));
 
 //         if ($resp->success != 1){
-//             $local=$local.'?'.md5('erro=true');
+//             $local=$local.'?'.hash("sha512", 'erro=true');
 //             header("Refresh:0; url=".$local);
 //             exit;
 //         }
@@ -56,7 +56,7 @@ function verificarOperacao($query, $url){ // retorna uma sinalização de erro
 $select_email=mysqli_query($conec, "SELECT email FROM usuario WHERE email = '$email'")->fetch_assoc();
 
 if(isset($select_email['email'])){ // email já utilizado
-    $local=$local.'?'.md5('email=false');
+    $local=$local.'?'.hash("sha512", 'email=false');
     header("Refresh:0; url="."$local");
     exit;
 
@@ -65,11 +65,11 @@ if(isset($select_email['email'])){ // email já utilizado
     
     verificarOperacao($result, $local);
 
-    header('Location: ../../../Login/login?'.md5('sucesso=true'));
+    header('Location: ../../../Login/login?'.hash("sha512", 'sucesso=true'));
     exit;
 }
 
 ?>
 
-<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.12.0/js/md5.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 

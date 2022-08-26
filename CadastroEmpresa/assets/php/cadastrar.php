@@ -22,7 +22,7 @@ $cnpj=$_POST['cnpj'];
 $select=mysqli_query($conec, "SELECT cnpj FROM empresa WHERE cnpj = '$cnpj'")->fetch_assoc();
 
 if(isset($select['cnpj'])){ //cnpj já usado
-    $local=$local.'?'.md5('cnpj=false');
+    $local=$local.'?'.hash("sha512", 'cnpj=false');
     header("Refresh:0; url="."$local");
     exit;
 }
@@ -41,12 +41,12 @@ $estado_empresa=$_POST['estado_empresa'];
 $result = mysqli_multi_query($conec,"INSERT INTO empresa(email_usuario,nome,nome_fantasia,cnpj,ramo) VALUES((SELECT email FROM usuario WHERE email = '$email'),'$nome_empresa','$nome_fantasia','$cnpj','$ramo'); INSERT INTO endereco_empresa(cnpj_empresa,cep,rua,numero,bairro,cidade,estado) VALUES((SELECT cnpj FROM empresa WHERE cnpj = '$cnpj'),'$cep_empresa','$rua_empresa','$numero_empresa','$bairro_empresa','$cidade_empresa','$estado_empresa')");
 
 if($result){ // insert feito
-    header('Location: ../../../Perfil/PerfilEmpresa/empresa?'.md5('cadastro=true'));
+    header('Location: ../../../Perfil/PerfilEmpresa/empresa?'.hash("sha512", 'cadastro=true'));
     exit;
 }
 
 // insert não feito
-header('Location: ../../../Login/login?'.md5('sucesso=false'));
+header('Location: ../../../Login/login?'.hash("sha512", 'sucesso=false'));
 exit;
 ?>
-<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.12.0/js/md5.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

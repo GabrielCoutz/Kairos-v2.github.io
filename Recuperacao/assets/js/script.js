@@ -3,7 +3,7 @@ const email = document.getElementById("email");
 const captcha = document.getElementById("captcha");
 
 switch (true) {
-  case verificarURL(md5("captcha=false")):
+  case verificarURL(cripto("captcha=false")):
     abrirPopUp({
       cor: "red",
       corpo:
@@ -11,10 +11,10 @@ switch (true) {
       titulo: "Erro no CAPTCHA",
       icone: "falha",
     });
-    limparURL(md5("captcha=false"));
+    limparURL(cripto("captcha=false"));
     break;
 
-  case verificarURL(md5("conta=false")):
+  case verificarURL(cripto("conta=false")):
     abrirPopUp({
       cor: "red",
       corpo:
@@ -22,7 +22,7 @@ switch (true) {
       titulo: "Recuperação de Conta",
       icone: "falha",
     });
-    limparURL(md5("conta=false"));
+    limparURL(cripto("conta=false"));
 
     nome.classList.add("vermei");
     email.classList.add("vermei");

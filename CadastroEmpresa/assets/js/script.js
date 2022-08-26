@@ -6,12 +6,12 @@ const numero_empresa = document.getElementById("numero_empresa");
 const ramo = document.getElementById("ramo");
 
 switch (true) {
-  case verificarURL(md5("erro=true")):
+  case verificarURL(cripto("erro=true")):
     erroSincronizacao("../Login/login");
-    limparURL(md5("erro=true"));
+    limparURL(cripto("erro=true"));
     break;
 
-  case verificarURL(md5("cnpj=false")):
+  case verificarURL(cripto("cnpj=false")):
     abrirPopUp({
       cor: "red",
       corpo: "CNPJ já cadastrado!",
@@ -23,7 +23,7 @@ switch (true) {
 
     nome_empresa.value = localStorage.getItem("nome_empresa");
     nome_fantasia.value = localStorage.getItem("nome_fantasia");
-    limparURL(md5("cnpj=false"));
+    limparURL(cripto("cnpj=false"));
     break;
 }
 

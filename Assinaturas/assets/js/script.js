@@ -1,6 +1,6 @@
-if (verificarURL(md5("erro=true"))) {
+if (verificarURL(cripto("erro=true"))) {
   erroSincronizacao("../Login/login");
-  limparURL(md5("erro=true"));
+  limparURL(cripto("erro=true"));
 }
 
 const plano = document

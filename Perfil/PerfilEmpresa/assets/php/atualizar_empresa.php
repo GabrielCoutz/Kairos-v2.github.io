@@ -24,7 +24,7 @@ $email = $_SESSION['email_padrao'];
 
 function verificarOperacao($query, $url){ // retorna uma sinalização de erro
     if(!$query){ // se a operação não tiver retorno, não foi feita. Então manda uma sinalização de erro mostrando que houve falha.
-        header('Location:'.$url.'?'.md5('sucesso=false'));
+        header('Location:'.$url.'?'.hash("sha512", 'sucesso=false'));
         exit;
         return;
     }
@@ -72,7 +72,7 @@ if(isset($_COOKIE['empresa'])) { // alteração de dados empresa
         mysqli_close($conec);
         
         if($select_nome_empresa === $nome_empresa){ //sinalização de duplicação
-            $local=$local.'?'.md5(('nome_empresa_duplicado=true'));
+            $local=$local.'?'.hash("sha512", ('nome_empresa_duplicado=true'));
             $duplicado=true;
         }
     }
@@ -84,7 +84,7 @@ if(isset($_COOKIE['empresa'])) { // alteração de dados empresa
         mysqli_close($conec);
 
         if($select_nome_fantasia === $nome_fantasia){ //sinalização de duplicação
-            $local=$local.'?'.md5(('nome_fantasia_duplicado=true'));
+            $local=$local.'?'.hash("sha512", ('nome_fantasia_duplicado=true'));
             $duplicado=true;
         }
     }
@@ -111,7 +111,7 @@ if(isset($_COOKIE['empresa'])) { // alteração de dados empresa
     }
     
     setcookie('empresa', '', time() - 3600, '/');
-    header('Location:'.$local.'?'.md5('sucesso=true'));
+    header('Location:'.$local.'?'.hash("sha512", 'sucesso=true'));
     exit;
 }
 

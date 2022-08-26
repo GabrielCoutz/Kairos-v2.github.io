@@ -39,13 +39,13 @@
 
         $select_empresa=mysqli_query($conec, "SELECT * FROM empresa WHERE email_usuario = '$email'")->fetch_assoc();
         switch (true) {
-            case !isset($_SESSION['email_padrao']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true')):
-                header("Refresh:0; url=empresa".'?'.md5('erro=true'));
+            case !isset($_SESSION['email_padrao']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'erro=true')):
+                header("Refresh:0; url=empresa".'?'.hash("sha512", 'erro=true'));
                 exit;
                 break;
 
-            case empty($select_empresa['ramo']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('dados_empresa=false')) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],md5('erro=true')):
-                header("Refresh:0; url=empresa".'?'.md5('dados_empresa=false'));
+            case empty($select_empresa['ramo']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'dados_empresa=false')) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'erro=true')):
+                header("Refresh:0; url=empresa".'?'.hash("sha512", 'dados_empresa=false'));
                 exit;
                 break;
         }
@@ -196,7 +196,7 @@
     </div>
 </body>
 
-<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.12.0/js/md5.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

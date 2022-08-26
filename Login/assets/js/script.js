@@ -1,41 +1,39 @@
 const email = document.getElementById("email");
 const senha = document.getElementById("senha");
 
-CryptoJS.SHA256("teste").toString();
-
 switch (true) {
-  case verificarURL(md5("login=false")):
+  case verificarURL(cripto("login=false")):
     abrirPopUp({
       cor: "red",
       corpo: "Credenciais incorretas! Por favor, verifique os dados inseridos!",
       titulo: "Falha no login",
       icone: "falha",
     });
-    limparURL(md5("login=false"));
+    limparURL(cripto("login=false"));
     document.getElementById("email").classList.add("vermei");
     document.getElementById("senha").classList.add("vermei");
     document.getElementById("email").classList.add("erro");
     document.getElementById("senha").classList.add("erro");
     break;
 
-  case verificarURL(md5("sucesso=true")):
+  case verificarURL(cripto("sucesso=true")):
     abrirPopUp({
       cor: "green",
       corpo: "Dados cadastrados com sucesso!",
       titulo: "Cadastro",
       icone: "sucesso",
     });
-    limparURL(md5("sucesso=true"));
+    limparURL(cripto("sucesso=true"));
     break;
 
-  case verificarURL(md5("sucesso_senha=true")):
+  case verificarURL(cripto("sucesso_senha=true")):
     abrirPopUp({
       cor: "green",
       corpo: "Senha alterada com sucesso!",
       titulo: "Recuperação de Conta",
       icone: "sucesso",
     });
-    limparURL(md5("sucesso_senha=true"));
+    limparURL(cripto("sucesso_senha=true"));
     break;
 }
 
@@ -50,7 +48,7 @@ function validar() {
     dispararEvento(senha, "keyup", "condicaoVazio");
   } else {
     localStorage.clear();
-    apagarCookie(md5("analise"));
+    apagarCookie(cripto("analise"));
     abrirPopUp({
       cor: "blue",
       corpo: "Aguarde",

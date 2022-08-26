@@ -108,10 +108,10 @@
     // ver erro --> or die(mysqli_error($conec) ou printf("Errormessage: %s\n", $conec->error);;
 
     if($result_4ps && $result_swot){
-        header('Location: ../../../resultado?'.md5('sucesso=true'));
+        header('Location: ../../../resultado?'.hash("sha512", 'sucesso=true'));
         exit;
     }
-    header('Location: ../../../resultado?'.md5('sucesso=false'));
+    header('Location: ../../../resultado?'.hash("sha512", 'sucesso=false'));
     exit;
 ?>
-<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.12.0/js/md5.min.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

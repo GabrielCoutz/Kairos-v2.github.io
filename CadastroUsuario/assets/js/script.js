@@ -7,7 +7,7 @@ const captcha = document.getElementById("captcha");
 switch (
   true // verifica se há erros passados na URL
 ) {
-  case verificarURL(md5("erro=true")): //erro no captcha
+  case verificarURL(cripto("erro=true")): //erro no captcha
     abrirPopUp({
       cor: "red",
       corpo:
@@ -15,10 +15,10 @@ switch (
       titulo: "Erro no CAPTCHA",
       icone: "falha",
     });
-    limparURL(md5("erro=true"));
+    limparURL(cripto("erro=true"));
     break;
 
-  case verificarURL(md5("email=false")): //email já cadastrado
+  case verificarURL(cripto("email=false")): //email já cadastrado
     email.classList.add("vermei");
     nome.value = localStorage.getItem(nome.id);
     abrirPopUp({
@@ -27,7 +27,7 @@ switch (
       titulo: "Dados Duplicados",
       icone: "falha",
     });
-    limparURL(md5("email=false"));
+    limparURL(cripto("email=false"));
     break;
 }
 
