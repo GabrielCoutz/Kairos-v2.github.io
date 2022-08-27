@@ -18,7 +18,6 @@
         session_start();
         error_reporting(E_ERROR | E_PARSE);
 
-
         $dbHost     = 'localhost';
         $dbUname = 'root';
         $dbPass = '';
@@ -33,7 +32,6 @@
             $dbName = 'epiz_31926454_Banco_Kairos';
             $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
         }
-        
 
         if(!isset($_SESSION['email']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'erro=true'))){
           header("Refresh:0; url=usuario".'?'.hash("sha512", 'erro=true'));
@@ -44,10 +42,11 @@
 
         $select=mysqli_query($conec, "SELECT * FROM usuario WHERE email = '$email'")->fetch_assoc();
 
-        // if (empty(mysqli_query($conec, "SELECT * FROM analise_swot WHERE email_usuario = '$email'")->fetch_assoc()) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'analise=false')) && !$_COOKIE[hash("sha512", 'analise')] && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'erro=true'))){
-        //     header("Refresh:0; url=usuario".'?'.hash("sha512", 'analise=false'));
-        //     exit;
-        // }
+        if (empty(mysqli_query($conec, "SELECT * FROM analise_swot WHERE email_usuario = '$email'")->fetch_assoc()) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'analise=false')) && !$_COOKIE[hash("sha512", 'analise=false')] && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'erro=true'))){
+            setcookie(hash("sha512", 'analise=false'), 1);
+            header("Refresh:0; url=usuario".'?'.hash("sha512", 'analise=false'));
+            exit;
+        }
 
         $cpf=$select['cpf'];
 
@@ -155,20 +154,20 @@
                             <label aria-hidden="true" for="cep">CEP</label>
                             <input type="tel" name="cep" id="cep" aria-controls="cepAlert"
                                 onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)"
-                                value='<?= $select_endereco[' cep'] ?>'>
+                                value='<?= $select_endereco['cep'] ?>'>
                             <div id="cepAlert" role="alert"></div>
                         </div>
                         <div class="form-caixa">
                             <label aria-hidden="true" for="numero">Número</label>
                             <input type="tel" name="numero" id="numero" aria-controls="numeroAlert"
-                                value='<?= $select_endereco[' numero'] ?>'>
+                                value='<?= $select_endereco['numero'] ?>'>
                             <div id="numeroAlert" role="alert"></div>
                         </div>
                         <div class="form-caixa">
-                            <input type="text" class="none" id="rua" name="rua">
-                            <input type="text" class="none" id="bairro" name="bairro">
-                            <input type="text" class="none" id="cidade" name="cidade">
-                            <input type="text" class="none" id="estado" name="estado">
+                            <input type="hidden" class="none" id="rua" name="rua">
+                            <input type="hidden" class="none" id="bairro" name="bairro">
+                            <input type="hidden" class="none" id="cidade" name="cidade">
+                            <input type="hidden" class="none" id="estado" name="estado">
                             <label>Endereço</label>
                             <p class="desativado" id="endereco"><a>
                                     <?= ucwords($select_endereco['rua']) ?>,

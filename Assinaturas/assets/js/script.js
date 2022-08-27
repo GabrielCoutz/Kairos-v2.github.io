@@ -32,5 +32,8 @@ switch (plano) {
 }
 
 function mudarPlano(btn) {
-  abrirJanelaPlanos(btn.value, plano);
+  !vazio(plano)
+    ? abrirJanelaPlanos(btn.value, plano)
+    : (window.location.href =
+        "../CadastroCartao/cadastro_cartao?plano=" + btn.value);
 }
