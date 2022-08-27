@@ -19,10 +19,15 @@ if($conec->connect_error){ // se não for localhost, usa a conexão do banco no 
 }
 
 $plano = $_SESSION['plano'];
+$email = $_SESSION['email'];
 
 if(isset($_GET['alterar_plano'])){ // alteração de plano contratado
-    $email = $_SESSION['email'];
-    $result_alterar=mysqli_query($conec, "UPDATE cartao SET assinatura='$plano' WHERE email_usuario='$email'") or die(mysqli_error($conec)."alteração");
+    $query="UPDATE cartao SET assinatura=? WHERE email_usuario=?";
+    $exec=$conec->prepare($query);
+    $exec->bind_param("ss", $plano, $email);
+    $exec->execute();
+    $result=$exec->get_result();
+
     header('Location: ../../../Perfil/usuario?'.hash("sha512", 'sucesso=true'));
     exit;
 }
@@ -42,7 +47,7 @@ $cidade=$_POST['cidade'];
 $estado=$_POST['estado'];
 
 function verificarOperacao($query, $url){ // retorna uma sinalização de erro
-    if(!$query){ // se a operação não tiver retorno, não foi feita. Então manda uma sinalização de erro mostrando que houve falha.
+    if($query){ // se a operação não tiver retorno, não foi feita. Então manda uma sinalização de erro mostrando que houve falha.
         header('Location:'.$url.'?'.hash("sha512", 'sucesso=false'));
         exit;
         return;
@@ -84,4 +89,3 @@ verificarOperacao($result_endereco, $local);
 header('Location: ../../../Perfil/usuario?'.hash("sha512", 'sucesso=true'));
 exit;
 ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

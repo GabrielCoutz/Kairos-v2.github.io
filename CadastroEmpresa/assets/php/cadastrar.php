@@ -19,9 +19,13 @@ if($conec->connect_error){ // se não for localhost, usa a conexão do banco no 
 $local='../../cadastro_empresa';
 $cnpj=$_POST['cnpj'];
 
-$select=mysqli_query($conec, "SELECT cnpj FROM empresa WHERE cnpj = '$cnpj'")->fetch_assoc();
+$query="SELECT cnpj FROM empresa WHERE cnpj=?";
+$exec=$conec->prepare($query);
+$exec->bind_param("s", $cnpj);
+$exec->execute();
+$result=$exec->get_result()->fetch_assoc();
 
-if(isset($select['cnpj'])){ //cnpj já usado
+if(isset($result['cnpj'])){ //cnpj já usado
     $local=$local.'?'.hash("sha512", 'cnpj=false');
     header("Refresh:0; url="."$local");
     exit;
@@ -38,15 +42,25 @@ $bairro_empresa=$_POST['bairro_empresa'];
 $cidade_empresa=$_POST['cidade_empresa'];
 $estado_empresa=$_POST['estado_empresa'];
 
-$result = mysqli_multi_query($conec,"INSERT INTO empresa(email_usuario,nome,nome_fantasia,cnpj,ramo) VALUES((SELECT email FROM usuario WHERE email = '$email'),'$nome_empresa','$nome_fantasia','$cnpj','$ramo'); INSERT INTO endereco_empresa(cnpj_empresa,cep,rua,numero,bairro,cidade,estado) VALUES((SELECT cnpj FROM empresa WHERE cnpj = '$cnpj'),'$cep_empresa','$rua_empresa','$numero_empresa','$bairro_empresa','$cidade_empresa','$estado_empresa')");
+// registra a empresa
+$query="INSERT INTO empresa(email_usuario, nome, nome_fantasia, cnpj, ramo) VALUES((SELECT email FROM usuario WHERE email=?), ?, ?, ?, ?)";
+$exec=$conec->prepare($query);
+$exec->bind_param("sssss", $email, $nome_empresa, $nome_fantasia, $cnpj, $ramo);
+$exec->execute();
+$result_empresa=$exec->get_result();
 
-if($result){ // insert feito
-    header('Location: ../../../Perfil/PerfilEmpresa/empresa?'.hash("sha512", 'cadastro=true'));
+// registra o endereço da empresa
+$query="INSERT INTO endereco_empresa(cnpj_empresa, cep, rua, numero, bairro, cidade, estado) VALUES((SELECT cnpj FROM empresa WHERE cnpj=?), ?, ?, ?, ?, ?, ?)";
+$exec=$conec->prepare($query);
+$exec->bind_param("sssssss", $cnpj, $cep_empresa, $rua_empresa, $numero_empresa, $bairro_empresa, $cidade_empresa, $estado_empresa);
+$exec->execute();
+$result_endereco=$exec->get_result();
+
+if($result_empresa || $result_endereco){ // insert não feito
+    header('Location: ../../../Login/login?'.hash("sha512", 'sucesso=false'));
     exit;
 }
 
-// insert não feito
-header('Location: ../../../Login/login?'.hash("sha512", 'sucesso=false'));
+header('Location: ../../../Perfil/PerfilEmpresa/empresa?'.hash("sha512", 'cadastro=true'));
 exit;
 ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

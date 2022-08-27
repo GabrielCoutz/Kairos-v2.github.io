@@ -41,15 +41,18 @@ if(isset($_POST['g-recaptcha-response']) && $_POST['g-recaptcha-response'] != ""
 $email=trim($_POST['email']);
 $nome=trim(strtolower($_POST['nome']));
 
-$select=mysqli_query($conec, "SELECT email, nome FROM usuario WHERE email ='$email'")->fetch_assoc();
+$query="SELECT email, nome FROM usuario WHERE email=?";
+$exec=$conec->prepare($query);
+$exec->bind_param("s", $email);
+$exec->execute();
+$result=$exec->get_result()->fetch_assoc();
 
-if($select){
-    if($email === $select['email'] && $nome === strtolower($select['nome'])){ // dados corretos
-        $_SESSION['email'] = $email;
-        header('Location: ../../MudarSenha/mudar?'.hash("sha512", 'conta_encontrada=true'));
-        exit;
-    }
+if($email === $result['email'] && $nome === strtolower($result['nome'])){ // dados corretos
+    $_SESSION['email'] = $email;
+    header('Location: ../../MudarSenha/mudar?'.hash("sha512", 'conta_encontrada=true'));
+    exit;
 }
+
 header('Location: ../../recuperacao?'.hash("sha512", 'conta=false'));
 exit;
 

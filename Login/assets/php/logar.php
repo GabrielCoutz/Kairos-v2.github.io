@@ -17,7 +17,6 @@ if($conec->connect_error){ // se não for localhost, usa a conexão do banco no 
 
 $email=$_POST['email'];
 $senha=hash("sha512", $_POST['senha']);
-// $select=mysqli_query($conec, "SELECT email, senha FROM usuario WHERE email ='$email'");
 
 $query="SELECT email, senha FROM usuario WHERE email=?";
 $exec=$conec->prepare($query);
@@ -35,4 +34,3 @@ header('Location: ../../login?'.hash("sha512", 'login=false'));
 exit;
 
 ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

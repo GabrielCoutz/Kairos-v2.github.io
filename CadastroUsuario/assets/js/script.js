@@ -4,14 +4,18 @@ const senha = document.getElementById("senha");
 const confirm_senha = document.getElementById("confirm_senha");
 const captcha = document.getElementById("captcha");
 
-// var index = 0;
-// setInterval(() => {
-//   while (index <= 100000) {
-//     document.getElementById("gerar-senha").click();
-//     console.log(index + " - " + senha.value + " virou: " + cripto(senha.value));
-//     index++;
-//   }
-// }, 1000);
+function teste() {
+  var index = 0;
+  setInterval(() => {
+    while (index <= 100000) {
+      document.getElementById("gerar-senha").click();
+      console.log(
+        index + " - " + senha.value + " virou: " + cripto(senha.value)
+      );
+      index++;
+    }
+  }, 1000);
+}
 
 switch (
   true // verifica se há erros passados na URL
