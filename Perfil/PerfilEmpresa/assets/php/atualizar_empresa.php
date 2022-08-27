@@ -1,41 +1,18 @@
 <?php
 session_start();
-
-function conec(){
-    $dbHost     = 'localhost';
-    $dbUname = 'root';
-    $dbPass = '';
-    $dbName     = 'kairos';
-
-    $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
-
-    if($conec->connect_error){ // se não for localhost, usa a conexão do banco no site
-        $dbHost = 'sql309.epizy.com';
-        $dbUname = 'epiz_31926454';
-        $dbPass = 'VOjqZcbwH38iVo';
-        $dbName = 'epiz_31926454_Banco_Kairos';
-    }
-
-    return $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
-}
+require('../../../../assets/php/globals.php');
 
 $local='../../empresa';
 $email = $_SESSION['email_padrao'];
 
-function verificarOperacao($query, $url){ // retorna uma sinalização de erro
-    if(!$query){ // se a operação não tiver retorno, não foi feita. Então manda uma sinalização de erro mostrando que houve falha.
-        header('Location:'.$url.'?'.hash("sha512", 'sucesso=false'));
-        exit;
-        return;
-    }
-}
-
 if($_POST['ramo'] != $_SESSION['ramo_padrao']){ // alteração de ramo
     $ramo=$_POST['ramo'];
-    $conec = conec();
-    $result_ramo=mysqli_query($conec,"UPDATE empresa SET ramo='$ramo' WHERE email_usuario='$email'");
-    mysqli_close($conec);
-    verificarOperacao($result_ramo, $local);
+    $query="UPDATE empresa SET ramo=? WHERE email_usuario=?";
+    $exec=$conec->prepare($query);
+    $exec->bind_param('ss', $ramo, $email);
+    $exec->execute();
+    $result=$exec->get_result();
+    verificarOperacao($result, $local);
 }
 
 if(isset($_COOKIE['endereco'])){ // alteração do endereco da empresa
@@ -48,30 +25,27 @@ if(isset($_COOKIE['endereco'])){ // alteração do endereco da empresa
     $estado_empresa = $_POST['estado_empresa'];
     $cnpj_padrao=$_SESSION['cnpj_padrao'];
 
-    $conec = conec();
-    $result_endereco_empresa=mysqli_multi_query($conec,"UPDATE endereco_empresa SET cep='$cep_empresa' WHERE cnpj_empresa='$cnpj_padrao';
-    UPDATE endereco_empresa SET rua='$rua_empresa' WHERE cnpj_empresa='$cnpj_padrao';
-    UPDATE endereco_empresa SET numero='$numero_empresa' WHERE cnpj_empresa='$cnpj_padrao';
-    UPDATE endereco_empresa SET bairro='$bairro_empresa' WHERE cnpj_empresa='$cnpj_padrao';
-    UPDATE endereco_empresa SET cidade='$cidade_empresa' WHERE cnpj_empresa='$cnpj_padrao';
-    UPDATE endereco_empresa SET estado='$estado_empresa' WHERE cnpj_empresa='$cnpj_padrao';");
-    mysqli_close($conec);
+    $query="UPDATE endereco_empresa SET cep=?, rua=?, numero=?, bairro=?, cidade=?, estado=? WHERE cnpj_empresa=?";
+    $exec=$conec->prepare($query);
+    $exec->bind_param("sssssss", $cep_empresa, $rua_empresa, $numero_empresa, $bairro_empresa, $cidade_empresa, $estado_empresa, $cnpj_padrao);
+    $exec->execute();
+    $result=$exec->get_result();
+    verificarOperacao($result, $local);
 
     setcookie('endereco', '', time() - 3600, '/');
-
-    verificarOperacao($result_endereco_empresa, $local); // verifica se a operação foi feita com sucesso
 }
 
 if(isset($_COOKIE['empresa'])) { // alteração de dados empresa
-    $duplicado = false;
 
     if($_POST['nome_empresa'] != $_SESSION['nome_empresa_padrao']){ // verificação se o nome já é utilizado
         $nome_empresa = $_POST['nome_empresa'];
-        $conec = conec();
-        $select_nome_empresa=mysqli_query($conec, "SELECT * FROM empresa WHERE nome ='$nome_empresa'");
-        mysqli_close($conec);
+        $query="SELECT id FROM empresa WHERE nome=?";
+        $exec=$conec->prepare($query);
+        $exec->bind_param("s", $nome_empresa);
+        $exec->execute();
+        $result=$exec->get_result()->fetch_assoc()['nome'];
         
-        if($select_nome_empresa === $nome_empresa){ //sinalização de duplicação
+        if($result === $nome_empresa){ //sinalização de duplicação
             $local=$local.'?'.hash("sha512", ('nome_empresa_duplicado=true'));
             $duplicado=true;
         }
@@ -79,11 +53,13 @@ if(isset($_COOKIE['empresa'])) { // alteração de dados empresa
 
     if($_POST['nome_fantasia'] != $_SESSION['nome_fantasia_padrao']){ // verificação se o nome já é utilizado
         $nome_fantasia = $_POST['nome_fantasia'];
-        $conec = conec();
-        $select_nome_fantasia=mysqli_query($conec, "SELECT * FROM empresa WHERE nome_fantasia ='$nome_fantasia'");
-        mysqli_close($conec);
+        $query="SELECT id FROM empresa WHERE nome_fantasia =?";
+        $exec=$conec->prepare($query);
+        $exec->bind_param("s", $nome_fantasia);
+        $exec->execute();
+        $result=$exec->get_result()->fetch_assoc()['nome_fantasia'];
 
-        if($select_nome_fantasia === $nome_fantasia){ //sinalização de duplicação
+        if($result === $nome_fantasia){ //sinalização de duplicação
             $local=$local.'?'.hash("sha512", ('nome_fantasia_duplicado=true'));
             $duplicado=true;
         }
@@ -94,20 +70,22 @@ if(isset($_COOKIE['empresa'])) { // alteração de dados empresa
         exit;
     }
 
-    // se não, atualiza os nomes digitados
-    
     if(isset($nome_empresa)){
-        $conec = conec();
-        $result_nome_empresa=mysqli_query($conec,"UPDATE empresa SET nome='$nome_empresa' WHERE email_usuario='$email'");
-        mysqli_close($conec);
-        verificarOperacao($result_nome_empresa, $local);
+        $query="UPDATE empresa SET nome=? WHERE email_usuario=?";
+        $exec=$conec->prepare($query);
+        $exec->bind_param("ss", $nome_empresa, $email);
+        $exec->execute();
+        $result=$exec->get_result();
+        verificarOperacao($result, $local);
     }
     
     if(isset($nome_fantasia)){
-        $conec = conec();
-        $result_nome_fantasia=mysqli_query($conec,"UPDATE empresa SET nome_fantasia='$nome_fantasia' WHERE email_usuario='$email'");
-        mysqli_close($conec);
-        verificarOperacao($result_nome_fantasia, $local);
+        $query="UPDATE empresa SET nome_fantasia=? WHERE email_usuario=?";
+        $exec=$conec->prepare($query);
+        $exec->bind_param("ss", $nome_fantasia, $email);
+        $exec->execute();
+        $result=$exec->get_result();
+        verificarOperacao($result, $local);
     }
     
     setcookie('empresa', '', time() - 3600, '/');

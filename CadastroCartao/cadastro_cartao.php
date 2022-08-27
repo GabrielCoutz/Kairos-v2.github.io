@@ -20,20 +20,7 @@
     error_reporting(E_ERROR | E_PARSE);
     session_start();
     $_SESSION['plano']=$_GET['plano'];
-    $dbHost     = 'localhost';
-    $dbUname = 'root';
-    $dbPass = '';
-    $dbName     = 'kairos';
-
-    $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
-
-    if($conec->connect_error){ // se não for localhost, usa a conexão do banco no site
-        $dbHost = 'sql309.epizy.com';
-        $dbUname = 'epiz_31926454';
-        $dbPass = 'VOjqZcbwH38iVo';
-        $dbName = 'epiz_31926454_Banco_Kairos';
-        $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
-    }
+    require('../assets/php/globals.php');
 
     if(isset($_GET['alterar-plano'])){ // alteração de plano contratado
       $email = $_SESSION['email'];

@@ -17,21 +17,8 @@
     <?php
         error_reporting(E_ERROR | E_PARSE);
         session_start();
+        require('../assets/php/globals.php');
 
-        $dbHost     = 'localhost';
-        $dbUname = 'root';
-        $dbPass = '';
-        $dbName     = 'kairos';
-
-        $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
-
-        if($conec->connect_error){ // se não for localhost, usa a conexão do banco no site
-            $dbHost = 'sql309.epizy.com';
-            $dbUname = 'epiz_31926454';
-            $dbPass = 'VOjqZcbwH38iVo';
-            $dbName = 'epiz_31926454_Banco_Kairos';
-            $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
-        }
         $email=$_SESSION['email'];
         $select_swot=mysqli_query($conec, "SELECT * FROM analise_swot WHERE email_usuario = '$email'")->fetch_assoc();
         $select_4ps=mysqli_query($conec, "SELECT * FROM analise_4ps WHERE email_usuario = '$email'")->fetch_assoc();

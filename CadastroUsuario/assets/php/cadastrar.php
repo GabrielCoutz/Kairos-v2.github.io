@@ -1,36 +1,10 @@
 <?php
 
-use function PHPSTORM_META\type;
-
 session_start();
-
-$dbHost     = 'localhost';
-$dbUname = 'root';
-$dbPass = '';
-$dbName     = 'kairos';
-
-$conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
-
-if($conec->connect_error){ // se não for localhost, usa a conexão do banco no site
-    $dbHost = 'sql309.epizy.com';
-    $dbUname = 'epiz_31926454';
-    $dbPass = 'VOjqZcbwH38iVo';
-    $dbName = 'epiz_31926454_Banco_Kairos';
-    $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
-}
+require('../../../assets/php/globals.php');
 
 $email=$_POST['email'];
-
-$duplicado=false;
 $local='../../cadastro_usuario';
-
-function verificarOperacao($query, $url){ // retorna uma sinalização de erro
-    if($query){ // se a operação tiver retorno, não foi feita. Então manda uma sinalização de erro mostrando que houve falha.
-        header('Location:'.$url.'?'.hash("sha512", 'sucesso=false'));
-        exit;
-        return;
-    }
-}
 
 if(isset($_POST['g-recaptcha-response']) && $_POST['g-recaptcha-response'] != ""){
     $url='https://www.google.com/recaptcha/api/siteverify';
@@ -73,7 +47,6 @@ $exec=$conec->prepare($query);
 $exec->bind_param("sss", $nome, $email, $senha);
 $exec->execute();
 $result=$exec->get_result();
-
 verificarOperacao($result, $local);
 
 header('Location: ../../../Login/login?'.hash("sha512", 'sucesso=true'));

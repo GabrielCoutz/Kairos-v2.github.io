@@ -13,8 +13,6 @@ if($conec->connect_error){ // se não for localhost, usa a conexão do banco no 
     $dbPass = 'VOjqZcbwH38iVo';
     $dbName = 'epiz_31926454_Banco_Kairos';
     $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
-} else {
-    echo 'tudo certo';
 }
 
 

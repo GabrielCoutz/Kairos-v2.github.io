@@ -18,20 +18,7 @@
         session_start();
         error_reporting(E_ERROR | E_PARSE);
 
-        $dbHost     = 'localhost';
-        $dbUname = 'root';
-        $dbPass = '';
-        $dbName     = 'kairos';
-
-        $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
-
-        if($conec->connect_error){ // se não for localhost, usa a conexão do banco no site
-            $dbHost = 'sql309.epizy.com';
-            $dbUname = 'epiz_31926454';
-            $dbPass = 'VOjqZcbwH38iVo';
-            $dbName = 'epiz_31926454_Banco_Kairos';
-            $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
-        }
+        require('../assets/php/globals.php');
 
         if(!isset($_SESSION['email']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'erro=true'))){
           header("Refresh:0; url=usuario".'?'.hash("sha512", 'erro=true'));

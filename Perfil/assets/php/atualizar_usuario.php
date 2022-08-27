@@ -1,5 +1,5 @@
+<meta charset="UTF-8">
 <?php
-
 session_start();
 require('../../../assets/php/globals.php');
 
@@ -40,30 +40,35 @@ if(isset($_COOKIE['endereco'])){ // alteração do endereco
     verificarOperacao($result_endereco, $local);
 }
 
-// if(isset($_COOKIE['senha'])){ // alterar senha
-//     $senha_antiga = hash("sha512", $_POST['senha_antiga']);
-//     $senha_nova = hash("sha512", $_POST['senha_nova']);
-//     $senha_nova_dup = hash("sha512", $_POST['senha_nova_dup']);
+if(isset($_COOKIE['senha'])){ // alterar senha
+    $senha_antiga = hash("sha512", $_POST['senha_antiga']);
+    $senha_nova = hash("sha512", $_POST['senha_nova']);
+
+    $query="SELECT senha FROM usuario WHERE email=?";
+    $exec=$conec->prepare($query);
+    $exec->bind_param("s", $email_padrao);
+    $exec->execute();
+    $result=$exec->get_result()->fetch_assoc()['senha'];
     
-//     $select_senha=mysqli_query($conec, "SELECT senha FROM usuario WHERE email ='$email_padrao'")->fetch_assoc()['senha'];
+    if($result != $senha_antiga){
+        setcookie('senha', '', time() - 3600, '/');
+        header('Location:'.$local.'?'.hash("sha512", 'senha=false'));
+        exit;
+    }
+
+    $query="UPDATE usuario SET senha=? WHERE email=?";
+    $exec=$conec->prepare($query);
+    $exec->bind_param("ss", $senha_nova, $email_padrao);
+    $exec->execute();
+    $result=$exec->get_result();
     
-//     if($select_senha != $senha_antiga){ 
-//         setcookie('senha', '', time() - 3600, '/');
-//         header('Location:'.$local.'?'.hash("sha512", 'senha=false'));
-//         exit;
+    setcookie('senha', '', time() - 3600, '/');
+    verificarOperacao($result_senha, $local);
 
-//     } else {
-        
-//         $result_senha=mysqli_query($conec,"UPDATE usuario SET senha = '$senha_nova' WHERE email = '$email_padrao'") or die(mysqli_error($conec)."senha");
-        
-
-//         setcookie('senha', '', time() - 3600, '/');
-//         verificarOperacao($result_senha, $local);
-
-//         header('Location:'.$local.'?'.hash("sha512", 'sucesso=true'));
-//         exit;
-//         }
-// }
+    header('Location:'.$local.'?'.hash("sha512", 'sucesso=true'));
+    exit;
+    
+}
 
 if(isset($_COOKIE['usuario'])){ // alteração de dados usuário
     $nome = $_POST['nome'];
