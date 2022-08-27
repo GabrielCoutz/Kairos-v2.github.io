@@ -1,12 +1,15 @@
 function removerTelefoneAdicional(elemento) {
   elemento.closest(".adicionarNumero").remove();
+  if (!document.querySelector(".adicionarNumero")) {
+    cancelarbtn.click();
+  }
 }
 
 // adiciona campos de input
 $("#add_tel").click(function () {
   cancelarbtn.disabled = false;
 
-  if (document.getElementById("del_tel").style.display != "none") {
+  if (!document.getElementById("del_tel").classList.contains("none")) {
     $("#del_tel").toggle();
   }
   if ($(".dados-coluna.telefone")[0].style.display != "none") {

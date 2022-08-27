@@ -65,6 +65,7 @@ function limparURL(url) {
 }
 
 function alertaDeErro(elemento, mensagem) {
+  let caixa = document.getElementById(elemento.getAttribute("aria-controls"));
   let iconeAlerta = document.createElement("i");
   iconeAlerta.setAttribute("class", "gg-danger");
   iconeAlerta.setAttribute("aria-hidden", "true");
@@ -75,7 +76,6 @@ function alertaDeErro(elemento, mensagem) {
     senha_nova.classList.add("vermei");
     senha_nova_dup.classList.add("vermei");
   }
-  let caixa = document.getElementById(elemento.getAttribute("aria-controls"));
   document.getElementById(elemento.id).classList.add("vermei");
   elemento.setAttribute(
     "aria-labelledby",
@@ -84,8 +84,10 @@ function alertaDeErro(elemento, mensagem) {
   caixa.id === "valor"
     ? caixa.classList.toggle("alerta-ativo")
     : caixa.classList.add("alerta-ativo");
-  caixa.append(iconeAlerta);
-  caixa.innerHTML += mensagem;
+  if (vazio(caixa.innerText)) {
+    caixa.append(iconeAlerta);
+    caixa.innerHTML += mensagem;
+  }
 
   elemento.focus();
 }

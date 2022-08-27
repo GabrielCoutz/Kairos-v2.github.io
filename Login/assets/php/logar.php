@@ -1,5 +1,6 @@
 <?php
 session_start();
+require('../../../assets/php/globals.php');
 
 $email=$_POST['email'];
 $senha=hash("sha512", $_POST['senha']);

@@ -28,6 +28,12 @@ $(document).ready(function () {
   if (vazio(numero.value)) {
     numero.placeholder = "Não cadastrado";
   }
+  if (
+    document.querySelector(".form-caixa.telefone").innerText ===
+    "Não Cadastrado"
+  ) {
+    document.getElementById("del_tel").classList.add("none");
+  }
 });
 
 switch (true) {

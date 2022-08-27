@@ -250,7 +250,8 @@ div[id$="Alert"] {
   height: 100%;
   grid-column: 1;
 }
-li.nav-lateral-ativo ~ .menu-btn {
+li.nav-lateral-ativo ~ .menu-btn,
+#del_tel.none {
   display: none;
 }
 
