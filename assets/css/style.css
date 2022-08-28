@@ -158,7 +158,7 @@
     padding: 30px 30px;
   }
   .nav-lateral {
-    padding: 35px 60px;
+    padding: 35px 30px;
   }
   .nav-lateral > li {
     grid-column: 1;
@@ -286,10 +286,6 @@
   .captacao {
     gap: 30px;
   }
-  .btn {
-    box-sizing: border-box;
-    width: 100%;
-  }
   label[for="cardCvv"] {
     padding-top: 20px;
   }
@@ -312,6 +308,21 @@
   }
   .validade label {
     grid-row: auto;
+  }
+  .titulo {
+    font-size: 1.7rem;
+  }
+  input::placeholder {
+    font-size: 0.9rem;
+  }
+  .formulario {
+    padding: 0 30px;
+  }
+  .btn {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 15px 14px;
+    font-size: 1.4rem;
   }
 }
 

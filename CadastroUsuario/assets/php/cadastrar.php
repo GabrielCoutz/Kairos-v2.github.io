@@ -31,9 +31,9 @@ $query="SELECT email FROM usuario WHERE email=?";
 $exec=$conec->prepare($query);
 $exec->bind_param("s", $email);
 $exec->execute();
-$result=$exec->get_result()->fetch_assoc();
+$result=$exec->get_result()->fetch_assoc()['email'];
 
-if(isset($result['email'])){ // email já utilizado
+if($result){ // email já utilizado
     $local=$local.'?'.hash("sha512", 'email=false');
     header("Refresh:0; url="."$local");
     exit;

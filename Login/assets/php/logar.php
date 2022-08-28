@@ -11,7 +11,7 @@ $exec->bind_param("s", $email);
 $exec->execute();
 $result=$exec->get_result()->fetch_assoc();
 
-if($result && $result['email'] == $email && $result['senha'] == $senha){
+if($result['email'] === $email && $result['senha'] === $senha){
     $_SESSION['email']=$_POST['email'];
     header('Location: ../../../Perfil/usuario');
     exit;
