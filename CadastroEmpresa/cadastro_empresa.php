@@ -13,7 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
         rel="stylesheet">
-    
+
     <title>Cadastro da Empresa</title>
     <?php
         session_start();
@@ -36,7 +36,7 @@
     <div class="fundo-form container">
         <div class="form-holder">
             <form method="POST" action="assets/php/cadastrar" class="formulario empresa" onsubmit="return false">
-            <a href="../index" id="link-home"><i class="gg-home"></i></a>
+                <a href="../index" id="link-home"><i class="gg-home"></i></a>
                 <h1 class="titulo">Cadastre sua empresa</h1>
                 <div class="form-caixa">
                     <label aria-hidden="true" for="nome_empresa">Nome da empresa</label>
@@ -104,7 +104,9 @@
 
     </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

@@ -14,7 +14,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
         rel="stylesheet">
-    
+
     <?php
         error_reporting(E_ERROR | E_PARSE);
         session_start();
@@ -36,8 +36,9 @@
 
     <div class="fundo-form container" aria-label="Formulário de login">
         <div class="form-holder">
-            <form action="assets/php/logar" method="POST" class="formulario login" onsubmit="return false" contenteditable="false">
-            <a href="../index" id="link-home"><i class="gg-home"></i></a>
+            <form action="assets/php/logar" method="POST" class="formulario login" onsubmit="return false"
+                contenteditable="false">
+                <a href="../index" id="link-home"><i class="gg-home"></i></a>
                 <h1 class="titulo" id="login-titulo">Login</h1>
                 <div class="form-caixa">
                     <label aria-hidden="true" for="email" aria-label="Email">Email</label>
@@ -49,8 +50,10 @@
                 <div class="form-caixa senha-2">
                     <label aria-hidden="true" for="senha" aria-label="Senha">Senha</label>
                     <i class="gg-lock" aria-hidden="true"></i>
-                    <input type="password" required name="senha" id="senha" placeholder="Senha" aria-controls="senhaAlert">
-                    <button class="gg-eye" type="button" aria-controls="senha" title="Mostrar senha" aria-pressed="false"></button>
+                    <input type="password" required name="senha" id="senha" placeholder="Senha"
+                        aria-controls="senhaAlert">
+                    <button class="gg-eye" type="button" aria-controls="senha" title="Mostrar senha"
+                        aria-pressed="false"></button>
                     <span class="underline" aria-hidden="true"></span>
                     <div id="senhaAlert" role="alert"></div>
                 </div>
@@ -63,7 +66,9 @@
 
     </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

@@ -181,7 +181,8 @@
                         <p>É o alinhamento desses itens que irá compor toda a estratégia de marketing da sua empresa.
                         </p>
                         <p>Pense neles como peças de um quebra-cabeça que irão se encaixar para formar o todo.</p>
-                        <p>Portanto, você comunicará aos seus consumidores o posicionamento da sua marca e irá promover o desejo de compra no seu público-alvo.</p>
+                        <p>Portanto, você comunicará aos seus consumidores o posicionamento da sua marca e irá promover
+                            o desejo de compra no seu público-alvo.</p>
                         <p>
                             Com todos estes itens, foque em como mostrar à seus clientes o motivo, de maneira clara e
                             objetiva, de:<br>
@@ -212,7 +213,9 @@
         </div>
     </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

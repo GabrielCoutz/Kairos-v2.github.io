@@ -102,7 +102,8 @@
                             <li>Suporte 08:00 às 18:00</li>
                             <li>1 Visita presencial p/mês</li>
                         </ul>
-                        <button onclick="mudarPlano(this)" value="Básico" class="btn secundario btn-plano">Escolher plano</button>
+                        <button onclick="mudarPlano(this)" value="Básico" class="btn secundario btn-plano">Escolher
+                            plano</button>
                     </div>
                     <div class="planos-item" id="medio">
                         <span class="planos-titulo titulo">Médio</span>
@@ -128,14 +129,17 @@
                             <li>Plano de Negócios</li>
                             <li>Análise de Resultados</li>
                         </ul>
-                        <button onclick="mudarPlano(this)" value="Premium" class="btn secundario btn-plano">Escolher plano</button>
+                        <button onclick="mudarPlano(this)" value="Premium" class="btn secundario btn-plano">Escolher
+                            plano</button>
                     </div>
                 </div>
             </section>
         </div>
     </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

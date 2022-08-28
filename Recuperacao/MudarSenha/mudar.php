@@ -13,7 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
         rel="stylesheet">
-    
+
     <title>Recuperação de conta</title>
     <?php
         session_start();
@@ -36,12 +36,13 @@
     <div class="fundo-form container">
         <div class="form-holder">
             <form action="assets/php/mudar_senha" method="POST" class="formulario recuperacao" onsubmit="return false">
-            <a href="../../index" id="link-home"><i class="gg-home"></i></a>
+                <a href="../../index" id="link-home"><i class="gg-home"></i></a>
                 <h1 class="titulo">Etapa final</h1>
                 <div class="form-caixa senha-2">
                     <label aria-hidden="true" for="senha_nova">Nova senha</label>
                     <i class="gg-lock" aria-hidden="true"></i>
-                    <input type="password" required name="senha_nova" id="senha_nova" placeholder="Nova senha" aria-controls="senha_novaAlert">
+                    <input type="password" required name="senha_nova" id="senha_nova" placeholder="Nova senha"
+                        aria-controls="senha_novaAlert">
                     <button type="button" title="Esconder senha" class="gg-eye" aria-controls="senha_nova"></button>
                     <span class="underline" aria-hidden="true"></span>
                     <div id="senha_novaAlert" role="alert"></div>
@@ -49,7 +50,8 @@
                 <div class="form-caixa senha-2">
                     <label aria-hidden="true" for="senha_nova_dup">Digite novamente</label>
                     <i class="gg-lock" aria-hidden="true"></i>
-                    <input type="password" required name="senha_nova_dup" id="senha_nova_dup" placeholder="Digite novamente" aria-controls="senha_nova_dupAlert">
+                    <input type="password" required name="senha_nova_dup" id="senha_nova_dup"
+                        placeholder="Digite novamente" aria-controls="senha_nova_dupAlert">
                     <button type="button" title="Esconder senha" class="gg-eye" aria-controls="senha_nova_dup"></button>
                     <span class="underline" aria-hidden="true"></span>
                     <div id="senha_nova_dupAlert" role="alert"></div>
@@ -61,7 +63,9 @@
 
     </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

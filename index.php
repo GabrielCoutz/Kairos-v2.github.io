@@ -59,7 +59,7 @@
         <div class="intro-img">
             <img src="assets/img/hero/equipe.png" alt="" aria-hidden="true">
         </div>
-    </main >
+    </main>
 
     <section class="sobre container" id="sobre" aria-labelledby="sobre-titulo">
         <div class="sobre-img">

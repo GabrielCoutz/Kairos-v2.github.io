@@ -13,7 +13,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
         rel="stylesheet">
-    
+
     <title>Recuperação de conta</title>
 </head>
 
@@ -28,14 +28,15 @@
     <div class="fundo-form container">
         <div class="form-holder">
             <form action="assets/php/validarDados" method="POST" class="formulario recuperacao" onsubmit="return false">
-            <a href="../index" id="link-home"><i class="gg-home"></i></a>
+                <a href="../index" id="link-home"><i class="gg-home"></i></a>
                 <h1 class="titulo">Recuperação de conta</h1>
                 <p>Não tem problema se esqueceu sua senha, para recuperá-la basta inserir os dados cadastrados da conta
                     abaixo.</p>
                 <div class="form-caixa">
                     <label aria-hidden="true" for="nome">Nome completo</label>
                     <i class="gg-user" aria-hidden="true"></i>
-                    <input type="text" required name="nome" id="nome" placeholder="Nome Completo" onkeyup="apenasLetras(this)" aria-controls="nomeAlert">
+                    <input type="text" required name="nome" id="nome" placeholder="Nome Completo"
+                        onkeyup="apenasLetras(this)" aria-controls="nomeAlert">
                     <span class="underline" aria-hidden="true"></span>
                     <div id="nomeAlert" role="alert"></div>
                 </div>
@@ -51,7 +52,9 @@
         </div>
     </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

@@ -141,13 +141,13 @@
                             <label aria-hidden="true" for="cep">CEP</label>
                             <input type="tel" name="cep" id="cep" aria-controls="cepAlert"
                                 onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)"
-                                value='<?= $select_endereco['cep'] ?>'>
+                                value='<?= $select_endereco[' cep'] ?>'>
                             <div id="cepAlert" role="alert"></div>
                         </div>
                         <div class="form-caixa">
                             <label aria-hidden="true" for="numero">Número</label>
                             <input type="tel" name="numero" id="numero" aria-controls="numeroAlert"
-                                value='<?= $select_endereco['numero'] ?>'>
+                                value='<?= $select_endereco[' numero'] ?>'>
                             <div id="numeroAlert" role="alert"></div>
                         </div>
                         <div class="form-caixa">
@@ -185,17 +185,20 @@
                             <label aria-hidden="true" for="senha_antiga">Senha Antiga</label>
                             <div class="senha-holder">
                                 <input type="password" name="senha_antiga" id="senha_antiga" aria-controls="senhaAlert">
-                                <button class="gg-eye" type="button" aria-controls="senha_antiga" title="Mostrar senha" aria-pressed="false"></button>
+                                <button class="gg-eye" type="button" aria-controls="senha_antiga" title="Mostrar senha"
+                                    aria-pressed="false"></button>
                             </div>
                             <label aria-hidden="true" for="senha_nova">Senha Nova</label>
                             <div class="senha-holder">
                                 <input type="password" name="senha_nova" id="senha_nova">
-                                <button class="gg-eye" type="button" aria-controls="senha_nova" title="Mostrar senha" aria-pressed="false"></button>
+                                <button class="gg-eye" type="button" aria-controls="senha_nova" title="Mostrar senha"
+                                    aria-pressed="false"></button>
                             </div>
                             <label aria-hidden="true" for="senha_nova_dup">Digite Novamente</label>
                             <div class="senha-holder">
                                 <input type="password" name="senha_nova_dup" id="senha_nova_dup">
-                                <button class="gg-eye" type="button" aria-controls="senha_nova_dup" title="Mostrar senha" aria-pressed="false"></button>
+                                <button class="gg-eye" type="button" aria-controls="senha_nova_dup"
+                                    title="Mostrar senha" aria-pressed="false"></button>
                             </div>
                             <div id="senhaAlert" role="alert"></div>
 
@@ -215,7 +218,9 @@
         </div>
     </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
