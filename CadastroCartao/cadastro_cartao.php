@@ -213,7 +213,7 @@
         </div>
         <div id='endereco' class="none"></div>
 
-        <button class="btn primario" onclick="validar()" id='butao' type="button">
+        <button class="btn primario" onclick="validar()" id='butao' type="submit">
           Finalizar
         </button>
         <button class="btn terciario" type="reset" onclick="cancelar()">

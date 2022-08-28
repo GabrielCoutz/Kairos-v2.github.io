@@ -67,7 +67,7 @@
                     <button class="gg-eye" type="button" aria-controls="confirm_senha" title="Mostrar senha" aria-pressed="false"></button>
                     <span class="underline" aria-hidden="true"></span>
                 </div>
-                <button type="button" id="butao" class="btn primario" onclick="validar()">Registrar</button>
+                <button type="submit" id="butao" class="btn primario" onclick="validar()">Registrar</button>
                 <a href="../Login/login" class="btn terciario">Fazer login</a>
             </form>
         </div>

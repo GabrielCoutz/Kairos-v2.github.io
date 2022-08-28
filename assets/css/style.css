@@ -330,7 +330,8 @@
   .contato-img {
     display: none;
   }
-  .form-caixa > input {
+  .form-caixa > input,
+  .dados-coluna > input {
     width: 100%;
     box-sizing: border-box;
   }

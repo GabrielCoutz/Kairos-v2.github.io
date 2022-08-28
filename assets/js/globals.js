@@ -118,17 +118,6 @@ function apenasLetras(event) {
   }
 }
 
-if (!document.location.href === "https://kairosprojeto.great-site.net/") {
-  $(document).keypress(
-    // desativa tecla ENTER
-    function (event) {
-      if (event.which == "13") {
-        event.preventDefault();
-      }
-    }
-  );
-}
-
 function lerCEP(cep) {
   if (cep.value.length == 10) {
     $.ajax({

@@ -1,26 +1,11 @@
 <meta charset="UTF-8">
 <?php
     session_start();
-    error_reporting(E_ALL);
-
-    $dbHost     = 'localhost';
-    $dbUname = 'root';
-    $dbPass = '';
-    $dbName     = 'kairos';
-    
-    $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
-    
-    if($conec->connect_error){ // se não for localhost, usa a conexão do banco no site
-        $dbHost = 'sql309.epizy.com';
-        $dbUname = 'epiz_31926454';
-        $dbPass = 'VOjqZcbwH38iVo';
-        $dbName = 'epiz_31926454_Banco_Kairos';
-        $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
-    }
+    require ("../../../../assets/php/globals.php");
 
     // SWOT
-    $fortes = '';
-    $fracos = '';
+    $forcas = '';
+    $fraquezas = '';
     $oportunidades = '';
     $ameacas = '';
 
@@ -40,15 +25,13 @@
             $valor = str_replace('<br>',', ',$valor);
         }
 
-        // echo $chave.' = '.$valor.'<br>';
-
         if (is_int(strpos($chave, 'SWOT'))){ // análise SWOT
         switch (true) {
             case is_int(strpos($chave,'forças')):
-                $fortes .= $valor.', ';
+                $forcas .= $valor.', ';
                 break;
             case is_int(strpos($chave, 'fraquezas')):
-                $fracos .= $valor.', ';
+                $fraquezas .= $valor.', ';
                 break;
             case is_int(strpos($chave, 'oportunidades')):
                 $oportunidades .= $valor.', ';
@@ -101,9 +84,19 @@
 
     $email = $_SESSION['email'];
 
-    $result_swot=mysqli_query($conec, "INSERT INTO analise_swot(email_usuario, forcas, fraquezas, oportunidades, ameacas) VALUES('$email', '$fortes', '$fracos', '$oportunidades', '$ameacas')");
+    $query="INSERT INTO analise_swot(email_usuario, forcas, fraquezas, oportunidades, ameacas) VALUES(?, ?, ?, ?, ?)";
+    $exec=$conec->prepare($query);
+    $exec->bind_param("sssss", $email, $forcas, $fraquezas, $oportunidades, $ameacas);
+    $exec->execute();
+    $result_swot=$exec->get_result();
+    verificarOperacao($result_swot, '../../../resultado');
 
-    $result_4ps=mysqli_query($conec, "INSERT INTO analise_4ps(email_usuario, produto, preco, praca, promocao, incentivo) VALUES('$email', '$produto', '$preco', '$praca', '$promocao', '$incentivo' )");
+    $query="INSERT INTO analise_4ps(email_usuario, produto, preco, praca, promocao, incentivo) VALUES(?, ?, ?, ?, ?, ?)";
+    $exec=$conec->prepare($query);
+    $exec->bind_param("ssssss", $email, $produto, $preco, $praca, $promocao, $incentivo);
+    $exec->execute();
+    $result_4ps=$exec->get_result();
+    verificarOperacao($result_4ps, '../../../resultado');
 
     // ver erro --> or die(mysqli_error($conec) ou printf("Errormessage: %s\n", $conec->error);;
 
@@ -114,4 +107,3 @@
     header('Location: ../../../resultado?'.hash("sha512", 'sucesso=false'));
     exit;
 ?>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

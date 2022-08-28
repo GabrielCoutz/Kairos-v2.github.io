@@ -97,7 +97,7 @@
                 <input type="text" class="none" id="cidade_empresa" name="cidade_empresa">
                 <input type="text" class="none" id="estado_empresa" name="estado_empresa">
 
-                <button type="button" id="butao" class="btn primario" onclick="validar()">Registrar</button>
+                <button type="submit" id="butao" class="btn primario" onclick="validar()">Registrar</button>
             </form>
         </div>
 
