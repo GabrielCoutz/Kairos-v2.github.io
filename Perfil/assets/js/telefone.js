@@ -1,39 +1,39 @@
+const limite = 5;
+
 function removerTelefoneAdicional(elemento) {
   elemento.closest(".adicionarNumero").remove();
   if (!document.querySelector(".adicionarNumero")) {
     cancelarbtn.click();
   }
+  if (document.querySelectorAll(".adicionar").length < limite) {
+    document.getElementById("telefoneAlert").classList.remove("alerta-ativo");
+  }
 }
-var limiteAtingido = false;
 
-$(document).click(function () {
-  if (document.querySelectorAll(".adicionar").length >= 5) {
+// adiciona campos de input
+$("#add_tel").click(function () {
+  cancelarbtn.disabled = false;
+  if (document.querySelectorAll(".adicionar").length >= limite) {
     document.getElementById("telefoneAlert").innerText = "Limite (5) atingido!";
     document.getElementById("telefoneAlert").classList.add("alerta-ativo");
-    limiteAtingido = true;
     return;
+  } else {
+    document.getElementById("telefoneAlert").classList.remove("alerta-ativo");
+    document.getElementById("telefoneAlert").innerText =
+      "Preencha o número por completo!";
   }
-  limiteAtingido = false;
-  document.getElementById("telefoneAlert").classList.remove("alerta-ativo");
-  document.getElementById("telefoneAlert").innerText =
-    "Preencha o número por completo!";
+
+  if (document.getElementById("del_tel").offsetParent) {
+    $("#del_tel").toggle();
+  }
+
+  if ($(".dados-coluna.telefone")[0].style.display != "none") {
+    $(".dados-coluna.telefone").toggle();
+  }
+
+  $("#manipularNumeros").append(adicionarTel());
+  document.querySelector(".adicionarNumero:last-child input").focus();
 });
-if (limiteAtingido === false) {
-  $("#add_tel").click(function () {
-    cancelarbtn.disabled = false;
-
-    if (document.getElementById("del_tel").offsetParent) {
-      $("#del_tel").toggle();
-    }
-    if ($(".dados-coluna.telefone")[0].style.display != "none") {
-      $(".dados-coluna.telefone").toggle();
-    }
-
-    $("#manipularNumeros").append(adicionarTel());
-    document.querySelector(".adicionarNumero:last-child input").focus();
-  });
-}
-// adiciona campos de input
 
 // mostra numeros para serem deletados
 $("#del_tel").click(function () {

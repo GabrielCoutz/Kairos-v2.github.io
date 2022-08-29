@@ -220,16 +220,11 @@
     text-align: center;
     transition: 0.3s;
   }
-
   .header-nav > li {
     margin: 16px 0;
   }
-
   .header-nav.menu-ativo {
     left: 0;
-  }
-  body {
-    overflow: hidden;
   }
   .form-holder {
     max-width: none;
