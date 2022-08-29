@@ -28,7 +28,7 @@
     ?>
 </head>
 
-<body>
+<body class="index">
     <header class="fundo-header">
         <div class="header container">
             <div class="header-logo">

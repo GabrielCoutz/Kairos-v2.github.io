@@ -10,7 +10,7 @@
 // menu hamburguer
 
 let hamburguer = document.querySelector(".hamburguer");
-let navMenu = document.location.href.includes("index")
+let navMenu = document.body.classList.contains("index")
   ? document.querySelector(".header-nav")
   : document.querySelector(".nav-lateral");
 
