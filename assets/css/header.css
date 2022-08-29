@@ -37,6 +37,7 @@
   transition: all 0.3s ease-out 0s;
   width: 100%;
   position: fixed;
+  z-index: 6;
 }
 
 .sticky {

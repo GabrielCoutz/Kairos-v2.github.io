@@ -1,6 +1,7 @@
 let janelaPopUp = new Object();
 let colors = "primary:#121331,secondary:#16c72e";
-let src = "";
+let src,
+  delay = "";
 
 janelaPopUp.abre = function (param) {
   switch (
@@ -18,7 +19,7 @@ janelaPopUp.abre = function (param) {
       break;
     case param.icone === "carregar":
       src = "https://cdn.lordicon.com/dpinvufc.json";
-      delay = "delay = '10' ";
+      delay = "10";
       colors = "primary:#4E6EF1,secondary:#4E6EF1";
       break;
     case param.icone === "encontrado":
@@ -47,7 +48,7 @@ janelaPopUp.abre = function (param) {
   let lord_icon = document.createElement("lord-icon");
   lord_icon.setAttribute("src", src);
   lord_icon.setAttribute("trigger", "loop");
-  lord_icon.setAttribute("delay", "1000");
+  lord_icon.setAttribute("delay", delay);
   lord_icon.setAttribute("colors", colors);
   lord_icon.setAttribute("style", "width:46px;height:46px");
 
@@ -243,6 +244,10 @@ janelaPopUp.abre = function (param) {
     janelaPopUp.fecha();
   });
 
+  $("#popUpEnviar").on("click", function () {
+    janelaPopUp.fecha();
+  });
+
   if (param.bgFechar !== false) {
     $(".popUpFundo").on("click", function () {
       janelaPopUp.fecha();
@@ -253,10 +258,6 @@ janelaPopUp.abre = function (param) {
       }
     });
   }
-
-  $("#popUpEnviar").on("click", function () {
-    janelaPopUp.fecha();
-  });
 };
 
 janelaPopUp.fecha = function () {

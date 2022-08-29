@@ -4,20 +4,36 @@ function removerTelefoneAdicional(elemento) {
     cancelarbtn.click();
   }
 }
+var limiteAtingido = false;
 
-// adiciona campos de input
-$("#add_tel").click(function () {
-  cancelarbtn.disabled = false;
-
-  if (!document.getElementById("del_tel").classList.contains("none")) {
-    $("#del_tel").toggle();
+$(document).click(function () {
+  if (document.querySelectorAll(".adicionar").length >= 5) {
+    document.getElementById("telefoneAlert").innerText = "Limite (5) atingido!";
+    document.getElementById("telefoneAlert").classList.add("alerta-ativo");
+    limiteAtingido = true;
+    return;
   }
-  if ($(".dados-coluna.telefone")[0].style.display != "none") {
-    $(".dados-coluna.telefone").toggle();
-  }
-
-  $("#manipularNumeros").append(adicionarTel());
+  limiteAtingido = false;
+  document.getElementById("telefoneAlert").classList.remove("alerta-ativo");
+  document.getElementById("telefoneAlert").innerText =
+    "Preencha o número por completo!";
 });
+if (limiteAtingido === false) {
+  $("#add_tel").click(function () {
+    cancelarbtn.disabled = false;
+
+    if (document.getElementById("del_tel").offsetParent) {
+      $("#del_tel").toggle();
+    }
+    if ($(".dados-coluna.telefone")[0].style.display != "none") {
+      $(".dados-coluna.telefone").toggle();
+    }
+
+    $("#manipularNumeros").append(adicionarTel());
+    document.querySelector(".adicionarNumero:last-child input").focus();
+  });
+}
+// adiciona campos de input
 
 // mostra numeros para serem deletados
 $("#del_tel").click(function () {
@@ -53,9 +69,13 @@ function verificarTelefone(input) {
     salvarbtn.disabled = true;
   }
 
-  input.classList.toString().includes("vermei")
-    ? alerta.add("alerta-ativo")
-    : alerta.remove("alerta-ativo");
+  if (input.classList.toString().includes("vermei")) {
+    alerta.add("alerta-ativo");
+    input.setAttribute("aria-labelledby", "telefoneAlert");
+  } else {
+    alerta.remove("alerta-ativo");
+    input.removeAttribute("aria-labelledby");
+  }
 }
 
 function adicionarTel() {

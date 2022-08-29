@@ -98,6 +98,7 @@ document.querySelectorAll("input").forEach((item) => {
 
           default:
             limpar_inputs();
+            this.removeAttribute("aria-labelledby");
             salvarbtn.disabled = false;
             cancelarbtn.disabled = false;
         }
