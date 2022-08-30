@@ -28,7 +28,9 @@
       $result_alterar=mysqli_query($conec, "UPDATE cartao SET assinatura='$plano' WHERE email_usuario='$email'") or die(mysqli_error($conec)."alteração_plano");
       header('Location: ../Perfil/usuario?'.hash("sha512", 'sucesso=true'));
       exit;
-  }
+    }
+      echo 'teste';
+  
   ?>
 </head>
 

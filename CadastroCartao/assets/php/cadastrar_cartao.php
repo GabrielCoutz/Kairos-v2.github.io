@@ -32,13 +32,13 @@ $cidade=$_POST['cidade'];
 $estado=$_POST['estado'];
 
 // verificar se o CPF já foi registrado
-$query="SELECT cpf FROM usuario WHERE cpf=?";
+$query="SELECT cpf FROM usuario WHERE email=?";
 $exec=$conec->prepare($query);
-$exec->bind_param("s", $cpf);
+$exec->bind_param("s", $email);
 $exec->execute();
 $result=$exec->get_result()->fetch_assoc()['cpf'];
 
-if ($result){
+if ($result === $cpf){
     $local=$local.'?'.hash("sha512", 'cpf=false').'&plano='.$plano;
     header("Refresh:0; url="."$local");
     exit;
@@ -93,7 +93,7 @@ if (empty($result_endereco)) { // se não tiver endereço, então todos os dados
         verificarOperacao($result, $local);
     }
 }
-
+echo 'teste';
 header('Location: ../../../Perfil/usuario?'.hash("sha512", 'sucesso=true'));
 exit;
 ?>
