@@ -106,14 +106,14 @@
                     <div class="form-caixa">
                         <label aria-hidden="true" for="nome_empresa">Nome da empresa</label>
                         <input type="text" name="nome_empresa" id="nome_empresa" maxlength="50"
-                            value='<?= $select_empresa[' nome'] ?>' aria-controls="nome_empresaAlert"
+                            value='<?= $select_empresa['nome'] ?>' aria-controls="nome_empresaAlert"
                         onkeyup="apenasLetras(this)">
                         <div id="nome_empresaAlert" role="alert"></div>
                     </div>
                     <div class="form-caixa">
                         <label aria-hidden="true" for="nome_fantasia">Nome Fantasia</label>
                         <input type="text" name="nome_fantasia" id="nome_fantasia" maxlength="50"
-                            value='<?= $select_empresa[' nome_fantasia'] ?>' aria-controls="nome_fantasiaAlert">
+                            value='<?= $select_empresa['nome_fantasia'] ?>' aria-controls="nome_fantasiaAlert">
                         <div id="nome_fantasiaAlert" role="alert"></div>
                     </div>
                     <div class="form-caixa">
@@ -127,8 +127,7 @@
                     <div class="dados-coluna">
                         <div class="form-caixa">
                             <label aria-hidden="true" for="cep_empresa">CEP</label>
-                            <input type="tel" name="cep_empresa" id="cep_empresa" value='<?= $select_empresa_endereco['
-                                cep'] ?>'
+                            <input type="tel" name="cep_empresa" id="cep_empresa" value='<?= $select_empresa_endereco['cep'] ?>'
                             aria-controls="cep_empresaAlert" onkeypress="$(this).mask('00.000-000')"
                             onkeyup="lerCEP(this)">
                             <div id="cep_empresaAlert" role="alert"></div>
@@ -136,7 +135,7 @@
                         <div class="form-caixa">
                             <label aria-hidden="true" for="numero_empresa">Número</label>
                             <input type="tel" name="numero_empresa" id="numero_empresa"
-                                value='<?= $select_empresa_endereco[' numero'] ?>'
+                                value='<?= $select_empresa_endereco['numero'] ?>'
                             aria-controls="numero_empresaAlert">
                             <div id="numero_empresaAlert" role="alert"></div>
                         </div>

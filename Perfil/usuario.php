@@ -53,7 +53,6 @@
         }
 
         $select_endereco=mysqli_query($conec, "SELECT * FROM endereco WHERE email_usuario = '$email'")->fetch_assoc();
-
   ?>
 </head>
 
