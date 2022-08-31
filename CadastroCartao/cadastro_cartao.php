@@ -36,7 +36,6 @@
       header('Location: ../Perfil/usuario?'.hash("sha512", 'sucesso=true'));
       exit;
     }
-      echo 'teste';
   
   ?>
 </head>

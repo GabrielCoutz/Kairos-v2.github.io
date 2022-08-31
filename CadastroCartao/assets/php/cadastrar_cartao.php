@@ -75,25 +75,14 @@ if (empty($result_endereco)) { // se não tiver endereço, então todos os dados
     verificarOperacao($result, $local);
 
 } else { // senão é realizado apenas a alteração
-    $lista = [
-        'cep'=>$cep,
-        'rua'=>$rua,
-        'numero'=>$numero,
-        'bairro'=>$bairro,
-        'cidade'=>$cidade,
-        'estado'=>$estado
-    ];
-
-    foreach ($lista as $chave => $valor) {
-        $query="UPDATE endereco SET ?=? WHERE email_usuario=?";
+        $query="UPDATE endereco SET cep=?, rua=?, numero=?, bairro=?, cidade=?, estado=? WHERE email_usuario=?";
         $exec=$conec->prepare($query);
-        $exec->bind_param("sss", $chave, $valor, $email);
+        $exec->bind_param("sssssss", $cep, $rua, $numero, $bairro, $cidade, $estado, $email);
         $exec->execute();
         $result=$exec->get_result();
         verificarOperacao($result, $local);
-    }
 }
-echo 'teste';
+
 header('Location: ../../../Perfil/usuario?'.hash("sha512", 'sucesso=true'));
 exit;
 ?>

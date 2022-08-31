@@ -1,12 +1,12 @@
-var bar = document.querySelector(".progress-bar > div");
-var currentPercent = document.querySelector(".percentage > .forca-senha");
-var inputPasswordField = document.querySelector("#senha");
+let bar = document.querySelector(".progress-bar > div");
+let currentPercent = document.querySelector(".percentage > .forca-senha");
+let inputPasswordField = document.querySelector("#senha");
 inputPasswordField.addEventListener("keyup", (e) => {
   detPasswordStrength(inputPasswordField.value);
 });
 
 function detPasswordStrength(password) {
-  var pwdPercent = getStrengthPercent(password);
+  let pwdPercent = getStrengthPercent(password);
 
   pwdPercent === 0 ? bar.classList.add("none") : bar.classList.remove("none");
   bar.style.background = "transparent";
@@ -42,7 +42,7 @@ function detPasswordStrength(password) {
 }
 
 function getStrengthPercent(inputPassword) {
-  var percent = 0;
+  let percent = 0;
   percent = percent + percentByLength(inputPassword);
   percent = percent + percentByUppercase(inputPassword);
   percent = percent + percentByChar(inputPassword);
@@ -60,8 +60,8 @@ function percentByLength(inputPassword) {
 }
 
 function percentByUppercase(inputPassword) {
-  var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var noOfUpperCase = [];
+  let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let noOfUpperCase = [];
 
   inputPassword.split("").forEach((char) => {
     if (letters.includes(char)) noOfUpperCase.push(char);
@@ -76,8 +76,8 @@ function percentByUppercase(inputPassword) {
 }
 
 function percentByChar(inputPassword) {
-  var allChar = "`,.~{}()[]/+_=-!@#$%^&*|\\'\":?";
-  var noOfChar = [];
+  let allChar = "`,.~{}()[]/+_=-!@#$%^&*|\\'\":?";
+  let noOfChar = [];
 
   inputPassword.split("").forEach((char) => {
     if (allChar.includes(char)) noOfChar.push(char);
@@ -91,8 +91,8 @@ function percentByChar(inputPassword) {
 }
 
 function percentByNum(inputPassword) {
-  var allChar = "1234567890";
-  var noOfChar = [];
+  let allChar = "1234567890";
+  let noOfChar = [];
 
   inputPassword.split("").forEach((char) => {
     if (allChar.includes(char)) noOfChar.push(char);
@@ -107,16 +107,16 @@ function percentByNum(inputPassword) {
 
 const generatePasswordBtn = document.querySelector("#gerar-senha");
 generatePasswordBtn.addEventListener("click", (event) => {
-  var upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  var lowerCaseLetters = upperCaseLetters.toLowerCase();
-  var numbers = "1234567890";
-  var chars = "`,.~{}()[]/+_=-!@#$%^&*|\\'\":?";
-  var passwordLength = 16;
+  let upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  let lowerCaseLetters = upperCaseLetters.toLowerCase();
+  let numbers = "1234567890";
+  let chars = "`,.~{}()[]/+_=-!@#$%^&*|\\'\":?";
+  let passwordLength = 16;
 
-  var newPassword = [];
+  let newPassword = [];
 
   for (let i = 0; i < 3; i++) {
-    var letterPosition = Math.floor(Math.random() * upperCaseLetters.length);
+    let letterPosition = Math.floor(Math.random() * upperCaseLetters.length);
 
     if (
       newPassword[newPassword.length - 1] != upperCaseLetters[letterPosition] &&
@@ -127,7 +127,7 @@ generatePasswordBtn.addEventListener("click", (event) => {
   }
 
   for (let i = 0; i < 13; i++) {
-    var letterPosition = Math.floor(Math.random() * lowerCaseLetters.length);
+    let letterPosition = Math.floor(Math.random() * lowerCaseLetters.length);
 
     if (
       newPassword[newPassword.length - 1].toLowerCase() !=
@@ -140,7 +140,7 @@ generatePasswordBtn.addEventListener("click", (event) => {
   }
 
   for (let i = 0; i < 2; i++) {
-    var letterPosition = Math.floor(Math.random() * numbers.length);
+    let letterPosition = Math.floor(Math.random() * numbers.length);
 
     if (
       newPassword[newPassword.length - 1] != numbers[letterPosition] &&
@@ -157,7 +157,7 @@ generatePasswordBtn.addEventListener("click", (event) => {
     } else --i;
   }
 
-  var letterPosition = Math.floor(Math.random() * chars.length);
+  let letterPosition = Math.floor(Math.random() * chars.length);
   newPassword.push(chars[letterPosition]);
 
   inputPasswordField.value = newPassword.join("");
@@ -165,8 +165,8 @@ generatePasswordBtn.addEventListener("click", (event) => {
 });
 
 function charRepitition(percent, inputPassword) {
-  var allChar = inputPassword.split("");
-  var reps = [];
+  let allChar = inputPassword.split("");
+  let reps = [];
 
   for (
     let currentPosition = 0;
@@ -174,7 +174,7 @@ function charRepitition(percent, inputPassword) {
     currentPosition++
   ) {
     for (let inc = 1; inc <= 2; inc++) {
-      var nextPosition = currentPosition + inc;
+      let nextPosition = currentPosition + inc;
       if (
         allChar[currentPosition] == allChar[nextPosition] ||
         allChar[nextPosition] == parseInt(allChar[currentPosition]) + 1
