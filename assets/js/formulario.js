@@ -40,6 +40,6 @@ function apenasLetras(event) {
     let limpo = event.value
       .replace(/[^\w\s-zÀ-ÖØ-öø-ÿ]/gi, "")
       .replace(/[0-9]/g, "");
-    event.value = limpo.replace("-", "").replace("_", "");
+    event.value = limpo.replace(/_/g, "").replace("-", "");
   }
 }

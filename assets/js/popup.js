@@ -1,4 +1,4 @@
-let janelaPopUp = new Object();
+let janelaPopUp = {};
 let colors = "primary:#121331,secondary:#16c72e";
 let src,
   delay = "";

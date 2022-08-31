@@ -33,7 +33,7 @@ switch (true) {
 function validar_cpf(cpf) {
   let Soma = 0;
   let Resto;
-  cpf = String(cpf).replace(".", "").replace("-", "").replace(".", "");
+  cpf = String(cpf).replaceAll(".", "").replace(/-/g, "");
   if (
     cpf == "00000000000" ||
     cpf == "11111111111" ||
@@ -48,7 +48,7 @@ function validar_cpf(cpf) {
   )
     return 1;
 
-  for (i = 1; i <= 9; i++)
+  for (let i = 1; i <= 9; i++)
     Soma = Soma + parseInt(cpf.substring(i - 1, i)) * (11 - i);
   Resto = (Soma * 10) % 11;
 
@@ -56,7 +56,7 @@ function validar_cpf(cpf) {
   if (Resto != parseInt(cpf.substring(9, 10))) return 1;
 
   Soma = 0;
-  for (i = 1; i <= 10; i++)
+  for (let i = 1; i <= 10; i++)
     Soma = Soma + parseInt(cpf.substring(i - 1, i)) * (12 - i);
   Resto = (Soma * 10) % 11;
 
@@ -113,11 +113,11 @@ function validar() {
     nome.classList.add("vermei");
   } else if (vazio(mes.value)) {
     alertaDeErro(mes, "Selecione o mês!");
-    dispararEvento(mes, "change", "condicaoSelect");
+    dispararEvento(mes, "change", "condicaoVazio");
     mes.classList.add("vermei");
   } else if (vazio(ano.value)) {
     alertaDeErro(ano, "Selecione o ano!");
-    dispararEvento(ano, "change", "condicaoSelect");
+    dispararEvento(ano, "change", "condicaoVazio");
     ano.classList.add("vermei");
   } else if (cvv.value.length < 3) {
     alertaDeErro(cvv, "Preencha o CVV do cartão!");

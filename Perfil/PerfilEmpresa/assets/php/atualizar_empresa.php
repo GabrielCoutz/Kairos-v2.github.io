@@ -33,7 +33,7 @@ if(isset($_COOKIE['endereco'])){ // alteração do endereco da empresa
     $result=$exec->get_result();
     verificarOperacao($result, $local);
 
-    setcookie('endereco', '', time() - 3600, '/', NULL, NULL, true, true);
+    setcookie('endereco', '', time() - 3600, '/', NULL, true, true);
 }
 
 if(isset($_COOKIE['empresa'])) { // alteração de dados empresa
@@ -89,7 +89,7 @@ if(isset($_COOKIE['empresa'])) { // alteração de dados empresa
         verificarOperacao($result, $local);
     }
     
-    setcookie('empresa', '', time() - 3600, '/', NULL, NULL, true, true);
+    setcookie('empresa', '', time() - 3600, '/', NULL, true, true);
     header('Location:'.$local.'?'.hash("sha512", 'sucesso=true'));
     exit;
 }

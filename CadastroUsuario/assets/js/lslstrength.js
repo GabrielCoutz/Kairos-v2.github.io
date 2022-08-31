@@ -26,8 +26,7 @@ function detPasswordStrength(password) {
     bar.style.border = "#DEBB00";
     bar.classList.add("senha-mediana");
   } else if (pwdPercent >= 50) {
-    bar.style.background = "#DEBB00";
-    bar.style.border = "#DEBB00";
+    bar.style.background, (bar.style.border = "#DEBB00");
     bar.classList.add("senha-mediana");
   } else {
     bar.style.background = "#A32323";
@@ -116,7 +115,7 @@ generatePasswordBtn.addEventListener("click", (event) => {
 
   var newPassword = [];
 
-  for (var i = 0; i < 3; i++) {
+  for (let i = 0; i < 3; i++) {
     var letterPosition = Math.floor(Math.random() * upperCaseLetters.length);
 
     if (
@@ -127,7 +126,7 @@ generatePasswordBtn.addEventListener("click", (event) => {
     } else --i;
   }
 
-  for (var i = 0; i < 13; i++) {
+  for (let i = 0; i < 13; i++) {
     var letterPosition = Math.floor(Math.random() * lowerCaseLetters.length);
 
     if (
@@ -140,7 +139,7 @@ generatePasswordBtn.addEventListener("click", (event) => {
     } else --i;
   }
 
-  for (var i = 0; i < 2; i++) {
+  for (let i = 0; i < 2; i++) {
     var letterPosition = Math.floor(Math.random() * numbers.length);
 
     if (
@@ -170,11 +169,11 @@ function charRepitition(percent, inputPassword) {
   var reps = [];
 
   for (
-    var currentPosition = 0;
+    let currentPosition = 0;
     currentPosition < allChar.length;
     currentPosition++
   ) {
-    for (var inc = 1; inc <= 2; inc++) {
+    for (let inc = 1; inc <= 2; inc++) {
       var nextPosition = currentPosition + inc;
       if (
         allChar[currentPosition] == allChar[nextPosition] ||

@@ -1,30 +1,28 @@
-if (document.location.href.includes("index")) {
-  // ativação de links da navegação por srcoll
-
-  function onScroll(event) {
-    let sections = document.querySelectorAll(".page-scroll");
-    let scrollPos =
-      window.pageYOffset ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop;
-    for (let i = 0; i < sections.length; i++) {
-      let currLink = sections[i];
-      let val = currLink.getAttribute("href");
-      let refElement = document.querySelector(val);
-      let scrollTopMinus = scrollPos + 73;
-      if (
-        refElement.offsetTop <= scrollTopMinus &&
-        refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
-      ) {
-        document.querySelector(".page-scroll").classList.remove("active");
-        currLink.classList.add("active");
-      } else {
-        currLink.classList.remove("active");
-      }
+function onScroll(event) {
+  let sections = document.querySelectorAll(".page-scroll");
+  let scrollPos =
+    window.pageYOffset ||
+    document.documentElement.scrollTop ||
+    document.body.scrollTop;
+  for (let i = 0; i < sections.length; i++) {
+    let currLink = sections[i];
+    let val = currLink.getAttribute("href");
+    let refElement = document.querySelector(val);
+    let scrollTopMinus = scrollPos + 73;
+    if (
+      refElement.offsetTop <= scrollTopMinus &&
+      refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
+    ) {
+      document.querySelector(".page-scroll").classList.remove("active");
+      currLink.classList.add("active");
+    } else {
+      currLink.classList.remove("active");
     }
   }
+}
 
-  // fixa a navegação
+if (document.location.href.includes("index")) {
+  // ativação de links da navegação por srcoll
   window.document.addEventListener("scroll", onScroll);
 
   window.onscroll = function () {

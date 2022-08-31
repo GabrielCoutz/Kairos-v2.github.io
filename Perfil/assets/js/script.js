@@ -230,12 +230,12 @@ function salvar() {
 
   limpar_inputs();
 
-  for (numeroDeletar of document.getElementsByClassName("deletar")) {
+  for (let numeroDeletar of document.getElementsByClassName("deletar")) {
     Cookies.set("deletar" + index, numeroDeletar.innerText);
     index++;
   }
 
-  for (numeroAdicionar of document.getElementsByClassName("adicionar")) {
+  for (let numeroAdicionar of document.getElementsByClassName("adicionar")) {
     Cookies.set("adicionar" + index, numeroAdicionar.value);
     index++;
   }

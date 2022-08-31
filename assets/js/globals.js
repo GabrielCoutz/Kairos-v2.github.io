@@ -114,7 +114,7 @@ function apenasLetras(event) {
     let limpo = event.value
       .replace(/[^\w\s-zÀ-ÖØ-öø-ÿ]/gi, "")
       .replace(/[0-9]/g, "");
-    event.value = limpo.replace("-", "").replace("_", "");
+    event.value = limpo.replace(/_/g, "").replace(".", "");
   }
 }
 
@@ -123,7 +123,7 @@ function lerCEP(cep) {
     $.ajax({
       url:
         "https://viacep.com.br/ws/" +
-        cep.value.replace(/-/, "").replace(".", "") +
+        cep.value.replace(/-/g, "").replace(".", "") +
         "/json/",
       dataType: "json",
       success: function (resposta) {
@@ -213,7 +213,7 @@ function validarCNPJ(valor) {
   digitos = valor.substring(tamanho);
   soma = 0;
   pos = tamanho - 7;
-  for (i = tamanho; i >= 1; i--) {
+  for (let i = tamanho; i >= 1; i--) {
     soma += numeros.charAt(tamanho - i) * pos--;
     if (pos < 2) pos = 9;
   }
@@ -224,7 +224,7 @@ function validarCNPJ(valor) {
   numeros = valor.substring(0, tamanho);
   soma = 0;
   pos = tamanho - 7;
-  for (i = tamanho; i >= 1; i--) {
+  for (let i = tamanho; i >= 1; i--) {
     soma += numeros.charAt(tamanho - i) * pos--;
     if (pos < 2) pos = 9;
   }
@@ -286,11 +286,6 @@ function dispararEvento(elemento, evento, stringCondicao) {
     case "condicaoNum":
       var condicao = function () {
         return num.value.length != 19;
-      };
-      break;
-    case "condicaoSelect":
-      var condicao = function () {
-        return vazio(elemento.value);
       };
       break;
     case "condicaoCvv":
