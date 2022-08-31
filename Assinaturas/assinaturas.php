@@ -27,7 +27,11 @@
 
         $email=$_SESSION['email'];
 
-        $plano=mysqli_query($conec, "SELECT assinatura FROM cartao WHERE email_usuario = '$email'")->fetch_assoc()['assinatura'];
+        $query="SELECT assinatura FROM cartao WHERE email_usuario=?";
+        $exec=$conec->prepare($query);
+        $exec->bind_param("s", $email);
+        $exec->execute();
+        $plano=$exec->get_result()->fetch_assoc()['assinatura'];
   ?>
 </head>
 

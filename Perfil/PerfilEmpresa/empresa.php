@@ -23,7 +23,12 @@
 
         $email=$_SESSION['email'];
 
-        $select_empresa=mysqli_query($conec, "SELECT * FROM empresa WHERE email_usuario = '$email'")->fetch_assoc();
+        $query="SELECT * FROM empresa WHERE email_usuario=?";
+        $exec=$conec->prepare($query);
+        $exec->bind_param("s", $email);
+        $exec->execute();
+        $select_empresa=$exec->get_result()->fetch_assoc();
+
         switch (true) {
             case !isset($_SESSION['email_padrao']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'erro=true')):
                 header("Refresh:0; url=empresa".'?'.hash("sha512", 'erro=true'));
@@ -42,7 +47,11 @@
         $cnpj = substr($select_empresa['cnpj'], 0, 5).'*.***/***'.substr($select_empresa['cnpj'], 14, 17);
         $_SESSION['cnpj_padrao'] = $select_empresa['cnpj'];
 
-        $select_empresa_endereco = mysqli_query($conec, "SELECT * FROM endereco_empresa WHERE cnpj_empresa  =  '".$select_empresa['cnpj']."'")->fetch_assoc();
+        $query="SELECT * FROM endereco_empresa WHERE cnpj_empresa=?";
+        $exec=$conec->prepare($query);
+        $exec->bind_param("s", $select_empresa["cnpj"]);
+        $exec->execute();
+        $select_empresa_endereco=$exec->get_result()->fetch_assoc();
     ?>
 </head>
 

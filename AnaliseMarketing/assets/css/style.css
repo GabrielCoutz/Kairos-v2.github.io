@@ -12,6 +12,10 @@
   height: auto;
 }
 
+.bloco-metodologia.none {
+  opacity: 0;
+}
+
 .SWOT,
 .compostoMK {
   background: white;

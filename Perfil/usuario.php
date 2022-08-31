@@ -27,10 +27,20 @@
           $email=$_SESSION['email'];
         }
 
-        $select=mysqli_query($conec, "SELECT * FROM usuario WHERE email = '$email'")->fetch_assoc();
+        $query="SELECT * FROM usuario WHERE email=?";
+        $exec=$conec->prepare($query);
+        $exec->bind_param("s", $email);
+        $exec->execute();
+        $select=$exec->get_result()->fetch_assoc();
 
-        if (empty(mysqli_query($conec, "SELECT * FROM analise_swot WHERE email_usuario = '$email'")->fetch_assoc()) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'analise=false')) && !$_COOKIE[hash("sha512", 'analise=false')] && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'erro=true'))){
-            setcookie(hash("sha512", 'analise=false'), 1);
+        $query="SELECT id FROM analise_swot WHERE email_usuario=?";
+        $exec=$conec->prepare($query);
+        $exec->bind_param("s", $email);
+        $exec->execute();
+        $select_swot=$exec->get_result()->fetch_assoc()["id"];
+
+        if (empty($select_swot) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'analise=false')) && !$_COOKIE[hash("sha512", 'analise=false')] && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'erro=true'))){
+            setcookie(hash("sha512", 'analise=false'), 1, httponly:true);
             header("Refresh:0; url=usuario".'?'.hash("sha512", 'analise=false'));
             exit;
         }
@@ -42,17 +52,25 @@
         $_SESSION['email_padrao']=$email;
         $_SESSION['nome_padrao']=$select['nome'];
 
-        $select_telefone=mysqli_query($conec, "SELECT tel FROM telefone WHERE email_usuario = '$email'");
+        $query="SELECT tel FROM telefone WHERE email_usuario=?";
+        $exec=$conec->prepare($query);
+        $exec->bind_param("s", $email);
+        $exec->execute();
+        $select_telefone=$exec->get_result();
 
-        if($select_telefone->fetch_assoc()['tel']){
+        if($select_telefone->fetch_assoc()["tel"]){
             foreach ($select_telefone as $key => $value) {
-                $telefone.="<a class='desativado numeros'>".$value['tel']."</a>";
+                $telefone.="<a class='desativado numeros'>".$value["tel"]."</a>";
             }
         } else {
             $telefone = "<a class='desativado'>Não Cadastrado</a>";
         }
 
-        $select_endereco=mysqli_query($conec, "SELECT * FROM endereco WHERE email_usuario = '$email'")->fetch_assoc();
+        $query="SELECT * FROM endereco WHERE email_usuario=?";
+        $exec=$conec->prepare($query);
+        $exec->bind_param("s", $email);
+        $exec->execute();
+        $select_endereco=$exec->get_result()->fetch_assoc();
   ?>
 </head>
 

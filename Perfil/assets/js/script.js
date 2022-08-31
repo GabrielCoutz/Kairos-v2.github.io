@@ -172,7 +172,7 @@ function cancelar() {
     senhabtn.classList.toggle("none");
     cancelarbtn.disabled = true;
     salvarbtn.disabled = true;
-    // apagarCookie("senha");
+    apagarCookie("senha");
     document.getElementById("add_tel").disabled = false;
     document.getElementById("del_tel").disabled = false;
     return;

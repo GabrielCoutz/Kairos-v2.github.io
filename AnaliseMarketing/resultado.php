@@ -20,8 +20,18 @@
         require('../assets/php/globals.php');
 
         $email=$_SESSION['email'];
-        $select_swot=mysqli_query($conec, "SELECT * FROM analise_swot WHERE email_usuario = '$email'")->fetch_assoc();
-        $select_4ps=mysqli_query($conec, "SELECT * FROM analise_4ps WHERE email_usuario = '$email'")->fetch_assoc();
+
+        $query="SELECT * FROM analise_swot WHERE email_usuario=?";
+        $exec=$conec->prepare($query);
+        $exec->bind_param("s", $email);
+        $exec->execute();
+        $select_swot=$exec->get_result()->fetch_assoc();
+
+        $query="SELECT * FROM analise_4ps WHERE email_usuario=?";
+        $exec=$conec->prepare($query);
+        $exec->bind_param("s", $email);
+        $exec->execute();
+        $select_4ps=$exec->get_result()->fetch_assoc();
 
         switch (true) {
             case !isset($_SESSION['email']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'erro=true')):
@@ -92,7 +102,7 @@
             <a href="../index" class="btn secundario">Sair</a>
         </header>
         <div class="perfil">
-            <div class="bloco-metodologia">
+            <div class="bloco-metodologia none">
                 <div class="SWOT">
                     <div class="swot-caixa">
                         <h1 class="titulo-metodo">Forças</h1>
@@ -148,7 +158,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="bloco-metodologia">
+            <div class="bloco-metodologia none">
                 <div class="compostoMK">
                     <div class="composto-caixa">
                         <h1 class="titulo-metodo">Produto</h1>

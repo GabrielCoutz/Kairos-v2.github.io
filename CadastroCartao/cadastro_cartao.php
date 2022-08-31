@@ -25,7 +25,14 @@
     if(isset($_GET['alterar-plano'])){ // alteração de plano contratado
       $email = $_SESSION['email'];
       $plano = $_GET['plano'];
-      $result_alterar=mysqli_query($conec, "UPDATE cartao SET assinatura='$plano' WHERE email_usuario='$email'") or die(mysqli_error($conec)."alteração_plano");
+
+      $query="UPDATE cartao SET assinatura=? WHERE email_usuario=?";
+      $exec=$conec->prepare($query);
+      $exec->bind_param("ss", $plano, $email);
+      $exec->execute();
+      $result=$exec->get_result();
+
+      verificarOperacao($result, "../Perfil/usuario");
       header('Location: ../Perfil/usuario?'.hash("sha512", 'sucesso=true'));
       exit;
     }

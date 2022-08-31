@@ -1,13 +1,9 @@
-var conteudoSwot;
+var conteudo;
 var conteudoComposto;
 
 $(".swot-caixa > span").innerText !== undefined
-  ? (conteudoSwot = false)
-  : (conteudoSwot = true);
-
-$(".composto-caixa > span").innerText !== undefined
-  ? (conteudoComposto = false)
-  : (conteudoComposto = true);
+  ? (conteudo = false)
+  : (conteudo = true);
 
 switch (true) {
   case verificarURL(cripto("erro=true")):
@@ -49,14 +45,16 @@ switch (true) {
     break;
 }
 
-if (conteudoSwot) {
+if (conteudo) {
   document.querySelectorAll(".swot-caixa > span").forEach((item) => {
     item.innerHTML = item.innerText.replace(/,/g, "<br>");
-  });
-}
 
-if (conteudoComposto) {
-  document.querySelectorAll(".composto-caixa > span").forEach((item) => {
-    item.innerHTML = item.innerText.replace(/,/g, "<br>");
+    document.querySelectorAll(".composto-caixa > span").forEach((item) => {
+      item.innerHTML = item.innerText.replace(/,/g, "<br>");
+    });
+
+    document.querySelectorAll(".bloco-metodologia").forEach((item) => {
+      item.classList.remove("none");
+    });
   });
 }
