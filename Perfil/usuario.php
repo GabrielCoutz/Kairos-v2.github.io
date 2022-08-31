@@ -40,7 +40,7 @@
         $select_swot=$exec->get_result()->fetch_assoc()["id"];
 
         if (empty($select_swot) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'analise=false')) && !$_COOKIE[hash("sha512", 'analise=false')] && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'erro=true'))){
-            setcookie(hash("sha512", 'analise=false'), 1, NULL, NULL, true, true);
+            setcookie(hash("sha512", 'analise=false'), 1, NULL, NULL, NULL, true, true);
             header("Refresh:0; url=usuario".'?'.hash("sha512", 'analise=false'));
             exit;
         }
