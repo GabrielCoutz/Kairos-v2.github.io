@@ -36,7 +36,7 @@ if(isset($_COOKIE['endereco'])){ // alteração do endereco
         verificarOperacao($result, $local);
     }
     
-    setcookie('endereco', '', time() - 3600, '/', httponly:true);
+    setcookie('endereco', '', time() - 3600, '/', NULL, NULL, true, true);
     verificarOperacao($result_endereco, $local);
 }
 
@@ -51,7 +51,7 @@ if(isset($_COOKIE['senha'])){ // alterar senha
     $result=$exec->get_result()->fetch_assoc()['senha'];
     
     if($result != $senha_antiga){
-        setcookie('senha', '', time() - 3600, '/', httponly:true);
+        setcookie('senha', '', time() - 3600, '/', NULL, NULL, true, true);
         header('Location:'.$local.'?'.hash("sha512", 'senha=false'));
         exit;
     }
@@ -62,7 +62,7 @@ if(isset($_COOKIE['senha'])){ // alterar senha
     $exec->execute();
     $result=$exec->get_result();
     
-    setcookie('senha', '', time() - 3600, '/', httponly:true);
+    setcookie('senha', '', time() - 3600, '/', NULL, NULL, true, true);
     verificarOperacao($result_senha, $local);
 
     header('Location:'.$local.'?'.hash("sha512", 'sucesso=true'));
@@ -93,7 +93,7 @@ if(isset($_COOKIE['usuario'])){ // alteração de dados usuário
         $result=$exec->get_result();
         verificarOperacao($result, $local);
 
-        setcookie('adicionar'.$i, '', time() - 3600, '/', httponly:true);
+        setcookie('adicionar'.$i, '', time() - 3600, '/', NULL, NULL, true, true);
         $i++;
     }
     
@@ -108,11 +108,11 @@ if(isset($_COOKIE['usuario'])){ // alteração de dados usuário
         $result=$exec->get_result();
         verificarOperacao($result, $local);
 
-        setcookie('deletar'.$i, '', time() - 3600, '/', httponly:true);
+        setcookie('deletar'.$i, '', time() - 3600, '/', NULL, NULL, true, true);
         $i++;
     }
 
-    setcookie('usuario', '', time() - 3600, '/', httponly:true);
+    setcookie('usuario', '', time() - 3600, '/', NULL, NULL, true, true);
     header('Location:'.$local.'?'.hash("sha512", 'sucesso=true'));
     exit;
 }
