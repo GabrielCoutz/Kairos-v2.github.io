@@ -17,7 +17,7 @@
   --centralizar-padding: calc((100% - var(--largura-max)) / 2);
   --fonte-display: "Poppins", sans-serif;
   --fonte-texto: "Nunito", sans-serif;
-  --cor-primaria: #4e6ef1;
+  --cor-primaria: #4466ff;
   --cor-fundo: #accffe;
   --borda-redonda: 12px;
   --sombra-input: 0px 10px 20px -10px rgb(32 56 117 / 40%);
@@ -230,7 +230,7 @@ div[id$="Alert"] {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #4e6ef1;
+  background: var(--cor-primaria);
   border-radius: 50px;
 }
 
