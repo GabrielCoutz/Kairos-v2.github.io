@@ -18,7 +18,7 @@
     <?php
         session_start();
         error_reporting(E_ERROR | E_PARSE);
-        require('../../assets/php/globals.php');
+        require_once('../../assets/php/globals.php');
 
 
         $email=$_SESSION['email'];

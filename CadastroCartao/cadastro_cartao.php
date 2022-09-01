@@ -20,7 +20,7 @@
     error_reporting(E_ERROR | E_PARSE);
     session_start();
     $_SESSION['plano']=$_GET['plano'];
-    require('../assets/php/globals.php');
+    require_once('../assets/php/globals.php');
 
     if(isset($_GET['alterar-plano'])){ // alteração de plano contratado
       $email = $_SESSION['email'];

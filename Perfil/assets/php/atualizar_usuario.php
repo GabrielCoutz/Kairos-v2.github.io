@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 <?php
 session_start();
-require('../../../assets/php/globals.php');
+require_once('../../../assets/php/globals.php');
 
 $local='../../usuario';
 $email_padrao=$_SESSION['email_padrao'];

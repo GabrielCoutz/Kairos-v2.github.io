@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 <?php
 session_start();
-require('../../../assets/php/globals.php');
+require_once('../../../assets/php/globals.php');
 
 $plano = $_SESSION['plano'];
 $email = $_SESSION['email'];

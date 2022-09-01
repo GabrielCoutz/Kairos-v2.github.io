@@ -18,7 +18,7 @@
         session_start();
         error_reporting(E_ERROR | E_PARSE);
 
-        require('../assets/php/globals.php');
+        require_once('../assets/php/globals.php');
 
         if(!isset($_SESSION['email']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],hash("sha512", 'erro=true'))){
           header("Refresh:0; url=usuario".'?'.hash("sha512", 'erro=true'));

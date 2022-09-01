@@ -1,7 +1,7 @@
 <meta charset="UTF-8">
 <?php
 session_start();
-require('../../../assets/php/globals.php');
+require_once('../../../assets/php/globals.php');
 
 if(isset($_POST['g-recaptcha-response']) && $_POST['g-recaptcha-response'] != ""){
     $url='https://www.google.com/recaptcha/api/siteverify';
