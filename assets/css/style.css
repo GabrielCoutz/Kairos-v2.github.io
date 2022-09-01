@@ -178,14 +178,8 @@
   .principal {
     grid-column: 1;
   }
-  .nav-lateral,
-  .principal > header,
-  li.nav-lateral-ativo::before {
-    display: none;
-  }
   .header-nav > li > a.active::before,
   .header-nav > li > a:hover::before {
-    display: none;
     opacity: 0;
     width: 0%;
   }
@@ -197,6 +191,14 @@
   }
   .nav-lateral-ativo {
     border-radius: var(--borda-redonda);
+  }
+  .nav-lateral,
+  .principal > header,
+  li.nav-lateral-ativo::before,
+  .header-nav > li > a.active::before,
+  .header-nav > li > a:hover::before,
+  .body-form > header {
+    display: none;
   }
   .body-perfil .hamburguer > .bar {
     background-color: var(--branco-puro);
@@ -248,9 +250,6 @@
   }
   .cadastro .form-caixa {
     gap: 0px 15px;
-  }
-  .body-form > header {
-    display: none;
   }
 }
 

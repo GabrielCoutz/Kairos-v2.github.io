@@ -172,10 +172,13 @@ select,
 img {
   max-width: 100%;
 }
+
 .none,
 .caixa-senhas,
 #alterarsenha.none,
-#link-home {
+#link-home,
+li.nav-lateral-ativo ~ .menu-btn,
+#del_tel.none {
   display: none;
 }
 
@@ -249,10 +252,6 @@ div[id$="Alert"] {
   background-color: rgb(0 76 223 / 83%);
   height: 100%;
   grid-column: 1;
-}
-li.nav-lateral-ativo ~ .menu-btn,
-#del_tel.none {
-  display: none;
 }
 
 .nav-lateral {
