@@ -15,7 +15,7 @@
 :root {
   --largura-max: 1400px;
   --centralizar-padding: calc((100% - var(--largura-max)) / 2);
-  --fonte-display: "Poppins", sans-serif;
+  --fonte-display: "Rubik", sans-serif;
   --fonte-texto: "Nunito", sans-serif;
   --cor-primaria: #4466ff;
   --cor-fundo: #accffe;
@@ -29,6 +29,7 @@
   --p2: #6b6f92;
   --p3: #464969;
   --p4: #747697;
+  --p5: #a9aabd;
 
   --c1: #838383;
   --c2: #353535;
@@ -199,6 +200,7 @@ li.nav-lateral-ativo ~ .menu-btn,
   padding: 8px 16px;
   transition: all 0.3s;
   outline: none;
+  color: var(--c3);
 }
 
 .perfil input:hover,

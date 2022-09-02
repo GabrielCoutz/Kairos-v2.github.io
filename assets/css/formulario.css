@@ -59,11 +59,12 @@
   height: 38px;
   border-bottom: 1px solid #e6e6e6;
   outline: none;
-  font: normal 0.9rem/1 var(--fonte-display);
+  color: var(--c3);
+  font: 400 1.1rem/1 var(--fonte-display);
 }
 
 input::placeholder {
-  font: 300 1rem/1 var(--fonte-display);
+  font: 400 1rem/1 var(--fonte-display);
   color: var(--p2);
 }
 
@@ -121,7 +122,7 @@ input.erro ~ .underline {
   opacity: 0;
   top: -10px;
   left: 31px;
-  color: var(--p1);
+  color: var(--p5);
   font: 500 0.7rem/1 var(--fonte-display);
 }
 

@@ -39,20 +39,19 @@ janelaPopUp.abre = function (param) {
   janela2.setAttribute("aria-labelledby", "popUp-titulo");
   janela2.setAttribute("tabindex", "0");
 
-  let h1 = document.createElement("h1");
-  h1.setAttribute("id", "popUp-titulo");
-  h1.append(param.titulo);
-  janela2.append(h1);
-  popFundo2.appendChild(janela2);
-
   let lord_icon = document.createElement("lord-icon");
   lord_icon.setAttribute("src", src);
   lord_icon.setAttribute("trigger", "loop");
   lord_icon.setAttribute("delay", delay);
   lord_icon.setAttribute("colors", colors);
-  lord_icon.setAttribute("style", "width:46px;height:46px");
+  lord_icon.setAttribute("style", "width:82px;height:82px");
 
   janela2.appendChild(lord_icon);
+
+  let h1 = document.createElement("h1");
+  h1.append(param.titulo);
+  janela2.append(h1);
+  popFundo2.appendChild(janela2);
 
   let span = document.createElement("span");
 

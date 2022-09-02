@@ -10,10 +10,8 @@
     <link rel="stylesheet" href="../assets/css/style.min.css">
     <title>Login</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
-        rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <?php
         error_reporting(E_ERROR | E_PARSE);

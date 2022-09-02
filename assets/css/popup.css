@@ -75,15 +75,17 @@
 }
 
 #popUp > h1 {
-  font: 600 1.4rem/1.3rem var(--fonte-display);
+  font: 600 1.3rem/1.5rem var(--fonte-display);
   text-align: center;
+  margin-top: -40px;
 }
 
 #popUp > span {
   color: var(--c4);
   font: 500 1rem/1.5 var(--fonte-texto);
   padding-bottom: 10px;
-  /* align-self: center; */
+  align-self: center;
+  text-align: center;
 }
 
 .p {

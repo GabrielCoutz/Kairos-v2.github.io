@@ -155,7 +155,7 @@
   gap: 18px;
 }
 
-.form-caixa > label {
+.form-caixa > label, .telefone > label {
   font: 500 1.1rem/1 var(--fonte-display);
   color: var(--c2);
 }
