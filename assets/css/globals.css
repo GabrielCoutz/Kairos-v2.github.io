@@ -1,16 +1,39 @@
-@import url("https://css.gg/user.css");
-@import url("https://css.gg/smartphone.css");
-@import url("https://css.gg/mail.css");
-@import url("https://css.gg/lock.css");
-@import url("https://css.gg/eye-alt.css");
-@import url("https://css.gg/eye.css");
-@import url("https://css.gg/credit-card.css");
-@import url("https://css.gg/organisation.css");
-@import url("https://css.gg/feed.css");
-@import url("https://css.gg/pin.css");
-@import url("https://css.gg/remove.css");
-@import url("https://css.gg/home.css");
-@import url("https://css.gg/danger.css");
+@font-face {
+  font-family: "Rubik";
+  font-weight: 300;
+  src: url("../fonts/Rubik-VariableFont_wght.ttf") format("woff2-variations");
+}
+@font-face {
+  font-family: "Rubik";
+  font-weight: 400;
+  src: url("../fonts/Rubik-VariableFont_wght.ttf") format("woff2-variations");
+}
+@font-face {
+  font-family: "Rubik";
+  font-weight: 500;
+  src: url("../fonts/Rubik-VariableFont_wght.ttf") format("woff2-variations");
+}
+@font-face {
+  font-family: "Rubik";
+  font-weight: 600;
+  src: url("../fonts/Rubik-VariableFont_wght.ttf") format("woff2-variations");
+}
+@font-face {
+  font-family: "Rubik";
+  font-weight: 700;
+  src: url("../fonts/Rubik-VariableFont_wght.ttf") format("woff2-variations");
+}
+
+@font-face {
+  font-family: "Nunito";
+  src: url("../fonts/Nunito-VariableFont_wght.ttf") format("woff2-variations");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("../fonts/Nunito-VariableFont_wght.ttf") format("woff2-variations");
+  font-weight: 400;
+}
 
 :root {
   --largura-max: 1400px;
@@ -35,6 +58,10 @@
   --c2: #353535;
   --c3: #1f1f1f;
   --c4: #0c0c0c;
+}
+
+iframe {
+  grid-column: 1/-1;
 }
 
 .desativado,
