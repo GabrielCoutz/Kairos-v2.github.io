@@ -15,7 +15,6 @@
         error_reporting(E_ERROR | E_PARSE);
         require_once('../../assets/php/globals.php');
 
-
         $email=$_SESSION['email'];
 
         $query="SELECT * FROM empresa WHERE email_usuario=?";
@@ -131,7 +130,8 @@
                     <div class="dados-coluna">
                         <div class="form-caixa">
                             <label aria-hidden="true" for="cep_empresa">CEP</label>
-                            <input type="tel" name="cep_empresa" id="cep_empresa" value='<?= $select_empresa_endereco['cep'] ?>'
+                            <input type="tel" name="cep_empresa" id="cep_empresa" value='<?= $select_empresa_endereco['
+                                cep'] ?>'
                             aria-controls="cep_empresaAlert" onkeypress="$(this).mask('00.000-000')"
                             onkeyup="lerCEP(this)">
                             <div id="cep_empresaAlert" role="alert"></div>

@@ -25,7 +25,7 @@
     <header class="fundo-header">
         <div class="header container">
             <div class="header-logo">
-                <a href="index"><img src="assets/img/logo/airos.png" alt="Kairos Logo" width="740" height="210"></a>
+                <a href="index"><img src="assets/img/logo/Logo.svg" alt="Kairos Logo" width="740" height="210"></a>
             </div>
             <nav aria-label="Navegação Primária" class="navbar">
                 <ul class="header-nav">
@@ -42,6 +42,7 @@
         </div>
 
     </header>
+    
     <main class="intro container">
         <div class="intro-info">
             <span>Bem vindo ao Kairos</span>
@@ -50,42 +51,9 @@
             <a href="CadastroUsuario/cadastro_usuario" class="btn primario btn-hover">Começar Agora</a>
         </div>
         <div class="intro-img">
-            <img src="assets/img/hero/equipe.png" alt="" aria-hidden="true">
+            <img src="assets/img/intro/equipe.svg" width="943" height="602" alt="" aria-hidden="true">
         </div>
     </main>
-
-    <section class="sobre container" id="sobre" aria-labelledby="sobre-titulo">
-        <div class="sobre-img">
-            <img src="assets/img/about/sobre.png" alt="" aria-hidden="true">
-        </div>
-        <div class="sobre-info">
-            <h1 class="titulo" id="sobre-titulo">Conheça um pouco sobre nós</h1>
-            <p class="texto">Utilizamos táticas de marketing para auxiliar na criação e desenvolimento de negócios,
-                apoiando startups,
-                micro e pequenas empresas a entenderem seu público alvo e personas, bem como posicionar serviços e
-                produtos, que não só atendam mas superem as expectativas de seus clientes.</p>
-            <ul class="sobre-lista">
-                <li>
-                    <button aria-controls="pergunta1" aria-expanded="false">Quais serviços oferecemos?</button>
-                    <p id="pergunta1" class="texto">Ofertamos serviços análise de mercado e entendimento amplo sobre a
-                        àrea de atuação
-                        da empresa contratada, por meio de estratégias e conceitos do Marketing.</p>
-                </li>
-                <li>
-                    <button aria-controls="pergunta2" aria-expanded="false">Preciso de algo para iniciar um
-                        projeto?</button>
-                    <p id="pergunta2" class="texto">Apenas uma ideia ou noção de o que deseja, o resto pode deixar com a
-                        gente.</p>
-                </li>
-                <li>
-                    <button aria-controls="pergunta3" aria-expanded="false">Qual nossa política de trabalho?</button>
-                    <p id="pergunta3" class="texto">Com nossas análises de Marketing e tratamento de dados, nos
-                        certificamos que cada
-                        projeto seja único, pontual, consistente e principalmente, personalizado para cada cliente.</p>
-                </li>
-            </ul>
-        </div>
-    </section>
 
     <section class="metodos container" aria-labelledby="metodos-titulo">
         <h1 class="titulo" id="metodos-titulo">Nossos Métodos</h1>
@@ -119,6 +87,39 @@
             </div>
         </div>
         <a href="CadastroUsuario/cadastro_usuario" class="btn primario">Porque não começar hoje?</a>
+    </section>
+
+    <section class="sobre container" id="sobre" aria-labelledby="sobre-titulo">
+        <div class="sobre-img">
+            <img src="assets/img/sobre/sobre.svg" width="873" height="590" alt="" aria-hidden="true">
+        </div>
+        <div class="sobre-info">
+            <h1 class="titulo" id="sobre-titulo">Conheça um pouco sobre nós</h1>
+            <p class="texto">Utilizamos táticas de marketing para auxiliar na criação e desenvolimento de negócios,
+                apoiando startups,
+                micro e pequenas empresas a entenderem seu público alvo e personas, bem como posicionar serviços e
+                produtos, que não só atendam mas superem as expectativas de seus clientes.</p>
+            <ul class="sobre-lista">
+                <li>
+                    <button aria-controls="pergunta1" aria-expanded="false">Quais serviços oferecemos?</button>
+                    <p id="pergunta1" class="texto">Ofertamos serviços análise de mercado e entendimento amplo sobre a
+                        àrea de atuação
+                        da empresa contratada, por meio de estratégias e conceitos do Marketing.</p>
+                </li>
+                <li>
+                    <button aria-controls="pergunta2" aria-expanded="false">Preciso de algo para iniciar um
+                        projeto?</button>
+                    <p id="pergunta2" class="texto">Apenas uma ideia ou noção de o que deseja, o resto pode deixar com a
+                        gente.</p>
+                </li>
+                <li>
+                    <button aria-controls="pergunta3" aria-expanded="false">Qual nossa política de trabalho?</button>
+                    <p id="pergunta3" class="texto">Com nossas análises de Marketing e tratamento de dados, nos
+                        certificamos que cada
+                        projeto seja único, pontual, consistente e principalmente, personalizado para cada cliente.</p>
+                </li>
+            </ul>
+        </div>
     </section>
 
     <section class="planos container" id="planos" aria-labelledby="plano-sec-titulo">
@@ -165,8 +166,8 @@
         </div>
     </section>
 
-    <section class="captacao container" aria-hidden="true">
-        <h1 class="titulo">Já tem um projeto em mente?<br>Maravilha!<br>
+    <section class="captacao container" aria-labelledby="captacao-titulo">
+        <h1 class="titulo" id="captacao-titulo" >Já tem um projeto em mente?<br>Maravilha!<br>
             Vamos começar agora mesmo!</h1>
         <a href="CadastroUsuario/cadastro_usuario" class="btn primario">Por aqui</a>
     </section>

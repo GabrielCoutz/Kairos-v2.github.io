@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/style.min.css">
-    
 
     <title>Recuperação de conta</title>
 </head>
@@ -17,7 +16,7 @@
 
     <header class="header container">
         <div class="header-logo">
-            <a href="../index"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
+            <a href="../index"><img src="../assets/img/logo/Logo.svg" alt="Kairos Logo"></a>
         </div>
     </header>
 

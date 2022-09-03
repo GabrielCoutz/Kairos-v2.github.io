@@ -15,7 +15,7 @@
 
     <header class="header container" aria-label="Voltar para a página inicial">
         <div class="header-logo">
-            <a href="../index"><img src="../assets/img/logo/airos.png" alt="Kairos Logo"></a>
+            <a href="../index"><img src="../assets/img/logo/Logo.svg" alt="Kairos Logo"></a>
         </div>
     </header>
 

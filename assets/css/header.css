@@ -33,7 +33,7 @@
 }
 
 .fundo-header {
-  background: url("../img/hero/hero-bg.jpg");
+  background: url("../img/bg/hero-bg.jpg");
   transition: all 0.3s ease-out 0s;
   width: 100%;
   position: fixed;

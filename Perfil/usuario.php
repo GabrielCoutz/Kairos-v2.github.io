@@ -82,7 +82,8 @@
                                 d="M13 7H23V21H1V3H13V7ZM8 5H11V7H8V5ZM11 19V17H8V19H11ZM11 15V13H8V15H11ZM11 11V9H8V11H11ZM21 19V9H13V11H15V13H13V15H15V17H13V19H21ZM3 19V17H6V19H3ZM3 15H6V13H3V15ZM6 11V9H3V11H6ZM3 7H6V5H3V7Z"
                                 fill="#ffffff" />
                         </svg><a href="PerfilEmpresa/empresa">Perfil da Empresa</a></li>
-                    <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
                             <path
                                 d="M12.552 8C11.9997 8 11.552 8.44772 11.552 9C11.552 9.55228 11.9997 10 12.552 10H16.552C17.1043 10 17.552 9.55228 17.552 9C17.552 8.44772 17.1043 8 16.552 8H12.552Z"
                                 fill="#ffffff" fill-opacity="0.5" />
@@ -126,7 +127,8 @@
             <h1 class="titulo">Olá,
                 <?= ucfirst(strtok($select['nome'], " ")) ?>
             </h1>
-            <form action="assets/php/atualizar_usuario" method="POST" class="container perfil" onsubmit="return false" aria-label="Seus dados">
+            <form action="assets/php/atualizar_usuario" method="POST" class="container perfil" onsubmit="return false"
+                aria-label="Seus dados">
                 <div class="fundo-dados">
                     <div class="form-caixa">
                         <label aria-hidden="true" for="nome">Nome</label>
