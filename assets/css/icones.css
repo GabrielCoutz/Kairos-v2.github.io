@@ -1,3 +1,40 @@
+.lni-grid-alt::before {
+  content: "\eada";
+}
+
+.lni-target-revenue::before {
+  content: "\ebc7";
+}
+
+.lni-graph::before {
+  content: "\ead9";
+}
+
+.lni {
+  display: inline-block;
+  font: normal normal normal 1em/1 "LineIcons";
+  color: inherit;
+  flex-shrink: 0;
+  speak: none;
+  text-transform: none;
+  line-height: 1;
+  vertical-align: -0.125em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: "LineIcons";
+  src: url("../fonts/Lineicon/LineIcons.eot");
+  src: url("../fonts/Lineicon/LineIcons.eot") format("embedded-opentype"),
+    url("../fonts/Lineicon/LineIcons.woff2") format("woff2"),
+    url("../fonts/Lineicon/LineIcons.woff") format("woff"),
+    url("../fonts/Lineicon/LineIcons.ttf") format("truetype"),
+    url("../fonts/Lineicon/LineIcons.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
 .gg-user {
   display: block;
   transform: scale(var(--ggs, 1));

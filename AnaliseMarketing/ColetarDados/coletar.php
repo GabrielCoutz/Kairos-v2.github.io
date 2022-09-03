@@ -8,7 +8,6 @@
     <meta name="description" content="Kairos | Análise de Marketing">
     <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../../assets/css/style.min.css">
-    
     <title>Análise de Marketing</title>
     <?php
       error_reporting(E_ALL);

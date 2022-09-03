@@ -8,7 +8,6 @@
     <meta name="description" content="Kairos | Resultados">
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/style.min.css">
-    
     <title>Seus resultados</title>
     <?php
         error_reporting(E_ERROR | E_PARSE);

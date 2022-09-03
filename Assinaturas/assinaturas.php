@@ -8,7 +8,6 @@
     <meta name="description" content="Kairos | Assinaturas">
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/style.min.css">
-    
     <title>Assinaturas</title>
     <?php
         session_start();

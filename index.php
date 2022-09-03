@@ -10,9 +10,6 @@
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/css/style.min.css">
     <title>Kairos</title>
-    
-    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
-    <title>Kairos</title>
     <?php
         error_reporting(E_ERROR | E_PARSE);
         session_start();

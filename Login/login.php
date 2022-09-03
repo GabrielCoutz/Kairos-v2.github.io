@@ -9,8 +9,6 @@
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/style.min.css">
     <title>Login</title>
-    
-
     <?php
         error_reporting(E_ERROR | E_PARSE);
         session_start();

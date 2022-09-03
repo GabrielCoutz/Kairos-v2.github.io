@@ -8,7 +8,7 @@
     <meta name="description" content="Kairos | Perfil">
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../assets/css/style.min.css">
-
+    <title>Perfil</title>
     <?php
         session_start();
         error_reporting(E_ERROR | E_PARSE);
