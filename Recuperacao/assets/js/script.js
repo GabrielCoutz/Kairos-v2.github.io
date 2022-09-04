@@ -31,11 +31,11 @@ switch (true) {
 
 function validar() {
   if (vazio(nome.value)) {
-    alertaDeErro(nome, "Por favor, insira um nome válido!");
+    alertaDeErro(nome, "Por favor, preencha o nome!");
     dispararEvento(nome, "keyup", "condicaoVazio");
   } else if (!validarEmail(email.value)) {
     dispararEvento(email, "keyup", "condicaoEmail");
-    alertaDeErro(email, "Por favor, insira um email válido!");
+    alertaDeErro(email, "Por favor, insira o email corretamente!");
     //   } else if (grecaptcha.getResponse() == "") {
     //     dispararEvento(captcha, "keyup", "condicaoCaptcha");
     //     alertaDeErro(captcha, "Por favor, preencha o CAPTCHA!");

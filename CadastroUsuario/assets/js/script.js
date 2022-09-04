@@ -47,7 +47,7 @@ function validar() {
     alertaDeErro(nome, "Insira apenas letras!");
   } else if (!validarEmail(email.value)) {
     dispararEvento(email, "keyup", "condicaoEmail");
-    alertaDeErro(email, "Insira um email válido!");
+    alertaDeErro(email, "Insira o email corretamente!");
   } else if (
     senha.value != confirm_senha.value ||
     vazio(senha.value) ||

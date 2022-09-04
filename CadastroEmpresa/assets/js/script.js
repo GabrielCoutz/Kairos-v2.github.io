@@ -37,7 +37,7 @@ function validar() {
     alertaDeErro(nome_fantasia, "Preencha o Nome Fantasia!");
     dispararEvento(nome_fantasia, "keyup", "condicaoVazio");
   } else if (!validarCNPJ(cnpj.value)) {
-    alertaDeErro(cnpj, "CNPJ inválido!");
+    alertaDeErro(cnpj, "CNPJ incorreto!");
     dispararEvento(cnpj, "keyup", "condicaoCNPJ");
   } else if (vazio(ramo.value)) {
     alertaDeErro(ramo, "Selecione o ramo!");

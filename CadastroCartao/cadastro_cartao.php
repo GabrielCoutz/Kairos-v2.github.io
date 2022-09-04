@@ -232,8 +232,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-<script src="../assets/js/scriptPopUp.js"></script>
 
+<script src="../assets/js/scriptPopUp.js"></script>
 <script src="../assets/js/globals.js"></script>
 <script src="../assets/js/formulario.js"></script>
 <script src="../assets/js/popup.js"></script>

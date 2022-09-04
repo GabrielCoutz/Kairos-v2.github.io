@@ -8,7 +8,7 @@
 // }
 
 // menu hamburguer
-
+let iconeAnterior = "";
 let hamburguer = document.querySelector(".hamburguer");
 let navMenu = document.body.classList.contains("index")
   ? document.querySelector(".header-nav")
@@ -85,8 +85,19 @@ function alertaDeErro(elemento, mensagem) {
     ? caixa.classList.toggle("alerta-ativo")
     : caixa.classList.add("alerta-ativo");
   if (vazio(caixa.innerText)) {
-    caixa.append(iconeAlerta);
     caixa.innerHTML += mensagem;
+  }
+  if (
+    window.location.href.includes("Perfil") ||
+    window.location.href.includes("CadastroCartao")
+  ) {
+    caixa.append(iconeAlerta);
+  }
+  if (elemento.previousElementSibling.tagName === "I") {
+    let elementoAnterior = elemento.previousElementSibling;
+    iconeAnterior = elementoAnterior.classList[0];
+    elementoAnterior.classList.remove(iconeAnterior);
+    elementoAnterior.classList.add("gg-danger");
   }
 
   elemento.focus();
@@ -136,7 +147,7 @@ function lerCEP(cep) {
           abrirPopUp({
             cor: "red",
             corpo:
-              "CEP inválido! Por favor, verifique os números e tente novamente.",
+              "CEP incorreto! Por favor, verifique os números e tente novamente.",
             titulo: "Dados Inválidos",
             icone: "falha",
           });
@@ -144,7 +155,7 @@ function lerCEP(cep) {
           if (window.location.href.includes("cadastro")) {
             alertaDeErro(
               document.querySelector('input[id^="cep"]'),
-              "CEP inválido!"
+              "CEP incorreto!"
             );
             dispararEvento(
               document.querySelector('input[id^="cep"]'),
@@ -304,6 +315,8 @@ function dispararEvento(elemento, evento, stringCondicao) {
     // verifica se a validação é satisfeita, assim retira o eventListener, remove os avisos e libera o usuario para registrar-se
     if (!condicao()) {
       elemento.classList.remove("vermei");
+      elemento.previousElementSibling.classList.remove("gg-danger");
+      elemento.previousElementSibling.classList.add(iconeAnterior);
       document
         .getElementById(elemento.getAttribute("aria-controls"))
         .classList.remove("alerta-ativo");

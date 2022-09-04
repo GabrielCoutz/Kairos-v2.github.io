@@ -95,6 +95,39 @@
   width: 18px;
   border-radius: 2px;
 }
+@keyframes animacao-erro {
+  0%,
+  90%,
+  100% {
+    transform: translateX(0);
+  }
+  92% {
+    transform: translateX(5px);
+  }
+  94% {
+    transform: translateX(-5px);
+  }
+  96% {
+    transform: translateX(5px);
+  }
+  98% {
+    transform: translateX(0);
+  }
+}
+
+.gg-danger {
+  animation: animacao-erro 5s infinite ease-in-out;
+}
+
+.body-perfil .gg-danger,
+.cartao .gg-danger {
+  position: absolute;
+  right: 9px;
+  top: -36px;
+}
+.cartao .gg-danger {
+  top: -44px;
+}
 
 .gg-mail::after {
   content: "";
@@ -111,6 +144,7 @@
   display: block;
   transform: scale(var(--ggs, 1));
   width: 12px;
+  left: 4px;
   height: 11px;
   border: 2px solid;
   border-top-right-radius: 50%;

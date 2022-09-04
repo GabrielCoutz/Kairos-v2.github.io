@@ -348,6 +348,9 @@
   .contato-img {
     display: none;
   }
+  .cartao input {
+    height: 40px;
+  }
   .btn {
     font-size: 1.1rem;
   }

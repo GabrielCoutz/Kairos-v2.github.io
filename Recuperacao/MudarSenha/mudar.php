@@ -57,7 +57,7 @@
                     <span class="underline" aria-hidden="true"></span>
                     <div id="senha_nova_dupAlert" role="alert"></div>
                 </div>
-                <button type="submit" class="btn primario" onclick="validar()">Atualizar senha</button>
+                <button type="submit" class="btn primario" id="butao" onclick="validar()">Atualizar senha</button>
             </form>
         </div>
 

@@ -31,7 +31,7 @@ function validar() {
   limpar_inputs();
 
   if (!validarEmail(email.value)) {
-    alertaDeErro(email, "Insira um email válido!");
+    alertaDeErro(email, "Insira o email corretamente!");
     dispararEvento(email, "keyup", "condicaoEmail");
   } else if (vazio(senha.value)) {
     alertaDeErro(senha, "Preencha a senha!");

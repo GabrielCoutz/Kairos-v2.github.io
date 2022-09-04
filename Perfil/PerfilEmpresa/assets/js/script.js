@@ -81,7 +81,7 @@ if (!vazio(alerta)) {
 }
 
 document.querySelectorAll("input").forEach((item) => {
-  item.addEventListener("keydown", function () {
+  item.addEventListener("keyup", function () {
     switch (this.id) {
       case "nome_empresa":
         switch (true) {
@@ -104,10 +104,17 @@ document.querySelectorAll("input").forEach((item) => {
         break;
 
       case "nome_fantasia":
+        console.log("foi");
         switch (true) {
           case this.value == conteudo_nome_fantasia:
             salvarbtn.disabled = true;
             cancelarbtn.disabled = true;
+            break;
+
+          case this.value.length < 2:
+            salvarbtn.disabled = true;
+            cancelarbtn.disabled = false;
+            alertaDeErro(this, "O nome deve ter no mínimo 2 letras!");
             break;
 
           default:

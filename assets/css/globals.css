@@ -104,6 +104,14 @@ button {
   cursor: pointer;
 }
 
+.body-form .header {
+  padding-bottom: 110px;
+}
+
+.body-form .fundo-form {
+  padding-bottom: 0px;
+}
+
 select {
   transition: all 0.3s;
   border: none;

@@ -140,7 +140,7 @@ function validar() {
     dispararEvento(cvv, "keyup", "condicaoCvv");
     cvv.classList.add("vermei");
   } else if (validar_cpf(cpf.value) === 1) {
-    alertaDeErro(cpf, "Insira um CPF válido");
+    alertaDeErro(cpf, "Insira o CPF corretamente");
     dispararEvento(cpf, "keyup", "condicaoCPF");
   } else if (cep.value.length < 10) {
     dispararEvento(cep, "keyup", "condicaoCep");
