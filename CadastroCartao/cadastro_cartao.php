@@ -2,12 +2,13 @@
 <html lang="pt-BR">
 
 <head>
+  <meta name="theme-color" content="#4466ff">
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="Kairos | Pagamento do plano">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="../assets/css/style.min.css">
+  <link rel="stylesheet preload" href="../assets/css/style.min.css">
   <title>Pagamento</title>
   <?php
     error_reporting(E_ERROR | E_PARSE);
@@ -35,7 +36,7 @@
 
 <body class="body-form cartao">
 
-  <div class="container" id="app">
+  <div class="container" id="app" tabindex="-1">
     <div class="card-form">
       <div class="card-list">
         <div class="card-item" v-bind:class="{ '-active' : isCardFlipped }">
@@ -43,15 +44,15 @@
             <div class="card-item__focus" v-bind:class="{'-active' : focusElementStyle }"
               v-bind:style="focusElementStyle" ref="focusElement"></div>
             <div class="card-item__cover">
-              <img v-bind:src="'assets/imagens/' + currentCardBackground + '.jpeg'" class="card-item__bg">
+              <img alt="" aria-hidden="true" v-bind:src="'assets/imagens/' + currentCardBackground + '.jpg'" class="card-item__bg">
             </div>
 
             <div class="card-item__wrapper">
               <div class="card-item__top">
-                <img type="text/html" src="assets/imagens/chip.png" class="card-item__chip">
+                <img type="text/html" alt="" aria-hidden="true" width="80" height="52" src="assets/imagens/chip.png" class="card-item__chip">
                 <div class="card-item__type">
                   <transition name="slide-fade-up" id='ultimo'>
-                    <img v-bind:src="'assets/imagens/' + getCardType + '.png'" v-if="getCardType"
+                    <img alt="" aria-hidden="true" v-bind:src="'assets/imagens/' + getCardType + '.png'" v-if="getCardType"
                       v-bind:key="getCardType" alt="" class="card-item__typeImg " id="imagem">
                   </transition>
                 </div>
@@ -121,7 +122,7 @@
           </div>
           <div class="card-item__side -back">
             <div class="card-item__cover">
-              <img v-bind:src="'assets/imagens/' + currentCardBackground + '.jpeg'" class="card-item__bg">
+              <img alt="" aria-hidden="true" v-bind:src="'assets/imagens/' + currentCardBackground + '.jpg'" class="card-item__bg">
             </div>
             <div class="card-item__band"></div>
             <div class="card-item__cvv">
@@ -143,7 +144,7 @@
       <form method="POST" action="assets/php/cadastrar_cartao" onsubmit="return false" autocomplete="off"
         class="formulario">
         <div class="form-caixa">
-          <label aria-hidden="true" for="cardNumber">Número do Cartão</label>
+          <label for="cardNumber">Número do Cartão</label>
           <input type="tel" id="cardNumber" v-mask="generateCardNumberMask" v-model="cardNumber" v-on:focus="focusInput"
             v-on:blur="blurInput" data-ref="cardNumber" autocomplete="cc-csc" name='num_cartao'
             aria-controls="cardNumberAlert">
@@ -151,7 +152,7 @@
         </div>
 
         <div class="form-caixa">
-          <label aria-hidden="true" for="cardName">Nome Impresso no Cartão</label>
+          <label for="cardName">Nome Impresso no Cartão</label>
           <input type="text" required id="cardName" v-model="cardName" v-on:focus="focusInput" v-on:blur="blurInput"
             data-ref="cardName" autocomplete="cc-csc" name='nome_cartao' maxlength="30" onkeyup="apenasLetras(this)"
             aria-controls="cardNameAlert">
@@ -175,7 +176,7 @@
               </option>
             </select>
           </div>
-          <label aria-hidden="true" for="cardCvv">CVV</label>
+          <label for="cardCvv">CVV</label>
           <input type="tel" id="cardCvv" v-mask="'###'" maxlength="3" v-model="cardCvv" v-on:focus="flipCard(true)"
             v-on:blur="flipCard(false)" autocomplete="cc-csc" name='cvv_cartao' aria-controls="cardCvvAlert">
           <div id='cardCvvAlert' role="alert"></div>
@@ -186,14 +187,14 @@
 
         <div class="info-usuario">
           <div class="form-caixa">
-            <label aria-hidden="true" for="cpf">CPF</label>
+            <label for="cpf">CPF</label>
             <input type="tel" class="form-caixa__input " id="cpf" name='cpf' onkeypress="$(this).mask('000.000.000-00')"
               aria-controls="cpfAlert">
             <div id='cpfAlert' role="alert"></div>
           </div>
 
           <div class="form-caixa">
-            <label aria-hidden="true" for="cep">CEP</label>
+            <label for="cep">CEP</label>
             <input type="tel" id="cep" name='cep' onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)"
               aria-controls="cepAlert">
             <div id='cepAlert' role="alert"></div>
@@ -201,7 +202,7 @@
 
           <div class="form-caixa">
 
-            <label aria-hidden="true" for="numero">Número</label>
+            <label for="numero">Número</label>
             <input type="tel" id="numero" name='numero' maxlength="6" aria-controls="numeroAlert">
             <div id='numeroAlert' role="alert"></div>
 

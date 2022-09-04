@@ -25,6 +25,9 @@
   .container:not(.intro) {
     padding: 60px 30px;
   }
+  .index .header {
+    padding: 10px 30px;
+  }
   .intro {
     padding-left: 30px;
     padding-right: 30px;

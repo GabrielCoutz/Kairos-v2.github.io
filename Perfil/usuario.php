@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <meta name="theme-color" content="#4466ff">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kairos | Perfil">
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/css/style.min.css">
+    <link rel="stylesheet preload" href="../assets/css/style.min.css">
     <title>Perfil</title>
     <?php
         session_start();

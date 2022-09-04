@@ -2,12 +2,13 @@
 <html lang="pt-BR">
 
 <head>
+    <meta name="theme-color" content="#4466ff">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kairos | Assinaturas">
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/css/style.min.css">
+    <link rel="stylesheet preload" href="../assets/css/style.min.css">
     <title>Assinaturas</title>
     <?php
         session_start();
@@ -88,7 +89,7 @@
             <a href="../index" class="btn secundario">Sair</a>
         </header>
         <div class="perfil">
-            <section class="planos container" id="planos">
+            <section class="planos container" id="planos-perfil">
                 <h1 class="titulo">Conheça nossos planos</h1>
                 <p class="texto">Feitos sob medida para seu negócio.</p>
                 <div class="planos-cards">

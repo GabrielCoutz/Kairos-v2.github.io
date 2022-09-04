@@ -124,7 +124,7 @@
   }
 }
 .card-item__chip {
-  width: 60px;
+  height: auto;
 }
 @media screen and (max-width: 480px) {
   .card-item__chip {

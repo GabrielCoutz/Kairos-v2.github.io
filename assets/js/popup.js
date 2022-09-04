@@ -24,6 +24,7 @@ janelaPopUp.abre = function (param) {
       break;
     case param.icone === "encontrado":
       src = "https://cdn.lordicon.com/msoeawqm.json";
+      delay = "1000";
       break;
     case param.icone === "marketing":
       src = "https://cdn.lordicon.com/gqdnbnwt.json";
