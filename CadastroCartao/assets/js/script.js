@@ -28,6 +28,22 @@ switch (true) {
     });
     cpf.classList.add("vermei");
     break;
+  case window.location.href.includes("planoSelect="):
+    abrirPopUp({
+      cor: "green",
+      corpo:
+        "Dados registrados com êxito, agora basta realizar o pagamento do plano escolhido!",
+      titulo: "Cadastro realizado com sucesso",
+      icone: "sucesso",
+    });
+
+    let nextState = { additionalInformation: "Updated the URL with JS" };
+    window.history.replaceState(
+      nextState,
+      "Kairos",
+      window.location.href.replace("planoSelect", "plano")
+    );
+    break;
 }
 
 function validar_cpf(cpf) {

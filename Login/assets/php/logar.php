@@ -13,7 +13,9 @@ $result=$exec->get_result()->fetch_assoc();
 
 if($result['email'] === $email && $result['senha'] === $senha){
     $_SESSION['email']=$_POST['email'];
-    header('Location: ../../../Perfil/usuario');
+    isset($_SESSION['plano'])
+    ? header('Location: ../../../CadastroCartao/cadastro_cartao?planoSelect='.$_SESSION['plano'])
+    : header('Location: ../../../Perfil/usuario');
     exit;
 }
 

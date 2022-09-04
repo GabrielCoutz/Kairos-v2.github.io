@@ -57,26 +57,6 @@ switch (true) {
     alerta += " Nome Fantasia já cadastrado!";
     limparURL(cripto("nome_fantasia_duplicado=true"));
     break;
-
-  case verificarURL(cripto("sucesso=true")):
-    abrirPopUp({
-      cor: "green",
-      corpo: "Dados alterados com êxito.",
-      titulo: "Alteração realizada com sucesso",
-      icone: "sucesso",
-    });
-    limparURL(cripto("sucesso=true"));
-    break;
-
-  case verificarURL(cripto("cadastro=true")):
-    abrirPopUp({
-      cor: "green",
-      corpo: "Dados registrados com êxito.",
-      titulo: "Cadastro realizado com sucesso",
-      icone: "sucesso",
-    });
-    limparURL(cripto("cadastro=true"));
-    break;
 }
 
 $("#ramo")

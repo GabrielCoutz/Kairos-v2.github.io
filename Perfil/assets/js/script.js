@@ -57,16 +57,6 @@ switch (true) {
     document.getElementById("senha_nova_dup").classList.add("vermei");
     break;
 
-  case verificarURL(cripto("sucesso=true")):
-    abrirPopUp({
-      cor: "green",
-      corpo: "Dados alterados com êxito.",
-      titulo: "Alteração realizada",
-      icone: "sucesso",
-    });
-    limparURL(cripto("sucesso=true"));
-    break;
-
   case verificarURL(cripto("analise=false")):
     abrirPopUp({
       cor: "blue",

@@ -135,7 +135,7 @@
                     <li>Suporte 08:00 às 18:00</li>
                     <li>1 Visita presencial p/mês</li>
                 </ul>
-                <a href="CadastroUsuario/cadastro_usuario" class="btn secundario btn-plano">Escolher plano</a>
+                <a href="CadastroUsuario/cadastro_usuario?plano=Básico" class="btn secundario btn-plano">Escolher plano</a>
             </div>
             <div class="planos-item">
                 <span class="planos-titulo titulo">Médio</span>
@@ -147,7 +147,7 @@
                     <li>3 Visita presencial p/mês</li>
                     <li>Consultoria de Marketing</li>
                 </ul>
-                <a href="CadastroUsuario/cadastro_usuario" class="btn primario btn-plano-ativo">Escolher plano</a>
+                <a href="CadastroUsuario/cadastro_usuario?plano=Médio" class="btn primario btn-plano-ativo">Escolher plano</a>
             </div>
             <div class="planos-item">
                 <span class="planos-titulo titulo">Premium</span>
@@ -161,7 +161,7 @@
                     <li>Plano de Negócios</li>
                     <li>Análise de Resultados</li>
                 </ul>
-                <a href="CadastroUsuario/cadastro_usuario" class="btn secundario btn-plano">Escolher plano</a>
+                <a href="CadastroUsuario/cadastro_usuario?plano=Premium" class="btn secundario btn-plano">Escolher plano</a>
             </div>
         </div>
     </section>

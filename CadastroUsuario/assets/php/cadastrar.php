@@ -49,6 +49,6 @@ $exec->execute();
 $result=$exec->get_result();
 verificarOperacao($result, $local);
 
-header('Location: ../../../Login/login?'.hash("sha512", 'sucesso=true'));
+header('Location: ../../../Login/login?'.hash("sha512", 'cadastro=true'));
 exit;
 ?>

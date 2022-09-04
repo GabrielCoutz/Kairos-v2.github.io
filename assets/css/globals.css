@@ -192,7 +192,7 @@ select,
 }
 
 .container {
-  padding: 60px var(--centralizar-padding);
+  padding: 160px var(--centralizar-padding);
 }
 
 .alerta-ativo {

@@ -11,6 +11,9 @@
     <title>Cadastro</title>
     <?php
         session_start();
+        if( isset($_GET['plano']) ){
+            $_SESSION['plano']=$_GET['plano'];
+        }
     ?>
 </head>
 

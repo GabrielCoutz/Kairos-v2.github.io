@@ -9,15 +9,6 @@ switch (true) {
     erroSincronizacao("../Login/login");
     limparURL(cripto("erro=true"));
     break;
-  case verificarURL(cripto("sucesso=true")):
-    abrirPopUp({
-      cor: "green",
-      titulo: "Dados alterados com êxito.",
-      corpo: "Alteração realizada com sucesso",
-      icone: "sucesso",
-    });
-    limparURL(cripto("sucesso=true"));
-    break;
 
   case verificarURL(cripto("sucesso=false")): // janela de erro na realização da análise
     abrirPopUp({

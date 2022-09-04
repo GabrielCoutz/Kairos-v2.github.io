@@ -10,13 +10,15 @@
     <link rel="stylesheet" href="../assets/css/style.min.css">
     <title>Login</title>
     <?php
-        error_reporting(E_ERROR | E_PARSE);
         session_start();
-        session_unset();
-        session_destroy();
-        session_write_close();
-        setcookie(session_name(), '', 0, '/', NULL, true, true);
-        session_regenerate_id(true);
+        if(!isset($_SESSION['plano'])){
+            error_reporting(E_ERROR | E_PARSE);
+            session_unset();
+            session_destroy();
+            session_write_close();
+            setcookie(session_name(), '', 0, '/', NULL, true, true);
+            session_regenerate_id(true);
+        }
     ?>
 </head>
 

@@ -299,15 +299,35 @@ function abrirJanelaPlanos(plano_mudanca, plano_atual) {
   });
 }
 
-if (verificarURL(cripto("sucesso=false"))) {
-  abrirPopUp({
-    cor: "red",
-    corpo:
-      "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
-    titulo: "Erro inesperado",
-    icone: "falha",
-  });
-  limparURL(cripto("sucesso=false"));
+switch (true) {
+  case verificarURL(cripto("sucesso=false")):
+    abrirPopUp({
+      cor: "red",
+      corpo:
+        "Não foi possível realizar a operação solicitada. Por favor, tente novamente ou entre em contato conosco.",
+      titulo: "Erro inesperado",
+      icone: "falha",
+    });
+    limparURL(cripto("sucesso=false"));
+    break;
+  case verificarURL(cripto("sucesso=true")):
+    abrirPopUp({
+      cor: "green",
+      corpo: "Dados alterados com êxito.",
+      titulo: "Alteração realizada com sucesso",
+      icone: "sucesso",
+    });
+    limparURL(cripto("sucesso=trrue"));
+    break;
+  case verificarURL(cripto("cadastro=true")):
+    abrirPopUp({
+      cor: "green",
+      corpo: "Dados registrados com êxito.",
+      titulo: "Cadastro realizado com sucesso",
+      icone: "sucesso",
+    });
+    limparURL(cripto("cadastro=true"));
+    break;
 }
 
 function erroSincronizacao(url) {

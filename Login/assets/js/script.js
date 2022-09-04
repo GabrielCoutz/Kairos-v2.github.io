@@ -16,16 +16,6 @@ switch (true) {
     document.getElementById("senha").classList.add("erro");
     break;
 
-  case verificarURL(cripto("sucesso=true")):
-    abrirPopUp({
-      cor: "green",
-      corpo: "Dados cadastrados com sucesso!",
-      titulo: "Cadastro",
-      icone: "sucesso",
-    });
-    limparURL(cripto("sucesso=true"));
-    break;
-
   case verificarURL(cripto("sucesso_senha=true")):
     abrirPopUp({
       cor: "green",
