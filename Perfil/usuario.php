@@ -55,10 +55,10 @@
 
         if($select_telefone->fetch_assoc()["tel"]){
             foreach ($select_telefone as $key => $value) {
-                $telefone.="<a class='desativado numeros'>".$value["tel"]."</a>";
+                $telefone.="<span class='desativado numeros'>".$value["tel"]."</span>";
             }
         } else {
-            $telefone = "<a class='desativado'>Não Cadastrado</a>";
+            $telefone = "<span class='desativado'>Não Cadastrado</span>";
         }
 
         $query="SELECT * FROM endereco WHERE email_usuario=?";
@@ -72,7 +72,7 @@
 <body class="body-perfil">
     <div class="fundo-barra-lateral">
         <div class="barra-lateral">
-            <nav aria-label="Navegação Lateral" tabindex="1">
+            <nav aria-label="Navegação Lateral - principal">
                 <ul class="nav-lateral">
                     <li><svg width="24" height="24" viewBox="0 0 24 24" fill="#ffffff"
                             xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -81,7 +81,7 @@
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M13 7H23V21H1V3H13V7ZM8 5H11V7H8V5ZM11 19V17H8V19H11ZM11 15V13H8V15H11ZM11 11V9H8V11H11ZM21 19V9H13V11H15V13H13V15H15V17H13V19H21ZM3 19V17H6V19H3ZM3 15H6V13H3V15ZM6 11V9H3V11H6ZM3 7H6V5H3V7Z"
                                 fill="#ffffff" />
-                        </svg><a href="PerfilEmpresa/empresa">Perfil da Empresa</a></li>
+                        </svg><a href="PerfilEmpresa/empresa" tabindex="1">Perfil da Empresa</a></li>
                     <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                             aria-hidden="true">
                             <path
@@ -102,9 +102,9 @@
                             <path
                                 d="M3.448 12.9979C2.89571 12.9979 2.448 13.4456 2.448 13.9979V18.9979C2.448 19.5502 2.89571 19.9979 3.448 19.9979H8.448C9.00028 19.9979 9.448 19.5502 9.448 18.9979V13.9979C9.448 13.4456 9.00028 12.9979 8.448 12.9979H3.448Z"
                                 fill="#ffffff" />
-                        </svg><a href="../AnaliseMarketing/resultado">Análise de Marketing</a></li>
+                        </svg><a href="../AnaliseMarketing/resultado" tabindex="1">Análise de Marketing</a></li>
                     <li><i aria-hidden="true" class="gg-credit-card"></i>
-                        <a href="../Assinaturas/assinaturas">Minha assinatura</a>
+                        <a href="../Assinaturas/assinaturas" tabindex="1">Minha assinatura</a>
                     </li>
                     <li class='nav-lateral-ativo'><i aria-hidden="true" class="gg-user"></i>
                         <a href="usuario">Perfil</a>
@@ -131,35 +131,35 @@
                 aria-label="Seus dados">
                 <div class="fundo-dados">
                     <div class="form-caixa">
-                        <label aria-hidden="true" for="nome">Nome</label>
+                        <label for="nome">Nome</label>
                         <input type="text" name="nome" id="nome" onkeyup="apenasLetras(this)" maxlength="50"
                             value="<?= $select['nome'] ?>" aria-controls="nomeAlert">
                         <div id="nomeAlert" role="alert"></div>
                     </div>
                     <div class="form-caixa" aria-hidden="true">
                         <label>CPF</label>
-                        <a class="desativado">
+                        <span class="desativado">
                             <?= $cpf ?>
-                        </a>
+                        </span>
                     </div>
                     <div class="form-caixa" aria-hidden="true">
                         <label>Email</label>
-                        <a class="desativado">
+                        <span class="desativado">
                             <?= $select['email'] ?>
-                        </a>
+                        </span>
                     </div>
                 </div>
                 <div class="fundo-dados info-2">
                     <div class="dados-coluna">
                         <div class="form-caixa">
-                            <label aria-hidden="true" for="cep">CEP</label>
+                            <label for="cep">CEP</label>
                             <input type="tel" name="cep" id="cep" aria-controls="cepAlert"
                                 onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)"
                                 value='<?= $select_endereco['cep'] ?>'>
                             <div id="cepAlert" role="alert"></div>
                         </div>
                         <div class="form-caixa">
-                            <label aria-hidden="true" for="numero">Número</label>
+                            <label for="numero">Número</label>
                             <input type="tel" name="numero" id="numero" aria-controls="numeroAlert"
                                 value='<?= $select_endereco['numero'] ?>'>
                             <div id="numeroAlert" role="alert"></div>
@@ -170,12 +170,12 @@
                             <input type="hidden" class="none" id="cidade" name="cidade">
                             <input type="hidden" class="none" id="estado" name="estado">
                             <label>Endereço</label>
-                            <p class="desativado" id="endereco"><a>
+                            <p class="desativado" id="endereco"><span>
                                     <?= ucwords($select_endereco['rua']) ?>,
                                     <?= ucwords($select_endereco['bairro']) ?>,
                                     <?= ucwords($select_endereco['cidade']) ?>,
                                     <?= $select_endereco['estado'] ?>
-                                </a></p>
+                                </span></p>
                         </div>
                     </div>
                     <div class="dados-coluna telefone">
@@ -203,10 +203,15 @@
                                     aria-pressed="false"></button>
                             </div>
                             <label aria-hidden="true" for="senha_nova">Senha Nova</label>
-                            <div class="senha-holder">
+                            <div class="senha-holder senha-2" id="senha-holder-2">
                                 <input type="password" name="senha_nova" id="senha_nova">
                                 <button class="gg-eye" type="button" aria-controls="senha_nova" title="Mostrar senha"
                                     aria-pressed="false"></button>
+                                    <button type="button" id="gerar-senha" title="Gerar senha forte aleatória" class="btn terciario"
+                                    aria-label="Gerar senha forte aleatória">Gerar</button>
+                                    <div class="progress-bar" aria-hidden="true">
+                                        <div></div>
+                                    </div>
                             </div>
                             <label aria-hidden="true" for="senha_nova_dup">Digite Novamente</label>
                             <div class="senha-holder">
@@ -217,8 +222,7 @@
                             <div id="senhaAlert" role="alert"></div>
 
                         </div>
-                        <button type="button" class="btn terciario" aria-controls="caixa-senhas"
-                            onclick="alterarSenha()" id="alterarsenha">Alterar
+                        <button type="button" class="btn terciario" onclick="alterarSenha()" id="alterarsenha">Alterar
                             senha</button>
                     </div>
                 </div>
@@ -236,14 +240,15 @@
     integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-<script src="https://cdn.lordicon.com/lusqsztk.js"></script>
+<script src="../assets/js/scriptPopUp.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
 <script src="../assets/js/globals.js"></script>
 <script src="../assets/js/formulario.js"></script>
 <script src="../assets/js/popup.js"></script>
+<script src="../assets/js/lslstrength.js"></script>
 
 <script src="assets/js/telefone.js"></script>
 <script src="assets/js/script.js"></script>

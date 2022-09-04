@@ -152,6 +152,7 @@
     border: none;
   }
   .fundo-barra-lateral {
+    background-image: none;
     height: auto;
   }
   .fundo-dados {
@@ -254,6 +255,24 @@
 }
 
 @media (max-width: 600px) {
+  input,
+  input::placeholder {
+    font-size: 0.9rem;
+  }
+  #senha-holder-2 {
+    display: grid !important;
+  }
+  .perfil #gerar-senha {
+    grid-row: 2;
+    grid-column: 1;
+    justify-self: start;
+  }
+  .perfil .progress-bar {
+    bottom: 0;
+    right: 0;
+    left: initial;
+    right: 0;
+  }
   .botoes {
     justify-self: stretch;
     display: flex;
@@ -311,9 +330,6 @@
   .titulo {
     font-size: 1.7rem;
   }
-  input::placeholder {
-    font-size: 0.9rem;
-  }
   .formulario {
     padding: 0 30px;
   }
@@ -328,6 +344,9 @@
 @media (max-width: 400px) {
   .contato-img {
     display: none;
+  }
+  .btn {
+    font-size: 1.1rem;
   }
   .form-caixa > input,
   .dados-coluna > input {

@@ -15,7 +15,7 @@
 
     <header class="header container" aria-label="Voltar para a página inicial">
         <div class="header-logo">
-            <a href="../index"><img src="../assets/img/logo/Logo.svg" alt="Kairos Logo"></a>
+            <a href="../index"><img src="../assets/img/logo/Logo.svg" alt="Kairos Logo" width="740" height="210"></a>
         </div>
     </header>
 
@@ -26,7 +26,7 @@
                 aconteceu e te
                 auxiliaremos da melhor forma possível 😉.</p>
             <div class="contato-img">
-                <img src="assets/img/imagem.png" alt="" aria-hidden="true">
+                <img src="assets/img/suporte.svg" alt="" width="803" height="259" aria-hidden="true">
             </div>
         </div>
         <div class="contato-info">
@@ -38,15 +38,10 @@
         </div>
     </section>
 
-
     </div>
 </body>
 <script src="assets/js/clipboard.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
-    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="../assets/js/formulario.js"></script>
 
 </html>

@@ -29,6 +29,17 @@
   position: relative;
 }
 
+.perfil .progress-bar {
+  position: absolute;
+  top: -28px;
+  left: 87px;
+  width: 130px;
+}
+
+#senha-holder-2 {
+  position: relative;
+}
+
 .perfil .form-caixa {
   display: flex;
   flex-direction: column;
@@ -155,7 +166,8 @@
   gap: 18px;
 }
 
-.form-caixa > label, .telefone > label {
+.form-caixa > label,
+.telefone > label {
   font: 500 1.1rem/1 var(--fonte-display);
   color: var(--c2);
 }

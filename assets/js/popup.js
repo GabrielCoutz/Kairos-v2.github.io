@@ -46,9 +46,10 @@ janelaPopUp.abre = function (param) {
   lord_icon.setAttribute("colors", colors);
   lord_icon.setAttribute("style", "width:82px;height:82px");
 
-  janela2.appendChild(lord_icon);
-
   let h1 = document.createElement("h1");
+
+  !param.icone ? (h1.style.marginTop = "0px") : janela2.appendChild(lord_icon);
+
   h1.append(param.titulo);
   janela2.append(h1);
   popFundo2.appendChild(janela2);
@@ -201,6 +202,8 @@ janelaPopUp.abre = function (param) {
   if (param.analise) {
     document.getElementById("popUpEnviar").innerHTML = "Sim, gostaria";
     document.getElementById("popUpEnviar").classList.remove("secundario");
+    document.getElementById("popUpEnviar").style.display = "block";
+    document.querySelector("#popUp").style.maxHeight = "290px";
     document.getElementById("popUpEnviar").classList.add("primario");
     document.getElementById("popUpCancelar").innerHTML = "Não, talvez depois";
 

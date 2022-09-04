@@ -48,7 +48,8 @@
 }
 
 /* icone, input e toggle*/
-.form-caixa.senha-2 {
+.form-caixa.senha-2,
+.senha-2 {
   grid-template-columns: auto 1fr auto !important;
 }
 
@@ -123,7 +124,7 @@ input.erro ~ .underline {
   top: -10px;
   left: 31px;
   color: var(--p5);
-  font: 500 0.7rem/1 var(--fonte-display);
+  font: 500 0.8rem/1 var(--fonte-display);
 }
 
 input:hover {

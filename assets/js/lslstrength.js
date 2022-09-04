@@ -1,6 +1,9 @@
 let bar = document.querySelector(".progress-bar > div");
 let currentPercent = document.querySelector(".percentage > .forca-senha");
-let inputPasswordField = document.querySelector("#senha");
+let inputPasswordField = window.location.href.includes("cadastro_usuario")
+  ? document.querySelector("#senha")
+  : document.querySelector("#senha_nova");
+
 inputPasswordField.addEventListener("keyup", (e) => {
   detPasswordStrength(inputPasswordField.value);
 });
@@ -8,7 +11,9 @@ inputPasswordField.addEventListener("keyup", (e) => {
 function detPasswordStrength(password) {
   let pwdPercent = getStrengthPercent(password);
 
-  pwdPercent === 0 ? bar.classList.add("none") : bar.classList.remove("none");
+  pwdPercent === 0 || inputPasswordField.value === ""
+    ? bar.classList.add("none")
+    : bar.classList.remove("none");
   bar.style.background = "transparent";
   bar.style.border = "none";
 

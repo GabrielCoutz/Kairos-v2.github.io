@@ -102,25 +102,33 @@
                     <div class="swot-caixa">
                         <h1 class="titulo-metodo">Forças</h1>
                         <span>
-                            <?= $select_swot['forcas']; ?>
+                            <ul>
+                                <?= $select_swot['forcas']; ?>
+                            </ul>
                         </span>
                     </div>
                     <div class="swot-caixa">
                         <h1 class="titulo-metodo">Fraquezas</h1>
                         <span>
-                            <?= $select_swot['fraquezas']; ?>
+                            <ul>
+                                <?= $select_swot['fraquezas']; ?>
+                            </ul>
                         </span>
                     </div>
                     <div class="swot-caixa">
                         <h1 class="titulo-metodo">Oportunidades</h1>
                         <span>
-                            <?= $select_swot['oportunidades']; ?>
+                            <ul>
+                                <?= $select_swot['oportunidades']; ?>
+                            </ul>
                         </span>
                     </div>
                     <div class="swot-caixa">
                         <h1 class="titulo-metodo">Ameaças</h1>
                         <span>
-                            <?= $select_swot['ameacas']; ?>
+                            <ul>
+                                <?= $select_swot['ameacas']; ?>
+                            </ul>
                         </span>
                     </div>
                 </div>
@@ -158,25 +166,33 @@
                     <div class="composto-caixa">
                         <h1 class="titulo-metodo">Produto</h1>
                         <span>
-                            <?= $select_4ps['produto']; ?>
+                            <ul>
+                                <?= $select_4ps['produto']; ?>
+                            </ul>
                         </span>
                     </div>
                     <div class="composto-caixa">
                         <h1 class="titulo-metodo">Preço</h1>
                         <span>
-                            <?= $select_4ps['preco']; ?>
+                            <ul>
+                                <?= $select_4ps['preco']; ?>
+                            </ul>
                         </span>
                     </div>
                     <div class="composto-caixa">
                         <h1 class="titulo-metodo">Praça</h1>
                         <span>
-                            <?= $select_4ps['praca']; ?>
+                            <ul>
+                                <?= $select_4ps['praca']; ?>
+                            </ul>
                         </span>
                     </div>
                     <div class="composto-caixa">
                         <h1 class="titulo-metodo">Promoção</h1>
                         <span>
-                            <?= $select_4ps['promocao']; ?>
+                            <ul>
+                                <?= $select_4ps['promocao']; ?>
+                            </ul>
                         </span>
                     </div>
                 </div>
@@ -222,11 +238,11 @@
     integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-<script src="https://cdn.lordicon.com/lusqsztk.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
+<script src="../assets/js/scriptPopUp.js"></script>
 <script src="../assets/js/globals.js"></script>
 <script src="../assets/js/formulario.js"></script>
 <script src="../assets/js/popup.js"></script>

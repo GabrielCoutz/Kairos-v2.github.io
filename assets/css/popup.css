@@ -159,6 +159,11 @@
 
 lord-icon {
   justify-self: center;
+  top: -20px;
+}
+
+#popUp:focus {
+  outline: none;
 }
 
 #img {

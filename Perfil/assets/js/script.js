@@ -175,6 +175,7 @@ function cancelar() {
     apagarCookie("senha");
     document.getElementById("add_tel").disabled = false;
     document.getElementById("del_tel").disabled = false;
+    document.querySelector(".progress-bar > div").classList.add("none");
     return;
   }
 

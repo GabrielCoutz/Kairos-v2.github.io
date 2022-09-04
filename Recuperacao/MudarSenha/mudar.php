@@ -24,7 +24,7 @@
 
     <header class="header container">
         <div class="header-logo">
-            <a href="../../index"><img src="../../assets/img/logo/Logo.svg" alt="Kairos Logo"></a>
+            <a href="../../index"><img src="../../assets/img/logo/Logo.svg" alt="Kairos Logo" width="740" height="210"></a>
         </div>
     </header>
 
@@ -33,11 +33,16 @@
             <form action="assets/php/mudar_senha" method="POST" class="formulario recuperacao" onsubmit="return false">
                 <a href="../../index" id="link-home"><i class="gg-home"></i></a>
                 <h1 class="titulo">Etapa final</h1>
-                <div class="form-caixa senha-2">
+                <div class="form-caixa senha-1">
                     <label aria-hidden="true" for="senha_nova">Nova senha</label>
                     <i class="gg-lock" aria-hidden="true"></i>
                     <input type="password" required name="senha_nova" id="senha_nova" placeholder="Nova senha"
                         aria-controls="senha_novaAlert">
+                    <button type="button" id="gerar-senha" title="Gerar senha forte aleatória" class="btn terciario"
+                    aria-label="Gerar senha forte aleatória">Gerar</button>
+                    <div class="progress-bar" aria-hidden="true">
+                        <div></div>
+                    </div>
                     <button type="button" title="Esconder senha" class="gg-eye" aria-controls="senha_nova"></button>
                     <span class="underline" aria-hidden="true"></span>
                     <div id="senha_novaAlert" role="alert"></div>
@@ -55,21 +60,21 @@
             </form>
         </div>
 
-
     </div>
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
     integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
-<script src="https://cdn.lordicon.com/lusqsztk.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
 
+<script src="../../assets/js/scriptPopUp.js"></script>
 <script src="../../assets/js/globals.js"></script>
 <script src="../../assets/js/formulario.js"></script>
 <script src="../../assets/js/popup.js"></script>
+<script src="../../assets/js/lslstrength.js"></script>
 
 <script src="assets/js/script.js"></script>
 

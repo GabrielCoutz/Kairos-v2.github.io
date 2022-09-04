@@ -1,7 +1,6 @@
 var conteudo;
-var conteudoComposto;
 
-$(".swot-caixa > span").innerText !== undefined
+vazio(document.querySelector(".swot-caixa > span").innerText)
   ? (conteudo = false)
   : (conteudo = true);
 
@@ -44,17 +43,20 @@ switch (true) {
     limparURL(cripto("analise=false"));
     break;
 }
-
+console.log(conteudo);
 if (conteudo) {
   document.querySelectorAll(".swot-caixa > span").forEach((item) => {
-    item.innerHTML = item.innerText.replace(/,/g, "<br>");
+    item.innerHTML = item.innerText.replace(/,/g, "<li>");
+    item.innerHTML += "</li>";
+  });
 
-    document.querySelectorAll(".composto-caixa > span").forEach((item) => {
-      item.innerHTML = item.innerText.replace(/,/g, "<br>");
-    });
+  document.querySelectorAll(".composto-caixa > span").forEach((item) => {
+    console.log(item.innerText);
+    item.innerHTML = item.innerText.replace(/,/g, "<li>");
+    item.innerHTML += "</li>";
+  });
 
-    document.querySelectorAll(".bloco-metodologia").forEach((item) => {
-      item.classList.remove("none");
-    });
+  document.querySelectorAll(".bloco-metodologia").forEach((item) => {
+    item.classList.remove("none");
   });
 }

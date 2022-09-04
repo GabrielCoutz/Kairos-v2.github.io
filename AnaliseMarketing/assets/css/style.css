@@ -13,7 +13,7 @@
 }
 
 .bloco-metodologia.none {
-  opacity: 0;
+  display: none !important;
 }
 
 .SWOT,
@@ -81,10 +81,15 @@
   gap: 10px;
 }
 
-.orientacoes-swot > ul > li,
-.orientacoes-composto > ul > li {
+.swot-caixa > span > li,
+.composto-caixa > span > li {
+  margin-top: 7px;
+}
+
+.orientacoes-swot ul > li,
+.orientacoes-composto ul > li {
   font: 400 1.2rem/1.4 var(--fonte-texto);
-  color: var(--c2);
+  color: var(--c1);
   flex: 1;
   flex-basis: 180px;
 }
