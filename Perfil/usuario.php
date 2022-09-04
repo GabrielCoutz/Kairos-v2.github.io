@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -81,7 +80,7 @@
                             <path fill-rule="evenodd" clip-rule="evenodd"
                                 d="M13 7H23V21H1V3H13V7ZM8 5H11V7H8V5ZM11 19V17H8V19H11ZM11 15V13H8V15H11ZM11 11V9H8V11H11ZM21 19V9H13V11H15V13H13V15H15V17H13V19H21ZM3 19V17H6V19H3ZM3 15H6V13H3V15ZM6 11V9H3V11H6ZM3 7H6V5H3V7Z"
                                 fill="#ffffff" />
-                        </svg><a href="PerfilEmpresa/empresa" tabindex="1">Perfil da Empresa</a></li>
+                        </svg><a href="PerfilEmpresa/empresa" tabindex="0">Perfil da Empresa</a></li>
                     <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
                             aria-hidden="true">
                             <path
@@ -102,9 +101,9 @@
                             <path
                                 d="M3.448 12.9979C2.89571 12.9979 2.448 13.4456 2.448 13.9979V18.9979C2.448 19.5502 2.89571 19.9979 3.448 19.9979H8.448C9.00028 19.9979 9.448 19.5502 9.448 18.9979V13.9979C9.448 13.4456 9.00028 12.9979 8.448 12.9979H3.448Z"
                                 fill="#ffffff" />
-                        </svg><a href="../AnaliseMarketing/resultado" tabindex="1">Análise de Marketing</a></li>
+                        </svg><a href="../AnaliseMarketing/resultado" tabindex="0">Análise de Marketing</a></li>
                     <li><i aria-hidden="true" class="gg-credit-card"></i>
-                        <a href="../Assinaturas/assinaturas" tabindex="1">Minha assinatura</a>
+                        <a href="../Assinaturas/assinaturas" tabindex="0">Minha assinatura</a>
                     </li>
                     <li class='nav-lateral-ativo'><i aria-hidden="true" class="gg-user"></i>
                         <a href="usuario">Perfil</a>
