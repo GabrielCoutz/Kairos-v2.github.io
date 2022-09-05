@@ -8,7 +8,7 @@
   <meta name="description" content="Kairos | Pagamento do plano">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet preload" href="../assets/css/style.min.css">
+  <link rel="stylesheet preload" as="style" href="../assets/css/style.min.css">
   <title>Pagamento</title>
   <?php
     error_reporting(E_ERROR | E_PARSE);
@@ -147,7 +147,7 @@
           <label for="cardNumber">Número do Cartão</label>
           <input type="tel" id="cardNumber" v-mask="generateCardNumberMask" v-model="cardNumber" v-on:focus="focusInput"
             v-on:blur="blurInput" data-ref="cardNumber" autocomplete="cc-csc" name='num_cartao'
-            aria-controls="cardNumberAlert">
+            aria-controls="cardNumberAlert" required onkeyup="apenasNumeros(this)">
           <div id='cardNumberAlert' role="alert"></div>
         </div>
 
@@ -162,14 +162,14 @@
           <label>Data de Validade</label>
           <div class="info-validade">
             <select class="form-caixa__input" id="cardMonth" v-model="cardMonth" v-on:focus="focusInput"
-              v-on:blur="blurInput" data-ref="cardDate" name='mes_cartao' aria-controls="cardMonthAlert">
+              v-on:blur="blurInput" data-ref="cardDate" name='mes_cartao' aria-controls="cardMonthAlert" required>
               <option value="" disabled selected>Mês</option>
               <option v-bind:value="n < 10 ? '0' + n : n" v-for="n in 12" v-bind:disabled="n < minCardMonth"
                 v-bind:key="n">
                 {{n < 10 ? '0' + n : n}} </option>
             </select>
             <select class="form-caixa__input" id="cardYear" v-model="cardYear" v-on:focus="focusInput"
-              v-on:blur="blurInput" data-ref="cardDate" name='ano_cartao' aria-controls="cardYearAlert">
+              v-on:blur="blurInput" data-ref="cardDate" name='ano_cartao' aria-controls="cardYearAlert" required>
               <option value="" disabled selected>Ano</option>
               <option v-bind:value="$index + minCardYear" v-for="(n, $index) in 12" v-bind:key="n">
                 {{$index + minCardYear}}
@@ -178,7 +178,7 @@
           </div>
           <label for="cardCvv">CVV</label>
           <input type="tel" id="cardCvv" v-mask="'###'" maxlength="3" v-model="cardCvv" v-on:focus="flipCard(true)"
-            v-on:blur="flipCard(false)" autocomplete="cc-csc" name='cvv_cartao' aria-controls="cardCvvAlert">
+            v-on:blur="flipCard(false)" autocomplete="cc-csc" name='cvv_cartao' aria-controls="cardCvvAlert" required onkeyup="apenasNumeros(this)">
           <div id='cardCvvAlert' role="alert"></div>
           <div id='cardYearAlert' role="alert"></div>
           <div id='cardMonthAlert' role="alert"></div>
@@ -189,21 +189,21 @@
           <div class="form-caixa">
             <label for="cpf">CPF</label>
             <input type="tel" class="form-caixa__input " id="cpf" name='cpf' onkeypress="$(this).mask('000.000.000-00')"
-              aria-controls="cpfAlert">
+              aria-controls="cpfAlert" required onkeyup="apenasNumeros(this)">
             <div id='cpfAlert' role="alert"></div>
           </div>
 
           <div class="form-caixa">
             <label for="cep">CEP</label>
             <input type="tel" id="cep" name='cep' onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)"
-              aria-controls="cepAlert">
+              aria-controls="cepAlert" oninput="apenasNumeros(this)" required>
             <div id='cepAlert' role="alert"></div>
           </div>
 
           <div class="form-caixa">
 
             <label for="numero">Número</label>
-            <input type="tel" id="numero" name='numero' maxlength="6" aria-controls="numeroAlert">
+            <input type="tel" id="numero" name='numero' maxlength="6" aria-controls="numeroAlert" onkeyup="apenasNumeros(this)" required>
             <div id='numeroAlert' role="alert"></div>
 
             <input type="text" class="none" id="rua" name='rua'>
@@ -238,10 +238,9 @@
 <script src="../assets/js/formulario.js"></script>
 <script src="../assets/js/popup.js"></script>
 
-<script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js'></script>
-<script src='https://unpkg.com/vue-the-mask@0.11.1/dist/vue-the-mask.js'></script>
+<script src="assets/js/vueMin.js"></script>
+<script src="assets/js/vueMask.js"></script>
 <script src="assets/js/animacaoCartao.js"></script>
-
 <script src="assets/js/script.js"></script>
 
 </html>

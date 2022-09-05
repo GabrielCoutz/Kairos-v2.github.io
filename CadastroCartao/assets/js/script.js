@@ -46,7 +46,7 @@ switch (true) {
     break;
 }
 
-function validar_cpf(cpf) {
+function validarCPF(cpf) {
   let Soma = 0;
   let Resto;
   cpf = String(cpf).replaceAll(".", "").replace(/-/g, "");
@@ -81,24 +81,18 @@ function validar_cpf(cpf) {
   return 0;
 }
 
-$(document).ready(function () {
-  // desabilita CTRL+V por motivos de incompatibilidade de máscara
-  $("#cpf").on("cut copy paste", function (e) {
-    e.preventDefault();
-  });
-  $("#numero").on("cut copy paste", function (e) {
-    e.preventDefault();
-  });
-  $("#cep").on("cut copy paste", function (e) {
-    e.preventDefault();
-  });
+cpf.addEventListener("keyup", function () {
+  if (validarCPF(cpf.value) && cpf.value.length === 14) {
+    alertaDeErro(cpf, "CPF incorreto!");
+    dispararEvento(cpf, "keyup", "condicaoCPF");
+  }
 });
 
 function cancelar() {
   abrirPopUp({
     cor: "blue",
     titulo: "Cancelando",
-    corpo: "Pena que mudou de ideia =(",
+    corpo: "Pena que mudou de ideia 😢",
     icone: "carregar",
     semBotoes: true,
     bgFechar: false,
@@ -139,9 +133,6 @@ function validar() {
     alertaDeErro(cvv, "Preencha o CVV do cartão!");
     dispararEvento(cvv, "keyup", "condicaoCvv");
     cvv.classList.add("vermei");
-  } else if (validar_cpf(cpf.value) === 1) {
-    alertaDeErro(cpf, "Insira o CPF corretamente");
-    dispararEvento(cpf, "keyup", "condicaoCPF");
   } else if (cep.value.length < 10) {
     dispararEvento(cep, "keyup", "condicaoCep");
     alertaDeErro(cep, "Preencha o CEP!");

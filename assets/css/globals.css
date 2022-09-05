@@ -261,6 +261,7 @@ li.nav-lateral-ativo ~ .menu-btn,
 }
 
 .perfil input:focus,
+.perfil select:focus,
 .cartao input:focus,
 .cartao select:focus {
   border-color: var(--cor-primaria);

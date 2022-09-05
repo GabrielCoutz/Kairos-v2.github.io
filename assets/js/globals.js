@@ -37,6 +37,9 @@ function apagarCookie(nome) {
 }
 
 function enviar() {
+  document.getElementById("butao")
+    ? (document.getElementById("butao").disabled = true)
+    : (document.getElementById("salvarbtn").disabled = true);
   janelaPopUp.fecha("popUp");
   document.querySelector("form").submit();
 }
@@ -69,10 +72,7 @@ function alertaDeErro(elemento, mensagem) {
   let iconeAlerta = document.createElement("i");
   iconeAlerta.setAttribute("class", "gg-danger");
   iconeAlerta.setAttribute("aria-hidden", "true");
-  if (
-    elemento.id === "senha_antiga" &&
-    window.location.href.includes("Perfil")
-  ) {
+  if (elemento.id === "senha_antiga" && checarPerfil()) {
     senha_nova.classList.add("vermei");
     senha_nova_dup.classList.add("vermei");
   }
@@ -87,15 +87,14 @@ function alertaDeErro(elemento, mensagem) {
   if (vazio(caixa.innerText)) {
     caixa.innerHTML += mensagem;
   }
-  if (
-    window.location.href.includes("Perfil") ||
-    window.location.href.includes("CadastroCartao")
-  ) {
+  if (checarPerfil() || window.location.href.includes("CadastroCartao")) {
     caixa.append(iconeAlerta);
   }
   if (elemento.previousElementSibling.tagName === "I") {
     let elementoAnterior = elemento.previousElementSibling;
-    iconeAnterior = elementoAnterior.classList[0];
+    if (elementoAnterior.classList[0] !== "gg-danger") {
+      iconeAnterior = elementoAnterior.classList[0];
+    }
     elementoAnterior.classList.remove(iconeAnterior);
     elementoAnterior.classList.add("gg-danger");
   }
@@ -129,6 +128,11 @@ function apenasLetras(event) {
   }
 }
 
+function apenasNumeros(event) {
+  let limpo = event.value.replace(/[^0-9-. /]/g, "");
+  event.value = limpo;
+}
+
 function lerCEP(cep) {
   if (cep.value.length == 10) {
     $.ajax({
@@ -144,14 +148,6 @@ function lerCEP(cep) {
           resposta.localidade == undefined ||
           resposta.uf == undefined
         ) {
-          abrirPopUp({
-            cor: "red",
-            corpo:
-              "CEP incorreto! Por favor, verifique os números e tente novamente.",
-            titulo: "Dados Inválidos",
-            icone: "falha",
-          });
-
           if (window.location.href.includes("cadastro")) {
             alertaDeErro(
               document.querySelector('input[id^="cep"]'),
@@ -188,7 +184,7 @@ function lerCEP(cep) {
             ", " +
             resposta.uf;
           document.querySelector('input[id^="numero"]').focus();
-          if (window.location.href.includes("Perfil")) {
+          if (checarPerfil()) {
             Cookies.set("endereco", 1);
           }
         }
@@ -245,6 +241,14 @@ function validarCNPJ(valor) {
   return true;
 }
 
+function checarPerfil() {
+  return window.location.href.includes("Perfil");
+}
+
+function checarCartao() {
+  return window.location.href.includes("CadastroCartao");
+}
+
 function dispararEvento(elemento, evento, stringCondicao) {
   //dispara um evento de confirmação para o input no qual o valor inserido é inválido ou insatisfatório
 
@@ -265,7 +269,7 @@ function dispararEvento(elemento, evento, stringCondicao) {
       break;
     case "condicaoSenha":
       var condicao = function () {
-        if (window.location.href.includes("Perfil")) {
+        if (checarPerfil()) {
           return (
             vazio(senha_antiga.value) ||
             vazio(senha_nova.value) ||
@@ -286,7 +290,7 @@ function dispararEvento(elemento, evento, stringCondicao) {
       break;
     case "condicaoCPF":
       var condicao = function () {
-        return validar_cpf(cpf.value) == 1;
+        return validarCPF(cpf.value) == 1;
       };
       break;
     case "condicaoCep":
@@ -315,31 +319,33 @@ function dispararEvento(elemento, evento, stringCondicao) {
     // verifica se a validação é satisfeita, assim retira o eventListener, remove os avisos e libera o usuario para registrar-se
     if (!condicao()) {
       elemento.classList.remove("vermei");
-      elemento.previousElementSibling.classList.remove("gg-danger");
-      elemento.previousElementSibling.classList.add(iconeAnterior);
+      if (elemento.previousElementSibling.tagName === "I") {
+        elemento.previousElementSibling.classList.remove("gg-danger");
+        elemento.previousElementSibling.classList.add(iconeAnterior);
+      }
       document
         .getElementById(elemento.getAttribute("aria-controls"))
         .classList.remove("alerta-ativo");
       document.getElementById(
         elemento.getAttribute("aria-controls")
       ).innerHTML = "";
-      if (window.location.href.includes("Perfil")) {
+      if (checarPerfil()) {
         senha_nova.classList.remove("vermei");
         senha_nova_dup.classList.remove("vermei");
         window.removeEventListener(evento, funcao);
       }
       elemento.removeEventListener(evento, funcao);
-      window.location.href.includes("Perfil")
+      checarPerfil()
         ? (document.getElementById("salvarbtn").disabled = false)
         : (document.getElementById("butao").disabled = false);
     }
   };
 
   // Já sabendo qual condição deve ser utilizada, é adicionado ao elemento seu evento (keydown ou keyup) e chamada da função, no qual fará uso da condicao setada pelo switch
-  window.location.href.includes("Perfil")
+  checarPerfil()
     ? (document.getElementById("salvarbtn").disabled = true)
     : (document.getElementById("butao").disabled = true);
-  if (window.location.href.includes("Perfil")) {
+  if (checarPerfil()) {
     window.addEventListener(evento, funcao);
     senha_nova.classList.add("vermei");
     senha_nova_dup.classList.add("vermei");

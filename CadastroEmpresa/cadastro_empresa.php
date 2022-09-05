@@ -8,7 +8,7 @@
     <meta name="description" content="Kairos | Cadastro da Empresa">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../assets/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet preload" href="../assets/css/style.min.css">
+    <link rel="stylesheet preload" as="style" href="../assets/css/style.min.css">
     <title>Cadastro da Empresa</title>
     <?php
         session_start();
@@ -27,7 +27,7 @@
             <a href="../index"><img src="../assets/img/logo/Logo.svg" alt="Kairos Logo" width="740" height="210"></a>
         </div>
     </header>
-
+ 
     <div class="fundo-form container">
         <div class="form-holder">
             <form method="POST" action="assets/php/cadastrar" class="formulario empresa" onsubmit="return false">
@@ -37,7 +37,7 @@
                     <label aria-hidden="true" for="nome_empresa">Nome da empresa</label>
                     <i class="gg-organisation" aria-hidden="true"></i>
                     <input type="text" required name="nome_empresa" id="nome_empresa" placeholder="Nome da empresa"
-                        aria-controls="nome_empresaAlert" maxlength="50">
+                        aria-controls="nome_empresaAlert" maxlength="50" required>
                     <span class="underline" aria-hidden="true"></span>
                     <div id="nome_empresaAlert" role="alert"></div>
                 </div>
@@ -45,7 +45,7 @@
                     <label aria-hidden="true" for="nome_fantasia">Nome Fantasia</label>
                     <i class="gg-organisation" aria-hidden="true"></i>
                     <input type="text" required name="nome_fantasia" id="nome_fantasia" placeholder="Nome Fantasia"
-                        aria-controls="nome_fantasiaAlert" maxlength="50">
+                        aria-controls="nome_fantasiaAlert" maxlength="50" required>
                     <span class="underline" aria-hidden="true"></span>
                     <div id="nome_fantasiaAlert" role="alert"></div>
                 </div>
@@ -53,14 +53,14 @@
                     <label aria-hidden="true" for="cnpj">CNPJ</label>
                     <i class="gg-organisation" aria-hidden="true"></i>
                     <input type="tel" name="cnpj" id="cnpj" placeholder="CNPJ" aria-controls="cnpjAlert"
-                        onkeypress="$(this).mask('00.000.000/0000-00')">
+                        onkeypress="$(this).mask('00.000.000/0000-00')" onkeyup="apenasNumeros(this)" required>
                     <span class="underline" aria-hidden="true"></span>
                     <div id="cnpjAlert" role="alert"></div>
                 </div>
                 <div class="form-caixa">
                     <label aria-hidden="true" for="ramo">Ramo</label>
                     <i class="gg-organisation" aria-hidden="true"></i>
-                    <select name="ramo" id="ramo" aria-controls="ramoAlert">
+                    <select name="ramo" id="ramo" aria-controls="ramoAlert" required>
                         <option value disabled selected>Selecione o Ramo</option>
                         <option>Alimentação</option>
                         <option>Saúde</option>
@@ -74,7 +74,7 @@
                     <label aria-hidden="true" for="cep_empresa">CEP</label>
                     <i class="gg-pin" aria-hidden="true"></i>
                     <input type="tel" name="cep_empresa" id="cep_empresa" placeholder="CEP"
-                        aria-controls="cep_empresaAlert" onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)">
+                        aria-controls="cep_empresaAlert" onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)" oninput="apenasNumeros(this)" required>
                     <span class="underline" aria-hidden="true"></span>
                     <div id="cep_empresaAlert" role="alert"></div>
                 </div>
@@ -82,7 +82,7 @@
                     <label aria-hidden="true" for="numero_empresa">Número</label>
                     <i class="gg-pin" aria-hidden="true"></i>
                     <input type="tel" name="numero_empresa" id="numero_empresa" placeholder="Número"
-                        aria-controls="numero_empresaAlert">
+                        aria-controls="numero_empresaAlert" required oninput="apenasNumeros(this)">
                     <span class="underline" aria-hidden="true"></span>
                     <div id="numero_empresaAlert" role="alert"></div>
                 </div>
@@ -93,6 +93,7 @@
                 <input type="text" class="none" id="estado_empresa" name="estado_empresa">
 
                 <button type="submit" id="butao" class="btn primario" onclick="validar()">Registrar</button>
+                <button class="btn terciario" type="reset" onclick="cancelar()">Cancelar</button>
             </form>
         </div>
 

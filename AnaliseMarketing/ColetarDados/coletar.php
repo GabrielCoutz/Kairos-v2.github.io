@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Kairos | Análise de Marketing">
     <link rel="shortcut icon" href="../../assets/img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet preload" href="../../assets/css/style.min.css">
+    <link rel="stylesheet preload" as="style" href="../../assets/css/style.min.css">
     <title>Análise de Marketing</title>
     <?php
       error_reporting(E_ALL);

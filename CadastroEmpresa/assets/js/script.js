@@ -27,6 +27,27 @@ switch (true) {
     break;
 }
 
+cnpj.addEventListener("keyup", function () {
+  if (!validarCNPJ(cnpj.value) && cnpj.value.length === 18) {
+    alertaDeErro(cnpj, "CNPJ incorreto!");
+    dispararEvento(cnpj, "keyup", "condicaoCNPJ");
+  }
+});
+
+function cancelar() {
+  abrirPopUp({
+    cor: "blue",
+    titulo: "Cancelando",
+    corpo: "Pena que mudou de ideia 😢",
+    icone: "carregar",
+    semBotoes: true,
+    bgFechar: false,
+  });
+  setTimeout(() => {
+    window.location.href = "../Perfil/PerfilEmpresa/empresa";
+  }, 3000);
+}
+
 function validar() {
   limpar_inputs();
 
@@ -36,9 +57,6 @@ function validar() {
   } else if (vazio(nome_fantasia.value)) {
     alertaDeErro(nome_fantasia, "Preencha o Nome Fantasia!");
     dispararEvento(nome_fantasia, "keyup", "condicaoVazio");
-  } else if (!validarCNPJ(cnpj.value)) {
-    alertaDeErro(cnpj, "CNPJ incorreto!");
-    dispararEvento(cnpj, "keyup", "condicaoCNPJ");
   } else if (vazio(ramo.value)) {
     alertaDeErro(ramo, "Selecione o ramo!");
     dispararEvento(ramo, "change", "condicaoVazio");
