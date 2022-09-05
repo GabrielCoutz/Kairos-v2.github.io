@@ -11,6 +11,10 @@
   flex-basis: 500px;
 }
 
+.intro-img > img {
+  height: auto;
+}
+
 .intro-info {
   margin-right: 80px;
 }
@@ -21,11 +25,6 @@
   justify-items: start;
   flex: 1;
   flex-basis: 400px;
-}
-
-.intro-info > span {
-  color: var(--cor-primaria);
-  font: normal 1.875rem/1 var(--fonte-display);
 }
 
 .intro-info > h1 {

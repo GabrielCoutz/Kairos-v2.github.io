@@ -46,7 +46,6 @@
     
     <main class="intro container">
         <div class="intro-info">
-            <span>Bem vindo ao Kairos</span>
             <h1>Uma plataforma pensada e desenvolvida para Você</h1>
             <p class="texto">Mais que uma ferramenta, um meio para alcançar seu sucesso no mercado.</p>
             <a href="CadastroUsuario/cadastro_usuario" class="btn primario btn-hover">Começar Agora</a>

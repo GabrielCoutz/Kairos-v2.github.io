@@ -1,16 +1,16 @@
 @font-face {
-  font-family: "Rubik";
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 500;
-  src: url("../fonts/Rubik/Rubik-Medium.ttf") format("truetype");
+  src: url("../fonts/Poppins/Poppins-Medium.ttf") format("truetype");
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Rubik";
+  font-family: "Poppins";
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/Rubik/Rubik-Regular.ttf") format("truetype");
+  src: url("../fonts/Poppins/Poppins-Regular.ttf") format("truetype");
   font-display: swap;
 }
 
@@ -25,7 +25,7 @@
 :root {
   --largura-max: 1400px;
   --centralizar-padding: calc((100% - var(--largura-max)) / 2);
-  --fonte-display: "Rubik", sans-serif;
+  --fonte-display: "Poppins", sans-serif;
   --fonte-texto: "Nunito", sans-serif;
   --cor-primaria: #4466ff;
   --cor-fundo: #accffe;
