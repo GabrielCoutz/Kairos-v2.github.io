@@ -70,7 +70,7 @@
 .orientacoes-composto > h1,
 .orientacoes-composto > h2 {
   color: var(--p3);
-  font: 600 2rem/1 var(--fonte-display);
+  font: 500 2rem/1 var(--fonte-display);
 }
 
 .orientacoes-swot > ul,
@@ -103,7 +103,7 @@
 
 .orientacoes-swot > span,
 .orientacoes-composto > span {
-  font: 500 1.3rem/1.5 var(--fonte-texto);
+  font: 400 1.3rem/1.5 var(--fonte-texto);
   color: var(--c1);
   max-width: 47ch;
   display: flex;

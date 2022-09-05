@@ -104,7 +104,7 @@ function alertaDeErro(elemento, mensagem) {
 
 function vazio(item) {
   // verifica se o valor passado está vazio
-  return item.trim() == "";
+  return item.trim() === "";
 }
 
 function validarEmail(valor) {

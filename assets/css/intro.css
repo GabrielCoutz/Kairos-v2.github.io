@@ -29,7 +29,7 @@
 }
 
 .intro-info > h1 {
-  font: 700 3.125rem/1.124 var(--fonte-display);
+  font: 500 3.125rem/1.124 var(--fonte-display);
   color: var(--p1);
 }
 
