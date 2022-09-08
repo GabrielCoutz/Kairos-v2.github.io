@@ -96,8 +96,8 @@
   transform: translate(-50%, -50%);
 }
 
-#popUpEnviar:not(.body-perfil.empresa > #popUpEnviar, .assinaturas
-    #popUpEnviar) {
+.p.green > #popUpEnviar,
+.p.red > #popUpEnviar {
   display: none;
 }
 
@@ -110,7 +110,7 @@
   font: 500 1rem/1.5 var(--fonte-display);
 }
 
-.body-perfil.empresa .p > .btn {
+.body-perfil .p > .btn {
   justify-self: center;
   align-self: center;
   margin-bottom: 8px;

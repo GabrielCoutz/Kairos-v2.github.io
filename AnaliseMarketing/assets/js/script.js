@@ -13,7 +13,7 @@ switch (true) {
   case verificarURL(cripto("sucesso=false")): // janela de erro na realização da análise
     abrirPopUp({
       cor: "red",
-      corpo:
+      corpo:               
         "Parece que houve um erro durante o processamento de dados. Por favor, tente novamente mais tarde ou entre em contato conosco.",
       titulo: "Análise não concluída",
       icone: "falha",
@@ -34,7 +34,7 @@ switch (true) {
     limparURL(cripto("analise=false"));
     break;
 }
-console.log(conteudo);
+
 if (conteudo) {
   document.querySelectorAll(".swot-caixa > span").forEach((item) => {
     item.innerHTML = item.innerText.replace(/,/g, "<li>");

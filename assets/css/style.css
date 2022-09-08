@@ -232,25 +232,24 @@
   .header-nav.menu-ativo {
     left: 0;
   }
-  .form-holder {
-    max-width: none;
-    min-height: 100%;
-    height: 100%;
+
+  .body-form .fundo-form.container {
+    background: white;
   }
+
   .fundo-form.container {
     padding: 0;
     height: 100vh;
   }
-  .formulario {
-    height: 100%;
+  .body-form .formulario {
     gap: 50px;
     border-radius: 0;
-    padding: 0 60px;
+    padding: 0 30px;
     align-content: center;
     overflow: hidden;
-  }
-  .cadastro .formulario {
-    padding: 0 30px;
+    box-shadow: none;
+    box-sizing: border-box;
+    padding-top: calc(100% / 5);
   }
   .cadastro .form-caixa {
     gap: 0px 15px;
@@ -332,9 +331,6 @@
   }
   .titulo {
     font-size: 1.7rem;
-  }
-  .formulario {
-    padding: 0 30px;
   }
   .btn {
     box-sizing: border-box;

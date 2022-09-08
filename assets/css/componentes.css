@@ -15,7 +15,7 @@
 
 .btn.primario {
   color: var(--branco-puro);
-  background: var(--cor-primaria);
+  background: var(--gradiente);
 }
 
 .btn.secundario {

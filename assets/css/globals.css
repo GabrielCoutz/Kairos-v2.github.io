@@ -32,6 +32,8 @@
   --borda-redonda: 12px;
   --sombra-input: 0px 10px 20px -10px rgb(32 56 117 / 40%);
 
+  --gradiente: linear-gradient(180deg, #4e6ef1 -30.89%, #5b0fbf 132.79%);
+
   --branco-puro: #ffffff;
   --preto-puro: #000000;
 

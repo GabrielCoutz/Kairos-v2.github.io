@@ -83,7 +83,7 @@ function adicionarTel() {
   divAdd.setAttribute("class", "adicionarNumero");
 
   let input = document.createElement("input");
-  input.setAttribute("type", "text");
+  input.setAttribute("type", "tel");
   input.setAttribute("placeholder", "(00) 0000-00000");
   input.setAttribute("class", "adicionar");
   input.setAttribute("onkeypress", '$(this).mask("(00) 0000-00009")');

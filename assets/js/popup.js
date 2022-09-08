@@ -104,7 +104,6 @@ janelaPopUp.abre = function (param) {
     document.getElementById("popUpEnviar").innerHTML = "Impulsionar Agora";
     document.getElementById("popUpEnviar").classList.remove("secundario");
     document.getElementById("popUpEnviar").classList.add("primario");
-    document.getElementById("popUpEnviar").style.display = "block";
     document.getElementById("popUpCancelar").innerHTML = "Talvez depois";
 
     document
@@ -155,8 +154,6 @@ janelaPopUp.abre = function (param) {
 
   if (param.abrirEmpresa) {
     document.getElementById("popUpEnviar").innerHTML = "Sim, gostaria";
-    document.getElementById("popUpEnviar");
-    document.getElementById("popUpEnviar").style.display = "block";
     document.getElementById("popUpEnviar").classList.remove("secundario");
     document.getElementById("popUpEnviar").classList.add("primario");
 
@@ -203,7 +200,6 @@ janelaPopUp.abre = function (param) {
   if (param.analise) {
     document.getElementById("popUpEnviar").innerHTML = "Sim, gostaria";
     document.getElementById("popUpEnviar").classList.remove("secundario");
-    document.getElementById("popUpEnviar").style.display = "block";
     document.querySelector("#popUp").style.maxHeight = "290px";
     document.getElementById("popUpEnviar").classList.add("primario");
     document.getElementById("popUpCancelar").innerHTML = "Não, talvez depois";
@@ -321,7 +317,7 @@ switch (true) {
       titulo: "Alteração realizada com sucesso",
       icone: "sucesso",
     });
-    limparURL(cripto("sucesso=trrue"));
+    limparURL(cripto("sucesso=true"));
     break;
   case verificarURL(cripto("cadastro=true")):
     abrirPopUp({
