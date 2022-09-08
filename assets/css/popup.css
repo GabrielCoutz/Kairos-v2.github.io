@@ -96,9 +96,8 @@
   transform: translate(-50%, -50%);
 }
 
-#popUpEnviar:not(.body-perfil.empresa > #popUpEnviar, .resultado
-    #popUpEnviar, .assinaturas #popUpEnviar),
-.resultado #popUpEnviar {
+#popUpEnviar:not(.body-perfil.empresa > #popUpEnviar, .assinaturas
+    #popUpEnviar) {
   display: none;
 }
 

@@ -70,7 +70,7 @@
                         aria-pressed="false"></button>
                     <span class="underline" aria-hidden="true"></span>
                 </div>
-                <button type="submit" id="butao" class="btn primario" onclick="validar()">Registrar</button>
+                <button   id="butao" class="btn primario" onclick="validar()">Registrar</button>
                 <a href="../Login/login" class="btn terciario">Fazer login</a>
             </form>
         </div>

@@ -43,7 +43,7 @@
         </div>
 
     </header>
-    
+
     <main class="intro container">
         <div class="intro-info">
             <h1>Uma plataforma pensada e desenvolvida para Você</h1>
