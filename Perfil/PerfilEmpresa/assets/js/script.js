@@ -104,7 +104,6 @@ document.querySelectorAll("input").forEach((item) => {
         break;
 
       case "nome_fantasia":
-        console.log("foi");
         switch (true) {
           case this.value == conteudo_nome_fantasia:
             salvarbtn.disabled = true;

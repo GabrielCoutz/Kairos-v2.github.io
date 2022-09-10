@@ -42,7 +42,6 @@ if (conteudo) {
   });
 
   document.querySelectorAll(".composto-caixa > span").forEach((item) => {
-    console.log(item.innerText);
     item.innerHTML = item.innerText.replace(/,/g, "<li>");
     item.innerHTML += "</li>";
   });

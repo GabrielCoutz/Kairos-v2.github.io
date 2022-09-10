@@ -193,11 +193,10 @@ function lerCEP(cep) {
   }
 }
 
-function validarCNPJ(valor) {
-  valor = valor.replace(/[^\d]+/g, "");
+function validarCNPJ(numeroCNPJ) {
+  let valor = numeroCNPJ.replace(/[^\d]+/g, "");
 
-  if (valor === "") return false;
-  if (valor.length != 14) return false;
+  if (valor === "" || valor.length != 14) return false;
 
   // Elimina CNPJs invalidos conhecidos
   if (
@@ -214,27 +213,30 @@ function validarCNPJ(valor) {
   )
     return false;
 
-  // Valida DVs
-  tamanho = valor.length - 2;
-  numeros = valor.substring(0, tamanho);
-  digitos = valor.substring(tamanho);
-  soma = 0;
-  pos = tamanho - 7;
+  let tamanho = valor.length - 2;
+  let numeros = valor.substring(0, tamanho);
+  let digitos = valor.substring(tamanho);
+  let soma = 0;
+  let pos = tamanho - 7;
+
   for (let i = tamanho; i >= 1; i--) {
     soma += numeros.charAt(tamanho - i) * pos--;
     if (pos < 2) pos = 9;
   }
-  resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+
+  let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
   if (resultado != digitos.charAt(0)) return false;
 
   tamanho = tamanho + 1;
   numeros = valor.substring(0, tamanho);
   soma = 0;
   pos = tamanho - 7;
+
   for (let i = tamanho; i >= 1; i--) {
     soma += numeros.charAt(tamanho - i) * pos--;
     if (pos < 2) pos = 9;
   }
+
   resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
   if (resultado != digitos.charAt(1)) return false;
 
@@ -290,7 +292,7 @@ function dispararEvento(elemento, evento, stringCondicao) {
       break;
     case "condicaoCPF":
       var condicao = function () {
-        return validarCPF(cpf.value) == 1;
+        return validarCPF(cpf.value) === 1;
       };
       break;
     case "condicaoCep":

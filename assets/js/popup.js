@@ -94,17 +94,18 @@ janelaPopUp.abre = function (param) {
     janela2.append(botaoOk);
   }
 
-  $("body").append(popFundo2);
-  $("body").append(janela2);
+  document.body.insertBefore(popFundo2, document.querySelector("header"));
+  document.body.insertBefore(janela2, document.querySelector("header"));
 
   $(".popUpFundo").fadeIn("fast");
   $("#popUp").addClass("popUpEntrada");
 
   if (param.marketing === true) {
-    document.getElementById("popUpEnviar").innerHTML = "Impulsionar Agora";
-    document.getElementById("popUpEnviar").classList.remove("secundario");
-    document.getElementById("popUpEnviar").classList.add("primario");
-    document.getElementById("popUpCancelar").innerHTML = "Talvez depois";
+    document.getElementById("popUpEnviar").innerText = "Impulsionar Agora";
+    document
+      .getElementById("popUpEnviar")
+      .classList.replace("secundario", "primario");
+    document.getElementById("popUpCancelar").innerText = "Talvez depois";
 
     document
       .getElementById("popUpEnviar")
@@ -154,8 +155,9 @@ janelaPopUp.abre = function (param) {
 
   if (param.abrirEmpresa) {
     document.getElementById("popUpEnviar").innerHTML = "Sim, gostaria";
-    document.getElementById("popUpEnviar").classList.remove("secundario");
-    document.getElementById("popUpEnviar").classList.add("primario");
+    document
+      .getElementById("popUpEnviar")
+      .classList.replace("secundario", "primario");
 
     document.getElementById("popUpCancelar").innerHTML =
       "Não, talvez mais tarde";
@@ -198,11 +200,12 @@ janelaPopUp.abre = function (param) {
   }
 
   if (param.analise) {
-    document.getElementById("popUpEnviar").innerHTML = "Sim, gostaria";
-    document.getElementById("popUpEnviar").classList.remove("secundario");
+    document.getElementById("popUpEnviar").innerText = "Sim, gostaria";
+    document
+      .getElementById("popUpEnviar")
+      .classList.replace("secundario", "primario");
     document.querySelector("#popUp").style.maxHeight = "290px";
-    document.getElementById("popUpEnviar").classList.add("primario");
-    document.getElementById("popUpCancelar").innerHTML = "Não, talvez depois";
+    document.getElementById("popUpCancelar").innerText = "Não, talvez depois";
 
     document
       .getElementById("popUpEnviar")
@@ -286,8 +289,9 @@ function abrirJanelaPlanos(plano_mudanca, plano_atual) {
     icone: "plano",
   });
   document.getElementById("popUpEnviar").innerHTML = "Sim, desejo mudar";
-  document.getElementById("popUpEnviar").classList.remove("secundario");
-  document.getElementById("popUpEnviar").classList.add("primario");
+  document
+    .getElementById("popUpEnviar")
+    .classList.replace("secundario", "primario");
   document.getElementById("popUpCancelar").innerHTML = "Não, talvez depois";
 
   document.getElementById("popUpEnviar").addEventListener("click", function () {
