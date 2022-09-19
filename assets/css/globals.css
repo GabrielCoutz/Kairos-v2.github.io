@@ -53,6 +53,62 @@ html {
   scroll-behavior: smooth;
 }
 
+[data-js~="scroll"] {
+  opacity: 0;
+  transition: all 0.5s;
+  transform: translateY(50px);
+}
+
+[data-js~="scroll"].ativo {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.up-to-down {
+  animation: up-to-down 1.3s forwards;
+}
+
+.ativo .left-to-right {
+  animation: left-to-right 1.3s forwards;
+}
+
+.ativo .right-to-left {
+  animation: right-to-left 1.3s forwards;
+}
+
+@keyframes up-to-down {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -50px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes left-to-right {
+  from {
+    opacity: 0;
+    transform: translate3d(-50px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes right-to-left {
+  from {
+    opacity: 0;
+    transform: translate3d(50px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
 iframe {
   grid-column: 1/-1;
 }

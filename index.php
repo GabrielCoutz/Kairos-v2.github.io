@@ -45,17 +45,17 @@
     </header>
 
     <main class="intro container">
-        <div class="intro-info">
+        <div class="intro-info up-to-down">
             <h1>Uma plataforma pensada e desenvolvida para Você</h1>
             <p class="texto">Mais que uma ferramenta, um meio para alcançar seu sucesso no mercado.</p>
             <a href="CadastroUsuario/cadastro_usuario" class="btn primario btn-hover">Começar Agora</a>
         </div>
-        <div class="intro-img">
+        <div class="intro-img up-to-down">
             <img src="assets/img/intro/equipe.svg" width="943" height="602" alt="" aria-hidden="true">
         </div>
     </main>
 
-    <section class="metodos container" aria-labelledby="metodos-titulo">
+    <section class="metodos container" aria-labelledby="metodos-titulo" data-js="scroll">
         <h1 class="titulo" id="metodos-titulo">Nossos Métodos</h1>
         <p class="texto">Assim como cada pessoa, nossos projetos são únicos, especiais e sempre desenvolvidos com muito
             carinho e
@@ -89,11 +89,11 @@
         <a href="CadastroUsuario/cadastro_usuario" class="btn primario">Porque não começar hoje?</a>
     </section>
 
-    <section class="sobre container" id="sobre" aria-labelledby="sobre-titulo">
-        <div class="sobre-img">
+    <section class="sobre container" id="sobre" aria-labelledby="sobre-titulo" data-js="scroll">
+        <div class="sobre-img down-to-up">
             <img src="assets/img/sobre/sobre.svg" width="873" height="590" alt="" aria-hidden="true">
         </div>
-        <div class="sobre-info">
+        <div class="sobre-info down-to-up">
             <h1 class="titulo" id="sobre-titulo">Conheça um pouco sobre nós</h1>
             <p class="texto">Utilizamos táticas de marketing para auxiliar na criação e desenvolimento de negócios,
                 apoiando startups,
@@ -122,11 +122,11 @@
         </div>
     </section>
 
-    <section class="planos container" id="planos" aria-labelledby="plano-sec-titulo">
-        <h1 class="titulo" id="plano-sec-titulo">Planos de Serviço</h1>
-        <p class="texto">Seu negócio, suas regras</p>
+    <section class="planos container" id="planos" aria-labelledby="plano-sec-titulo" data-js="scroll">
+        <h1 class="titulo down-to-up" id="plano-sec-titulo">Planos de Serviço</h1>
+        <p class="texto down-to-up">Seu negócio, suas regras</p>
         <div class="planos-cards">
-            <div class="planos-item">
+            <div class="planos-item down-to-up">
                 <span class="planos-titulo titulo">Básico</span>
                 <span class="planos-preco texto">R$ 19,00</span>
                 <ul class="planos-beneficios" aria-label="Benefícios do plano">
@@ -137,7 +137,7 @@
                 </ul>
                 <a href="CadastroUsuario/cadastro_usuario?plano=Básico" class="btn secundario btn-plano">Escolher plano</a>
             </div>
-            <div class="planos-item">
+            <div class="planos-item down-to-up">
                 <span class="planos-titulo titulo">Médio</span>
                 <span class="planos-preco texto">R$ 35,00</span>
                 <ul class="planos-beneficios" aria-label="Benefícios do plano">
@@ -149,7 +149,7 @@
                 </ul>
                 <a href="CadastroUsuario/cadastro_usuario?plano=Médio" class="btn primario btn-plano-ativo">Escolher plano</a>
             </div>
-            <div class="planos-item">
+            <div class="planos-item down-to-up">
                 <span class="planos-titulo titulo">Premium</span>
                 <span class="planos-preco texto">R$ 45,00</span>
                 <ul class="planos-beneficios" aria-label="Benefícios do plano">
@@ -161,15 +161,15 @@
                     <li>Plano de Negócios</li>
                     <li>Análise de Resultados</li>
                 </ul>
-                <a href="CadastroUsuario/cadastro_usuario?plano=Premium" class="btn secundario btn-plano">Escolher plano</a>
+                <a href="CadastroUsuario/cadastro_usuario?plano=Premium" class="btn secundario btn-plano down-to-up">Escolher plano</a>
             </div>
         </div>
     </section>
 
-    <section class="captacao container" aria-labelledby="captacao-titulo">
-        <h1 class="titulo" id="captacao-titulo" >Já tem um projeto em mente?<br>Maravilha!<br>
+    <section class="captacao container" aria-labelledby="captacao-titulo" data-js="scroll">
+        <h1 class="titulo left-to-right" id="captacao-titulo">Já tem um projeto em mente?<br>Maravilha!<br>
             Vamos começar agora mesmo!</h1>
-        <a href="CadastroUsuario/cadastro_usuario" class="btn primario">Por aqui</a>
+        <a href="CadastroUsuario/cadastro_usuario" class="btn primario right-to-left">Por aqui</a>
     </section>
 
     <footer class="container">
@@ -202,5 +202,6 @@
 </body>
 <script src="assets/js/script.js" async></script>
 <script src="assets/js/globals.js" async></script>
+<script src="assets/js/scroll-animacao.js"></script>
 
 </html>
