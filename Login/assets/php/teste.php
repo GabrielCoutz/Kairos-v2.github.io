@@ -7,9 +7,13 @@ $dbUname = 'root';
 $dbPass = '';
 $dbName     = 'kairos';
 
+
+$teste =  json_decode(trim(file_get_contents("php://input")), true);
+
+
 $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
-// $email_padrao = $_POST['email'];
-$email_padrao = 'gabriel@gmail.com';
+$email_padrao = $teste['email'];
+// $email_padrao = 'gabriel@gmail.com';
 $query="SELECT * FROM telefone WHERE email_usuario=?";
 $exec=$conec->prepare($query);
 $exec->bind_param("s", $email_padrao);
