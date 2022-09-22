@@ -76,5 +76,6 @@
 <script src="../assets/js/popup.js"></script>
 
 <script src="assets/js/script.js"></script>
+<script src="assets/js/teste.js"></script>
 
 </html>
