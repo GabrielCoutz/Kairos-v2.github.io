@@ -11,6 +11,7 @@ $dbName     = 'kairos';
 $teste =  json_decode(trim(file_get_contents("php://input")), true);
 
 
+
 $conec=new mysqli($dbHost,$dbUname,$dbPass,$dbName,"3306");
 $email_padrao = $teste['email'];
 // $email_padrao = 'gabriel@gmail.com';

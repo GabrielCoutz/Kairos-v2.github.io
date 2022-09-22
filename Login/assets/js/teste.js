@@ -1,6 +1,5 @@
 const obj = {
   email: "gabriel@gmail.com",
-  senha: "abc123",
 };
 
 async function puxar() {
@@ -12,7 +11,11 @@ async function puxar() {
     },
     body: JSON.stringify(obj),
   });
-  const responseJSON = await (await response).json();
+  const responseCheck = await (await response).json();
+
+  const responseJSON = responseCheck.length
+    ? responseCheck
+    : Error("Consulta não efetuada");
   console.log(responseJSON);
 }
 
