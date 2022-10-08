@@ -23,7 +23,7 @@ new Vue({
   },
   computed: {
     getCardType() {
-      let number = this.cardNumber.replace(/[^0-9]+/g, "");
+      const number = this.cardNumber.replace(/[^0-9]+/g, "");
 
       re = new RegExp(/^4[0-9]{15}$/);
       if (number.match(re) != null) return "visa";
@@ -75,8 +75,8 @@ new Vue({
     },
     focusInput(e) {
       this.isInputFocused = true;
-      let targetRef = e.target.dataset.ref;
-      let target = this.$refs[targetRef];
+      const targetRef = e.target.dataset.ref;
+      const target = this.$refs[targetRef];
       this.focusElementStyle = {
         width: `${target.offsetWidth}px`,
         height: `${target.offsetHeight}px`,
@@ -84,7 +84,7 @@ new Vue({
       };
     },
     blurInput() {
-      let vm = this;
+      const vm = this;
       setTimeout(() => {
         if (!vm.isInputFocused) {
           vm.focusElementStyle = null;

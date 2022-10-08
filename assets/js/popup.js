@@ -101,10 +101,17 @@ janelaPopUp.abre = (param) => {
     janela2.append(botaoOk);
   }
 
-  const container = document.querySelector(".principal");
+  const elementoPai = document.querySelector("header");
 
-  container.insertBefore(popFundo2, document.querySelector("header"));
-  container.insertBefore(janela2, document.querySelector("header"));
+  try {
+    const container = document.body;
+    container.insertBefore(popFundo2, elementoPai);
+    container.insertBefore(janela2, elementoPai);
+  } catch (error) {
+    const container = document.querySelector(".principal");
+    container.insertBefore(popFundo2, elementoPai);
+    container.insertBefore(janela2, elementoPai);
+  }
 
   $(".popUpFundo").fadeIn("fast");
   $("#popUp").addClass("popUpEntrada");

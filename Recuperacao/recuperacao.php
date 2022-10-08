@@ -31,8 +31,7 @@
                 <div class="form-caixa">
                     <label aria-hidden="true" for="nome">Nome completo</label>
                     <i class="gg-user" aria-hidden="true"></i>
-                    <input type="text" required name="nome" id="nome" placeholder="Nome Completo"
-                        onkeyup="apenasLetras(this)" aria-controls="nomeAlert">
+                    <input type="text" required name="nome" id="nome" placeholder="Nome Completo" onkeyup="apenasLetras(this)" aria-controls="nomeAlert">
                     <span class="underline" aria-hidden="true"></span>
                     <div id="nomeAlert" role="alert"></div>
                 </div>
@@ -48,9 +47,7 @@
         </div>
     </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
-    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

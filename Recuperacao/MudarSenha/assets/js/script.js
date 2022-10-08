@@ -24,29 +24,31 @@ switch (true) {
   case verificarURL(cripto("erro=true")):
     erroSincronizacao("../../index");
     break;
+  default:
+    break;
 }
 
-const senha_nova = document.getElementById("senha_nova");
-const senha_nova_dup = document.getElementById("senha_nova_dup");
+const senhaNova = document.getElementById("senha_nova");
+const senhaNovaDup = document.getElementById("senha_nova_dup");
 
 function validar() {
   limpar_inputs();
-  if (vazio(senha_nova.value) || vazio(senha_nova_dup.value)) {
-    alertaDeErro(senha_nova, "Por favor, preencha as senhas!");
-    senha_nova.classList.add("vermei");
-    senha_nova_dup.classList.add("vermei");
+  if (vazio(senhaNova.value) || vazio(senhaNovaDup.value)) {
+    alertaDeErro(senhaNova, "Por favor, preencha as senhas!");
+    senhaNova.classList.add("vermei");
+    senhaNovaDup.classList.add("vermei");
     document
-      .getElementById(senha_nova_dup.getAttribute("aria-controls"))
+      .getElementById(senhaNovaDup.getAttribute("aria-controls"))
       .classList.add("alerta-ativo");
-  } else if (senha_nova.value != senha_nova_dup.value) {
+  } else if (senhaNova.value !== senhaNovaDup.valN) {
     alertaDeErro(
-      senha_nova,
+      senhaNova,
       "Senhas não coincidem! Verifique-as e tente novamente"
     );
-    senha_nova.classList.add("vermei");
-    senha_nova_dup.classList.add("vermei");
+    senhaNova.classList.add("vermei");
+    senhaNovaDup.classList.add("vermei");
     document
-      .getElementById(senha_nova_dup.getAttribute("aria-controls"))
+      .getElementById(senhaNovaDup.getAttribute("aria-controls"))
       .classList.add("alerta-ativo");
   } else {
     abrirPopUp({

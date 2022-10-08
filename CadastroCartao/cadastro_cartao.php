@@ -11,26 +11,26 @@
   <link rel="stylesheet preload" as="style" href="../assets/css/style.min.css">
   <title>Pagamento</title>
   <?php
-    error_reporting(E_ERROR | E_PARSE);
-    session_start();
-    $_SESSION['plano']=$_GET['plano'];
-    require_once('../assets/php/globals.php');
+  error_reporting(E_ERROR | E_PARSE);
+  session_start();
+  $_SESSION['plano'] = $_GET['plano'];
+  require_once('../assets/php/globals.php');
 
-    if(isset($_GET['alterar-plano'])){ // alteração de plano contratado
-      $email = $_SESSION['email'];
-      $plano = $_GET['plano'];
+  if (isset($_GET['alterar-plano'])) { // alteração de plano contratado
+    $email = $_SESSION['email'];
+    $plano = $_GET['plano'];
 
-      $query="UPDATE cartao SET assinatura=? WHERE email_usuario=?";
-      $exec=$conec->prepare($query);
-      $exec->bind_param("ss", $plano, $email);
-      $exec->execute();
-      $result=$exec->get_result();
+    $query = "UPDATE cartao SET assinatura=? WHERE email_usuario=?";
+    $exec = $conec->prepare($query);
+    $exec->bind_param("ss", $plano, $email);
+    $exec->execute();
+    $result = $exec->get_result();
 
-      verificarOperacao($result, "../Perfil/usuario");
-      header('Location: ../Perfil/usuario?'.hash("sha512", 'sucesso=true'));
-      exit;
-    }
-  
+    verificarOperacao($result, "../Perfil/usuario");
+    header('Location: ../Perfil/usuario?' . hash("sha512", 'sucesso=true'));
+    exit;
+  }
+
   ?>
 </head>
 
@@ -41,8 +41,7 @@
       <div class="card-list">
         <div class="card-item" v-bind:class="{ '-active' : isCardFlipped }">
           <div class="card-item__side -front">
-            <div class="card-item__focus" v-bind:class="{'-active' : focusElementStyle }"
-              v-bind:style="focusElementStyle" ref="focusElement"></div>
+            <div class="card-item__focus" v-bind:class="{'-active' : focusElementStyle }" v-bind:style="focusElementStyle" ref="focusElement"></div>
             <div class="card-item__cover">
               <img alt="" aria-hidden="true" v-bind:src="'assets/imagens/' + currentCardBackground + '.jpg'" class="card-item__bg">
             </div>
@@ -52,8 +51,7 @@
                 <img type="text/html" alt="" aria-hidden="true" width="80" height="52" src="assets/imagens/chip.png" class="card-item__chip">
                 <div class="card-item__type">
                   <transition name="slide-fade-up" id='ultimo'>
-                    <img alt="" aria-hidden="true" v-bind:src="'assets/imagens/' + getCardType + '.png'" v-if="getCardType"
-                      v-bind:key="getCardType" alt="" class="card-item__typeImg " id="imagem">
+                    <img alt="" aria-hidden="true" v-bind:src="'assets/imagens/' + getCardType + '.png'" v-if="getCardType" v-bind:key="getCardType" alt="" class="card-item__typeImg " id="imagem">
                   </transition>
                 </div>
               </div>
@@ -61,14 +59,11 @@
                 <template v-if="getCardType === 'amex'">
                   <span v-for="(n, $index) in amexCardMask" :key="$index">
                     <transition name="slide-fade-up">
-                      <div class="card-item__numberItem"
-                        v-if="$index > 4 && $index < 14 && cardNumber.length > $index && n.trim() !== ''">*</div>
-                      <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" :key="$index"
-                        v-else-if="cardNumber.length > $index">
+                      <div class="card-item__numberItem" v-if="$index > 4 && $index < 14 && cardNumber.length > $index && n.trim() !== ''">*</div>
+                      <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" :key="$index" v-else-if="cardNumber.length > $index">
                         {{cardNumber[$index]}}
                       </div>
-                      <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" v-else
-                        :key="$index + 1">{{n}}</div>
+                      <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" v-else :key="$index + 1">{{n}}</div>
                     </transition>
                   </span>
                 </template>
@@ -76,14 +71,11 @@
                 <template v-else>
                   <span v-for="(n, $index) in otherCardMask" :key="$index">
                     <transition name="slide-fade-up">
-                      <div class="card-item__numberItem"
-                        v-if="$index > 4 && $index < 15 && cardNumber.length > $index && n.trim() !== ''">*</div>
-                      <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" :key="$index"
-                        v-else-if="cardNumber.length > $index">
+                      <div class="card-item__numberItem" v-if="$index > 4 && $index < 15 && cardNumber.length > $index && n.trim() !== ''">*</div>
+                      <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" :key="$index" v-else-if="cardNumber.length > $index">
                         {{cardNumber[$index]}}
                       </div>
-                      <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" v-else
-                        :key="$index + 1">{{n}}</div>
+                      <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" v-else :key="$index + 1">{{n}}</div>
                     </transition>
                   </span>
                 </template>
@@ -94,8 +86,7 @@
                   <transition name="slide-fade-up">
                     <div class="card-item__name" v-if="cardName.length" key="1">
                       <transition-group name="slide-fade-right">
-                        <span class="card-item__nameItem" v-for="(n, $index) in cardName.replace(/\s\s+/g, ' ')"
-                          v-if="$index === $index" v-bind:key="$index + 1">{{n}}</span>
+                        <span class="card-item__nameItem" v-for="(n, $index) in cardName.replace(/\s\s+/g, ' ')" v-if="$index === $index" v-bind:key="$index + 1">{{n}}</span>
                       </transition-group>
                     </div>
                     <div class="card-item__name" v-else key="2">Nome Completo</div>
@@ -134,42 +125,34 @@
 
               </div>
               <div class="card-item__type">
-                <img v-bind:src="'assets/imagens/' + getCardType + '.png'" v-if="getCardType"
-                  class="card-item__typeImg">
+                <img v-bind:src="'assets/imagens/' + getCardType + '.png'" v-if="getCardType" class="card-item__typeImg">
               </div>
             </div>
           </div>
         </div>
       </div>
-      <form method="POST" action="assets/php/cadastrar_cartao" onsubmit="return false" autocomplete="off"
-        class="formulario">
+      <form method="POST" action="assets/php/cadastrar_cartao" onsubmit="return false" autocomplete="off" class="formulario">
         <div class="form-caixa">
           <label for="cardNumber">Número do Cartão</label>
-          <input type="tel" id="cardNumber" v-mask="generateCardNumberMask" v-model="cardNumber" v-on:focus="focusInput"
-            v-on:blur="blurInput" data-ref="cardNumber" autocomplete="cc-csc" name='num_cartao'
-            aria-controls="cardNumberAlert" required onkeyup="apenasNumeros(this)">
+          <input type="tel" id="cardNumber" v-mask="generateCardNumberMask" v-model="cardNumber" v-on:focus="focusInput" v-on:blur="blurInput" data-ref="cardNumber" autocomplete="cc-csc" name='num_cartao' aria-controls="cardNumberAlert" required onkeyup="apenasNumeros(this)">
           <div id='cardNumberAlert' role="alert"></div>
         </div>
 
         <div class="form-caixa">
           <label for="cardName">Nome Impresso no Cartão</label>
-          <input type="text" required id="cardName" v-model="cardName" v-on:focus="focusInput" v-on:blur="blurInput"
-            data-ref="cardName" autocomplete="cc-csc" name='nome_cartao' maxlength="30" onkeyup="apenasLetras(this)"
-            aria-controls="cardNameAlert">
+          <input type="text" required id="cardName" v-model="cardName" v-on:focus="focusInput" v-on:blur="blurInput" data-ref="cardName" autocomplete="cc-csc" name='nome_cartao' maxlength="30" onkeyup="apenasLetras(this)" aria-controls="cardNameAlert">
           <div id='cardNameAlert' role="alert"></div>
         </div>
         <div class="form-caixa validade">
           <label>Data de Validade</label>
           <div class="info-validade">
-            <select class="form-caixa__input" id="cardMonth" v-model="cardMonth" v-on:focus="focusInput"
-              v-on:blur="blurInput" data-ref="cardDate" name='mes_cartao' aria-controls="cardMonthAlert" required>
+            <select class="form-caixa__input" id="cardMonth" v-model="cardMonth" v-on:focus="focusInput" v-on:blur="blurInput" data-ref="cardDate" name='mes_cartao' aria-controls="cardMonthAlert" required>
               <option value="" disabled selected>Mês</option>
-              <option v-bind:value="n < 10 ? '0' + n : n" v-for="n in 12" v-bind:disabled="n < minCardMonth"
-                v-bind:key="n">
-                {{n < 10 ? '0' + n : n}} </option>
+              <option v-bind:value="n < 10 ? '0' + n : n" v-for="n in 12" v-bind:disabled="n < minCardMonth" v-bind:key="n">
+                {{n < 10 ? '0' + n : n}}
+              </option>
             </select>
-            <select class="form-caixa__input" id="cardYear" v-model="cardYear" v-on:focus="focusInput"
-              v-on:blur="blurInput" data-ref="cardDate" name='ano_cartao' aria-controls="cardYearAlert" required>
+            <select class="form-caixa__input" id="cardYear" v-model="cardYear" v-on:focus="focusInput" v-on:blur="blurInput" data-ref="cardDate" name='ano_cartao' aria-controls="cardYearAlert" required>
               <option value="" disabled selected>Ano</option>
               <option v-bind:value="$index + minCardYear" v-for="(n, $index) in 12" v-bind:key="n">
                 {{$index + minCardYear}}
@@ -177,8 +160,7 @@
             </select>
           </div>
           <label for="cardCvv">CVV</label>
-          <input type="tel" id="cardCvv" v-mask="'###'" maxlength="3" v-model="cardCvv" v-on:focus="flipCard(true)"
-            v-on:blur="flipCard(false)" autocomplete="cc-csc" name='cvv_cartao' aria-controls="cardCvvAlert" required onkeyup="apenasNumeros(this)">
+          <input type="tel" id="cardCvv" v-mask="'###'" maxlength="3" v-model="cardCvv" v-on:focus="flipCard(true)" v-on:blur="flipCard(false)" autocomplete="cc-csc" name='cvv_cartao' aria-controls="cardCvvAlert" required onkeyup="apenasNumeros(this)">
           <div id='cardCvvAlert' role="alert"></div>
           <div id='cardYearAlert' role="alert"></div>
           <div id='cardMonthAlert' role="alert"></div>
@@ -188,15 +170,13 @@
         <div class="info-usuario">
           <div class="form-caixa">
             <label for="cpf">CPF</label>
-            <input type="tel" class="form-caixa__input " id="cpf" name='cpf' onkeypress="$(this).mask('000.000.000-00')"
-              aria-controls="cpfAlert" required onkeyup="apenasNumeros(this)">
+            <input type="tel" class="form-caixa__input " id="cpf" name='cpf' onkeypress="$(this).mask('000.000.000-00')" aria-controls="cpfAlert" required onkeyup="apenasNumeros(this)">
             <div id='cpfAlert' role="alert"></div>
           </div>
 
           <div class="form-caixa">
             <label for="cep">CEP</label>
-            <input type="tel" id="cep" name='cep' onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)"
-              aria-controls="cepAlert" oninput="apenasNumeros(this)" required>
+            <input type="tel" id="cep" name='cep' onkeypress="$(this).mask('00.000-000')" onkeyup="lerCEP(this)" aria-controls="cepAlert" oninput="apenasNumeros(this)" required>
             <div id='cepAlert' role="alert"></div>
           </div>
 
@@ -226,9 +206,7 @@
   </div>
   </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
-  integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
-  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

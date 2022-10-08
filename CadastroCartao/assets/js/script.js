@@ -5,12 +5,7 @@ const ano = document.getElementById("cardYear");
 const cvv = document.getElementById("cardCvv");
 
 const cpf = document.getElementById("cpf");
-const rua = document.getElementById("rua");
 const numero = document.getElementById("numero");
-const bairro = document.getElementById("bairro");
-const cidade = document.getElementById("cidade");
-const estado = document.getElementById("estado");
-const endereco = document.getElementById("endereco");
 
 switch (true) {
   case verificarURL(cripto("erro=true")):
@@ -37,51 +32,52 @@ switch (true) {
       icone: "sucesso",
     });
 
-    let nextState = { additionalInformation: "Updated the URL with JS" };
     window.history.replaceState(
-      nextState,
+      { additionalInformation: "Updated the URL with JS" },
       "Kairos",
       window.location.href.replace("planoSelect", "plano")
     );
     break;
+  default:
+    break;
 }
 
-function validarCPF(cpf) {
+function validarCPF(cpfInput) {
   let Soma = 0;
   let Resto;
-  cpf = String(cpf).replaceAll(".", "").replace(/-/g, "");
+  cpfInput = String(cpfInput).replaceAll(".", "").replace(/-/g, "");
   if (
-    cpf == "00000000000" ||
-    cpf == "11111111111" ||
-    cpf == "22222222222" ||
-    cpf == "33333333333" ||
-    cpf == "44444444444" ||
-    cpf == "55555555555" ||
-    cpf == "66666666666" ||
-    cpf == "77777777777" ||
-    cpf == "88888888888" ||
-    cpf == "99999999999"
+    cpfInput === "00000000000" ||
+    cpfInput === "11111111111" ||
+    cpfInput === "22222222222" ||
+    cpfInput === "33333333333" ||
+    cpfInput === "44444444444" ||
+    cpfInput === "55555555555" ||
+    cpfInput === "66666666666" ||
+    cpfInput === "77777777777" ||
+    cpfInput === "88888888888" ||
+    cpfInput === "99999999999"
   )
     return 1;
 
   for (let i = 1; i <= 9; i++)
-    Soma = Soma + parseInt(cpf.substring(i - 1, i)) * (11 - i);
+    Soma += parseInt(cpfInput.substring(i - 1, i)) * (11 - i);
   Resto = (Soma * 10) % 11;
 
-  if (Resto == 10 || Resto == 11) Resto = 0;
-  if (Resto != parseInt(cpf.substring(9, 10))) return 1;
+  if (Resto === 10 || Resto === 11) Resto = 0;
+  if (Resto !== parseInt(cpfInput.substring(9, 10))) return 1;
 
   Soma = 0;
   for (let i = 1; i <= 10; i++)
-    Soma = Soma + parseInt(cpf.substring(i - 1, i)) * (12 - i);
+    Soma += parseInt(cpfInput.substring(i - 1, i)) * (12 - i);
   Resto = (Soma * 10) % 11;
 
-  if (Resto == 10 || Resto == 11) Resto = 0;
-  if (Resto != parseInt(cpf.substring(10, 11))) return 1;
+  if (Resto === 10 || Resto === 11) Resto = 0;
+  if (Resto !== parseInt(cpfInput.substring(10, 11))) return 1;
   return 0;
 }
 
-cpf.addEventListener("keyup", function () {
+cpf.addEventListener("keyup", () => {
   if (validarCPF(cpf.value) && cpf.value.length === 14) {
     alertaDeErro(cpf, "CPF incorreto!");
     dispararEvento(cpf, "keyup", "condicaoCPF");
@@ -113,7 +109,7 @@ function validar() {
 
   limpar_inputs();
 
-  if (num.value.length != validarNumero) {
+  if (num.value.length !== validarNumero) {
     alertaDeErro(num, "Preencha o número do cartão!");
     dispararEvento(num, "keyup", "condicaoNum");
     num.classList.add("vermei");

@@ -27,6 +27,8 @@ switch (true) {
     nome.classList.add("vermei");
     email.classList.add("vermei");
     break;
+  default:
+    break;
 }
 
 function validar() {

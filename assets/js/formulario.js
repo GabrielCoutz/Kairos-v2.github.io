@@ -1,8 +1,8 @@
-//Ativa e desativa o label do input
+// Ativa e desativa o label do input
 
 document.querySelectorAll(".form-caixa > input").forEach((input) => {
   input.addEventListener("keydown", (e) => {
-    let label = document.querySelector("label[for=" + e.currentTarget.id + "]");
+    const label = document.querySelector(`label[for=${e.currentTarget.id}]`);
     if (input.value != "") {
       label.classList.add("label-ativo");
       label.setAttribute("aria-hidden", "false");
@@ -13,13 +13,14 @@ document.querySelectorAll(".form-caixa > input").forEach((input) => {
   });
 });
 
-//Mostra e esconde a senha
+// Mostra e esconde a senha
 
 document.querySelectorAll(".gg-eye").forEach((botao) => {
   botao.addEventListener("click", (e) => {
-    let target = e.currentTarget.getAttribute("aria-controls");
-    let input = document.getElementById(target);
-    let tipo = input.getAttribute("type") === "password" ? "text" : "password";
+    const target = e.currentTarget.getAttribute("aria-controls");
+    const input = document.getElementById(target);
+    const tipo =
+      input.getAttribute("type") === "password" ? "text" : "password";
     input.setAttribute("type", tipo);
     botao.classList.toggle("gg-eye");
     botao.classList.toggle("gg-eye-alt");
@@ -33,11 +34,11 @@ document.querySelectorAll(".gg-eye").forEach((botao) => {
   });
 });
 
-//Permite somente letras com ou sem acento
+// Permite somente letras com ou sem acento
 
 function apenasLetras(event) {
   if (event.value != undefined) {
-    let limpo = event.value
+    const limpo = event.value
       .replace(/[^\w\s-zÀ-ÖØ-öø-ÿ]/gi, "")
       .replace(/[0-9]/g, "");
     event.value = limpo.replace(/_/g, "").replace("-", "");
