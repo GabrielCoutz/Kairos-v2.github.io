@@ -1,8 +1,4 @@
-var conteudo;
-
-vazio(document.querySelector(".swot-caixa > span").innerText)
-  ? (conteudo = false)
-  : (conteudo = true);
+const conteudo = !vazio(document.querySelector(".swot-caixa > span").innerText);
 
 switch (true) {
   case verificarURL(cripto("erro=true")):
@@ -13,7 +9,7 @@ switch (true) {
   case verificarURL(cripto("sucesso=false")): // janela de erro na realização da análise
     abrirPopUp({
       cor: "red",
-      corpo:               
+      corpo:
         "Parece que houve um erro durante o processamento de dados. Por favor, tente novamente mais tarde ou entre em contato conosco.",
       titulo: "Análise não concluída",
       icone: "falha",
@@ -32,6 +28,8 @@ switch (true) {
       bgFechar: false,
     });
     limparURL(cripto("analise=false"));
+    break;
+  default:
     break;
 }
 

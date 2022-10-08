@@ -25,6 +25,8 @@ switch (true) {
     });
     limparURL(cripto("sucesso_senha=true"));
     break;
+  default:
+    break;
 }
 
 function validar() {

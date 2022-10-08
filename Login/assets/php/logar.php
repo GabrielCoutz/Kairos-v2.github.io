@@ -21,5 +21,3 @@ if($result['email'] === $email && $result['senha'] === $senha){
 
 header('Location: ../../login?'.hash("sha512", 'login=false'));
 exit;
-
-?>

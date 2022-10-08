@@ -1,8 +1,8 @@
-const nome_empresa = document.getElementById("nome_empresa");
-const nome_fantasia = document.getElementById("nome_fantasia");
+const nomeEmpresa = document.getElementById("nome_empresa");
+const nomeFantasia = document.getElementById("nome_fantasia");
 const ramo = document.getElementById("ramo");
-const cep_empresa = document.getElementById("cep_empresa");
-const numero_empresa = document.getElementById("numero_empresa");
+const cepEmpresa = document.getElementById("cep_empresa");
+const numeroEmpresa = document.getElementById("numero_empresa");
 const endereco = vazio(
   document.getElementById("endereco").innerText.replace(", , ,", "")
 )
@@ -47,13 +47,13 @@ switch (true) {
     break;
 
   case verificarURL(cripto("nome_empresa_duplicado=true")):
-    nome_empresa.classList.add("vermei");
+    nomeEmpresa.classList.add("vermei");
     alerta += " Nome para Empresa já cadastrado!";
     limparURL(cripto("nome_empresa_duplicado=true"));
     break;
 
   case verificarURL(cripto("nome_fantasia_duplicado=true")):
-    nome_fantasia.classList.add("vermei");
+    nomeFantasia.classList.add("vermei");
     alerta += " Nome Fantasia já cadastrado!";
     limparURL(cripto("nome_fantasia_duplicado=true"));
     break;
@@ -85,7 +85,7 @@ document.querySelectorAll("input").forEach((item) => {
     switch (this.id) {
       case "nome_empresa":
         switch (true) {
-          case this.value == conteudo_nome_empresa:
+          case this.value === conteudo_nome_empresa:
             salvarbtn.disabled = true;
             cancelarbtn.disabled = true;
             break;
@@ -105,7 +105,7 @@ document.querySelectorAll("input").forEach((item) => {
 
       case "nome_fantasia":
         switch (true) {
-          case this.value == conteudo_nome_fantasia:
+          case this.value === conteudo_nome_fantasia:
             salvarbtn.disabled = true;
             cancelarbtn.disabled = true;
             break;
@@ -125,7 +125,7 @@ document.querySelectorAll("input").forEach((item) => {
 
       case "cep_empresa":
         switch (true) {
-          case this.value == conteudo_cep_empresa:
+          case this.value === conteudo_cep_empresa:
             salvarbtn.disabled = true;
             cancelarbtn.disabled = true;
             break;
@@ -144,7 +144,7 @@ document.querySelectorAll("input").forEach((item) => {
 
       case "numero_empresa":
         switch (true) {
-          case this.value == conteudo_numero_empresa:
+          case this.value === conteudo_numero_empresa:
             salvarbtn.disabled = true;
             cancelarbtn.disabled = true;
             break;
@@ -160,6 +160,8 @@ document.querySelectorAll("input").forEach((item) => {
             salvarbtn.disabled = false;
             cancelarbtn.disabled = false;
         }
+        break;
+      default:
         break;
     }
   });
@@ -184,11 +186,11 @@ function salvar() {
   limpar_inputs();
   if (
     !vazio(cep_empresa.value) &&
-    cep_empresa.value.length <= 10 &&
+    cepEmpresa.value.length <= 10 &&
     vazio(numero_empresa.value)
   ) {
     alertaDeErro(cep_empresa, "Complete o endereço!");
-    numero_empresa.classList.add("vermei");
+    numeroEmpresa.classList.add("vermei");
   } else {
     Cookies.set("empresa", 1);
     abrirPopUp({

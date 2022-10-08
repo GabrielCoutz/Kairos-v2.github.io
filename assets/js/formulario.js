@@ -1,7 +1,7 @@
 //Ativa e desativa o label do input
 
 document.querySelectorAll(".form-caixa > input").forEach((input) => {
-  input.addEventListener("input", (e) => {
+  input.addEventListener("keydown", (e) => {
     let label = document.querySelector("label[for=" + e.currentTarget.id + "]");
     if (input.value != "") {
       label.classList.add("label-ativo");

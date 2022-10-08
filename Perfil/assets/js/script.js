@@ -1,39 +1,29 @@
-const nome = document.getElementById("nome");
 const cep = document.getElementById("cep");
 const numero = document.getElementById("numero");
-const endereco = vazio(
-  document.getElementById("endereco").innerText.replace(", , ,", "")
-)
-  ? (document.getElementById("endereco").innerText = "Não Cadastrado")
-  : document.getElementById("endereco").innerText;
 
-const senha_antiga = document.getElementById("senha_antiga");
-const senha_nova = document.getElementById("senha_nova");
-const senha_nova_dup = document.getElementById("senha_nova_dup");
+const senhaAntiga = document.getElementById("senha_ntiga");
+const senhaNova = document.getElementById("senha_nova");
+const senhaNovaDup = document.getElementById("senha_nova_dup");
 
-const conteudo_nome = document.getElementById("nome").value;
-const conteudo_cep = document.getElementById("cep").value;
-const conteudo_numero = document.getElementById("numero").value;
+const conteudoNome = document.getElementById("nome").value;
+const conteudoCep = document.getElementById("cep").value;
+const conteudoNumero = document.getElementById("numero").value;
 
 const salvarbtn = document.getElementById("salvarbtn");
 const cancelarbtn = document.getElementById("cancelarbtn");
 const senhabtn = document.getElementById("alterarsenha");
-const caixa_senha = document.getElementsByClassName("caixa-senhas")[0];
+const caixaSenha = document.getElementsByClassName("caixa-senhas")[0];
 
-$(document).ready(function () {
-  if (vazio(cep.value)) {
-    cep.placeholder = "00.000-000";
-  }
+$(document).ready(() => {
+  if (vazio(cep.value)) cep.placeholder = "00.000-000";
 
-  if (vazio(numero.value)) {
-    numero.placeholder = "Não cadastrado";
-  }
+  if (vazio(numero.value)) numero.placeholder = "Não cadastrado";
+
   if (
     document.querySelector(".form-caixa.telefone").innerText ===
     "Não Cadastrado"
-  ) {
+  )
     document.getElementById("del_tel").classList.add("none");
-  }
 });
 
 switch (true) {
@@ -52,9 +42,9 @@ switch (true) {
     });
     limparURL(cripto("senha=false"));
     document.getElementById("alterarsenha").click();
-    document.getElementById("senha_antiga").classList.add("vermei");
-    document.getElementById("senha_nova").classList.add("vermei");
-    document.getElementById("senha_nova_dup").classList.add("vermei");
+    document.getElementById("senhaAntiga").classList.add("vermei");
+    document.getElementById("senhaNova").classList.add("vermei");
+    document.getElementById("senhaNovaDup").classList.add("vermei");
     break;
 
   case verificarURL(cripto("analise=false")):
@@ -68,27 +58,29 @@ switch (true) {
     });
     limparURL(cripto("analise=false"));
     break;
+  default:
+    break;
 }
-
 document.querySelectorAll("input").forEach((item) => {
-  item.addEventListener("keyup", function () {
-    switch (this.id) {
+  item.addEventListener("input", ({ target: input }) => {
+    console.log(input.id);
+    switch (input.id) {
       case "nome":
         switch (true) {
-          case this.value == conteudo_nome:
+          case input.value === conteudoNome:
             salvarbtn.disabled = true;
             cancelarbtn.disabled = true;
             break;
 
-          case this.value.length < 4:
+          case input.value.length < 4:
             salvarbtn.disabled = true;
             cancelarbtn.disabled = false;
-            alertaDeErro(this, "O nome deve ter no mínimo 4 letras!");
+            alertaDeErro(input, "O nome deve ter no mínimo 4 letras!");
             break;
 
           default:
             limpar_inputs();
-            this.removeAttribute("aria-labelledby");
+            input.removeAttribute("aria-labelledby");
             salvarbtn.disabled = false;
             cancelarbtn.disabled = false;
         }
@@ -96,15 +88,15 @@ document.querySelectorAll("input").forEach((item) => {
 
       case "cep":
         switch (true) {
-          case this.value == conteudo_cep:
+          case input.value === conteudoCep:
             salvarbtn.disabled = true;
             cancelarbtn.disabled = true;
             break;
 
-          case this.value.length < 10:
+          case input.value.length < 10:
             salvarbtn.disabled = true;
             cancelarbtn.disabled = false;
-            alertaDeErro(this, "Complete o CEP!");
+            alertaDeErro(input, "Complete o CEP!");
             break;
 
           default:
@@ -116,15 +108,15 @@ document.querySelectorAll("input").forEach((item) => {
 
       case "numero":
         switch (true) {
-          case this.value == conteudo_numero:
+          case input.value === conteudoNumero:
             salvarbtn.disabled = true;
             cancelarbtn.disabled = true;
             break;
 
-          case vazio(this.value):
+          case vazio(input.value):
             salvarbtn.disabled = true;
             cancelarbtn.disabled = false;
-            alertaDeErro(this, "Preencha o número!");
+            alertaDeErro(input, "Preencha o número!");
             break;
 
           default:
@@ -134,6 +126,8 @@ document.querySelectorAll("input").forEach((item) => {
             cancelarbtn.disabled = false;
         }
         break;
+      default:
+        break;
     }
   });
 });
@@ -142,7 +136,7 @@ function alterarSenha() {
   document.querySelectorAll('input:not([id^="senha"])').forEach((input) => {
     input.disabled = true;
   });
-  caixa_senha.classList.toggle("senha-ativa");
+  caixaSenha.classList.toggle("senha-ativa");
   senhabtn.classList.toggle("none");
   cancelarbtn.disabled = false;
   salvarbtn.disabled = false;
@@ -154,11 +148,11 @@ function cancelar() {
   limpar_inputs();
   document.forms[0].reset();
 
-  if (caixa_senha.classList.contains("senha-ativa")) {
+  if (caixaSenha.classList.contains("senha-ativa")) {
     document.querySelectorAll('input:not([id^="senha"])').forEach((input) => {
       input.disabled = false;
     });
-    caixa_senha.classList.toggle("senha-ativa");
+    caixaSenha.classList.toggle("senha-ativa");
     senhabtn.classList.toggle("none");
     cancelarbtn.disabled = true;
     salvarbtn.disabled = true;
@@ -190,20 +184,20 @@ function cancelar() {
 
 function salvar() {
   let index = 0;
-  if (caixa_senha.classList.contains("senha-ativa")) {
+  if (caixaSenha.classList.contains("senha-ativa")) {
     limpar_inputs();
 
     if (
-      vazio(senha_antiga.value) ||
-      vazio(senha_nova.value) ||
-      vazio(senha_nova_dup.value) ||
-      senha_nova.value != senha_nova_dup.value
+      vazio(senhaAntiga.value) ||
+      vazio(senhaNova.value) ||
+      vazio(senhaNovaDup.value) ||
+      senhaNova.value !== senhaNovaDup.value
     ) {
       alertaDeErro(
-        senha_antiga,
+        senhaAntiga,
         "Por favor, verifique os campos e tente novamente!"
       );
-      dispararEvento(senha_antiga, "keyup", "condicaoSenha");
+      dispararEvento(senhaAntiga, "keyup", "condicaoSenha");
     } else {
       abrirPopUp({
         cor: "blue",
@@ -221,13 +215,13 @@ function salvar() {
 
   limpar_inputs();
 
-  for (let numeroDeletar of document.getElementsByClassName("deletar")) {
-    Cookies.set("deletar" + index, numeroDeletar.innerText);
+  for (const numeroDeletar of document.getElementsByClassName("deletar")) {
+    Cookies.set(`deletar${index}`, numeroDeletar.innerText);
     index++;
   }
 
-  for (let numeroAdicionar of document.getElementsByClassName("adicionar")) {
-    Cookies.set("adicionar" + index, numeroAdicionar.value);
+  for (const numeroAdicionar of document.getElementsByClassName("adicionar")) {
+    Cookies.set(`adicionar${index}`, numeroAdicionar.value);
     index++;
   }
 
