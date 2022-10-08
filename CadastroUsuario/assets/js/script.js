@@ -1,13 +1,13 @@
 const nome = document.getElementById("nome");
 const email = document.getElementById("email");
 const senha = document.getElementById("senha");
-const confirm_senha = document.getElementById("confirm_senha");
+const confirmSenha = document.getElementById("confirmSenha");
 const captcha = document.getElementById("captcha");
 
 switch (
   true // verifica se há erros passados na URL
 ) {
-  case verificarURL(cripto("erro=true")): //erro no captcha
+  case verificarURL(cripto("erro=true")): // erro no captcha
     abrirPopUp({
       cor: "red",
       corpo:
@@ -18,7 +18,7 @@ switch (
     limparURL(cripto("erro=true"));
     break;
 
-  case verificarURL(cripto("email=false")): //email já cadastrado
+  case verificarURL(cripto("email=false")): // email já cadastrado
     email.classList.add("vermei");
     nome.value = localStorage.getItem(nome.id);
     abrirPopUp({
@@ -28,6 +28,8 @@ switch (
       icone: "falha",
     });
     limparURL(cripto("email=false"));
+    break;
+  default:
     break;
 }
 
@@ -41,15 +43,15 @@ function validar() {
     dispararEvento(email, "keyup", "condicaoEmail");
     alertaDeErro(email, "Insira o email corretamente!");
   } else if (
-    senha.value != confirm_senha.value ||
+    senha.value !== confirmSenha.value ||
     vazio(senha.value) ||
-    vazio(confirm_senha.value)
+    vazio(confirmSenha.value)
   ) {
     alertaDeErro(senha, "Senhas não coincidem. Por favor, verifique-as!");
     senha.classList.add("vermei");
-    confirm_senha.classList.add("vermei");
+    confirmSenha.classList.add("vermei");
     senha.value = "";
-    confirm_senha.value = "";
+    confirmSenha.value = "";
     // } else if (grecaptcha.getResponse() == "") {
     //   alertaDeErro(captcha, "Preencha o CAPTCHA!");
   } else {

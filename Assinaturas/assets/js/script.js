@@ -29,11 +29,12 @@ switch (plano) {
     document.querySelector(".planos-item.escolhido > button").innerHTML =
       "Plano Ativo";
     break;
+  default:
+    break;
 }
 
 function mudarPlano(btn) {
   !vazio(plano)
     ? abrirJanelaPlanos(btn.value, plano)
-    : (window.location.href =
-        "../CadastroCartao/cadastro_cartao?plano=" + btn.value);
+    : (window.location.href = `../CadastroCartao/cadastro_cartao?plano=${btn.value}`);
 }

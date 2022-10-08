@@ -13,11 +13,11 @@ if (!vazio(document.getElementById("ramo_php").innerText)) {
   ramo.value = document.getElementById("ramo_php").innerText.trim();
 }
 
-const conteudo_nome_empresa = document.getElementById("nome_empresa").value;
-const conteudo_ramo = document.getElementById("ramo").value;
-const conteudo_nome_fantasia = document.getElementById("nome_fantasia").value;
-const conteudo_cep_empresa = document.getElementById("cep_empresa").value;
-const conteudo_numero_empresa = document.getElementById("numero_empresa").value;
+const conteudoNomeEmpresa = document.getElementById("nome_empresa").value;
+const conteudoRamo = document.getElementById("ramo").value;
+const conteudoNomeFantasia = document.getElementById("nome_fantasia").value;
+const conteudoCepEmpresa = document.getElementById("cep_empresa").value;
+const conteudoNumeroEmpresa = document.getElementById("numero_empresa").value;
 
 const salvarbtn = document.getElementById("salvarbtn");
 const cancelarbtn = document.getElementById("cancelarbtn");
@@ -57,11 +57,13 @@ switch (true) {
     alerta += " Nome Fantasia já cadastrado!";
     limparURL(cripto("nome_fantasia_duplicado=true"));
     break;
+  default:
+    break;
 }
 
 $("#ramo")
-  .on("change", function () {
-    if (this.value === conteudo_ramo) {
+  .on("change", ({ target: input }) => {
+    if (input.value === conteudoRamo) {
       salvarbtn.disabled = true;
       cancelarbtn.disabled = true;
     } else {
@@ -81,19 +83,19 @@ if (!vazio(alerta)) {
 }
 
 document.querySelectorAll("input").forEach((item) => {
-  item.addEventListener("keyup", function () {
-    switch (this.id) {
+  item.addEventListener("keyup", ({ target: input }) => {
+    switch (input.id) {
       case "nome_empresa":
         switch (true) {
-          case this.value === conteudo_nome_empresa:
+          case input.value === conteudoNomeEmpresa:
             salvarbtn.disabled = true;
             cancelarbtn.disabled = true;
             break;
 
-          case this.value.length < 2:
+          case input.value.length < 2:
             salvarbtn.disabled = true;
             cancelarbtn.disabled = false;
-            alertaDeErro(this, "O nome deve ter no mínimo 2 letras!");
+            alertaDeErro(input, "O nome deve ter no mínimo 2 letras!");
             break;
 
           default:
@@ -105,15 +107,15 @@ document.querySelectorAll("input").forEach((item) => {
 
       case "nome_fantasia":
         switch (true) {
-          case this.value === conteudo_nome_fantasia:
+          case input.value === conteudoNomeFantasia:
             salvarbtn.disabled = true;
             cancelarbtn.disabled = true;
             break;
 
-          case this.value.length < 2:
+          case input.value.length < 2:
             salvarbtn.disabled = true;
             cancelarbtn.disabled = false;
-            alertaDeErro(this, "O nome deve ter no mínimo 2 letras!");
+            alertaDeErro(input, "O nome deve ter no mínimo 2 letras!");
             break;
 
           default:
@@ -125,15 +127,15 @@ document.querySelectorAll("input").forEach((item) => {
 
       case "cep_empresa":
         switch (true) {
-          case this.value === conteudo_cep_empresa:
+          case input.value === conteudoCepEmpresa:
             salvarbtn.disabled = true;
             cancelarbtn.disabled = true;
             break;
 
-          case this.value.length < 10:
+          case input.value.length < 10:
             salvarbtn.disabled = true;
             cancelarbtn.disabled = false;
-            alertaDeErro(this, "Complete o CEP!");
+            alertaDeErro(input, "Complete o CEP!");
             break;
 
           default:
@@ -144,15 +146,15 @@ document.querySelectorAll("input").forEach((item) => {
 
       case "numero_empresa":
         switch (true) {
-          case this.value === conteudo_numero_empresa:
+          case input.value === conteudoNumeroEmpresa:
             salvarbtn.disabled = true;
             cancelarbtn.disabled = true;
             break;
 
-          case vazio(this.value):
+          case vazio(input.value):
             salvarbtn.disabled = true;
             cancelarbtn.disabled = false;
-            alertaDeErro(this, "Preencha o número!");
+            alertaDeErro(input, "Preencha o número!");
             break;
 
           default:
@@ -174,9 +176,7 @@ function cancelar() {
   salvarbtn.disabled = true;
   cancelarbtn.disabled = true;
 
-  vazio(conteudo_ramo)
-    ? (ramo.selectedIndex = 0)
-    : (ramo.value = conteudo_ramo);
+  vazio(conteudoRamo) ? (ramo.selectedIndex = 0) : (ramo.value = conteudoRamo);
 
   document.getElementById("endereco").innerHTML = endereco;
   apagarCookie("endereco");
@@ -185,11 +185,11 @@ function cancelar() {
 function salvar() {
   limpar_inputs();
   if (
-    !vazio(cep_empresa.value) &&
+    !vazio(cepEmpresa.value) &&
     cepEmpresa.value.length <= 10 &&
-    vazio(numero_empresa.value)
+    vazio(numeroEmpresa.value)
   ) {
-    alertaDeErro(cep_empresa, "Complete o endereço!");
+    alertaDeErro(cepEmpresa, "Complete o endereço!");
     numeroEmpresa.classList.add("vermei");
   } else {
     Cookies.set("empresa", 1);

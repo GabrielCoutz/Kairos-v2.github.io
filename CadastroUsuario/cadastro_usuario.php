@@ -11,10 +11,10 @@
     <link rel="stylesheet preload" as="style" href="../assets/css/style.min.css">
     <title>Cadastro</title>
     <?php
-        session_start();
-        if( isset($_GET['plano']) ){
-            $_SESSION['plano']=$_GET['plano'];
-        }
+    session_start();
+    if (isset($_GET['plano'])) {
+        $_SESSION['plano'] = $_GET['plano'];
+    }
     ?>
 </head>
 
@@ -34,8 +34,7 @@
                 <div class="form-caixa">
                     <label aria-hidden="true" for="nome">Nome completo</label>
                     <i class="gg-user" aria-hidden="true"></i>
-                    <input type="text" required name="nome" id="nome" placeholder="Nome Completo"
-                        onkeyup="apenasLetras(this)" aria-controls="nomeAlert">
+                    <input type="text" required name="nome" id="nome" placeholder="Nome Completo" onkeyup="apenasLetras(this)" aria-controls="nomeAlert">
                     <span class="underline" aria-hidden="true"></span>
                     <div id="nomeAlert" role="alert"></div>
                 </div>
@@ -49,12 +48,9 @@
                 <div class="form-caixa senha-1">
                     <label aria-hidden="true" for="senha">Senha</label>
                     <i class="gg-lock" aria-hidden="true"></i>
-                    <input type="password" required name="senha" id="senha" placeholder="Senha"
-                        aria-controls="senhaAlert">
-                    <button type="button" id="gerar-senha" title="Gerar senha forte aleatória" class="btn terciario"
-                        aria-label="Gerar senha forte aleatória">Gerar</button>
-                    <button class="gg-eye" type="button" aria-controls="senha" title="Mostrar senha"
-                        aria-pressed="false"></button>
+                    <input type="password" required name="senha" id="senha" placeholder="Senha" aria-controls="senhaAlert">
+                    <button type="button" id="gerar-senha" title="Gerar senha forte aleatória" class="btn terciario" aria-label="Gerar senha forte aleatória">Gerar</button>
+                    <button class="gg-eye" type="button" aria-controls="senha" title="Mostrar senha" aria-pressed="false"></button>
                     <span class="underline" aria-hidden="true"></span>
                     <div class="progress-bar" aria-hidden="true">
                         <div></div>
@@ -64,13 +60,11 @@
                 <div class="form-caixa senha-2">
                     <label aria-hidden="true" for="confirm_senha">Confirmar senha</label>
                     <i class="gg-lock" aria-hidden="true"></i>
-                    <input type="password" required name="confirm_senha" id="confirm_senha"
-                        placeholder="Confirmar senha">
-                    <button class="gg-eye" type="button" aria-controls="confirm_senha" title="Mostrar senha"
-                        aria-pressed="false"></button>
+                    <input type="password" required name="confirm_senha" id="confirm_senha" placeholder="Confirmar senha">
+                    <button class="gg-eye" type="button" aria-controls="confirm_senha" title="Mostrar senha" aria-pressed="false"></button>
                     <span class="underline" aria-hidden="true"></span>
                 </div>
-                <button   id="butao" class="btn primario" onclick="validar()">Registrar</button>
+                <button id="butao" class="btn primario" onclick="validar()">Registrar</button>
                 <a href="../Login/login" class="btn terciario">Fazer login</a>
             </form>
         </div>
@@ -78,9 +72,7 @@
 
     </div>
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
-    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

@@ -1,9 +1,14 @@
-let janelaPopUp = {};
+const janelaPopUp = {};
 let colors = "primary:#121331,secondary:#16c72e";
-let src,
-  delay = "";
+let src;
+let delay = "";
 
-janelaPopUp.abre = function (param) {
+function abrirPopUp(params) {
+  janelaPopUp.abre(params);
+  document.getElementById("popUp").focus();
+}
+
+janelaPopUp.abre = (param) => {
   switch (
     true // determina qual ícone aparecerá no popup de acordo com a string passada no parametro icone
   ) {
@@ -29,39 +34,41 @@ janelaPopUp.abre = function (param) {
     case param.icone === "marketing":
       src = "https://cdn.lordicon.com/gqdnbnwt.json";
       break;
+    default:
+      break;
   }
-  let popFundo2 = document.createElement("div");
-  popFundo2.setAttribute("class", "popUpFundo " + param.cor);
+  const popFundo2 = document.createElement("div");
+  popFundo2.setAttribute("class", `popUpFundo ${param.cor}`);
 
-  let janela2 = document.createElement("div");
+  const janela2 = document.createElement("div");
   janela2.setAttribute("id", "popUp");
-  janela2.setAttribute("class", "popUp p " + param.cor);
+  janela2.setAttribute("class", `popUp p ${param.cor}`);
   janela2.setAttribute("role", "alert");
   janela2.setAttribute("aria-labelledby", "popUp-titulo");
   janela2.setAttribute("tabindex", "0");
 
-  let lord_icon = document.createElement("lord-icon");
-  lord_icon.setAttribute("src", src);
-  lord_icon.setAttribute("trigger", "loop");
-  lord_icon.setAttribute("delay", delay);
-  lord_icon.setAttribute("colors", colors);
-  lord_icon.setAttribute("style", "width:82px;height:82px");
+  const lordIcon = document.createElement("lord-icon");
+  lordIcon.setAttribute("src", src);
+  lordIcon.setAttribute("trigger", "loop");
+  lordIcon.setAttribute("delay", delay);
+  lordIcon.setAttribute("colors", colors);
+  lordIcon.setAttribute("style", "width:82px;height:82px");
 
-  let h1 = document.createElement("h1");
+  const h1 = document.createElement("h1");
 
-  !param.icone ? (h1.style.marginTop = "0px") : janela2.appendChild(lord_icon);
+  !param.icone ? (h1.style.marginTop = "0px") : janela2.appendChild(lordIcon);
 
   h1.append(param.titulo);
   janela2.append(h1);
   popFundo2.appendChild(janela2);
 
-  let span = document.createElement("span");
+  const span = document.createElement("span");
 
   if (param.mudarPlanos === true) {
-    let item1 = document.createElement("span");
+    const item1 = document.createElement("span");
     item1.innerHTML = param.planoAtual;
 
-    let item2 = document.createElement("span");
+    const item2 = document.createElement("span");
     item2.innerHTML = param.planoMudanca;
 
     item1.setAttribute("class", "enfase-plano");
@@ -80,12 +87,12 @@ janelaPopUp.abre = function (param) {
 
   if (!param.semBotoes) {
     // se 'semBotoes' for true, esse bloco, que adiciona os botões, não é executado
-    let botaoCancelar = document.createElement("button");
+    const botaoCancelar = document.createElement("button");
     botaoCancelar.setAttribute("id", "popUpEnviar");
     botaoCancelar.setAttribute("class", "secundario btn");
     botaoCancelar.append("Cancelar");
 
-    let botaoOk = document.createElement("button");
+    const botaoOk = document.createElement("button");
     botaoOk.setAttribute("id", "popUpCancelar");
     botaoOk.setAttribute("class", "secundario btn");
     botaoOk.append("Ok");
@@ -94,8 +101,10 @@ janelaPopUp.abre = function (param) {
     janela2.append(botaoOk);
   }
 
-  document.body.insertBefore(popFundo2, document.querySelector("header"));
-  document.body.insertBefore(janela2, document.querySelector("header"));
+  const container = document.querySelector(".principal");
+
+  container.insertBefore(popFundo2, document.querySelector("header"));
+  container.insertBefore(janela2, document.querySelector("header"));
 
   $(".popUpFundo").fadeIn("fast");
   $("#popUp").addClass("popUpEntrada");
@@ -107,26 +116,24 @@ janelaPopUp.abre = function (param) {
       .classList.replace("secundario", "primario");
     document.getElementById("popUpCancelar").innerText = "Talvez depois";
 
-    document
-      .getElementById("popUpEnviar")
-      .addEventListener("click", function () {
-        janelaPopUp.fecha();
-        setTimeout(() => {
-          abrirPopUp({
-            cor: "blue",
-            titulo: "Análise de Marketing",
-            corpo:
-              "Boa escolha! Te levaremos para realizar uma análise agora mesmo.",
-            icone: "marketing",
-            semBotoes: true,
-            bgFechar: false,
-          });
-          esperar({
-            url: "../AnaliseMarketing/ColetarDados/coletar",
-            delay: 3000,
-          });
-        }, 2000);
-      });
+    document.getElementById("popUpEnviar").addEventListener("click", () => {
+      janelaPopUp.fecha();
+      setTimeout(() => {
+        abrirPopUp({
+          cor: "blue",
+          titulo: "Análise de Marketing",
+          corpo:
+            "Boa escolha! Te levaremos para realizar uma análise agora mesmo.",
+          icone: "marketing",
+          semBotoes: true,
+          bgFechar: false,
+        });
+        esperar({
+          url: "../AnaliseMarketing/ColetarDados/coletar",
+          delay: 3000,
+        });
+      }, 2000);
+    });
   }
 
   if (param.cadastrarEmpresa === true) {
@@ -163,39 +170,35 @@ janelaPopUp.abre = function (param) {
       "Não, talvez mais tarde";
     document.getElementById("popUpCancelar").style.order = "2";
 
-    document
-      .getElementById("popUpEnviar")
-      .addEventListener("click", function () {
-        janelaPopUp.fecha();
-        setTimeout(() => {
-          abrirPopUp({
-            cor: "blue",
-            corpo: "Tudo bem, redirecionando para página de cadastro",
-            titulo: "Empresa não cadastrada",
-            icone: "carregar",
-            semBotoes: true,
-            cadastrarEmpresa: true,
-            bgFechar: false,
-          });
-        }, 2000);
-      });
+    document.getElementById("popUpEnviar").addEventListener("click", () => {
+      janelaPopUp.fecha();
+      setTimeout(() => {
+        abrirPopUp({
+          cor: "blue",
+          corpo: "Tudo bem, redirecionando para página de cadastro",
+          titulo: "Empresa não cadastrada",
+          icone: "carregar",
+          semBotoes: true,
+          cadastrarEmpresa: true,
+          bgFechar: false,
+        });
+      }, 2000);
+    });
 
-    document
-      .getElementById("popUpCancelar")
-      .addEventListener("click", function () {
-        janelaPopUp.fecha();
-        setTimeout(() => {
-          abrirPopUp({
-            cor: "blue",
-            corpo: "Tudo bem, estamos te tirando daqui",
-            titulo: "Empresa não cadastrada",
-            icone: "carregar",
-            semBotoes: true,
-            cadastrarEmpresa: false,
-            bgFechar: false,
-          });
-        }, 2000);
-      });
+    document.getElementById("popUpCancelar").addEventListener("click", () => {
+      janelaPopUp.fecha();
+      setTimeout(() => {
+        abrirPopUp({
+          cor: "blue",
+          corpo: "Tudo bem, estamos te tirando daqui",
+          titulo: "Empresa não cadastrada",
+          icone: "carregar",
+          semBotoes: true,
+          cadastrarEmpresa: false,
+          bgFechar: false,
+        });
+      }, 2000);
+    });
     return;
   }
 
@@ -207,54 +210,50 @@ janelaPopUp.abre = function (param) {
     document.querySelector("#popUp").style.maxHeight = "290px";
     document.getElementById("popUpCancelar").innerText = "Não, talvez depois";
 
-    document
-      .getElementById("popUpEnviar")
-      .addEventListener("click", function () {
-        janelaPopUp.fecha();
-        setTimeout(() => {
-          abrirPopUp({
-            cor: "blue",
-            corpo: "Tudo bem, redirecionando para página de análise",
-            titulo: "Análise não realizada",
-            icone: "carregar",
-            semBotoes: true,
-            realizarAnalise: true,
-            bgFechar: false,
-          });
-        }, 2000);
-      });
-    document
-      .getElementById("popUpCancelar")
-      .addEventListener("click", function () {
-        janelaPopUp.fecha();
-        setTimeout(() => {
-          abrirPopUp({
-            cor: "blue",
-            corpo: "Tudo bem, estamos te tirando daqui",
-            titulo: "Análise não realizada",
-            icone: "carregar",
-            semBotoes: true,
-            realizarAnalise: false,
-            bgFechar: false,
-          });
-        }, 2000);
-      });
+    document.getElementById("popUpEnviar").addEventListener("click", () => {
+      janelaPopUp.fecha();
+      setTimeout(() => {
+        abrirPopUp({
+          cor: "blue",
+          corpo: "Tudo bem, redirecionando para página de análise",
+          titulo: "Análise não realizada",
+          icone: "carregar",
+          semBotoes: true,
+          realizarAnalise: true,
+          bgFechar: false,
+        });
+      }, 2000);
+    });
+    document.getElementById("popUpCancelar").addEventListener("click", () => {
+      janelaPopUp.fecha();
+      setTimeout(() => {
+        abrirPopUp({
+          cor: "blue",
+          corpo: "Tudo bem, estamos te tirando daqui",
+          titulo: "Análise não realizada",
+          icone: "carregar",
+          semBotoes: true,
+          realizarAnalise: false,
+          bgFechar: false,
+        });
+      }, 2000);
+    });
     return;
   }
 
-  $("#popUpCancelar").on("click", function () {
+  $("#popUpCancelar").on("click", () => {
     janelaPopUp.fecha();
   });
 
-  $("#popUpEnviar").on("click", function () {
+  $("#popUpEnviar").on("click", () => {
     janelaPopUp.fecha();
   });
 
   if (param.bgFechar !== false) {
-    $(".popUpFundo").on("click", function () {
+    $(".popUpFundo").on("click", () => {
       janelaPopUp.fecha();
     });
-    $(document).keyup(function (e) {
+    $(document).keyup((e) => {
       if (e.key === "Escape") {
         janelaPopUp.fecha();
       }
@@ -265,27 +264,22 @@ janelaPopUp.abre = function (param) {
   }
 };
 
-janelaPopUp.fecha = function () {
+janelaPopUp.fecha = () => {
   $(".popUp").removeClass("popUpEntrada").addClass("popUpSaida");
 
-  $(".popUpFundo").fadeOut(1000, function () {
+  $(".popUpFundo").fadeOut(1000, () => {
     $(".popUpFundo").remove();
     $("#popUp").remove();
   });
 };
 
-function abrirPopUp(params) {
-  janelaPopUp.abre(params);
-  document.getElementById("popUp").focus();
-}
-
-function abrirJanelaPlanos(plano_mudanca, plano_atual) {
+function abrirJanelaPlanos(planoMudanca, planoAtual) {
   abrirPopUp({
     cor: "blue",
     titulo: "Mudança de Planos",
     mudarPlanos: true,
-    planoAtual: plano_atual,
-    planoMudanca: plano_mudanca,
+    planoAtual,
+    planoMudanca,
     icone: "plano",
   });
   document.getElementById("popUpEnviar").innerHTML = "Sim, desejo mudar";
@@ -294,12 +288,9 @@ function abrirJanelaPlanos(plano_mudanca, plano_atual) {
     .classList.replace("secundario", "primario");
   document.getElementById("popUpCancelar").innerHTML = "Não, talvez depois";
 
-  document.getElementById("popUpEnviar").addEventListener("click", function () {
+  document.getElementById("popUpEnviar").addEventListener("click", () => {
     janelaPopUp.fecha();
-    window.location.href =
-      "../CadastroCartao/cadastro_cartao?plano=" +
-      plano_mudanca +
-      "&alterar-plano=true";
+    window.location.href = `../CadastroCartao/cadastro_cartao?plano=${planoMudanca}&alterar-plano=true`;
   });
 }
 
@@ -332,6 +323,8 @@ switch (true) {
     });
     limparURL(cripto("cadastro=true"));
     break;
+  default:
+    break;
 }
 
 function erroSincronizacao(url) {
@@ -344,7 +337,7 @@ function erroSincronizacao(url) {
     bgFechar: false,
   });
   esperar({
-    url: url,
+    url,
     delay: 3000,
   });
 }
