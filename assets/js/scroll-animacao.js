@@ -4,10 +4,9 @@ function scrollAnimacao() {
   );
 
   if (sections.length) {
-    const windowMetade = window.innerHeight * 0.4;
+    const windowMetade = window.innerHeight * 0.7;
     sections.forEach((item) => {
       const posicao = item.getBoundingClientRect().top;
-      console.log(`${item.classList}: ${posicao}-${windowMetade}`);
       if (posicao <= windowMetade) {
         item.classList.add("ativo");
       } else if (item.classList.contains("ativo")) {

@@ -1,6 +1,7 @@
 .body-perfil {
   grid-template-columns: 300px 1fr;
   display: grid;
+  height: 100vh;
 }
 
 .body-perfil header {

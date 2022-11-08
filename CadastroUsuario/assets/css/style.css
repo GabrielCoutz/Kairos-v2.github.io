@@ -1,0 +1,4 @@
+.form-caixa.captcha {
+  grid-template-columns: 1fr !important;
+  justify-items: center;
+}

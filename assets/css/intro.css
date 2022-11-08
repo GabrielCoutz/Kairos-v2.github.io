@@ -1,6 +1,6 @@
 .intro {
   display: flex;
-  padding-top: 220px;
+  padding: 200px 40px;
   align-items: center;
   flex-wrap: wrap;
   background-image: url("../img/bg/hero-bg.jpg");

@@ -120,7 +120,6 @@ iframe {
 
 body {
   font-family: var(--fonte-display);
-  outline: 1px solid black;
 }
 
 * {
@@ -331,7 +330,6 @@ div[id$="Alert"] {
 /* navegação lateral dentro do perfil */
 
 .fundo-barra-lateral {
-  height: 100vh;
   background-image: url("../../Perfil/assets/img/img-lateral.jpg");
 }
 

@@ -1,7 +1,7 @@
 const nome = document.getElementById("nome");
 const email = document.getElementById("email");
 const senha = document.getElementById("senha");
-const confirmSenha = document.getElementById("confirmSenha");
+const confirmSenha = document.getElementById("confirm_senha");
 const captcha = document.getElementById("captcha");
 
 switch (
@@ -52,8 +52,8 @@ function validar() {
     confirmSenha.classList.add("vermei");
     senha.value = "";
     confirmSenha.value = "";
-    // } else if (grecaptcha.getResponse() == "") {
-    //   alertaDeErro(captcha, "Preencha o CAPTCHA!");
+  } else if (grecaptcha.getResponse() === "") {
+    alertaDeErro(captcha, "Preencha o CAPTCHA!");
   } else {
     localStorage.setItem(nome.id, nome.value);
     abrirPopUp({
