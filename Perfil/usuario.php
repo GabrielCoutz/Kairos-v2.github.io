@@ -67,6 +67,15 @@
     $exec->bind_param("s", $email);
     $exec->execute();
     $select_endereco = $exec->get_result()->fetch_assoc();
+
+    if (
+        empty($select_endereco['rua']) || empty($select_endereco['bairro']) ||
+        empty($select_endereco['cidade'])
+    ) $endereco = "Não cadastrado";
+    else $endereco = $select_endereco['rua'] . ", " .  $select_endereco['bairro'] . ", " . $select_endereco['cidade'] . ", ";
+
+
+
     ?>
 </head>
 
@@ -151,9 +160,7 @@
                             <input type="hidden" class="none" id="estado" name="estado">
                             <label>Endereço</label>
                             <p class="desativado" id="endereco"><span>
-                                    <?= ucwords($select_endereco['rua']) ?>,
-                                    <?= ucwords($select_endereco['bairro']) ?>,
-                                    <?= ucwords($select_endereco['cidade']) ?>,
+                                    <?= $endereco; ?>
                                     <?= $select_endereco['estado'] ?>
                                 </span></p>
                         </div>

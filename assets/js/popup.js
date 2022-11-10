@@ -266,9 +266,6 @@ janelaPopUp.abre = (param) => {
       }
     });
   }
-  if (document.getElementById("butao")) {
-    document.getElementById("butao").disabled = true;
-  }
 };
 
 janelaPopUp.fecha = () => {
