@@ -3,7 +3,6 @@ const nome = document.getElementById("cardName");
 const mes = document.getElementById("cardMonth");
 const ano = document.getElementById("cardYear");
 const cvv = document.getElementById("cardCvv");
-
 const cpf = document.getElementById("cpf");
 const numero = document.getElementById("numero");
 

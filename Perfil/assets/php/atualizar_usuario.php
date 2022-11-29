@@ -50,7 +50,7 @@ if (isset($_COOKIE['senha'])) { // alterar senha
     $exec->execute();
     $result = $exec->get_result()->fetch_assoc()['senha'];
 
-    if ($result != $senha_antiga) {
+    if ($result !== $senha_antiga) {
         setcookie('senha', '', time() - 3600, '/', NULL, true, true);
         header('Location:' . $local . '?' . hash("sha512", 'senha=false'));
         exit;
@@ -72,7 +72,7 @@ if (isset($_COOKIE['senha'])) { // alterar senha
 if (isset($_COOKIE['usuario'])) { // alteração de dados usuário
     $nome = $_POST['nome'];
 
-    if ($nome != $_SESSION['nome_padrao']) {
+    if ($nome !== $_SESSION['nome_padrao']) {
         $query = "UPDATE usuario SET nome=? WHERE email=?";
         $exec = $conec->prepare($query);
         $exec->bind_param('ss', $nome, $email_padrao);

@@ -51,7 +51,7 @@
                     <span class="underline" aria-hidden="true"></span>
                     <div id="senhaAlert" role="alert"></div>
                 </div>
-                <button type="submit" class="btn secundario" onclick="validar()" id="butao">Entrar</button>
+                <button type="submit" class="btn secundario" onclick="validar()" id="butao">Entrar</button>     
                 <a href="../CadastroUsuario/cadastro_usuario" class="btn primario">Registrar-se</a>
                 <a href="../Recuperacao/recuperacao" class="btn terciario">Esqueci a senha</a>
             </form>

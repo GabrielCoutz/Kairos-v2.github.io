@@ -40,7 +40,7 @@ function validar() {
     document
       .getElementById(senhaNovaDup.getAttribute("aria-controls"))
       .classList.add("alerta-ativo");
-  } else if (senhaNova.value !== senhaNovaDup.valN) {
+  } else if (senhaNova.value !== senhaNovaDup.value) {
     alertaDeErro(
       senhaNova,
       "Senhas não coincidem! Verifique-as e tente novamente"

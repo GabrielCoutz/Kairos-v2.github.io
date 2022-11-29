@@ -3,7 +3,7 @@
 session_start();
 require_once('../../../assets/php/globals.php');
 
-if (isset($_POST['g-recaptcha-response']) && $_POST['g-recaptcha-response'] != "") {
+if (isset($_POST['g-recaptcha-response']) && $_POST['g-recaptcha-response'] !== "") {
     $url = 'https://www.google.com/recaptcha/api/siteverify';
     $secret = '6Ld5L3oeAAAAAF7ExJjjJbY9EnWGQSyjCin5aGRL';
     $response = $_POST['g-recaptcha-response'];
@@ -17,7 +17,7 @@ if (isset($_POST['g-recaptcha-response']) && $_POST['g-recaptcha-response'] != "
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     $resp = json_decode(curl_exec($ch));
 
-    if ($resp->success != 1) {
+    if ($resp->success !== 1) {
         header('Location: ../../recuperacao?' . hash("sha512", 'captcha=false'));
         exit;
     }

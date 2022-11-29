@@ -1,3 +1,7 @@
+.coletaDeDados .btn.secundario.menu-btn {
+  display: none;
+}
+
 iframe[title="Formulário"] {
   grid-column: 1/-1;
   border-radius: var(--borda-redonda);

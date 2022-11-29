@@ -21,7 +21,7 @@
     ?>
 </head>
 
-<body class="body-perfil">
+<body class="body-perfil coletaDeDados">
     <div class="fundo-barra-lateral">
         <div class="barra-lateral">
             <nav aria-label="Navegação Lateral">

@@ -6,7 +6,7 @@ require_once('../../../../assets/php/globals.php');
 $local = '../../empresa';
 $email = $_SESSION['email_padrao'];
 
-if ($_POST['ramo'] != $_SESSION['ramo_padrao']) { // alteração de ramo
+if ($_POST['ramo'] !== $_SESSION['ramo_padrao']) { // alteração de ramo
     $ramo = $_POST['ramo'];
     $query = "UPDATE empresa SET ramo=? WHERE email_usuario=?";
     $exec = $conec->prepare($query);
@@ -38,7 +38,7 @@ if (isset($_COOKIE['endereco'])) { // alteração do endereco da empresa
 
 if (isset($_COOKIE['empresa'])) { // alteração de dados empresa
 
-    if ($_POST['nome_empresa'] != $_SESSION['nome_empresa_padrao']) { // verificação se o nome já é utilizado
+    if ($_POST['nome_empresa'] !== $_SESSION['nome_empresa_padrao']) { // verificação se o nome já é utilizado
         $nome_empresa = $_POST['nome_empresa'];
         $query = "SELECT id FROM empresa WHERE nome=?";
         $exec = $conec->prepare($query);
@@ -52,7 +52,7 @@ if (isset($_COOKIE['empresa'])) { // alteração de dados empresa
         }
     }
 
-    if ($_POST['nome_fantasia'] != $_SESSION['nome_fantasia_padrao']) { // verificação se o nome já é utilizado
+    if ($_POST['nome_fantasia'] !== $_SESSION['nome_fantasia_padrao']) { // verificação se o nome já é utilizado
         $nome_fantasia = $_POST['nome_fantasia'];
         $query = "SELECT id FROM empresa WHERE nome_fantasia =?";
         $exec = $conec->prepare($query);

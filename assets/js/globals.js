@@ -1,16 +1,6 @@
-// window.onload = function () {
-//   window.setTimeout(fadeout, 500);
-// };
-
-// function fadeout() {
-//   document.querySelector(".preloader").style.opacity = "0";
-//   document.querySelector(".preloader").style.display = "none";
-// }
-
-// menu hamburguer
 let iconeAnterior = "";
-let hamburguer = document.querySelector(".hamburguer");
-let navMenu = document.body.classList.contains("index")
+const hamburguer = document.querySelector(".hamburguer");
+const navMenu = document.body.classList.contains("index")
   ? document.querySelector(".header-nav")
   : document.querySelector(".nav-lateral");
 
@@ -33,7 +23,7 @@ function cripto(string) {
 }
 
 function apagarCookie(nome) {
-  document.cookie = nome + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+  document.cookie = `${nome}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 }
 
 function enviar() {
@@ -45,8 +35,8 @@ function enviar() {
 }
 
 function verificarURL(parametro) {
-  //procura o parametro passado na URL, retornando booleano
-  let verificarURL = new URLSearchParams(window.location.search);
+  // procura o parametro passado na URL, retornando booleano
+  const verificarURL = new URLSearchParams(window.location.search);
   return verificarURL.has(parametro);
 }
 
@@ -62,14 +52,14 @@ function limpar_inputs() {
 
 function limparURL(url) {
   // tira o disparador de popup da url, limpando-a
-  let nextURL = window.location.href.replace(url, "").replace("?", "");
-  let nextState = { additionalInformation: "Updated the URL with JS" };
+  const nextURL = window.location.href.replace(url, "").replace("?", "");
+  const nextState = { additionalInformation: "Updated the URL with JS" };
   window.history.replaceState(nextState, "Kairos", nextURL);
 }
 
 function alertaDeErro(elemento, mensagem) {
-  let caixa = document.getElementById(elemento.getAttribute("aria-controls"));
-  let iconeAlerta = document.createElement("i");
+  const caixa = document.getElementById(elemento.getAttribute("aria-controls"));
+  const iconeAlerta = document.createElement("i");
   iconeAlerta.setAttribute("class", "gg-danger");
   iconeAlerta.setAttribute("aria-hidden", "true");
   if (elemento.id === "senha_antiga" && checarPerfil()) {
@@ -90,8 +80,8 @@ function alertaDeErro(elemento, mensagem) {
   if (checarPerfil() || window.location.href.includes("CadastroCartao")) {
     caixa.append(iconeAlerta);
   }
-  if (elemento.previousElementSibling.tagName === "I") {
-    let elementoAnterior = elemento.previousElementSibling;
+  if (elemento?.previousElementSibling?.tagName === "I") {
+    const elementoAnterior = elemento.previousElementSibling;
     if (elementoAnterior.classList[0] !== "gg-danger") {
       iconeAnterior = elementoAnterior.classList[0];
     }
@@ -103,12 +93,10 @@ function alertaDeErro(elemento, mensagem) {
 }
 
 function vazio(item) {
-  // verifica se o valor passado está vazio
   return item.trim() === "";
 }
 
 function validarEmail(valor) {
-  // auto-explicativo
   if (vazio(valor)) {
     return false;
   }
@@ -120,8 +108,8 @@ function validarEmail(valor) {
 
 function apenasLetras(event) {
   // deixa apenas letras com ou sem acento serem digitadas
-  if (event.value != undefined) {
-    let limpo = event.value
+  if (event.value !== undefined) {
+    const limpo = event.value
       .replace(/[^\w\s-zÀ-ÖØ-öø-ÿ]/gi, "")
       .replace(/[0-9]/g, "");
     event.value = limpo.replace(/_/g, "").replace(".", "");
@@ -129,24 +117,23 @@ function apenasLetras(event) {
 }
 
 function apenasNumeros(event) {
-  let limpo = event.value.replace(/[^0-9-. /]/g, "");
+  const limpo = event.value.replace(/[^0-9-. /]/g, "");
   event.value = limpo;
 }
 
 function lerCEP(cep) {
-  if (cep.value.length == 10) {
+  if (cep.value.length === 10) {
     $.ajax({
-      url:
-        "https://viacep.com.br/ws/" +
-        cep.value.replace(/-/g, "").replace(".", "") +
-        "/json/",
+      url: `https://viacep.com.br/ws/${cep.value
+        .replace(/-/g, "")
+        .replace(".", "")}/json/`,
       dataType: "json",
-      success: function (resposta) {
+      success(resposta) {
         if (
-          resposta.logradouro == undefined ||
-          resposta.bairro == undefined ||
-          resposta.localidade == undefined ||
-          resposta.uf == undefined
+          resposta.logradouro === undefined ||
+          resposta.bairro === undefined ||
+          resposta.localidade === undefined ||
+          resposta.uf === undefined
         ) {
           if (window.location.href.includes("cadastro")) {
             alertaDeErro(
@@ -162,7 +149,6 @@ function lerCEP(cep) {
             salvarbtn.disabled = true;
             cancelarbtn.disabled = false;
           }
-          return;
         } else {
           cep.classList.remove("vermei");
           document
@@ -175,14 +161,9 @@ function lerCEP(cep) {
             resposta.localidade;
           document.querySelector('input[id^="estado"]').value = resposta.uf;
           document.querySelector("#endereco").classList.remove("none");
-          document.querySelector("#endereco").innerHTML =
-            resposta.logradouro +
-            ", " +
-            resposta.bairro +
-            ", " +
-            resposta.localidade +
-            ", " +
-            resposta.uf;
+          document.querySelector(
+            "#endereco"
+          ).innerHTML = `${resposta.logradouro}, ${resposta.bairro}, ${resposta.localidade}, ${resposta.uf}`;
           document.querySelector('input[id^="numero"]').focus();
           if (checarPerfil()) {
             Cookies.set("endereco", 1);
@@ -194,51 +175,49 @@ function lerCEP(cep) {
 }
 
 function validarCNPJ(numeroCNPJ) {
-  let valor = numeroCNPJ.replace(/[^\d]+/g, "");
-
-  if (valor === "" || valor.length != 14) return false;
+  console.log(numeroCNPJ);
+  const valor = numeroCNPJ.replace(/[^\d]+/g, "");
+  console.log(valor);
+  if (valor === "") return false;
 
   // Elimina CNPJs invalidos conhecidos
   if (
-    valor == "00000000000000" ||
-    valor == "11111111111111" ||
-    valor == "22222222222222" ||
-    valor == "33333333333333" ||
-    valor == "44444444444444" ||
-    valor == "55555555555555" ||
-    valor == "66666666666666" ||
-    valor == "77777777777777" ||
-    valor == "88888888888888" ||
-    valor == "99999999999999"
+    valor === "00000000000000" ||
+    valor === "11111111111111" ||
+    valor === "22222222222222" ||
+    valor === "33333333333333" ||
+    valor === "44444444444444" ||
+    valor === "55555555555555" ||
+    valor === "66666666666666" ||
+    valor === "77777777777777" ||
+    valor === "88888888888888" ||
+    valor === "99999999999999"
   )
     return false;
 
+  // Valida DVs
   let tamanho = valor.length - 2;
   let numeros = valor.substring(0, tamanho);
-  let digitos = valor.substring(tamanho);
+  const digitos = valor.substring(tamanho);
   let soma = 0;
-  let pos = tamanho - 7;
-
-  for (let i = tamanho; i >= 1; i--) {
+  pos = tamanho - 7;
+  for (i = tamanho; i >= 1; i--) {
     soma += numeros.charAt(tamanho - i) * pos--;
     if (pos < 2) pos = 9;
   }
+  resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
+  if (resultado !== +digitos.charAt(0)) return false;
 
-  let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
-  if (resultado != digitos.charAt(0)) return false;
-
-  tamanho = tamanho + 1;
+  tamanho += 1;
   numeros = valor.substring(0, tamanho);
   soma = 0;
   pos = tamanho - 7;
-
-  for (let i = tamanho; i >= 1; i--) {
+  for (i = tamanho; i >= 1; i--) {
     soma += numeros.charAt(tamanho - i) * pos--;
     if (pos < 2) pos = 9;
   }
-
   resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
-  if (resultado != digitos.charAt(1)) return false;
+  if (resultado !== +digitos.charAt(1)) return false;
 
   return true;
 }
@@ -252,7 +231,7 @@ function checarCartao() {
 }
 
 function dispararEvento(elemento, evento, stringCondicao) {
-  //dispara um evento de confirmação para o input no qual o valor inserido é inválido ou insatisfatório
+  // dispara um evento de confirmação para o input no qual o valor inserido é inválido ou insatisfatório
 
   var condicao; // função usada para validação
 
@@ -276,13 +255,13 @@ function dispararEvento(elemento, evento, stringCondicao) {
             vazio(senha_antiga.value) ||
             vazio(senha_nova.value) ||
             vazio(senha_nova_dup.value) ||
-            senha_nova.value != senha_nova_dup.value
+            senha_nova.value !== senha_nova_dup.value
           );
-        } else if (vazio(senha.value) || vazio(confirm_senha.value)) {
-          return true;
-        } else {
-          return false;
         }
+        if (vazio(senha.value) || vazio(confirm_senha.value)) {
+          return true;
+        }
+        return false;
       };
       break;
     case "condicaoCNPJ":
@@ -297,12 +276,12 @@ function dispararEvento(elemento, evento, stringCondicao) {
       break;
     case "condicaoCep":
       var condicao = function () {
-        return elemento.value.length != 10;
+        return elemento.value.length !== 10;
       };
       break;
     case "condicaoNum":
       var condicao = function () {
-        return num.value.length != 19;
+        return num.value.length !== 19;
       };
       break;
     case "condicaoCvv":
@@ -312,12 +291,14 @@ function dispararEvento(elemento, evento, stringCondicao) {
       break;
     case "condicaoCaptcha":
       var condicao = function () {
-        return grecaptcha.getResponse() == "";
+        return grecaptcha.getResponse() === "";
       };
+      break;
+    default:
       break;
   }
 
-  let funcao = function () {
+  const funcao = function () {
     // verifica se a validação é satisfeita, assim retira o eventListener, remove os avisos e libera o usuario para registrar-se
     if (!condicao()) {
       elemento.classList.remove("vermei");
@@ -356,7 +337,7 @@ function dispararEvento(elemento, evento, stringCondicao) {
 }
 
 function esperar(parametos) {
-  //espera o dedlay e redireciona para a url
+  // espera o dedlay e redireciona para a url
   setTimeout(() => {
     window.location.href = parametos.url;
   }, parametos.delay);

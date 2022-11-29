@@ -6,7 +6,7 @@ require_once('../../../assets/php/globals.php');
 $email = $_POST['email'];
 $local = '../../cadastro_usuario';
 
-if (isset($_POST['g-recaptcha-response']) && $_POST['g-recaptcha-response'] != "") {
+if (isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
     $url = 'https://www.google.com/recaptcha/api/siteverify';
     $secret = '6Ld5L3oeAAAAAF7ExJjjJbY9EnWGQSyjCin5aGRL';
     $response = $_POST['g-recaptcha-response'];
@@ -19,8 +19,7 @@ if (isset($_POST['g-recaptcha-response']) && $_POST['g-recaptcha-response'] != "
     curl_setopt($ch, CURLOPT_HEADER, 0);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     $resp = json_decode(curl_exec($ch));
-
-    if ($resp->success != 1) {
+    if ((int) $resp->success !== 1) {
         $local = $local . '?' . hash("sha512", 'erro=true');
         header("Refresh:0; url=" . $local);
         exit;

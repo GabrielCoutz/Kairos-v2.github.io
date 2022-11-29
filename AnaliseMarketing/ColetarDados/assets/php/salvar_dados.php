@@ -2,7 +2,9 @@
 <?php
 session_start();
 require("../../../../assets/php/globals.php");
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 // SWOT
 $forcas = '';
 $fraquezas = '';
@@ -58,6 +60,9 @@ foreach ($_GET as $chave => $valor) {
             case is_int(strpos($chave, '4PSpreço2')) && is_int(strpos($valor, 'Alto Custo')):
                 $preco .= 'Alto Preço Final' . ', ';
                 break;
+            case is_int(strpos($chave, '4PSpreço3')):
+                $preco .= $valor . ', ';
+                break;
             case is_int(strpos($chave, '4PSpreçosensivel')) && is_int(strpos($valor, 'Sim')):
                 $ameacas .= 'Clientes Sensíveis ao Preço' . ', ';
                 break;
@@ -98,9 +103,9 @@ $exec->execute();
 $result_4ps = $exec->get_result();
 verificarOperacao($result_4ps, '../../../resultado');
 
-// ver erro --> or die(mysqli_error($conec) ou printf("Errormessage: %s\n", $conec->error);;
+// ver erro --> or die(mysqli_error($conec) ou printf("Errormessage: %s\n", $conec->error);
 
-if ($result_4ps && $result_swot) {
+if (empty($result_4ps) && empty($result_swot)) {
     header('Location: ../../../resultado?' . hash("sha512", 'sucesso=true'));
     exit;
 }
