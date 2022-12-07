@@ -5,20 +5,19 @@
     <meta name="theme-color" content="#4466ff">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description"
-        content="Kairos, Uma plataforma pensada e desenvolvida para Você. Mais que uma ferramenta, um meio para alcançar seu sucesso no mercado.">
+    <meta name="description" content="Kairos, Uma plataforma pensada e desenvolvida para Você. Mais que uma ferramenta, um meio para alcançar seu sucesso no mercado.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
     <link rel="stylesheet preload" as="style" href="assets/css/style.min.css">
     <title>Kairos</title>
     <?php
-        error_reporting(E_ERROR | E_PARSE);
-        session_start();
-        session_unset();
-        session_destroy();
-        session_write_close();
-        setcookie(session_name(),'',0,'/', NULL, NULL, true);
-        session_regenerate_id(true);
+    error_reporting(E_ERROR | E_PARSE);
+    session_start();
+    session_unset();
+    session_destroy();
+    session_write_close();
+    setcookie(session_name(), '', 0, '/', NULL, NULL, true);
+    session_regenerate_id(true);
     ?>
 </head>
 

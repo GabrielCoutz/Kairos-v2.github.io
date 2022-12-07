@@ -223,7 +223,7 @@ janelaPopUp.abre = (param) => {
         abrirPopUp({
           cor: "blue",
           corpo: "Tudo bem, redirecionando para página de análise",
-          titulo: "Análise não realizada",
+          titulo: "Aguarde",
           icone: "carregar",
           semBotoes: true,
           realizarAnalise: true,

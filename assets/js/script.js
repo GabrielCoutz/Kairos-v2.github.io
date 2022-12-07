@@ -1,14 +1,14 @@
 function onScroll(event) {
-  let sections = document.querySelectorAll(".page-scroll");
-  let scrollPos =
+  const sections = document.querySelectorAll(".page-scroll");
+  const scrollPos =
     window.pageYOffset ||
     document.documentElement.scrollTop ||
     document.body.scrollTop;
   for (let i = 0; i < sections.length; i++) {
-    let currLink = sections[i];
-    let val = currLink.getAttribute("href");
-    let refElement = document.querySelector(val);
-    let scrollTopMinus = scrollPos + 73;
+    const currLink = sections[i];
+    const val = currLink.getAttribute("href");
+    const refElement = document.querySelector(val);
+    const scrollTopMinus = scrollPos + 73;
     if (
       refElement.offsetTop <= scrollTopMinus &&
       refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
@@ -26,8 +26,8 @@ if (document.location.href.includes("index")) {
   window.document.addEventListener("scroll", onScroll);
 
   window.onscroll = function () {
-    let header_navbar = document.querySelector(".fundo-header");
-    let sticky = header_navbar.offsetTop;
+    const header_navbar = document.querySelector(".fundo-header");
+    const sticky = header_navbar.offsetTop;
     if (window.pageYOffset > sticky) {
       header_navbar.classList.add("sticky");
     } else {

@@ -38,9 +38,9 @@ function validar() {
   } else if (!validarEmail(email.value)) {
     dispararEvento(email, "keyup", "condicaoEmail");
     alertaDeErro(email, "Por favor, insira o email corretamente!");
-    //   } else if (grecaptcha.getResponse() == "") {
-    //     dispararEvento(captcha, "keyup", "condicaoCaptcha");
-    //     alertaDeErro(captcha, "Por favor, preencha o CAPTCHA!");
+  } else if (grecaptcha.getResponse() === "") {
+    dispararEvento(captcha, "keyup", "condicaoCaptcha");
+    alertaDeErro(captcha, "Por favor, preencha o CAPTCHA!");
   } else {
     abrirPopUp({
       cor: "blue",

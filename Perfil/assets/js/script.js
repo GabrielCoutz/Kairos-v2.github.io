@@ -14,6 +14,12 @@ const cancelarbtn = document.getElementById("cancelarbtn");
 const senhabtn = document.getElementById("alterarsenha");
 const caixaSenha = document.getElementsByClassName("caixa-senhas")[0];
 
+const endereco = vazio(
+  document.getElementById("endereco").innerText.replace(", , ,", "")
+)
+  ? "Não Cadastrado"
+  : document.getElementById("endereco").innerHTML;
+
 $(document).ready(() => {
   if (vazio(cep.value)) cep.placeholder = "00.000-000";
 
@@ -63,7 +69,6 @@ switch (true) {
 }
 document.querySelectorAll("input").forEach((item) => {
   item.addEventListener("input", ({ target: input }) => {
-    console.log(input.id);
     switch (input.id) {
       case "nome":
         switch (true) {

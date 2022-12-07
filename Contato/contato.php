@@ -32,8 +32,7 @@
         </div>
         <div class="contato-info">
             <h2>Email de contato</h2>
-            <button class="copiar btn terciario"
-                data-clipboard-text="kairozprojeto@gmail.com">kairozprojeto@gmail.com</button>
+            <button class="copiar btn terciario" data-clipboard-text="kairozprojeto@gmail.com">kairozprojeto@gmail.com</button>
             <div id="mensagem" class="none"></div>
             <a href="../index" class="btn primario">Voltar à página inicial</a>
         </div>

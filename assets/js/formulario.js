@@ -3,7 +3,7 @@
 document.querySelectorAll(".form-caixa > input").forEach((input) => {
   input.addEventListener("keydown", (e) => {
     const label = document.querySelector(`label[for=${e.currentTarget.id}]`);
-    if (input.value != "") {
+    if (input.value !== "") {
       label.classList.add("label-ativo");
       label.setAttribute("aria-hidden", "false");
     } else {
@@ -37,7 +37,7 @@ document.querySelectorAll(".gg-eye").forEach((botao) => {
 // Permite somente letras com ou sem acento
 
 function apenasLetras(event) {
-  if (event.value != undefined) {
+  if (event.value !== undefined) {
     const limpo = event.value
       .replace(/[^\w\s-zÀ-ÖØ-öø-ÿ]/gi, "")
       .replace(/[0-9]/g, "");

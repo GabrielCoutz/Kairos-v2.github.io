@@ -42,11 +42,18 @@
                     <span class="underline" aria-hidden="true"></span>
                     <div id="emailAlert" role="alert"></div>
                 </div>
+                <div class="form-caixa captcha">
+                    <div class="g-recaptcha" data-sitekey="6Ld5L3oeAAAAAAH8CgndVZBek5uasbGl5mroKjP5" id="captcha"></div>
+                    <div id='captchaAlert' role="alert"></div>
+                </div>
                 <button type="submit" id='butao' class="btn secundario" onclick="validar()">Verificar</button>
             </form>
         </div>
     </div>
 </body>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
