@@ -154,6 +154,11 @@
                             <div id="numeroAlert" role="alert"></div>
                         </div>
                         <div class="form-caixa">
+                            <label for="complemento">Complemento</label>
+                            <input type="text" name="complemento" id="complemento" aria-controls="complementoAlert" placeholder="Opcional" value='<?= $select_endereco['complemento'] ?>'>
+                            <div id="complementoAlert" role="alert"></div>
+                        </div>
+                        <div class="form-caixa">
                             <input type="hidden" class="none" id="rua" name="rua">
                             <input type="hidden" class="none" id="bairro" name="bairro">
                             <input type="hidden" class="none" id="cidade" name="cidade">

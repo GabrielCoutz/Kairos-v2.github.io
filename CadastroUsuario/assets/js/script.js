@@ -33,6 +33,10 @@ switch (
     break;
 }
 
+if (!window.location.href.includes("https://kairosprojeto.great-site.net"))
+  console.log("Você está em localhost.");
+else console.log("Você está na internet.");
+
 function validar() {
   limpar_inputs();
 
@@ -52,7 +56,10 @@ function validar() {
     confirmSenha.classList.add("vermei");
     senha.value = "";
     confirmSenha.value = "";
-  } else if (grecaptcha.getResponse() === "") {
+  } else if (
+    grecaptcha.getResponse() === "" &&
+    !window.location.href.includes("https://kairosprojeto.great-site.net")
+  ) {
     alertaDeErro(captcha, "Preencha o CAPTCHA!");
   } else {
     localStorage.setItem(nome.id, nome.value);

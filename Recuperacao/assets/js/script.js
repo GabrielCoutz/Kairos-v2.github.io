@@ -38,7 +38,10 @@ function validar() {
   } else if (!validarEmail(email.value)) {
     dispararEvento(email, "keyup", "condicaoEmail");
     alertaDeErro(email, "Por favor, insira o email corretamente!");
-  } else if (grecaptcha.getResponse() === "") {
+  } else if (
+    grecaptcha.getResponse() === "" &&
+    !window.location.href.includes("https://kairosprojeto.great-site.net")
+  ) {
     dispararEvento(captcha, "keyup", "condicaoCaptcha");
     alertaDeErro(captcha, "Por favor, preencha o CAPTCHA!");
   } else {

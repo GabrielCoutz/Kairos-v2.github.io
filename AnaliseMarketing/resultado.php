@@ -29,11 +29,11 @@
     $exec->execute();
     $select_4ps = $exec->get_result()->fetch_assoc();
 
-    $query = "SELECT nome FROM usuario WHERE email_usuario=?";
+    $query = "SELECT nome FROM usuario WHERE email=?";
     $exec = $conec->prepare($query);
     $exec->bind_param("s", $email);
     $exec->execute();
-    $select_nome = $exec->get_result()->fetch_assoc();
+    $select_nome = $exec->get_result()->fetch_assoc()['nome'];
 
     switch (true) {
         case !isset($_SESSION['email']) && !strpos($protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'], hash("sha512", 'erro=true')):
@@ -124,7 +124,7 @@
                     </div>
                 </div>
                 <div class="orientacoes-swot">
-                    <h1>Agora sim <? ucfirst(strtok($select_nome['nome'], " ")) ?>, vamos começar?</h1>
+                    <h1>Agora sim <?= ucfirst(strtok($select_nome, " ")); ?>, vamos começar?</h1>
                     <span>
                         <p>Utilize estes resultados a fim de basear estratégias benéficas para a administração em sua
                             empresa.</p>

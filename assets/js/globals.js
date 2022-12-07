@@ -77,9 +77,11 @@ function alertaDeErro(elemento, mensagem) {
   if (vazio(caixa.innerText)) {
     caixa.innerHTML += mensagem;
   }
+
   if (checarPerfil() || window.location.href.includes("CadastroCartao")) {
-    caixa.append(iconeAlerta);
+    if ([...caixa.children].length === 0) caixa.append(iconeAlerta);
   }
+
   if (elemento?.previousElementSibling?.tagName === "I") {
     const elementoAnterior = elemento.previousElementSibling;
     if (elementoAnterior.classList[0] !== "gg-danger") {

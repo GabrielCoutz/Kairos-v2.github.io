@@ -19,10 +19,10 @@ if (isset($_GET['alterar_plano'])) { // alteração de plano
     exit;
 }
 
-$num_cartao = $_POST['num_cartao'];
-$titular = $_POST['nome_cartao'];
+$num_cartao = hash("sha512", $_POST['num_cartao']);
+$titular = hash("sha512", $_POST['nome_cartao']);
 $cvv_cartao = hash("sha512", $_POST['cvv_cartao']);
-$validade = $_POST['mes_cartao'] . '/' . $_POST['ano_cartao'];
+$validade = hash("sha512", $_POST['mes_cartao'] . '/' . $_POST['ano_cartao']);
 $cpf = $_POST['cpf'];
 $cep = $_POST['cep'];
 $rua = $_POST['rua'];

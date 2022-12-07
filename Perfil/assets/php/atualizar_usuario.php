@@ -14,6 +14,10 @@ if (isset($_COOKIE['endereco'])) { // alteração do endereco
     $bairro = $_POST['bairro'];
     $cidade = $_POST['cidade'];
     $estado = $_POST['estado'];
+    $complemento = $_POST['complemento'];
+    if (empty($complemento)) {
+        $complemento = null;
+    };
     $query = "SELECT id FROM endereco WHERE email_usuario=?";
     $exec = $conec->prepare($query);
     $exec->bind_param("s", $email_padrao);
@@ -21,16 +25,16 @@ if (isset($_COOKIE['endereco'])) { // alteração do endereco
     $result = $exec->get_result()->fetch_assoc()['id'];
 
     if (empty($result)) { // se não tiver endereço, então todos os dados são cadastrados
-        $query = "INSERT INTO endereco(email_usuario, cep, rua, numero, bairro, cidade, estado) VALUES(?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO endereco(email_usuario, cep, complemento, rua, numero, bairro, cidade, estado) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
         $exec = $conec->prepare($query);
-        $exec->bind_param("sssssss", $email_padrao, $cep, $rua, $numero, $bairro, $cidade, $estado);
+        $exec->bind_param("ssssssss", $email_padrao, $cep, $complemento, $rua, $numero, $bairro, $cidade, $estado);
         $exec->execute();
         $result = $exec->get_result();
         verificarOperacao($result, $local);
     } else { // senão é realizado apenas a alteração
-        $query = "UPDATE endereco SET cep=?, rua=?, numero=?, bairro=?, cidade=?, estado=? WHERE email_usuario=?";
+        $query = "UPDATE endereco SET cep=?, complemento=?, rua=?, numero=?, bairro=?, cidade=?, estado=? WHERE email_usuario=?";
         $exec = $conec->prepare($query);
-        $exec->bind_param("sssssss", $cep, $rua, $numero, $bairro, $cidade, $estado, $email_padrao);
+        $exec->bind_param("ssssssss", $cep, $complemento, $rua, $numero, $bairro, $cidade, $estado, $email_padrao);
         $exec->execute();
         $result = $exec->get_result();
         verificarOperacao($result, $local);

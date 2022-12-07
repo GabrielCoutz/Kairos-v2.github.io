@@ -1,7 +1,7 @@
 const cep = document.getElementById("cep");
 const numero = document.getElementById("numero");
 
-const senhaAntiga = document.getElementById("senha_ntiga");
+const senhaAntiga = document.getElementById("senha_antiga");
 const senhaNova = document.getElementById("senha_nova");
 const senhaNovaDup = document.getElementById("senha_nova_dup");
 
@@ -53,17 +53,6 @@ switch (true) {
     document.getElementById("senhaNovaDup").classList.add("vermei");
     break;
 
-  case verificarURL(cripto("analise=false")):
-    abrirPopUp({
-      cor: "blue",
-      titulo: "Faça sua análise hoje mesmo!",
-      corpo:
-        "Sabia que você pode impulsionar sua gestão de marketing com alguns clicks?",
-      icone: "marketing",
-      marketing: true,
-    });
-    limparURL(cripto("analise=false"));
-    break;
   default:
     break;
 }
@@ -109,6 +98,12 @@ document.querySelectorAll("input").forEach((item) => {
             salvarbtn.disabled = false;
             cancelarbtn.disabled = false;
         }
+        break;
+
+      case "complemento":
+        Cookies.set("endereco", 1);
+        salvarbtn.disabled = false;
+        cancelarbtn.disabled = false;
         break;
 
       case "numero":
