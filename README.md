@@ -1,5 +1,7 @@
 # Projeto finalizado! 12/2021 - 12/2022
 
+<h3><a href="https://gabrielcoutz.github.io/Kairos-v2.github.io/">👉 Dê uma olhada</a></h3>
+
 Durante meu curso de técnico em informática, desenvolvi esta plataforma, Kairos, para apresentação final.
 Foi hospedada durante o processo, mas atualmente encontra-se fora do ar.
 
