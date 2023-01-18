@@ -33,18 +33,18 @@ switch (true) {
     break;
 }
 
-if (conteudo) {
-  document.querySelectorAll(".swot-caixa > span").forEach((item) => {
-    item.innerHTML = item.innerText.replace(/,/g, "<li>");
-    item.innerHTML += "</li>";
-  });
+// if (conteudo) {
+//   document.querySelectorAll(".swot-caixa > span").forEach((item) => {
+//     item.innerHTML = item.innerText.replace(/,/g, "<li>");
+//     item.innerHTML += "</li>";
+//   });
 
-  document.querySelectorAll(".composto-caixa > span").forEach((item) => {
-    item.innerHTML = item.innerText.replace(/,/g, "<li>");
-    item.innerHTML += "</li>";
-  });
+//   document.querySelectorAll(".composto-caixa > span").forEach((item) => {
+//     item.innerHTML = item.innerText.replace(/,/g, "<li>");
+//     item.innerHTML += "</li>";
+//   });
 
-  document.querySelectorAll(".bloco-metodologia").forEach((item) => {
-    item.classList.remove("none");
-  });
-}
+//   document.querySelectorAll(".bloco-metodologia").forEach((item) => {
+//     item.classList.remove("none");
+//   });
+// }

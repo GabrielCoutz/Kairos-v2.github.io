@@ -38,12 +38,12 @@ function validar() {
   } else if (!validarEmail(email.value)) {
     dispararEvento(email, "keyup", "condicaoEmail");
     alertaDeErro(email, "Por favor, insira o email corretamente!");
-  } else if (
-    grecaptcha.getResponse() === "" &&
-    !window.location.href.includes("https://kairosprojeto.great-site.net")
-  ) {
-    dispararEvento(captcha, "keyup", "condicaoCaptcha");
-    alertaDeErro(captcha, "Por favor, preencha o CAPTCHA!");
+    // } else if (
+    //   window.location.href.includes("https://kairosprojeto.great-site.net") &&
+    //   grecaptcha.getResponse() === ""
+    // ) {
+    // dispararEvento(captcha, "keyup", "condicaoCaptcha");
+    // alertaDeErro(captcha, "Por favor, preencha o CAPTCHA!");
   } else {
     abrirPopUp({
       cor: "blue",
@@ -53,6 +53,9 @@ function validar() {
       semBotoes: true,
       bgFechar: false,
     });
-    setTimeout(enviar, 3000);
+    setTimeout(() => {
+      enviar();
+      window.location.href = "../Recuperacao/MudarSenha/mudar.html";
+    }, 4000);
   }
 }

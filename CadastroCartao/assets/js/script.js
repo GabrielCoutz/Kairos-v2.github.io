@@ -93,7 +93,7 @@ function cancelar() {
     bgFechar: false,
   });
   setTimeout(() => {
-    window.location.href = "../Perfil/usuario";
+    window.location.href = "../Perfil/usuario.html";
   }, 3000);
 }
 

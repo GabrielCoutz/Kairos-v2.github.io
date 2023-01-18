@@ -59,6 +59,9 @@ function validar() {
       semBotoes: true,
       bgFechar: false,
     });
-    setTimeout(enviar, 3000);
+    setTimeout(() => {
+      enviar();
+      window.location.href = "../../Login/login.html";
+    }, 4000);
   }
 }

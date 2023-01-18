@@ -49,6 +49,9 @@ function validar() {
       semBotoes: true,
       bgFechar: false,
     });
-    setTimeout(enviar, 4000);
+    setTimeout(() => {
+      enviar();
+      window.location.href = "../Perfil/usuario.html";
+    }, 4000);
   }
 }

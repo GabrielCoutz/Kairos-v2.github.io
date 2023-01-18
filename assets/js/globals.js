@@ -31,7 +31,7 @@ function enviar() {
     ? (document.getElementById("butao").disabled = true)
     : (document.getElementById("salvarbtn").disabled = true);
   janelaPopUp.fecha("popUp");
-  document.querySelector("form").submit();
+  // document.querySelector("form").submit();
 }
 
 function verificarURL(parametro) {
@@ -58,6 +58,7 @@ function limparURL(url) {
 }
 
 function alertaDeErro(elemento, mensagem) {
+  if (elemento.id === "captcha") return elemento.classList.add("vermei");
   const caixa = document.getElementById(elemento.getAttribute("aria-controls"));
   const iconeAlerta = document.createElement("i");
   iconeAlerta.setAttribute("class", "gg-danger");
